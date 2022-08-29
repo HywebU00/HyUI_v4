@@ -40,7 +40,10 @@ const slider = (function () {
   }
   // if the element can't has the property of TimerManage what represented the constructor function,repeated creating a constructed function
   TimerManager.makeTimerManage = function (element) {
-    if (!element.TimerManage || element.TimerManage.constructor !== TimerManager) {
+    if (
+      !element.TimerManage ||
+      element.TimerManage.constructor !== TimerManager
+    ) {
       element.TimerManage = new TimerManager();
     }
   };
@@ -80,13 +83,19 @@ const slider = (function () {
           clearInterval(timer);
           element.style.display = 'none';
           element.style.height = totalHeight + 'px';
-          if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
+          if (
+            element.TimerManage &&
+            element.TimerManage.constructor === TimerManager
+          ) {
             element.TimerManage.next();
           }
         }
       }, 10);
     } else {
-      if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
+      if (
+        element.TimerManage &&
+        element.TimerManage.constructor === TimerManager
+      ) {
         element.TimerManage.next();
       }
     }
@@ -106,13 +115,19 @@ const slider = (function () {
         if (currentHeight >= totalHeight) {
           clearInterval(timer);
           element.style.height = totalHeight + 'px';
-          if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
+          if (
+            element.TimerManage &&
+            element.TimerManage.constructor === TimerManager
+          ) {
             element.TimerManage.next();
           }
         }
       }, 10);
     } else {
-      if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
+      if (
+        element.TimerManage &&
+        element.TimerManage.constructor === TimerManager
+      ) {
         element.TimerManage.next();
       }
     }
@@ -212,7 +227,8 @@ class Menu {
     // --- menu初始化 新增側欄選單
     let sideBar = document.createElement('aside');
     sideBar.className = 'sidebar';
-    sideBar.innerHTML = '<div class="mobileArea"><button type="button" class="sidebarClose">關閉</button></div><div class="menu_overlay"></div>';
+    sideBar.innerHTML =
+      '<div class="mobileArea"><button type="button" class="sidebarClose">關閉</button></div><div class="menu_overlay"></div>';
     that.body.insertBefore(sideBar, that.firstBody);
 
     // --- menu初始化 新增側欄選單按鈕
@@ -387,9 +403,15 @@ $(function () {
       /////////////// 手機版設定 /////////////
       /*-----------------------------------*/
       this.menu_liHasChild = this.name.find('li.hasChild');
-      this.menu_liHasChild_level1 = $(`aside ${this.menu} ul `).children('li.hasChild');
-      this.menu_liHasChild_level2 = $(`aside ${this.menu} ul ul`).children('li.hasChild');
-      this.menu_liHasChild_level3 = $(`aside ${this.menu} ul ul ul`).children('li.hasChild');
+      this.menu_liHasChild_level1 = $(`aside ${this.menu} ul `).children(
+        'li.hasChild'
+      );
+      this.menu_liHasChild_level2 = $(`aside ${this.menu} ul ul`).children(
+        'li.hasChild'
+      );
+      this.menu_liHasChild_level3 = $(`aside ${this.menu} ul ul ul`).children(
+        'li.hasChild'
+      );
     }
     // --- 切換 PC/Mobile 選單
     switchMenu() {
@@ -415,11 +437,17 @@ $(function () {
       });
       that.menu_liHasChild_level1.on({
         mouseenter: function () {
-          $(this).children('ul').stop(true, true).slideDown('600', 'easeOutQuint');
+          $(this)
+            .children('ul')
+            .stop(true, true)
+            .slideDown('600', 'easeOutQuint');
         },
         mouseleave: function () {
           $(this).parent().siblings('ul').hide();
-          $(this).children('ul').stop(true, true).slideUp('600', 'easeOutQuint');
+          $(this)
+            .children('ul')
+            .stop(true, true)
+            .slideUp('600', 'easeOutQuint');
         },
       });
       // --- 副選單點出
@@ -429,13 +457,27 @@ $(function () {
       });
       // --- 第一層選單
       that.menu_liHasChild_level1.off().on('click', function (e) {
-        $(this).siblings('li').find('ul').stop(true, true).slideUp('600', 'easeOutQuint');
-        $(this).children('ul').stop(true, true).slideDown('600', 'easeOutQuint');
+        $(this)
+          .siblings('li')
+          .find('ul')
+          .stop(true, true)
+          .slideUp('600', 'easeOutQuint');
+        $(this)
+          .children('ul')
+          .stop(true, true)
+          .slideDown('600', 'easeOutQuint');
       });
       // --- 第二層選單
       that.menu_liHasChild_level2.off().on('click', function (e) {
-        $(this).siblings('li').children('ul').stop(true, true).slideUp('600', 'easeOutQuint');
-        $(this).children('ul').stop(true, true).slideDown('600', 'easeOutQuint');
+        $(this)
+          .siblings('li')
+          .children('ul')
+          .stop(true, true)
+          .slideUp('600', 'easeOutQuint');
+        $(this)
+          .children('ul')
+          .stop(true, true)
+          .slideDown('600', 'easeOutQuint');
       });
       // --- 第三層選單
       that.menu_liHasChild_level3.off().on('click', function (e) {
@@ -473,7 +515,10 @@ $(function () {
             $(this).parent().siblings('ul').hide();
             $(this).children('ul').stop(true, false).fadeOut();
           }
-          if (that.name.attr('class') === 'megamenu' && $(this).parent().parent().hasClass('megamenu') === true) {
+          if (
+            that.name.attr('class') === 'megamenu' &&
+            $(this).parent().parent().hasClass('megamenu') === true
+          ) {
             $(this).children('ul').stop(true, false).fadeOut();
           }
         },
@@ -604,7 +649,9 @@ $(function () {
     menuH() {
       let that = this;
       this.menuH = Math.floor(that.name.outerHeight());
-      this.offsetTop = Math.floor(that.name.offset() ? Math.floor(that.name.offset().top) : null);
+      this.offsetTop = Math.floor(
+        that.name.offset() ? Math.floor(that.name.offset().top) : null
+      );
     }
     // --- menu 的 sticky函式
     sticky(offsetTop) {
@@ -613,7 +660,10 @@ $(function () {
       //如果 offsetTop 不等於 null 則運行下方函式
       if (offsetTop != null) {
         let that = this;
-        if ($(window).outerWidth() >= that.wwSmall && that._window.scrollTop() > that.offsetTop) {
+        if (
+          $(window).outerWidth() >= that.wwSmall &&
+          that._window.scrollTop() > that.offsetTop
+        ) {
           that.name.addClass('sticky');
           $('.main').css('padding-top', that.menuH);
         } else {
@@ -625,7 +675,9 @@ $(function () {
     // --- 當 scroll 觸發
     scroll() {
       let that = this;
-      let offsetTop = Math.floor(that.name.offset() ? Math.floor(that.name.offset().top) : null);
+      let offsetTop = Math.floor(
+        that.name.offset() ? Math.floor(that.name.offset().top) : null
+      );
       // --- scroll 時執行 menu_stickyNavbar 並請傳入 menu 距離上方的高度的參數
       that._window.on('scroll', function (event) {
         that.sticky(offsetTop);
@@ -639,7 +691,9 @@ $(function () {
       // --- 如果 有 menu 的話 執行固定 menu_stickyNavbar
       that._window.on('resize', function (event) {
         // --- 算出 menu 距離上方的高度
-        let offsetTop = Math.floor(that.name.offset() ? Math.floor(that.name.offset().top) : null);
+        let offsetTop = Math.floor(
+          that.name.offset() ? Math.floor(that.name.offset().top) : null
+        );
         clearTimeout(resizeNavTimer);
         resizeNavTimer = setTimeout(function () {
           $('.main').removeAttr('style');
@@ -649,7 +703,9 @@ $(function () {
     }
     reload() {
       let that = this;
-      this.offsetTop = Math.floor(that.name.offset() ? Math.floor(that.name.offset().top) : null);
+      this.offsetTop = Math.floor(
+        that.name.offset() ? Math.floor(that.name.offset().top) : null
+      );
       this._window.onload = this.sticky(this.offsetTop);
     }
     initial() {
@@ -719,7 +775,10 @@ $(function () {
       }
       // --- 如果傳進來的是 megamenu
       else if (that.name.hasClass('megamenu') === true) {
-        control = $('.megamenu').children('ul').children('li.hasChild').children('a');
+        control = $('.megamenu')
+          .children('ul')
+          .children('li.hasChild')
+          .children('a');
         control.keyup(function () {
           $(this).siblings('ul').fadeIn();
           $(this).siblings('ul').find('ul').fadeIn();
@@ -765,7 +824,11 @@ $(function () {
       function accordion(e) {
         $(this).parent('li').siblings().children('a').removeClass('active');
         $(this).toggleClass('active');
-        $(this).parent('li').siblings().children('.accordion-content').slideUp();
+        $(this)
+          .parent('li')
+          .siblings()
+          .children('.accordion-content')
+          .slideUp();
         $(this).next('.accordion-content').slideToggle();
         e.preventDefault();
       }
@@ -915,7 +978,9 @@ $(function () {
         let activeTabBtn = that.name.find('.active');
         let tabContent = $(this).parent().parent().next().children();
         tabContent.each(function (index, item) {
-          if (activeTabBtn.attr('data-btn') === $(this).attr('data-tabContent')) {
+          if (
+            activeTabBtn.attr('data-btn') === $(this).attr('data-tabContent')
+          ) {
             $(this).addClass('active');
             $(this).siblings().removeClass('active');
           }
@@ -928,7 +993,11 @@ $(function () {
         if (e.keyCode === 9) {
           $('.nav-link').focusout(function (e) {
             let navItem = $(this).parent();
-            let activeItem = $(this).parent().parent().next().find('.tab-pane.active');
+            let activeItem = $(this)
+              .parent()
+              .parent()
+              .next()
+              .find('.tab-pane.active');
             activeItem.find('a').first().focus();
             activeItem
               .find('a')
@@ -1442,16 +1511,26 @@ $(function () {
       let that = this;
       that.name.each(function (index, el) {
         // --- 判斷沒有table_list
-        if ($(this).parents('.table_list').length == 0 && $(this).parents('.fix_th_table').length == 0 && $(this).parent('form').length == 0) {
+        if (
+          $(this).parents('.table_list').length == 0 &&
+          $(this).parents('.fix_th_table').length == 0 &&
+          $(this).parent('form').length == 0
+        ) {
           $(this).scroltable();
         }
       });
     }
     // --- 固定版頭
     table_Arrow() {
-      if ($('table').parents('.table_list').length == 0 && $('table').parents('.fix_th_table').length == 0 && $(this).parent('form').length == 0) {
+      if (
+        $('table').parents('.table_list').length == 0 &&
+        $('table').parents('.fix_th_table').length == 0 &&
+        $(this).parent('form').length == 0
+      ) {
         if ($('.scroltable-wrapper').length > 0) {
-          var stickyArrowTop = Math.floor($('.scroltable-wrapper').offset().top),
+          var stickyArrowTop = Math.floor(
+              $('.scroltable-wrapper').offset().top
+            ),
             thisScroll = Math.floor($(this).scrollTop());
           if (thisScroll > stickyArrowTop - 230) {
             $('.scroltable-wrapper .tablearrow_left').css('display', 'block');
@@ -1501,10 +1580,14 @@ $(function () {
     }
     // --- tablearrow arrow，為了設定箭頭
     navLeft() {
-      $('.scroltable-nav-left').append('<div class="tablearrow_left" style="display:none;"></div>');
+      $('.scroltable-nav-left').append(
+        '<div class="tablearrow_left" style="display:none;"></div>'
+      );
     }
     navRight() {
-      $('.scroltable-nav-right').append('<div class="tablearrow_right"  style="display:none;"></div>');
+      $('.scroltable-nav-right').append(
+        '<div class="tablearrow_right"  style="display:none;"></div>'
+      );
     }
     initial() {
       this.haveTableList();
@@ -1577,7 +1660,10 @@ $(function () {
         let openContent = $(this).next().hasClass('open');
         if (openContent === true) {
           $('.popovers button').next().slideUp();
-          $(this).siblings('.popContent').stop(true, false).slideDown('400', 'easeOutQuint');
+          $(this)
+            .siblings('.popContent')
+            .stop(true, false)
+            .slideDown('400', 'easeOutQuint');
           $(this).siblings('.customer_service_block').slideUp();
           $('body').keydown(function (e) {
             if (e.keyCode == 27) {
