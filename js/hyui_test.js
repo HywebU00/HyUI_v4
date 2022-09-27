@@ -1,6 +1,6 @@
-// ================  MENU初始化
+// ================  MENU初始化 v
 // ///////////////// nojs 先移除
-// ================= 手機桌機版本切換及手機版menu設定
+// ================= 手機桌機版本切換及手機版menu設定 v
 // ================= 手機版本search設定
 // ================= menu 訊息區塊 sticky
 // ================= menu的無障礙tab設定
@@ -25,82 +25,32 @@
 // console.log(document.querySelector('.menu'));
 // console.log($('.menu'));
 document.createElement('picture');
+/*-----------------------------------*/
+//////////// nojs 先移除////////////////s
+/*-----------------------------------*/
 
+let _webHtml = document.documentElement;
+_webHtml.classList.remove('no-js');
 /*-----------------------------------*/
 /////////////// 效果 ///////////
 /*-----------------------------------*/
 
-const slider = (function () {
-  let Slider = {};
-  // the constructed function,timeManager,as such that's a manager about managing the setInterval
-  function TimerManager() {
-    this.timers = [];
-    this.args = [];
-    this.isTimerRun = false;
-  }
-  // if the element can't has the property of TimerManage what represented the constructor function,repeated creating a constructed function
-  TimerManager.makeTimerManage = function (element) {
-    if (
-      !element.TimerManage ||
-      element.TimerManage.constructor !== TimerManager
-    ) {
-      element.TimerManage = new TimerManager();
-    }
-  };
-  // That's order to create the method what add the timer
-  TimerManager.prototype.add = function (timer, args) {
-    this.timers.push(timer);
-    this.args.push(args);
-    this.timerRun();
-  };
-  // called the method is order to run the timer by ordering
-  TimerManager.prototype.timerRun = function () {
-    if (!this.isTimerRun) {
-      let timer = this.timers.shift(),
-        args = this.args.shift();
-      if (timer && args) {
-        this.isTimerRun = true;
-        timer(args[0], args[1]);
+class ActionMethod {
+  jsSlideUp(element, time) {
+    let totalHeight = element.offsetHeight;
+    let currentHeight = totalHeight;
+    let decrement = totalHeight / (time / 10);
+    let timer = setInterval(() => {
+      currentHeight = currentHeight - decrement;
+      element.style.height = currentHeight + 'px';
+      if (currentHeight <= 0) {
+        clearInterval(timer);
+        element.style.display = 'none';
+        element.style.height = totalHeight + 'px';
       }
-    }
-  };
-  // let it run the next timer
-  TimerManager.prototype.next = function () {
-    this.isTimerRun = false;
-    this.timerRun();
-  };
-  function slideUp(element, time) {
-    if (element.offsetHeight > 0) {
-      let totalHeight = element.offsetHeight;
-      let currentHeight = totalHeight;
-      let reduceValue = totalHeight / (time / 10);
-      element.style.transition = 'height ' + time + ' ms';
-      element.style.overflow = 'hidden';
-      let timer = setInterval(function () {
-        currentHeight -= reduceValue;
-        element.style.height = currentHeight + 'px';
-        if (currentHeight <= 0) {
-          clearInterval(timer);
-          element.style.display = 'none';
-          element.style.height = totalHeight + 'px';
-          if (
-            element.TimerManage &&
-            element.TimerManage.constructor === TimerManager
-          ) {
-            element.TimerManage.next();
-          }
-        }
-      }, 10);
-    } else {
-      if (
-        element.TimerManage &&
-        element.TimerManage.constructor === TimerManager
-      ) {
-        element.TimerManage.next();
-      }
-    }
+    }, 10);
   }
-  function slideDown(element, time) {
+  jsSlideDown(element, time) {
     if (element.offsetHeight <= 0) {
       element.style.display = 'block';
       element.style.transition = 'height' + time + ' ms';
@@ -108,144 +58,89 @@ const slider = (function () {
       let totalHeight = element.offsetHeight;
       let currentHeight = 0;
       element.style.height = '0px';
-      let addValue = totalHeight / (time / 10);
-      let timer = setInterval(function () {
-        currentHeight += addValue;
+      let _addValue = totalHeight / (time / 10);
+      let timer = setInterval(() => {
+        currentHeight += _addValue;
         element.style.height = currentHeight + 'px';
         if (currentHeight >= totalHeight) {
           clearInterval(timer);
           element.style.height = totalHeight + 'px';
-          if (
-            element.TimerManage &&
-            element.TimerManage.constructor === TimerManager
-          ) {
-            element.TimerManage.next();
-          }
         }
       }, 10);
-    } else {
-      if (
-        element.TimerManage &&
-        element.TimerManage.constructor === TimerManager
-      ) {
-        element.TimerManage.next();
+    }
+  }
+  jsFadeIn(element, speed) {
+    let val = 0;
+    let request;
+    element.style.display = 'block';
+    requestAnimationFrame(fade);
+    function fade() {
+      val += speed || 10;
+      if (val <= 100) {
+        element.style.opacity = val / 100;
+        request = requestAnimationFrame(fade);
+      } else if (val >= 100) {
+        cancelAnimationFrame(request);
       }
     }
   }
-  // the interface about slideUp method
-  Slider.slideUp = function (element) {
-    TimerManager.makeTimerManage(element);
-    element.TimerManage.add(slideUp, arguments);
-    return this;
-  };
-  // the interface about slideDown method
-  Slider.slideDown = function (element) {
-    TimerManager.makeTimerManage(element);
-    element.TimerManage.add(slideDown, arguments);
-    return this;
-  };
-  return Slider;
-})();
 
-function slideUp(element, time) {
-  let totalHeight = element.offsetHeight;
-  let currentHeight = totalHeight;
-  let decrement = totalHeight / (time / 10);
-  let timer = setInterval(function () {
-    currentHeight = currentHeight - decrement;
-    element.style.height = currentHeight + 'px';
-    if (currentHeight <= 0) {
-      clearInterval(timer);
-      element.style.display = 'none';
-      element.style.height = totalHeight + 'px';
+  jsFadeOut(element, speed) {
+    let val = 100;
+    let request;
+    requestAnimationFrame(fade);
+    function fade() {
+      val -= speed || 5;
+      if (val >= 1) {
+        element.style.opacity = val / 100;
+        request = requestAnimationFrame(fade);
+      } else if (val <= 0) {
+        cancelAnimationFrame(request);
+        element.style.opacity = '0';
+        element.style.display = 'none';
+      }
     }
-  }, 10);
-}
-function slideUp(element, time) {
-  let totalHeight = element.offsetHeight;
-  let currentHeight = totalHeight;
-  let decrement = totalHeight / (time / 10);
-  let timer = setInterval(function () {
-    currentHeight = currentHeight - decrement;
-    element.style.height = currentHeight + 'px';
-    if (currentHeight <= 0) {
-      clearInterval(timer);
-      element.style.display = 'none';
-      element.style.height = totalHeight + 'px';
-    }
-  }, 10);
-}
-
-function addClass(el, className) {
-  if (el.classList) el.classList.add(className);
-  else if (!hasClass(el, className)) {
-    el.className += ' ' + className;
   }
 }
 
-function removeClass(el, className) {
-  if (el.classList) el.classList.remove(className);
-  else if (hasClass(el, className)) {
-    var reg = new RegExp('(\\s|^)' + className + '(\\s|$)');
-    el.className = el.className.replace(reg, ' ');
-  }
-}
 /*-----------------------------------*/
 /////////////// MENU初始化 ///////////
 /*-----------------------------------*/
-
 class Menu {
   constructor() {
-    this.menuType = '' || null;
-    this.search = document.querySelector('.search');
     this.nav = document.querySelector('.navigation');
     this.body = document.querySelector('body');
-    this.firstBody = document.body.firstChild;
-    this.goCenter = document.querySelector('.goCenter');
     this.siteHeader = document.querySelector('.header .container');
-    this.headerNav = this.siteHeader.querySelector('.mainMenu'); //menu容易誤會，建議給一個主要名稱
-  }
-
-  // --- 判斷menu樣式
-  getMenuName() {
-    let getName = this.headerNav.classList.contains('mainMenu');
-    let getMegaName = this.headerNav.classList.contains('megaMenu');
-
-    //如果有符合條件的ＤＯＭ元素 則選擇該種款式的MENU
-    if (getName) {
-      this.menuType = document.querySelector('.menu');
-    } else if (getMegaName) {
-      this.menuType = document.querySelector('.megaMenu');
-    }
+    this.mainMenu = document.querySelector('.mainMenu');
+    this.wrapper = document.querySelector('.wrapper');
   }
 
   // --- menu初始化 新增側欄選單
   addSideMenu() {
-    this.getMenuName();
     // --- 綁定外層的this
-    let that = this;
+    let _that = this;
     // --- menu初始化 新增側欄選單
-    let sideBar = document.createElement('aside');
-    sideBar.className = 'sidebar';
-    sideBar.innerHTML =
-      '<div class="mobileArea"><button type="button" class="sidebarClose">關閉</button></div><div class="menu_overlay"></div>';
-    that.body.insertBefore(sideBar, that.firstBody);
+    let sidebar = document.createElement('aside');
+    sidebar.className = 'sidebar';
+    sidebar.style = 'opacity:0';
+    sidebar.innerHTML = '<div class="mobileArea"><button type="button" class="sidebarClose">關閉</button></div><div class="menuOverlay"></div>';
+    _that.body.insertBefore(sidebar, _that.wrapper);
 
     // --- menu初始化 新增側欄選單按鈕
     let sidebarCtrl = document.createElement('button');
     sidebarCtrl.className = 'sidebarCtrl';
     sidebarCtrl.innerHTML = '側欄選單<span></span><span></span><span></span>';
     sidebarCtrl.setAttribute('type', 'button');
-    that.siteHeader.insertBefore(sidebarCtrl, that.nav);
+    _that.siteHeader.insertBefore(sidebarCtrl, _that.nav);
 
     // --- menu初始化 新增搜尋按鈕
     let searchCtrl = document.createElement('button');
     searchCtrl.className = 'searchCtrl';
     searchCtrl.innerHTML = '查詢';
     searchCtrl.setAttribute('type', 'button');
-    that.siteHeader.insertBefore(searchCtrl, that.nav);
+    _that.siteHeader.insertBefore(searchCtrl, _that.nav);
 
-    let hasChild = that.menuType.querySelectorAll('li ul');
+    let hasChild = _that.mainMenu.querySelectorAll('li ul');
     hasChild.forEach((i) => {
       i.parentNode.classList.add('hasChild');
     });
@@ -253,19 +148,22 @@ class Menu {
   // --- menu初始化 複製手機版側欄選單
   cloneElem() {
     // --- 綁定外層的this
-    let that = this;
+    let _that = this;
     let mobileArea = document.querySelector('.mobileArea');
     // --- menu初始化 複製手機版側欄選單內容
-    let cloneMenu = that.menuType.cloneNode(true);
-    let cloneNav = that.nav.cloneNode(true);
-    mobileArea.appendChild(cloneMenu);
-    mobileArea.appendChild(cloneNav);
+    let cloneMenu = _that.mainMenu.cloneNode(true);
+    let cloneNav = _that.nav.cloneNode(true);
+    cloneMenu.classList.add('sideMainMenu');
+    cloneMenu.classList.remove('mainMenu', 'megaMenu', 'menu');
+    mobileArea.append(cloneMenu, cloneNav);
 
     // 複製搜尋到手機版側欄
-    let cloneSearch = that.search.cloneNode(true);
-    addClass(cloneSearch, 'mobileSearch');
-    removeClass(cloneSearch, 'search');
-    that.body.insertBefore(cloneSearch, that.firstBody);
+    let search = document.querySelector('.search');
+    let cloneSearch = search.cloneNode(true);
+    cloneSearch.removeAttribute('style');
+    cloneSearch.classList.add('mobileSearch');
+    cloneSearch.classList.remove('search');
+    _that.body.prepend(cloneSearch);
   }
   initial() {
     this.addSideMenu();
@@ -277,546 +175,489 @@ menu.initial();
 /*-----------------------------------*/
 ///////// 手機版本search設定 ////////////
 /*-----------------------------------*/
-$(function () {
-  class Search {
-    constructor(obj) {
-      this.searchMode = false;
-      this._window = window;
-      this.searchCtrl = $('.searchCtrl');
-      this.control = obj.control;
-      this.isAndroid = /android/i.test(navigator.userAgent.toLowerCase());
-    }
-    // --- 點擊搜尋區初始化設定
-    searchInit() {
-      // --- 綁定外層的this
-      let that = this;
-      that.control.style.display = 'none';
-    }
-    // --- 搜尋區內容開關函式
-    searchToggle() {
-      window.slider = slider;
-      // --- 綁定外層的this
-      let that = this;
-      if (!that.searchMode) {
-        // that.control.stop(true, false).slideDown('400', 'easeOutQuint');
-        slider.slideDown(that.control, 300);
-        that.searchMode = true;
-        // prevent Android sofr Keyboard
-        if (that.isAndroid) {
-          // that._window.off('resize');
-          that._window.removeEventListener('resize');
-        }
-      } else {
-        that.control.style.display = 'none';
-        that.searchMode = false;
-      }
-      // --- 停止冒泡事件
-      that.stopPop();
-    }
-    // --- 點擊搜尋按鈕開關
-    searchClick() {
-      // --- 綁定外層的this
-      let that = this;
-      that.searchCtrl.off().on('click', function (e) {
-        that.searchToggle();
-      });
-    }
-    // --- 點擊搜尋區以外的區塊
-    clickOther() {
-      // --- 綁定外層的this
-      let that = this;
-      // 如果點在外面 則 searchMode 狀態改為false
-      $(document.body).click(function (e) {
-        if (that.searchMode) {
-          that.searchToggle();
-          that.searchMode = false;
-        }
-      });
+class MobileSearch extends ActionMethod {
+  constructor(obj) {
+    super();
+    this.searchMode = true;
+    this.body = document.querySelector('body');
+    this.searchCtrl = obj.searchCtrl;
+    this.control = obj.control;
+    this.mobileSearch = document.querySelector('.mobileSearch');
+    this.isAndroid = /android/i.test(navigator.userAgent.toLowerCase());
+  }
+  // --- 搜尋區內容開關函式
+  searchToggle() {
+    // --- 綁定外層的this
+    let _that = this;
+    if (!_that.searchMode) {
+      super.jsSlideDown(_that.control, 300);
+      _that.searchMode = true;
+    } else {
+      _that.control.style.display = 'none';
+      _that.searchMode = false;
     }
     // --- 停止冒泡事件
-    stopPop() {
-      //點擊時 不觸發冒泡事件
-      let mobileSearch = document.querySelector('.mobileSearch'),
-        searchCtrl = document.querySelector('.searchCtrl');
-
-      mobileSearch,
-        searchCtrl.addEventListener('click', function (e) {
-          e.stopPropagation();
-        });
-    }
-    initial() {
-      this.searchInit();
-      this.searchToggle();
-      this.searchClick();
-      this.clickOther();
-    }
+    _that.stopPop();
   }
-  let search1 = new Search({
-    searchCtrl: $('.searchCtrl'),
-    control: document.querySelector('.mobileSearch'),
-  });
-  search1.initial();
-
-  /*-----------------------------------*/
-  //////////// nojs 先移除////////////////s
-  /*-----------------------------------*/
-  let webHtml = document.documentElement;
-  removeClass(webHtml, 'no-js');
-
-  /*-----------------------------------*/
-  //// 手機桌機版本切換及手機版menu設定 //////
-  /*-----------------------------------*/
-  class MobileMenu {
-    constructor(obj) {
-      this.window = $(window);
-      this.body = $('body');
-      this.ww = $(window).outerWidth();
-      this.wwSmall = 768;
-      this.menu_status = false;
-      this.sidebar = $('.sidebar');
-      this.search = $('.search');
-      this.name = obj.name || null;
-      // this.megamenu = $(".megamenu");
-      this.nav = $('.navigation');
-      this.sidebarClose = $('.sidebarClose');
-      this.sidebarCtrl = $('.sidebarCtrl');
-      this.overlay = $('.menu_overlay');
-      this.mArea = $('.mobileArea');
-      ///////////////////////////////////////
-      this.menu = null;
-      this.menu_liHasChild = null;
-      this.menu_liHasChild_level1 = null;
-      this.menu_liHasChild_level2 = null;
-      this.menu_liHasChild_level3 = null;
-    }
-    //判斷menu的型態 如果有相對應的class名稱 則綁定相對應的menu
-
-    judgeMenu() {
-      if (this.name.hasClass('menu')) {
-        this.menu = '.menu';
+  // --- 點擊搜尋按鈕開關
+  searchClick() {
+    // --- 綁定外層的this
+    let _that = this;
+    _that.searchCtrl.addEventListener('click', (e) => {
+      _that.searchToggle();
+    });
+  }
+  // --- 點擊搜尋區以外的區塊
+  clickOther() {
+    // --- 綁定外層的this
+    let _that = this;
+    // 如果點在外面 則 searchMode 狀態改為false
+    _that.body.addEventListener('click', (e) => {
+      if (_that.searchMode) {
+        _that.searchToggle();
+        _that.searchMode = false;
       }
-      if (this.name.hasClass('megamenu')) {
-        this.menu = '.megamenu';
-      }
+    });
+  }
+  // --- 停止冒泡事件
+  stopPop() {
+    //點擊時 不觸發冒泡事件
+    let _that = this;
 
-      /*-----------------------------------*/
-      /////////////// 手機版設定 /////////////
-      /*-----------------------------------*/
-      this.menu_liHasChild = this.name.find('li.hasChild');
-      this.menu_liHasChild_level1 = $(`aside ${this.menu} ul `).children(
-        'li.hasChild'
-      );
-      this.menu_liHasChild_level2 = $(`aside ${this.menu} ul ul`).children(
-        'li.hasChild'
-      );
-      this.menu_liHasChild_level3 = $(`aside ${this.menu} ul ul ul`).children(
-        'li.hasChild'
-      );
-    }
-    // --- 切換 PC/Mobile 選單
-    switchMenu() {
-      // --- 綁定外層的this
-      let that = this;
-      if ($(window).outerWidth() < that.wwSmall) {
-        this.mobileSet();
-      } else {
-        this.pcSet();
-      }
-    }
+    _that.mobileSearch,
+      _that.searchCtrl.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+  }
+  initial() {
+    this.searchToggle();
+    this.searchClick();
+    this.clickOther();
+  }
+}
+let mobileSearch = new MobileSearch({
+  searchCtrl: document.querySelector('.searchCtrl'),
+  control: document.querySelector('.mobileSearch'),
+});
+mobileSearch.initial();
 
-    mobileSet() {
-      let that = this;
-      /*-----------------------------------*/
-      /////////////// 手機版設定 /////////////
-      /*-----------------------------------*/
-      that.menu_status = false;
-      that.sidebar.hide();
-      that.overlay.hide();
-      that.mArea.css({
-        'margin-left': that.mArea.width() * -1 + 'px',
-      });
-      that.menu_liHasChild_level1.on({
-        mouseenter: function () {
-          $(this)
-            .children('ul')
-            .stop(true, true)
-            .slideDown('600', 'easeOutQuint');
-        },
-        mouseleave: function () {
-          $(this).parent().siblings('ul').hide();
-          $(this)
-            .children('ul')
-            .stop(true, true)
-            .slideUp('600', 'easeOutQuint');
-        },
-      });
-      // --- 副選單點出
-      that.menu_liHasChild.off().on('mouseenter,mouseleave');
-      that.menu_liHasChild.on('touchstart', function () {
-        $(this).off('mouseenter,mouseleave');
-      });
-      // --- 第一層選單
-      that.menu_liHasChild_level1.off().on('click', function (e) {
-        $(this)
-          .siblings('li')
-          .find('ul')
-          .stop(true, true)
-          .slideUp('600', 'easeOutQuint');
-        $(this)
-          .children('ul')
-          .stop(true, true)
-          .slideDown('600', 'easeOutQuint');
-      });
-      // --- 第二層選單
-      that.menu_liHasChild_level2.off().on('click', function (e) {
-        $(this)
-          .siblings('li')
-          .children('ul')
-          .stop(true, true)
-          .slideUp('600', 'easeOutQuint');
-        $(this)
-          .children('ul')
-          .stop(true, true)
-          .slideDown('600', 'easeOutQuint');
-      });
-      // --- 第三層選單
-      that.menu_liHasChild_level3.off().on('click', function (e) {
+/*-----------------------------------*/
+//// 手機桌機版本切換及手機版menu設定 //////
+/*-----------------------------------*/
+class MobileMenu extends ActionMethod {
+  constructor(obj) {
+    super();
+    this.body = document.querySelector('body');
+    this.windowWidth = window.outerWidth;
+    this.windowSmall = 768;
+    this.menuStatus = false;
+    this.sidebar = document.querySelector('.sidebar');
+    this.search = document.querySelector('.search');
+    this.aside = document.querySelector('.aside');
+    this.mobileSearch = document.querySelector('.mobileSearch');
+    this.sidebarClose = document.querySelector('.sidebarClose');
+    this.sidebarCtrl = document.querySelector('.sidebarCtrl');
+    this.overlay = document.querySelector('.menuOverlay');
+    this.mobileArea = document.querySelector('.mobileArea');
+    ///////////////////////////////////////
+    this.menu_liHasChild = document.querySelector('.header .mainMenu').querySelectorAll('li.hasChild');
+    /*-----------------------------------*/
+    /////////////// 手機版設定 /////////////
+    /*-----------------------------------*/
+    this.asideMenu = document.querySelectorAll('.sideMainMenu > ul');
+    this.asideMenuLi = document.querySelectorAll('.sideMainMenu > ul li');
+    this.asideMenuUl = document.querySelectorAll('.sideMainMenu > ul ul');
+    this.asideMenuUl1 = document.querySelectorAll('.sideMainMenu > ul > li > ul');
+    this.asideMenuUl2 = document.querySelectorAll('.sideMainMenu > ul > li > ul > li > ul');
+    this.asideMenuUl3 = document.querySelectorAll('.sideMainMenu > ul > li > ul > li > ul > li > ul');
+  }
+
+  getMenuName() {
+    let _that = this;
+  }
+
+  //設定所有UL的高度，有高度才會有縮起來得效果，最多四層
+  setMenuUlHeight() {
+    let _that = this;
+    _that.sidebar.style = 'display:block;opacity:0';
+    _that.mobileAreaOut = _that.mobileArea.offsetWidth;
+    _that.mobileArea.style = `transform: translateX(${_that.mobileAreaOut * -1}px)`;
+    _that.asideMenuUl.forEach((i) => {
+      i.style.position = 'absolute';
+    });
+    _that.asideMenu.forEach((i) => {
+      i.classList.add('firstLv');
+    });
+    _that.asideMenuUl1.forEach((i) => {
+      i.classList.add('secondLv');
+      i.dataset.secondHeight = i.offsetHeight;
+      i.style = 'height:0';
+    });
+    _that.asideMenuUl2.forEach((i) => {
+      i.classList.add('thirdLv');
+      i.dataset.thirdHeight = i.offsetHeight;
+      i.style = 'height:0';
+    });
+    _that.asideMenuUl3.forEach((i) => {
+      i.classList.add('fourthLv');
+      i.dataset.fourthHeight = i.offsetHeight;
+      i.style = 'height:0';
+    });
+
+    _that.sidebar.style = 'display:none;opacity:1;';
+  }
+
+  mobileSet() {
+    let _that = this;
+    /*-----------------------------------*/
+    /////////////// 手機版設定 /////////////
+    /*-----------------------------------*/
+    _that.menuStatus = false;
+    // --- 第一層選單
+
+    // --- 手機版第第一層點了不會進入內頁，拿掉第一層的連結無作用
+    document.querySelectorAll(`.sideMainMenu .hasChild > a`).forEach((i) => {
+      i.addEventListener('click', (e) => {
         e.preventDefault();
       });
-      // --- 手機版第第一層點了不會進入內頁，拿掉第一層的連結無作用
-      $(`.sidebar ${that.menu} .hasChild`)
-        .children('a')
-        .off()
-        .on('click', function (e) {
-          e.preventDefault();
+    });
+    //
+    _that.mobileSearch.style.display = 'none';
+    document.querySelector('.language ul').style.display = 'none';
+  }
+
+  //手機版選單開合功能
+  mobileMenuSlider() {
+    document.querySelectorAll('aside li').forEach((i) => {
+      i.addEventListener('click', (e) => {
+        let siblings = Array.prototype.filter.call(i.parentNode.children, (child) => {
+          return child !== i;
         });
-      //
-      that.body.off('touchmove');
-      $('.mobileSearch').hide();
-      $('.language').find('ul').hide();
-    }
-    pcSet() {
-      let that = this;
-      /*-----------------------------------*/
-      /////////////// PC版設定 /////////////
-      /*-----------------------------------*/
-      that.hideSidebar();
-      that.body.removeClass('noscroll');
-      $('.mobileSearch').hide();
-      that.searchMode = false;
-      $('.language').find('ul').hide();
-      // 副選單滑出
-      that.menu_liHasChild.on({
-        mouseenter: function () {
-          $(this).children('ul').stop(true, false).fadeIn();
-        },
-        mouseleave: function () {
-          if (that.name.attr('class') !== 'megamenu') {
-            $(this).parent().siblings('ul').hide();
-            $(this).children('ul').stop(true, false).fadeOut();
+        let content = i.querySelector('ul');
+        let secondHeight = content.dataset.secondHeight || 0;
+        let thirdHeight = content.dataset.thirdHeight || 0;
+        let fourthHeight = content.dataset.fourthHeight || 0;
+        if (!i.classList.contains('active')) {
+          i.classList.add('active');
+          if (i.parentNode.classList.contains('firstLv')) {
+            content.style.height = `${secondHeight}px`;
+            e.stopPropagation();
+          } else if (i.parentNode.classList.contains('secondLv')) {
+            i.parentNode.style.height = `${Number(i.parentNode.dataset.secondHeight) + Number(thirdHeight)}px`;
+            content.style.height = `${thirdHeight}px`;
+            e.stopPropagation();
+          } else if (i.parentNode.classList.contains('thirdLv')) {
+            i.parentNode.parentNode.parentNode.style.height = `${Number(i.parentNode.parentNode.parentNode.dataset.secondHeight) + Number(i.parentNode.dataset.thirdHeight) + Number(fourthHeight)}px`;
+            i.parentNode.style.height = `${Number(i.parentNode.dataset.thirdHeight) + Number(fourthHeight)}px`;
+            content.style.height = `${fourthHeight}px`;
+            e.stopPropagation();
           }
-          if (
-            that.name.attr('class') === 'megamenu' &&
-            $(this).parent().parent().hasClass('megamenu') === true
-          ) {
-            $(this).children('ul').stop(true, false).fadeOut();
-          }
-        },
-      });
-      that.menu_liHasChild.off('click');
-      // megamenu
-      // 副選單滑出
-      $('.megamenu').children('ul').children('li').children('ul').hide();
-      that.menu_liHasChild.on({
-        mouseenter: function () {
-          if (that.name.attr('class') !== 'megamenu') {
-            $(this).children('ul').stop(true, false).fadeIn();
-          }
-        },
-        mouseleave: function () {
-          if (that.name.attr('class') !== 'megamenu') {
-            $(this).parent().siblings('ul').hide();
-            $(this).children('ul').stop(true, false).fadeOut();
-          }
-        },
-      });
-    }
-    // --- 當改變視窗尺寸時  重新切換 PC/Mobile 選單
-    resize() {
-      // --- 綁定外層的this
-      let that = this;
-      // --- 行動版/電腦版切換
-      var resizeTimer;
-      that.window.on('resize', function (event) {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function () {
-          $('.mobileSearch').hide();
-          that.switchMenu();
-        }, 50);
-      });
-    }
-    // --- 展開側邊選單函式
-    showSidebar() {
-      // --- 綁定外層的this
-      let that = this;
-      that.sidebar.show();
-      that.mArea.show().addClass('open');
-      that.mArea.animate(
-        {
-          'margin-left': 0,
-        },
-        400,
-        'easeOutQuint'
-      );
-      that.body.addClass('noscroll');
-      that.overlay.fadeIn();
-      $('.mobileSearch').hide();
-      that.searchMode = false;
-    }
-    // --- 點擊選單按鈕 執行 展開側邊選單函式
-    sidebarCtrlFn() {
-      // --- 綁定外層的this
-      let that = this;
-      $('.sidebarCtrl')
-        .off()
-        .click(function (e) {
-          that.showSidebar();
-          e.preventDefault();
-        });
-    }
-    // --- 隱藏側邊選單函式
-    hideSidebar() {
-      // --- 綁定外層的this
-      let that = this;
-      $('.mobileArea').animate(
-        {
-          'margin-left': that.mArea.width() * -1 + 'px',
-        },
-        500,
-        'easeOutQuint',
-        function () {
-          $('.sidebar').fadeOut(200);
-          $('.mobileArea').removeClass('open');
-          $('.mobileArea').hide();
         }
-      );
-      that.body.removeClass('noscroll');
-      that.overlay.fadeOut();
-      if (that.name.attr('class') !== 'megamenu') {
-        that.menu_liHasChild.children('ul').hide();
-      }
-    }
-    // --- 黑色遮罩點擊 關閉側邊選單
-    overlayFn() {
-      // --- 綁定外層的this
-      let that = this;
-      that.overlay
-        .add(that.sidebarClose)
-        .off()
-        .click(function () {
-          that.hideSidebar();
+        siblings.forEach((x) => {
+          x.classList.remove('active');
+          x.querySelectorAll('ul').forEach((s) => {
+            s.style.height = '0';
+            s.parentNode.classList.remove('active');
+          });
         });
-      that.overlay.off('mouseenter');
-    }
-    initial() {
-      this.judgeMenu();
-      this.switchMenu();
-      this.resize();
-      this.sidebarCtrlFn();
-      this.overlayFn();
-    }
+      });
+    });
   }
-  let mobileMenu1 = new MobileMenu({
-    name: $('.megamenu'),
-  });
-  mobileMenu1.initial();
 
-  let mobileMenu2 = new MobileMenu({
-    name: $('.menu'),
-  });
-  mobileMenu2.initial();
+  pcSet() {
+    let _that = this;
+    /*-----------------------------------*/
+    /////////////// PC版設定 /////////////
+    /*-----------------------------------*/
+    _that.hideSidebar();
+    _that.body.classList.remove('noscroll');
+    _that.mobileSearch.style.display = 'none';
+    _that.searchMode = false;
+    document.querySelector('.language ul').style.display = 'none';
+    // 副選單滑出
+    //////////////////////////////////////////////////////////////////
 
-  /*-----------------------------------*/
-  ///////  menu 訊息區塊 sticky  /////////
-  /*-----------------------------------*/
-  class Navbar {
-    constructor(obj) {
-      this.name = obj.name || null;
-      this._window = $(window) || null;
-      this.window = $(window).outerWidth() || null;
-      this.wwSmall = 768;
-    }
-    menuH() {
-      let that = this;
-      this.menuH = Math.floor(that.name.outerHeight());
-      this.offsetTop = Math.floor(
-        that.name.offset() ? Math.floor(that.name.offset().top) : null
-      );
-    }
-    // --- menu 的 sticky函式
-    sticky(offsetTop) {
-      // --- 綁定外層的this
-
-      //如果 offsetTop 不等於 null 則運行下方函式
-      if (offsetTop != null) {
-        let that = this;
-        if (
-          $(window).outerWidth() >= that.wwSmall &&
-          that._window.scrollTop() > that.offsetTop
-        ) {
-          that.name.addClass('sticky');
-          $('.main').css('padding-top', that.menuH);
-        } else {
-          that.name.removeClass('sticky');
-          $('.main').removeAttr('style');
-        }
-      }
-    }
-    // --- 當 scroll 觸發
-    scroll() {
-      let that = this;
-      let offsetTop = Math.floor(
-        that.name.offset() ? Math.floor(that.name.offset().top) : null
-      );
-      // --- scroll 時執行 menu_stickyNavbar 並請傳入 menu 距離上方的高度的參數
-      that._window.on('scroll', function (event) {
-        that.sticky(offsetTop);
+    _that.menu_liHasChild.forEach((i) => {
+      i.addEventListener('mouseenter', (e) => {
+        i.classList.add('active');
       });
-    }
-    // --- 當 resize 觸發 判斷 menu的種類
-    resize() {
-      // --- 綁定外層的this
-      let that = this;
-      let resizeNavTimer;
-      // --- 如果 有 menu 的話 執行固定 menu_stickyNavbar
-      that._window.on('resize', function (event) {
-        // --- 算出 menu 距離上方的高度
-        let offsetTop = Math.floor(
-          that.name.offset() ? Math.floor(that.name.offset().top) : null
-        );
-        clearTimeout(resizeNavTimer);
-        resizeNavTimer = setTimeout(function () {
-          $('.main').removeAttr('style');
-          that.sticky(offsetTop);
-        }, 200);
+      i.addEventListener('mouseleave', (e) => {
+        i.classList.remove('active');
       });
-    }
-    reload() {
-      let that = this;
-      this.offsetTop = Math.floor(
-        that.name.offset() ? Math.floor(that.name.offset().top) : null
-      );
-      this._window.onload = this.sticky(this.offsetTop);
-    }
-    initial() {
-      this.menuH();
-      this.scroll();
-      this.sticky();
-      this.resize();
-      this.reload();
-    }
+    });
+
+    _that.menu_liHasChild.forEach((i) => {
+      i.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+    });
   }
-  let menu2 = new Navbar({
-    name: $('header .megamenu'),
-  });
-  menu2.initial();
-  let menu1 = new Navbar({
-    name: $('header .menu'),
-  });
-  menu1.initial();
 
-  /*-----------------------------------*/
-  //////////// menu的無障礙tab設定 /////////
-  /*-----------------------------------*/
-
-  class A11yKeyMenu {
-    constructor(obj) {
-      this.name = obj.name || null;
-    }
-    menu_KeyUp() {
-      // --- 綁定外層的this
-      let that = this;
-      let control;
-      if (that.name.hasClass('menu') === true) {
-        control = that.name.find('li');
-        control.keyup(function () {
-          $(this).siblings().children('ul').hide();
-        });
-      } else if (that.name.hasClass('megamenu') === true) {
-        control = that.name.children('ul').children('li');
-        control.keyup(function () {
-          $(this).siblings().children('ul').hide();
-        });
-      }
-    }
-    menu_FocusOut() {
-      // --- 綁定外層的this
-      let that = this;
-      that.name.find('li:last>a').focusout(function () {
-        that.name.find('li ul').hide();
-      });
-    }
-    menu_LiHasChildKeyup() {
-      // --- 綁定外層的this
-      let that = this;
-      let control;
-      // --- 如果傳進來的是 menu
-      if (that.name.hasClass('menu') === true) {
-        control = $('.menu').find('li.hasChild').children('a');
-        control.keyup(function () {
-          $(this).siblings('ul').fadeIn();
-          $(this)
-            .parent('li')
-            .siblings()
-            .focus(function () {
-              $(this).hide();
-            });
-        });
-      }
-      // --- 如果傳進來的是 megamenu
-      else if (that.name.hasClass('megamenu') === true) {
-        control = $('.megamenu')
-          .children('ul')
-          .children('li.hasChild')
-          .children('a');
-        control.keyup(function () {
-          $(this).siblings('ul').fadeIn();
-          $(this).siblings('ul').find('ul').fadeIn();
-          $(this)
-            .parent('li')
-            .siblings()
-            .focus(function () {
-              $(this).hide();
-            });
-        });
-      }
-    }
-    initial() {
-      this.menu_KeyUp();
-      this.menu_FocusOut();
-      this.menu_LiHasChildKeyup();
+  // --- 切換 PC/Mobile 選單
+  switchMenu() {
+    // --- 綁定外層的this
+    let _that = this;
+    if (_that.windowWidth < _that.windowSmall) {
+      this.setMenuUlHeight();
+      this.mobileMenuSlider();
+      this.mobileSet();
+    } else {
+      this.pcSet();
     }
   }
 
-  let a11yKeykmenu1 = new A11yKeyMenu({
-    name: $('.menu'),
-  });
-  a11yKeykmenu1.initial();
+  // --- 當改變視窗尺寸時  重新切換 PC/Mobile 選單
+  jsResize() {
+    // --- 綁定外層的this
+    let _that = this;
+    // --- 行動版/電腦版切換
+    var resizeTimer;
+    window.addEventListener('resize', (e) => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        _that.mobileSearch.style.display = 'none';
+        _that.switchMenu();
+      }, 50);
+    });
+  }
+  // --- 展開側邊選單函式
+  showSidebar() {
+    // --- 綁定外層的this
+    let _that = this;
+    _that.sidebar.style = 'display:block;opacity:1';
+    _that.mobileArea.style.display = 'block';
 
-  let a11yKeykmenu2 = new A11yKeyMenu({
-    name: $('.megamenu'),
-  });
-  a11yKeykmenu2.initial();
-  /*-----------------------------------*/
-  //////////// notice訊息區塊 ////////////
-  /*-----------------------------------*/
-  $('[class*="notice"] a.close').click(function (e) {
-    $(this).parent('[class*="notice"]').hide();
+    window.requestAnimationFrame(() => {
+      _that.mobileArea.style = `transform: translateX(0px);`;
+    });
+    setTimeout(() => {
+      _that.mobileArea.classList.add('open');
+    }, 10);
+
+    _that.body.classList.add('noscroll');
+    _that.overlay.classList.add('active');
+    _that.mobileSearch.style.display = 'none';
+    _that.searchMode = false;
+    super.jsFadeIn(_that.overlay);
+  }
+
+  // --- 點擊選單按鈕 執行 展開側邊選單函式
+  sidebarCtrlFn() {
+    // --- 綁定外層的this
+    let _that = this;
+    _that.sidebarCtrl.addEventListener('click', (e) => {
+      _that.showSidebar();
+      e.preventDefault();
+    });
+  }
+
+  // --- 隱藏側邊選單函式
+  hideSidebar() {
+    // --- 綁定外層的this
+    let _that = this;
+
+    window.requestAnimationFrame(() => {
+      _that.mobileArea.style = `transform: translateX(${_that.mobileAreaOut * -1}px);`;
+    });
+    setTimeout(() => {
+      _that.sidebar.style.display = 'none';
+    }, 300);
+
+    _that.mobileArea.classList.remove('open');
+    _that.body.classList.remove('noscroll');
+    _that.overlay.classList.remove('active');
+    _that.asideMenuUl.forEach((i) => {
+      i.style.height = '0px';
+    });
+
+    _that.asideMenuLi.forEach((i) => {
+      i.classList.remove('active');
+    });
+
+    /////////////////////////////////////////////////////////////////////
+  }
+  // --- 黑色遮罩點擊 關閉側邊選單
+  overlayFn() {
+    // --- 綁定外層的this
+    let _that = this;
+    _that.overlay.addEventListener('click', (e) => {
+      super.jsFadeOut(_that.overlay);
+      _that.hideSidebar();
+    });
+    _that.sidebarClose.addEventListener('click', (e) => {
+      super.jsFadeOut(_that.overlay);
+      _that.hideSidebar();
+    });
+  }
+  initial() {
+    this.getMenuName();
+    this.switchMenu();
+    this.jsResize();
+    this.sidebarCtrlFn();
+    this.overlayFn();
+  }
+}
+let _mobileMenu = new MobileMenu();
+_mobileMenu.initial();
+
+/*-----------------------------------*/
+///////  menu 訊息區塊 sticky  /////////
+/*-----------------------------------*/
+class Navbar {
+  constructor() {
+    this.windowWidth = window.outerWidth;
+    this.windowWidthSmall = 768;
+    this.mainMenu = document.querySelector('.mainMenu');
+    this.main = document.querySelector('.main');
+    this.menuHeight = Math.floor(this.mainMenu.offsetHeight);
+  }
+
+  getMenuHeight() {
+    let _that = this;
+    let mainMenuTop = Math.floor(_that.mainMenu.getBoundingClientRect().top + window.scrollY);
+    _that.jsScroll(mainMenuTop);
+    _that.jsResize(mainMenuTop);
+    _that.reload(mainMenuTop);
+  }
+  // --- menu 的 sticky函式
+  sticky(mainMenuTop) {
+    // --- 綁定外層的this
+    let _that = this;
+
+    //抓取選單位置
+    let offsetTop = Math.floor(mainMenuTop) || null;
+
+    //如果 offsetTop 不等於 null 則運行下方函式
+    if (offsetTop != null) {
+      if (_that.windowWidth >= _that.windowWidthSmall && window.scrollY > offsetTop) {
+        _that.mainMenu.classList.add('sticky');
+        _that.main.style = `padding-top: ${_that.menuHeight}px`;
+      } else {
+        _that.mainMenu.classList.remove('sticky');
+        _that.main.removeAttribute('style');
+      }
+    }
+  }
+  // --- 當 scroll 觸發
+  jsScroll(mainMenuTop) {
+    let _that = this;
+    //抓取選單位置
+    // --- scroll 時執行 menu_stickyNavbar 並請傳入 menu 距離上方的高度的參數
+    window.addEventListener('scroll', (e) => {
+      _that.sticky(mainMenuTop);
+    });
+  }
+  // --- 當 resize 觸發 判斷 menu的種類
+  jsResize(mainMenuTop) {
+    // --- 綁定外層的this
+    let _that = this;
+    let resizeNavTimer;
+    // --- 如果 有 menu 的話 執行固定 menu_stickyNavbar
+    window.addEventListener('resize', (e) => {
+      // --- 算出 menu 距離上方的高度
+      let offsetTop = Math.floor(mainMenuTop) || null;
+      clearTimeout(resizeNavTimer);
+      resizeNavTimer = setTimeout(() => {
+        _that.main.removeAttribute('style');
+        _that.sticky(offsetTop);
+      }, 200);
+    });
+  }
+  reload(mainMenuTop) {
+    let offsetTop = Math.floor(mainMenuTop) || null;
+    window.onload = this.sticky(offsetTop);
+  }
+  initial() {
+    this.getMenuHeight();
+    this.jsScroll();
+    this.sticky();
+    this.jsResize();
+    this.reload();
+  }
+}
+let navbar = new Navbar();
+navbar.initial();
+
+/*-----------------------------------*/
+//////////// menu的無障礙tab設定 /////////
+/*-----------------------------------*/
+
+class A11yKeyMenu {
+  constructor(obj) {
+    this.name = obj.name || null;
+    this.mainMenu = document.querySelector('.mainMenu') || null;
+  }
+
+  menuKeyUp() {
+    // --- 綁定外層的this
+    let _that = this;
+    let control;
+    control = _that.mainMenu.querySelectorAll('li');
+    control.forEach((i) => {
+      i.addEventListener('keyup', (e) => {
+        let siblings = Array.prototype.filter.call(i.parentNode.children, (child) => {
+          return child !== i;
+        });
+
+        siblings.forEach((x) => {
+          x.classList.remove('active');
+          x.querySelectorAll('ul').forEach((s) => {
+            s.style.display = 'none';
+          });
+        });
+      });
+    });
+  }
+
+  menuFocusOut() {
+    // --- 綁定外層的this
+    let _that = this;
+    let lastA = _that.mainMenu.querySelectorAll('a').length - 1;
+    _that.mainMenu.querySelectorAll('a')[lastA].addEventListener('focusout', () => {
+      _that.mainMenu.querySelectorAll('li').forEach((i) => {
+        i.classList.remove('active');
+      });
+    });
+  }
+
+  menuLiHasChildKeyup() {
+    // --- 綁定外層的this
+    let _that = this;
+    let control;
+    control = _that.mainMenu.querySelectorAll('li.hasChild > a');
+
+    control.forEach((i) => {
+      i.addEventListener('keyup', (e) => {
+        i.parentNode.querySelector('ul').removeAttribute('style');
+        i.parentNode.classList.add('active');
+      });
+    });
+  }
+  initial() {
+    this.menuKeyUp();
+    this.menuFocusOut();
+    this.menuLiHasChildKeyup();
+  }
+}
+
+let a11yKeyMenu = new A11yKeyMenu({
+  name: document.querySelector('.menu'),
+});
+a11yKeyMenu.initial();
+
+/*-----------------------------------*/
+//////////// notice訊息區塊 ////////////
+/*-----------------------------------*/
+document.querySelectorAll('[class*="notice"] a.close').forEach((i) => {
+  i.addEventListener('click', (e) => {
+    i.parentNode.style.display = 'none';
     e.preventDefault();
   });
-  /*-----------------------------------*/
-  //////////// Accordion設定 ////////////
-  /*-----------------------------------*/
+});
+/*-----------------------------------*/
+//////////// Accordion設定 ////////////
+/*-----------------------------------*/
+$(function () {
   $('.accordion').each(function () {
     $(this).find('.accordion-content').hide();
     var _accordionItem = $(this).children('ul').children('li').children('a');
@@ -824,11 +665,7 @@ $(function () {
       function accordion(e) {
         $(this).parent('li').siblings().children('a').removeClass('active');
         $(this).toggleClass('active');
-        $(this)
-          .parent('li')
-          .siblings()
-          .children('.accordion-content')
-          .slideUp();
+        $(this).parent('li').siblings().children('.accordion-content').slideUp();
         $(this).next('.accordion-content').slideToggle();
         e.preventDefault();
       }
@@ -836,194 +673,180 @@ $(function () {
       $(this).keyup(accordion);
     });
   });
-  /*-----------------------------------*/
-  /////////////fatfooter開關/////////////
-  /*-----------------------------------*/
+});
+/*-----------------------------------*/
+/////////////fatfooter開關/////////////
+/*-----------------------------------*/
 
-  class FatFooter {
-    constructor(obj) {
-      this.name = obj.name || null; // --- 控制的對象
-    }
-    toggleOpen() {
-      let that = this;
-      that.name.click(function (e) {
-        $(this)
-          .parent('.container')
-          .find('nav>ul>li>ul')
-          .stop(true, true)
-          .slideToggle(function () {
-            if ($(this).is(':visible')) {
-              that.name.html('收合/CLOSE');
-              that.name.attr('name', '收合選單/CLOSE');
-            } else {
-              that.name.html('展開/OPEN');
-              that.name.attr('name', '展開選單/OPEN');
-            }
-          });
-        $(this).stop(true, true).toggleClass('close');
-      });
-    }
-    initial() {
-      this.toggleOpen();
-    }
+class FatFooter extends ActionMethod {
+  constructor(obj) {
+    super();
+    this.name = document.querySelector(`${obj.el}`) || null; // --- 控制的對象
   }
-  let fatFooterBtn = new FatFooter({ name: $('.btn-fatfooter') }); // --- 控制的對象
-  fatFooterBtn.initial();
-  /*-----------------------------------*/
-  ////////////////多組Tab////////////////
-  /*-----------------------------------*/
-  var _window = $(window);
-  var _body = $('body');
-  var ww = _window.outerWidth();
-  var wwSmall = 768;
-  var _sidebarClose = $('.sidebarClose');
-  var tab_headerHeight = Math.floor($('.header').outerHeight(true));
-  var resizeTimer1;
-
-  _window.resize(function () {
-    clearTimeout(resizeTimer1);
-    resizeTimer1 = setTimeout(function () {
-      ww = _window.outerWidth();
-      tabSet();
-    }, 50);
-  });
-
-  function tabSet() {
-    $('.tabs').each(function () {
-      var _tab = $(this),
-        _tabItem = _tab.find('.tabItem'),
-        // _tabItemA = _tabItem.children('a'), //改button後，這行沒有
-        _tabContent = _tab.find('.tabContent'),
-        tabwidth = _tab.width(),
-        tabItemHeight = _tabItem.outerHeight(),
-        tabContentHeight = _tab.find('.active').next().innerHeight(),
-        tiGap = 0,
-        tabItemLength = _tabItem.length,
-        tabItemWidth;
-      _tab.find('.active').next('.tabContent').show();
-      if (ww >= wwSmall) {
-        _tabContent.css('top', tabItemHeight);
-        _tab.height(tabContentHeight + tabItemHeight);
-        tabItemWidth = (tabwidth - (tabItemLength - 1) * tiGap) / tabItemLength;
-        _tabItem.width(tabItemWidth).css('margin-left', tiGap);
-        _tabItem.first().css('margin-left', 0);
-        _tabItem
-          .last()
-          .css({
-            position: 'absolute',
-            top: 0,
-            right: 0,
-          })
-          .width(tabItemWidth);
-      } else {
-        _tab.css('height', 'auto');
-        _tabItem.width(tabwidth);
-        _tabItem.css('margin-left', 0).last().css('position', 'relative');
-      }
-      _tabItem.focus(tabs); //改button後，前面改_tabItem
-      _tabItem.click(tabs); //改button後，前面改_tabItem
-      function tabs(e) {
-        var _tabItemNow = $(this), //改button後，原來$(this).parent(),改$(this)
-          tvp = _tab.offset().top,
-          tabIndex = _tabItemNow.index() / 2,
-          scollDistance = tvp + tabItemHeight * tabIndex - tab_headerHeight;
-        _tabItem.removeClass('active');
-        _tabItemNow.addClass('active');
-        if (ww <= wwSmall) {
-          _tabItem.not('.active').next().slideUp();
-          _tabItemNow.next().slideDown();
-          $('html,body').stop(true, false).animate({
-            scrollTop: scollDistance,
-          });
-        } else {
-          _tabItem.not('.active').next().hide();
-          _tabItemNow.next().show();
-          tabContentHeight = _tabItemNow.next().innerHeight();
-          _tab.height(tabContentHeight + tabItemHeight);
-        }
-        e.preventDefault();
-      }
+  clickFatFooter() {
+    let _that = this;
+    this.name.addEventListener('click', (e) => {
+      this.toggleFatFooter(_that);
     });
   }
-  $('.tabs>.tabItem:first-child>a').trigger('click');
-  tabSet();
+  toggleFatFooter(_that) {
+    let navUl = _that.name.parentNode.querySelectorAll('nav ul li ul');
+    navUl.forEach((i) => {
+      if (i.offsetHeight !== 0) {
+        super.slideUp(i, 300);
+        _that.name.innerHTML = '收合/CLOSE';
+        _that.name.setAttribute('name', '收合選單/CLOSE');
+      } else {
+        super.slideDown(i, 300);
+        _that.name.innerHTML = '展開/OPEN';
+        _that.name.setAttribute('name', '展開選單/OPEN');
+      }
+    });
+    _that.name.classList.toggle('close');
+  }
+  changeScreenSize() {
+    window.addEventListener('resize', () => {
+      location.reload();
+    });
+  }
 
-  /*-----------------------------------*/
-  //////////////// <新增>多組Tab  ////////
-  /*-----------------------------------*/
+  initial() {
+    this.clickFatFooter();
+    this.changeScreenSize();
+  }
+}
+let fatFooter = new FatFooter({ el: '.btn-fatfooter' }); // --- 控制的對象
+fatFooter.initial();
 
-  class BtnTab {
-    constructor(obj) {
-      this.name = obj.name.find('.nav').find('.nav-item');
-      this.btn = obj.name.find('.nav').find('.nav-item button');
-      this.objName = obj.name;
-    }
-    attrNum() {
-      this.objName.find('.nav-link').each(function (idx, item) {
-        $(this).attr('data-btn', idx + 1);
-      });
-      this.objName.find('.tab-pane').each(function (idx, item) {
-        $(this).attr('data-tabcontent', idx + 1);
-      });
-    }
-    tabClick() {
-      let that = this;
-      this.btn.on('click', navTab);
-      this.btn.on('keyup', navTab);
-      function navTab() {
-        $(this).addClass('active');
-        $(this).parent().siblings().children().removeClass('active');
+/*-----------------------------------*/
+////////////////多組Tab////////////////
+/*-----------------------------------*/
 
-        $(this).focus();
-        let activeTabBtn = that.name.find('.active');
-        let tabContent = $(this).parent().parent().next().children();
-        tabContent.each(function (index, item) {
-          if (
-            activeTabBtn.attr('data-btn') === $(this).attr('data-tabContent')
-          ) {
-            $(this).addClass('active');
-            $(this).siblings().removeClass('active');
+class Tabfunction {
+  constructor() {
+    this.activeClass = 'active'; //啟動的 class
+    this.tabSet = document.querySelectorAll('.tabSet'); //tab名稱
+  }
+  catchTab() {
+    this.tabSet.forEach((a) => {
+      let _tabBtn = a.querySelectorAll('.tabItems button'); //頁籤按鈕
+      let _tabBtnLength = _tabBtn.length; //頁籤按鈕數量
+      let _tabContent = a.querySelectorAll('.tabContentGroup .tabContent'); //頁籤內容
+      _tabBtn[0].classList.add('active');
+      _tabContent[0].classList.add('active');
+
+      for (let i = 0; i < _tabBtnLength; i++) {
+        let _that = this;
+        (function () {
+          let _this = _tabBtn[i]; //綁定這一個頁籤按鈕
+          let _thisContent = _tabContent[i]; //綁定這一個頁籤內容
+          let _thisPrevItem = _tabContent[i - 1]; //綁定前一個頁籤按鈕
+          let _itemAllA = _thisContent.querySelectorAll('[href], input'); //這一個頁籤內容所有a和input項目
+          let _prevItemAllA;
+          if (_thisPrevItem !== undefined) {
+            _prevItemAllA = _thisPrevItem.querySelectorAll('[href], input'); //前一個頁籤內容所有a和input項目
           }
-        });
-      }
-    }
-    tabKeydown() {
-      $(window).keydown(tabFocus);
-      function tabFocus(e) {
-        if (e.keyCode === 9) {
-          $('.nav-link').focusout(function (e) {
-            let navItem = $(this).parent();
-            let activeItem = $(this)
-              .parent()
-              .parent()
-              .next()
-              .find('.tab-pane.active');
-            activeItem.find('a').first().focus();
-            activeItem
-              .find('a')
-              .last()
-              .focusout(function (e) {
-                navItem.next().find('.nav-link').focus();
-              });
+          let _isFirstTab = i === 0; //如果是第一個頁籤
+          let _isLastTab = i === _tabBtnLength - 1; //如果是最後一個頁籤
+          let _itemFirstA = _itemAllA[0]; //頁籤內容第一個a或是input
+          let _itemLastA = _itemAllA[_itemAllA.length - 1]; //頁籤內容最後一個a或是input
+          let _prevItemLastA;
+          if (_thisPrevItem !== undefined) {
+            _prevItemLastA = _prevItemAllA[_prevItemAllA.length - 1]; //前一個頁籤的最後一個a或是input
+          }
+
+          // _this頁籤觸發focus內容裡的第一個a
+          _this.addEventListener('keydown', (e) => {
+            //頁籤第幾個按鈕觸發時
+            if (e.which === 9 && !e.shiftKey) {
+              //e.which偵測按下哪個案件，9代表tab，shiftKey代表shift
+              e.preventDefault();
+              _that.startTab(i, _tabBtn, _tabContent); //啟動頁籤切換功能
+              if (_itemAllA.length) {
+                //type number = true，0是false
+                _itemFirstA.focus(); //第一個a或是input focus
+              } else {
+                _tabBtn[i + 1].focus(); //當內容沒有a或是input跳轉下一個tab
+              }
+            } else if (e.which === 9 && e.shiftKey && !_isFirstTab) {
+              e.preventDefault();
+
+              _that.startTab(i - 1, _tabBtn, _tabContent); //啟動頁籤切換功能
+              if (_prevItemAllA.length) {
+                _prevItemLastA.focus(); //前一個頁籤內容的最後一個a或是input focus
+              } else {
+                _tabBtn[i - 1].focus(); //當內容沒有a或是input跳轉上一個tab
+              }
+            }
           });
-        }
+
+          //當按下shift+tab且為該內容的第一個a或是input
+          //將focus目標轉回tab頁籤上，呼叫上方功能startTab(i - 1);往前一個頁籤
+          if (_itemFirstA !== undefined) {
+            _itemFirstA.addEventListener('keydown', (e) => {
+              if (e.which === 9 && e.shiftKey) {
+                e.preventDefault();
+                _tabBtn[i].focus();
+              }
+            });
+          }
+          //當按下shift+tab且為該內容的最後一個a或是input
+          //focus到下一個頁籤
+          if (_itemLastA !== undefined) {
+            _itemLastA.addEventListener('keydown', (e) => {
+              if (e.which === 9 && !e.shiftKey && !_isLastTab) {
+                e.preventDefault();
+                _tabBtn[i + 1].focus();
+              }
+            });
+          }
+        })();
       }
-    }
-    initial() {
-      this.attrNum();
-      this.tabClick();
-      this.tabKeydown();
+      this.mouseClick(_tabBtn, _tabContent, _tabBtnLength);
+    });
+  }
+
+  //滑鼠點擊事件
+  mouseClick(_tabBtn, _tabContent, _tabBtnLength) {
+    let _that = this;
+    for (var i = 0; i < _tabBtnLength; i++) {
+      (function (i) {
+        _tabBtn[i].addEventListener(
+          'click',
+          (e) => {
+            _that.startTab(i, _tabBtn, _tabContent);
+          },
+          false
+        );
+      })(i);
     }
   }
-  let tab1 = new BtnTab({
-    name: $('.nav-tab'),
-  });
-  tab1.initial();
-  let tab2 = new BtnTab({
-    name: $('.nav-tab2'),
-  });
-  tab2.initial();
 
+  //切換tab
+  startTab(_now, _tabBtn, _tabContent) {
+    if (_tabBtn !== undefined) {
+      _tabBtn.forEach((i) => {
+        i.classList.remove(this.activeClass);
+      });
+      _tabBtn[_now].classList.add(this.activeClass);
+      //頁籤按鈕增加指定class(active)，其他頁籤移除指定class
+
+      _tabContent.forEach((i) => {
+        i.classList.remove(this.activeClass);
+      });
+      _tabContent[_now].classList.add(this.activeClass);
+      //顯示當下頁籤內，隱藏其他內容
+    }
+  }
+  initial() {
+    this.catchTab();
+    this.mouseClick();
+  }
+}
+let tabFunction = new Tabfunction();
+tabFunction.initial();
+
+$(function () {
   /*-----------------------------------*/
   ///////////////置頂go to top////////////
   /*-----------------------------------*/
@@ -1511,26 +1334,16 @@ $(function () {
       let that = this;
       that.name.each(function (index, el) {
         // --- 判斷沒有table_list
-        if (
-          $(this).parents('.table_list').length == 0 &&
-          $(this).parents('.fix_th_table').length == 0 &&
-          $(this).parent('form').length == 0
-        ) {
+        if ($(this).parents('.table_list').length == 0 && $(this).parents('.fix_th_table').length == 0 && $(this).parent('form').length == 0) {
           $(this).scroltable();
         }
       });
     }
     // --- 固定版頭
     table_Arrow() {
-      if (
-        $('table').parents('.table_list').length == 0 &&
-        $('table').parents('.fix_th_table').length == 0 &&
-        $(this).parent('form').length == 0
-      ) {
+      if ($('table').parents('.table_list').length == 0 && $('table').parents('.fix_th_table').length == 0 && $(this).parent('form').length == 0) {
         if ($('.scroltable-wrapper').length > 0) {
-          var stickyArrowTop = Math.floor(
-              $('.scroltable-wrapper').offset().top
-            ),
+          var stickyArrowTop = Math.floor($('.scroltable-wrapper').offset().top),
             thisScroll = Math.floor($(this).scrollTop());
           if (thisScroll > stickyArrowTop - 230) {
             $('.scroltable-wrapper .tablearrow_left').css('display', 'block');
@@ -1562,7 +1375,7 @@ $(function () {
         }
       }
     }
-    scroll() {
+    jsScroll() {
       let that = this;
       that._window.scroll(function (event) {
         that.table_Arrow();
@@ -1580,19 +1393,15 @@ $(function () {
     }
     // --- tablearrow arrow，為了設定箭頭
     navLeft() {
-      $('.scroltable-nav-left').append(
-        '<div class="tablearrow_left" style="display:none;"></div>'
-      );
+      $('.scroltable-nav-left').append('<div class="tablearrow_left" style="display:none;"></div>');
     }
     navRight() {
-      $('.scroltable-nav-right').append(
-        '<div class="tablearrow_right"  style="display:none;"></div>'
-      );
+      $('.scroltable-nav-right').append('<div class="tablearrow_right"  style="display:none;"></div>');
     }
     initial() {
       this.haveTableList();
       this.table_Arrow();
-      this.scroll();
+      this.jsScroll();
       this.scrollFn();
       this.navLeft();
       this.navRight();
@@ -1660,10 +1469,7 @@ $(function () {
         let openContent = $(this).next().hasClass('open');
         if (openContent === true) {
           $('.popovers button').next().slideUp();
-          $(this)
-            .siblings('.popContent')
-            .stop(true, false)
-            .slideDown('400', 'easeOutQuint');
+          $(this).siblings('.popContent').stop(true, false).slideDown('400', 'easeOutQuint');
           $(this).siblings('.customer_service_block').slideUp();
           $('body').keydown(function (e) {
             if (e.keyCode == 27) {
