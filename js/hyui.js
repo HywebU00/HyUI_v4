@@ -35,39 +35,158 @@ _webHtml.classList.remove('no-js');
 /////////////// 效果 ///////////
 /*-----------------------------------*/
 
-function jsSlideUp(element, time) {
-  let totalHeight = element.offsetHeight;
-  let currentHeight = totalHeight;
-  let decrement = totalHeight / (time / 10);
-  let timer = setInterval(() => {
-    currentHeight = currentHeight - decrement;
-    element.style.height = currentHeight + 'px';
-    if (currentHeight <= 0) {
-      clearInterval(timer);
-      element.style.display = 'none';
-      element.style.height = totalHeight + 'px';
-    }
-  }, 10);
-}
-function jsSlideDown(element, time) {
-  if (element.offsetHeight <= 0) {
-    element.style.display = 'block';
-    element.style.transition = 'height' + time + ' ms';
-    element.style.overflow = 'hidden';
-    let totalHeight = element.offsetHeight;
-    let currentHeight = 0;
-    element.style.height = '0px';
-    let _addValue = totalHeight / (time / 10);
-    let timer = setInterval(() => {
-      currentHeight += _addValue;
-      element.style.height = currentHeight + 'px';
-      if (currentHeight >= totalHeight) {
-        clearInterval(timer);
-        element.style.height = totalHeight + 'px';
-      }
-    }, 10);
+const slider = (function () {
+  let Slider = {};
+  // the constructed function,timeManager,as such that's a manager about managing the setInterval
+  function TimerManager() {
+    this.timers = [];
+    this.args = [];
+    this.isTimerRun = false;
   }
-}
+  // if the element can't has the property of TimerManage what represented the constructor function,repeated creating a constructed function
+  TimerManager.makeTimerManage = function (element) {
+    if (
+      !element.TimerManage ||
+      element.TimerManage.constructor !== TimerManager
+    ) {
+      element.TimerManage = new TimerManager();
+    }
+  };
+  // That's order to create the method what add the timer
+  TimerManager.prototype.add = function (timer, args) {
+    this.timers.push(timer);
+    this.args.push(args);
+    this.timerRun();
+  };
+  // called the method is order to run the timer by ordering
+  TimerManager.prototype.timerRun = function () {
+    if (!this.isTimerRun) {
+      let timer = this.timers.shift(),
+        args = this.args.shift();
+      if (timer && args) {
+        this.isTimerRun = true;
+        timer(args[0], args[1]);
+      }
+    }
+  };
+  // let it run the next timer
+  TimerManager.prototype.next = function () {
+    this.isTimerRun = false;
+    this.timerRun();
+  };
+
+  function jsSlideUp(element, time) {
+    if (element.offsetHeight > 0) {
+      let totalHeight = element.offsetHeight;
+      let currentHeight = totalHeight;
+      let reduceValue = totalHeight / (time / 10);
+      element.style.transition = 'height ' + time + ' ms';
+      element.style.overflow = 'hidden';
+      let timer = setInterval(function () {
+        currentHeight -= reduceValue;
+        element.style.height = currentHeight + 'px';
+        if (currentHeight <= 0) {
+          clearInterval(timer);
+          element.style.display = 'none';
+          element.style.height = totalHeight + 'px';
+          if (
+            element.TimerManage &&
+            element.TimerManage.constructor === TimerManager
+          ) {
+            element.TimerManage.next();
+          }
+        }
+      }, 10);
+    } else {
+      if (
+        element.TimerManage &&
+        element.TimerManage.constructor === TimerManager
+      ) {
+        element.TimerManage.next();
+      }
+    }
+  }
+
+  function jsSlideDown(element, time) {
+    if (element.offsetHeight <= 0) {
+      element.style.display = 'block';
+      element.style.transition = 'height' + time + ' ms';
+      element.style.overflow = 'hidden';
+      let totalHeight = element.offsetHeight;
+      let currentHeight = 0;
+      element.style.height = '0px';
+      let addValue = totalHeight / (time / 10);
+      let timer = setInterval(function () {
+        currentHeight += addValue;
+        element.style.height = currentHeight + 'px';
+        if (currentHeight >= totalHeight) {
+          clearInterval(timer);
+          element.style.height = totalHeight + 'px';
+          if (
+            element.TimerManage &&
+            element.TimerManage.constructor === TimerManager
+          ) {
+            element.TimerManage.next();
+          }
+        }
+      }, 10);
+    } else {
+      if (
+        element.TimerManage &&
+        element.TimerManage.constructor === TimerManager
+      ) {
+        element.TimerManage.next();
+      }
+    }
+  }
+  // the interface about slideUp method
+  Slider.jsSlideUp = function (element) {
+    TimerManager.makeTimerManage(element);
+    element.TimerManage.add(jsSlideUp, arguments);
+    return this;
+  };
+  // the interface about slideDown method
+  Slider.jsSlideDown = function (element) {
+    TimerManager.makeTimerManage(element);
+    element.TimerManage.add(jsSlideDown, arguments);
+    return this;
+  };
+  return Slider;
+})();
+
+// function jsSlideUp(element, time) {
+//   let totalHeight = element.offsetHeight;
+//   let currentHeight = totalHeight;
+//   let decrement = totalHeight / (time / 10);
+//   let timer = setInterval(() => {
+//     currentHeight = currentHeight - decrement;
+//     element.style.height = currentHeight + 'px';
+//     if (currentHeight <= 0) {
+//       clearInterval(timer);
+//       element.style.display = 'none';
+//       element.style.height = totalHeight + 'px';
+//     }
+//   }, 10);
+// }
+// function jsSlideDown(element, time) {
+//   if (element.offsetHeight <= 0) {
+//     element.style.display = 'block';
+//     element.style.transition = 'height' + time + ' ms';
+//     element.style.overflow = 'hidden';
+//     let totalHeight = element.offsetHeight;
+//     let currentHeight = 0;
+//     element.style.height = '0px';
+//     let _addValue = totalHeight / (time / 10);
+//     let timer = setInterval(() => {
+//       currentHeight += _addValue;
+//       element.style.height = currentHeight + 'px';
+//       if (currentHeight >= totalHeight) {
+//         clearInterval(timer);
+//         element.style.height = totalHeight + 'px';
+//       }
+//     }, 10);
+//   }
+// }
 function jsFadeIn(element, speed) {
   let val = 0;
   let request;
@@ -203,7 +322,7 @@ class MobileSearch {
     // --- 綁定外層的this
     let _that = this;
     if (!_that.searchMode) {
-      jsSlideDown(_that.control, 300);
+      slider.jsSlideDown(_that.control, 300);
       _that.searchMode = true;
     } else {
       _that.control.style.display = 'none';
@@ -715,11 +834,11 @@ class FatFooter {
     const _navUl = _that.name.parentNode.querySelectorAll('nav ul li ul');
     _navUl.forEach((i) => {
       if (i.offsetHeight !== 0) {
-        jsSlideUp(i, 300);
+        slider.jsSlideUp(i, 300);
         _that.name.innerHTML = '收合/CLOSE';
         _that.name.setAttribute('name', '收合選單/CLOSE');
       } else {
-        jsSlideDown(i, 300);
+        slider.jsSlideDown(i, 300);
         _that.name.innerHTML = '展開/OPEN';
         _that.name.setAttribute('name', '展開選單/OPEN');
       }
@@ -1064,9 +1183,9 @@ class SelectSlider {
           sliderItem.offsetHeight !== 0 ||
           sliderItem.offsetHeight === null
         ) {
-          jsSlideUp(sliderItem, 300);
+          slider.jsSlideUp(sliderItem, 300);
         } else {
-          jsSlideDown(sliderItem, 300);
+          slider.jsSlideDown(sliderItem, 300);
         }
         this.sliderClose(e.target);
       });
@@ -1078,7 +1197,7 @@ class SelectSlider {
       i.addEventListener('keydown', (e) => {
         const sliderItem = e.target.nextElementSibling;
         if (sliderItem) {
-          jsSlideDown(sliderItem, 300);
+          slider.jsSlideDown(sliderItem, 300);
         }
       });
     });
@@ -1091,7 +1210,7 @@ class SelectSlider {
       const sliderItem = i.querySelector('ul');
       lastNodes.addEventListener('focusout', (e) => {
         e.preventDefault();
-        jsSlideUp(sliderItem, 300);
+        slider.jsSlideUp(sliderItem, 300);
       });
     });
   }
@@ -1103,7 +1222,7 @@ class SelectSlider {
     function clickOtherPlace(e) {
       const chooseClassName = that.name[0].className;
       if (e.target.closest(`.${chooseClassName}`) === null) {
-        jsSlideUp(sliderItem, 300);
+        slider.jsSlideUp(sliderItem, 300);
       } else {
         return;
       }
