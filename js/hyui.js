@@ -45,10 +45,7 @@ const slider = (function () {
   }
   // if the element can't has the property of TimerManage what represented the constructor function,repeated creating a constructed function
   TimerManager.makeTimerManage = function (element) {
-    if (
-      !element.TimerManage ||
-      element.TimerManage.constructor !== TimerManager
-    ) {
+    if (!element.TimerManage || element.TimerManage.constructor !== TimerManager) {
       element.TimerManage = new TimerManager();
     }
   };
@@ -89,19 +86,13 @@ const slider = (function () {
           clearInterval(timer);
           element.style.display = 'none';
           element.style.height = totalHeight + 'px';
-          if (
-            element.TimerManage &&
-            element.TimerManage.constructor === TimerManager
-          ) {
+          if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
             element.TimerManage.next();
           }
         }
       }, 10);
     } else {
-      if (
-        element.TimerManage &&
-        element.TimerManage.constructor === TimerManager
-      ) {
+      if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
         element.TimerManage.next();
       }
     }
@@ -122,19 +113,13 @@ const slider = (function () {
         if (currentHeight >= totalHeight) {
           clearInterval(timer);
           element.style.height = totalHeight + 'px';
-          if (
-            element.TimerManage &&
-            element.TimerManage.constructor === TimerManager
-          ) {
+          if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
             element.TimerManage.next();
           }
         }
       }, 10);
     } else {
-      if (
-        element.TimerManage &&
-        element.TimerManage.constructor === TimerManager
-      ) {
+      if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
         element.TimerManage.next();
       }
     }
@@ -254,8 +239,7 @@ class Menu {
     let sidebar = document.createElement('aside');
     sidebar.className = 'sidebar';
     sidebar.style = 'opacity:0';
-    sidebar.innerHTML =
-      '<div class="mobileArea"><button type="button" class="sidebarClose">關閉</button></div><div class="menuOverlay"></div>';
+    sidebar.innerHTML = '<div class="mobileArea"><button type="button" class="sidebarClose">關閉</button></div><div class="menuOverlay"></div>';
     _that.body.insertBefore(sidebar, _that.wrapper);
 
     // --- menu初始化 新增側欄選單按鈕
@@ -394,24 +378,16 @@ class MobileMenu {
     /*-----------------------------------*/
     /////////////// PC版設定 /////////////
     /*-----------------------------------*/
-    this.menu_liHasChild = document
-      .querySelector('.header .mainMenu')
-      .querySelectorAll('li.hasChild');
+    this.menu_liHasChild = document.querySelector('.header .mainMenu').querySelectorAll('li.hasChild');
     /*-----------------------------------*/
     /////////////// 手機版設定 /////////////
     /*-----------------------------------*/
     this.asideMenu = document.querySelectorAll('.sideMainMenu > ul');
     this.asideMenuLi = document.querySelectorAll('.sideMainMenu > ul li');
     this.asideMenuUl = document.querySelectorAll('.sideMainMenu > ul ul');
-    this.asideMenuUl1 = document.querySelectorAll(
-      '.sideMainMenu > ul > li > ul'
-    );
-    this.asideMenuUl2 = document.querySelectorAll(
-      '.sideMainMenu > ul > li > ul > li > ul'
-    );
-    this.asideMenuUl3 = document.querySelectorAll(
-      '.sideMainMenu > ul > li > ul > li > ul > li > ul'
-    );
+    this.asideMenuUl1 = document.querySelectorAll('.sideMainMenu > ul > li > ul');
+    this.asideMenuUl2 = document.querySelectorAll('.sideMainMenu > ul > li > ul > li > ul');
+    this.asideMenuUl3 = document.querySelectorAll('.sideMainMenu > ul > li > ul > li > ul > li > ul');
   }
 
   //設定所有UL的高度，有高度才會有縮起來得效果，最多四層
@@ -419,9 +395,7 @@ class MobileMenu {
     let _that = this;
     _that.sidebar.style = 'display:block;opacity:0';
     _that.mobileAreaOut = _that.mobileArea.offsetWidth;
-    _that.mobileArea.style = `transform: translateX(${
-      _that.mobileAreaOut * -1
-    }px)`;
+    _that.mobileArea.style = `transform: translateX(${_that.mobileAreaOut * -1}px)`;
     _that.asideMenuUl.forEach((i) => {
       i.style.position = 'absolute';
     });
@@ -470,12 +444,9 @@ class MobileMenu {
   mobileMenuSlider() {
     document.querySelectorAll('aside li').forEach((i) => {
       i.addEventListener('click', (e) => {
-        let siblings = Array.prototype.filter.call(
-          i.parentNode.children,
-          (child) => {
-            return child !== i;
-          }
-        );
+        let siblings = Array.prototype.filter.call(i.parentNode.children, (child) => {
+          return child !== i;
+        });
         let content = i.querySelector('ul');
         let secondHeight = content.dataset.secondHeight || 0;
         let thirdHeight = content.dataset.thirdHeight || 0;
@@ -486,20 +457,12 @@ class MobileMenu {
             content.style.height = `${secondHeight}px`;
             e.stopPropagation();
           } else if (i.parentNode.classList.contains('secondLv')) {
-            i.parentNode.style.height = `${
-              Number(i.parentNode.dataset.secondHeight) + Number(thirdHeight)
-            }px`;
+            i.parentNode.style.height = `${Number(i.parentNode.dataset.secondHeight) + Number(thirdHeight)}px`;
             content.style.height = `${thirdHeight}px`;
             e.stopPropagation();
           } else if (i.parentNode.classList.contains('thirdLv')) {
-            i.parentNode.parentNode.parentNode.style.height = `${
-              Number(i.parentNode.parentNode.parentNode.dataset.secondHeight) +
-              Number(i.parentNode.dataset.thirdHeight) +
-              Number(fourthHeight)
-            }px`;
-            i.parentNode.style.height = `${
-              Number(i.parentNode.dataset.thirdHeight) + Number(fourthHeight)
-            }px`;
+            i.parentNode.parentNode.parentNode.style.height = `${Number(i.parentNode.parentNode.parentNode.dataset.secondHeight) + Number(i.parentNode.dataset.thirdHeight) + Number(fourthHeight)}px`;
+            i.parentNode.style.height = `${Number(i.parentNode.dataset.thirdHeight) + Number(fourthHeight)}px`;
             content.style.height = `${fourthHeight}px`;
             e.stopPropagation();
           }
@@ -608,9 +571,7 @@ class MobileMenu {
     let _that = this;
 
     window.requestAnimationFrame(() => {
-      _that.mobileArea.style = `transform: translateX(${
-        _that.mobileAreaOut * -1
-      }px);`;
+      _that.mobileArea.style = `transform: translateX(${_that.mobileAreaOut * -1}px);`;
     });
     setTimeout(() => {
       _that.sidebar.style.display = 'none';
@@ -666,9 +627,7 @@ class Navbar {
 
   getMenuHeight() {
     let _that = this;
-    let mainMenuTop = Math.floor(
-      _that.mainMenu.getBoundingClientRect().top + window.scrollY
-    );
+    let mainMenuTop = Math.floor(_that.mainMenu.getBoundingClientRect().top + window.scrollY);
     _that.jsScroll(mainMenuTop);
     _that.jsResize(mainMenuTop);
     _that.reload(mainMenuTop);
@@ -683,10 +642,7 @@ class Navbar {
 
     //如果 offsetTop 不等於 null 則運行下方函式
     if (offsetTop != null) {
-      if (
-        _that.windowWidth >= _that.windowWidthSmall &&
-        window.scrollY > offsetTop
-      ) {
+      if (_that.windowWidth >= _that.windowWidthSmall && window.scrollY > offsetTop) {
         _that.mainMenu.classList.add('sticky');
         _that.main.style = `padding-top: ${_that.menuHeight}px`;
       } else {
@@ -752,12 +708,9 @@ class A11yKeyMenu {
     control = _that.mainMenu.querySelectorAll('li');
     control.forEach((i) => {
       i.addEventListener('keyup', (e) => {
-        let siblings = Array.prototype.filter.call(
-          i.parentNode.children,
-          (child) => {
-            return child !== i;
-          }
-        );
+        let siblings = Array.prototype.filter.call(i.parentNode.children, (child) => {
+          return child !== i;
+        });
 
         siblings.forEach((x) => {
           x.classList.remove('active');
@@ -773,13 +726,11 @@ class A11yKeyMenu {
     // --- 綁定外層的this
     let _that = this;
     let lastA = _that.mainMenu.querySelectorAll('a').length - 1;
-    _that.mainMenu
-      .querySelectorAll('a')
-      [lastA].addEventListener('focusout', () => {
-        _that.mainMenu.querySelectorAll('li').forEach((i) => {
-          i.classList.remove('active');
-        });
+    _that.mainMenu.querySelectorAll('a')[lastA].addEventListener('focusout', () => {
+      _that.mainMenu.querySelectorAll('li').forEach((i) => {
+        i.classList.remove('active');
       });
+    });
   }
 
   menuLiHasChildKeyup() {
@@ -1082,7 +1033,8 @@ class FontSize {
 
 let fontsize = new FontSize({
   el: '.font_size', // --按鈕列表名稱
-  control: '.innerpage', // --控制的對象名稱
+  // --更新fontsize切換改為全站通用
+  control: 'body', // --控制的對象名稱
 });
 fontsize.initial();
 
@@ -1179,10 +1131,7 @@ class SelectSlider {
         const sliderItem = e.target.nextElementSibling;
         if (sliderItem === null) {
           return;
-        } else if (
-          sliderItem.offsetHeight !== 0 ||
-          sliderItem.offsetHeight === null
-        ) {
+        } else if (sliderItem.offsetHeight !== 0 || sliderItem.offsetHeight === null) {
           slider.jsSlideUp(sliderItem, 300);
         } else {
           slider.jsSlideDown(sliderItem, 300);
@@ -1280,9 +1229,7 @@ function addFile() {
   function pushFlieName(e) {
     let _fileLen = e.target.files.length;
     let _fileName = '';
-    const uploadInput = e.target.parentNode
-      .closest('.upload_grp')
-      .querySelector('.upload_file');
+    const uploadInput = e.target.parentNode.closest('.upload_grp').querySelector('.upload_file');
     if (_fileLen > 1) {
       _fileName = `${_fileLen} files selected`;
     } else {
@@ -1494,729 +1441,3 @@ tableAddDataAttributes();
 //     });
 //   });
 // });
-
-// $(function () {
-//   /*-----------------------------------*/
-//   ///////////////置頂go to top////////////
-//   /*-----------------------------------*/
-//   class ScrollToTop {
-//     constructor(obj) {
-//       this.name = obj.name || null; //監聽的對象
-//       this.control = obj.control || null; //監聽的對象
-//       this.attr = obj.attr || null; //keydown後focus的目標
-//       this.speed = obj.speed || null; //滑行速度
-//       this.body = obj.body || null;
-//     }
-//     // --- 點擊置頂按鈕
-//     scrollClick() {
-//       let that = this;
-//       that.name.click(function (e) {
-//         that.control.stop().animate(
-//           {
-//             scrollTop: 0,
-//           },
-//           that.speed,
-//           'linear'
-//         );
-//         e.preventDefault();
-//       });
-//     }
-//     // --- 鍵盤點擊置頂按鈕
-//     scrollKeydown() {
-//       let that = this;
-//       that.name.keydown(function (e) {
-//         that.control.stop().animate(
-//           {
-//             scrollTop: 0,
-//           },
-//           that.speed,
-//           'linear'
-//         );
-//         that.body.find(that.attr).focus();
-//         e.preventDefault();
-//       });
-//     }
-//     // --- 按鈕出現的函式
-//     goTop() {
-//       let that = this;
-//       $(window).on('scroll', function () {
-//         if ($(this).scrollTop() > 200) {
-//           that.name.fadeIn();
-//         } else {
-//           that.name.fadeOut();
-//         }
-//       });
-//     }
-//     // --- 初始設定
-//     initial() {
-//       this.scrollClick();
-//       this.scrollKeydown();
-//       this.goTop();
-//     }
-//   }
-
-//   let gotopBtn = new ScrollToTop({
-//     name: $('.scrollToTop'), //監聽的對象
-//     control: $('html, body'), //監聽的對象
-//     attr: 'a.goCenter', //keydown後focus的目標
-//     speed: 400, //滑行速度
-//     body: $('body'),
-//   });
-//   gotopBtn.initial();
-
-//   // /*--------------------------------------------------------*/
-//   /////設定img 在IE9+ SAFARI FIREFOX CHROME 可以object-fit/////
-//   /*--------------------------------------------------------*/
-//   var userAgent, ieReg, ie;
-//   userAgent = window.navigator.userAgent;
-//   ieReg = /msie|Trident.*rv[ :]*11\./gi;
-//   ie = ieReg.test(userAgent);
-//   if (ie) {
-//     $('.img-container').each(function () {
-//       var imgUrl = $(this).find('img').attr('data-src');
-//       var $container = $(this);
-//       $container.has('.none').addClass('ie-object-none');
-//       $container.has('.none').css('backgroundImage', 'url(' + imgUrl + ')');
-//       $container.has('.cover').addClass('ie-object-cover');
-//       $container.has('.cover').css('backgroundImage', 'url(' + imgUrl + ')');
-//       $container.has('.fill').addClass('ie-object-fill');
-//       $container.has('.fill').css('backgroundImage', 'url(' + imgUrl + ')');
-//       $container.has('.contain').addClass('ie-object-contain');
-//       $container.has('.contain').css('backgroundImage', 'url(' + imgUrl + ')');
-//     });
-//   }
-//   /*-----------------------------*/
-//   /////form表單 placeholder隱藏/////
-//   /*-----------------------------*/
-//   $('input[type="checkbox"]')
-//     .off()
-//     .click(function (e) {
-//       $(this).blur();
-//     });
-//   /*------------------------------------*/
-//   /////form表單 單個檔案上傳+多個檔案上傳/////
-//   /*------------------------------------*/
-//   $(document).on('change', '.check_file', function () {
-//     var names = [];
-//     var length = $(this).get(0).files.length;
-//     for (var i = 0; i < $(this).get(0).files.length; ++i) {
-//       names.push($(this).get(0).files[i].name);
-//     }
-//     // $('input[name=file]').val(names);
-//     if (length > 2) {
-//       var fileName = names.join(', ');
-//       $(this)
-//         .closest('.upload_grp')
-//         .find('.upload_file')
-//         .attr('value', length + ' files selected');
-//     } else {
-//       $(this).closest('.upload_grp').find('.upload_file').attr('value', names);
-//     }
-//   });
-//   /*------------------------------------*/
-//   //////////分享按鈕 share dropdwon////////
-//   /*------------------------------------*/
-
-//   class FunctionPanel {
-//     constructor(obj) {
-//       this.name = obj.name || null; // --- 綁定的對象
-//       this.control = obj.control || null; // --- 要控制的對象
-//     }
-//     shareBtn() {
-//       // --- 綁定外層的this
-//       let that = this;
-//       that.name.children('ul').hide();
-//       that.name.prepend('<a href="#" class="shareButton">share分享按鈕</a>');
-//     }
-//     shareBtnClick() {
-//       $('.shareButton')
-//         .off()
-//         .click(function (e) {
-//           $(this).siblings('ul').stop(true, true).slideToggle();
-//           e.preventDefault();
-//         });
-//     }
-//     shareBtnKeyup() {
-//       $(this).siblings('ul').stop(true, true).slideDown();
-//     }
-//     shareBtnFocusout() {
-//       // --- 綁定外層的this
-//       let that = this;
-//       that.name.find('li:last>a').focusout(function (event) {
-//         $(this).parent().parent('ul').hide();
-//       });
-//     }
-//     shareBtnTouchend() {
-//       // --- 綁定外層的this
-//       let that = this;
-//       $(document).on('touchend click', function (e) {
-//         let container = that.name;
-//         if (!container.is(e.target) && container.has(e.target).length === 0) {
-//           $('.function_panel .share ul').hide();
-//         }
-//       });
-//     }
-//     initial() {
-//       this.shareBtn(); //先初始化載入
-//       this.shareBtnClick();
-//       this.shareBtnKeyup();
-//       this.shareBtnFocusout();
-//       this.shareBtnTouchend();
-//     }
-//   }
-
-//   let function_panel_btn = new FunctionPanel({
-//     name: $('.function_panel .share'), // --- 綁定的對象
-//     control: $('.shareButton'), // --- 要控制的對象}
-//   });
-//   function_panel_btn.initial();
-
-//   /*------------------------------------*/
-//   /////////////字型大小 font-size //////////
-//   /*------------------------------------*/
-//   class FontSize {
-//     constructor(obj) {
-//       this.name = obj.name;
-//       this.control = obj.control;
-//     }
-//     // 字體大小設定 --- 小
-//     small() {
-//       let that = this;
-//       that.name.find('.small').click(function (e) {
-//         $(this).parent('li').siblings('li').find('a').removeClass('active');
-//         that.control.removeClass('large_size').addClass('small_size');
-//         $(this).blur().addClass('active');
-//         e.preventDefault();
-//         that.createCookie('FontSize', 'small', 356);
-//       });
-//     }
-//     // 字體大小設定 --- 中
-//     medium() {
-//       let that = this;
-//       that.name.find('.medium').click(function (e) {
-//         $(this).parent('li').siblings('li').find('a').removeClass('active');
-//         that.control.removeClass('large_size small_size');
-//         $(this).blur().addClass('active');
-//         e.preventDefault();
-//         that.createCookie('FontSize', 'medium', 356);
-//       });
-//     }
-//     // 字體大小設定 --- 大
-//     large() {
-//       let that = this;
-//       that.name.find('.large').click(function (e) {
-//         $(this).parent('li').siblings('li').find('a').removeClass('active');
-//         that.control.removeClass('small_size').addClass('large_size');
-//         $(this).blur().addClass('active');
-//         e.preventDefault();
-//         that.createCookie('FontSize', 'large', 356);
-//       });
-//     }
-//     // 創造新的 字體大小設定
-//     createCookie(name, value, days) {
-//       if (days) {
-//         var date = new Date();
-//         date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-//         var expires = '; expires=' + date.toGMTString();
-//       } else expires = '';
-//       document.cookie = name + '=' + value + expires + '; path=/';
-//     }
-//     //讀取瀏覽器上 字體大小設定
-//     readCookie(name) {
-//       var nameEQ = name + '=';
-//       var ca = document.cookie.split(';');
-//       for (var i = 0; i < ca.length; i++) {
-//         var c = ca[i];
-//         while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-//         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-//       }
-//       return null;
-//     }
-//     //初始化 字體大小設定
-//     initCookie() {
-//       let that = this;
-//       window.onload = function (e) {
-//         var cookie = that.readCookie('FontSize');
-//         if (cookie == 'small') {
-//           that.name.find('.small').click();
-//           e.preventDefault();
-//         } else {
-//           if (cookie == 'large') {
-//             that.name.find('.large').click();
-//             e.preventDefault();
-//           } else {
-//             //這裡是預設宣告
-//             that.name.find('.medium').click();
-//             e.preventDefault();
-//           }
-//         }
-//       };
-//     }
-//     initial() {
-//       // 字體大小設定 --- 小
-//       this.small();
-//       // 字體大小設定 --- 中
-//       this.medium();
-//       // 字體大小設定 --- 大
-//       this.large();
-//       //初始化 字體大小設定
-//       this.initCookie();
-//     }
-//   }
-
-//   let fontsize = new FontSize({
-//     name: $('.font_size'), // ---按下去的對象
-//     control: $('.innerpage'),
-//   });
-//   fontsize.initial();
-
-//   /*-----------------------------------*/
-//   /////////// category active  //////////
-//   /*-----------------------------------*/
-//   $('.category')
-//     .find('a')
-//     .off()
-//     .click(function (event) {
-//       $(this).parent('li').siblings().find('a').removeClass('active');
-//       $(this).addClass('active').blur();
-//     });
-//   /*-----------------------------------*/
-//   /////////// 無障礙快捷鍵盤組合  //////////
-//   /*-----------------------------------*/
-//   class A11yKey {
-//     constructor(obj) {
-//       this.name = obj.name; // ---綁定的觸發對象
-//       this.control = obj.control; // ---偵測的對象
-//       this.seed = obj.speed; // ---動畫速度
-//     }
-//     keydown() {
-//       let that = this;
-//       that.name.on('keydown', function (e) {
-//         switch (e.altKey && e.keyCode) {
-//           // alt+S 查詢
-//           case 83:
-//             that.control.animate(
-//               {
-//                 scrollTop: 0,
-//               },
-//               that.seed,
-//               'easeOutExpo'
-//             );
-//             $('.search').find('input[type="text"]').focus();
-//             break;
-//           // alt+U header
-//           case 85:
-//             that.control.animate(
-//               {
-//                 scrollTop: 0,
-//               },
-//               that.seed,
-//               'easeOutExpo'
-//             );
-//             $('header').find('.accesskey').focus();
-//             break;
-//           // alt+C 主要內容區
-//           case 67:
-//             that.control.animate(
-//               {
-//                 scrollTop: $('.main').find('.accesskey').offset().top - 70,
-//               },
-//               that.seed,
-//               'easeOutExpo'
-//             );
-//             $('.main').find('.accesskey').focus();
-//             break;
-//           // alt+Z footer
-//           case 90:
-//             that.control.animate(
-//               {
-//                 scrollTop: $('footer').find('.accesskey').offset().top,
-//               },
-//               that.seed,
-//               'easeOutExpo'
-//             );
-//             $('footer').find('.accesskey').focus();
-//             break;
-//         }
-//       });
-//     }
-//     initial() {
-//       this.keydown();
-//     }
-//   }
-//   let allkey = new A11yKey({
-//     name: $(document), // ---綁定的觸發對象
-//     control: $('html, body'), // ---偵測的對象
-//     seed: 200, // ---動畫速度
-//   });
-
-//   allkey.initial();
-//   /*-----------------------------------*/
-//   //////// 無障礙切換slick箭頭語系  ////////
-//   /*-----------------------------------*/
-
-//   //無障礙切換slick箭頭語系
-//   if ($('html')[0].hasAttribute('lang')) {
-//     var weblang = $('html').attr('lang');
-//     if (weblang.substring(0, 2) == 'zh') {
-//       $('.slick-prev').attr('title', '上一筆');
-//       $('.slick-next').attr('title', '下一筆');
-//     } else if (weblang.substring(0, 2) !== 'zh') {
-//       $('.slick-prev').attr('title', 'previous');
-//       $('.slick-next').attr('title', 'next');
-//     }
-//   }
-//   // 無障礙錨點切換語系，更改accesskey的title名稱
-//   var weblang = $('html').attr('lang');
-//   if (weblang.substring(0, 2) == 'zh') {
-//     $('header').find('.accesskey').attr('title', '上方功能區塊');
-//     $('.main').find('.accesskey').attr('title', '中央內容區塊');
-//     $('footer').find('.accesskey').attr('title', '下方功能區塊');
-//     $('.search').find('.accesskey').attr('title', '關鍵字搜尋：文章關鍵字搜尋');
-//   } else if (weblang.substring(0, 2) !== 'zh') {
-//     $('header').find('.accesskey').attr('title', 'header');
-//     $('.main').find('.accesskey').attr('title', 'content');
-//     $('footer').find('.accesskey').attr('title', 'footer');
-//     $('.search').find('.accesskey').attr('title', 'search');
-//   }
-//   /*------------------------------------*/
-//   /////gotoCenter on focus跳到 content/////
-//   /*------------------------------------*/
-//   class GoCenter {
-//     constructor(obj) {
-//       this.name = obj.name || null;
-//       this.control = obj.control || null;
-//       this.speed = obj.speed || null;
-//     }
-//     goCenterKeydown() {
-//       let that = this;
-//       that.name.keydown(function (e) {
-//         if (e.which == 13) {
-//           $('#aC').focus();
-//           that.control.stop(true, true).animate(
-//             {
-//               scrollTop: $('.main').find('.accesskey').offset().top,
-//             },
-//             that.speed,
-//             'easeOutExpo'
-//           );
-//         }
-//       });
-//     }
-//     initial() {
-//       this.goCenterKeydown();
-//     }
-//   }
-//   let goCenterBtn = new GoCenter({
-//     name: $('a.goCenter'), // --- 控制的對象
-//     control: $('html, body'), //  ---偵測的對象
-//     speed: 800,
-//   }); // ---動畫速度
-//   goCenterBtn.initial();
-//   /*-----------------------------------*/
-//   //////// 語言模組 無障礙遊走設定  ////////
-//   /*-----------------------------------*/
-//   class Language {
-//     constructor(obj) {
-//       this.name = obj.name || null; // --- 控制的對象
-//       this.control = obj.control || null; // --- 監聽的對象
-//     }
-//     // --- 點擊 語言模組
-//     langClick() {
-//       let that = this;
-//       that.name.find('ul').hide();
-//       that.control.off().click(function (e) {
-//         $(this).next('ul').stop(true, true).slideToggle();
-//         e.preventDefault();
-//       });
-//     }
-//     // --- Keydown 語言模組
-//     langKeydown() {
-//       let that = this;
-//       that.control.keyup(function () {
-//         $(this).next('ul').stop(true, true).slideDown();
-//       });
-//     }
-//     // --- Focusout 語言模組
-//     langFocusout() {
-//       let that = this;
-//       that.name.find('ul li:last>a').focusout(function () {
-//         that.name.find('ul').hide();
-//       });
-//     }
-//     //--- 關閉語言模組
-//     closelang() {
-//       let that = this;
-//       $(document).on('touchend click', function (e) {
-//         var target = e.target;
-//         if (!$(target).is('.language a')) {
-//           that.name.find('ul').hide();
-//         }
-//       });
-//     }
-
-//     initial() {
-//       this.langClick();
-//       this.langKeydown();
-//       this.langFocusout();
-//       this.closelang();
-//     }
-//   }
-
-//   let languageSelect = new Language({
-//     name: $('.language'), // --- 控制的對象
-//     control: $('.language').children('a'), // --- 監聽的對象
-//   });
-//   languageSelect.initial();
-
-//   // /*------------------------------------*/
-//   // //  table 加上響應式 scroltable-wrapper/
-//   // /*------------------------------------*/
-
-//   class Table {
-//     constructor(obj) {
-//       this.name = obj.name;
-//       this._window = $(window);
-//     }
-//     // --- 判斷沒有table_list
-//     haveTableList() {
-//       let that = this;
-//       that.name.each(function (index, el) {
-//         // --- 判斷沒有table_list
-//         if ($(this).parents('.table_list').length == 0 && $(this).parents('.fix_th_table').length == 0 && $(this).parent('form').length == 0) {
-//           $(this).scroltable();
-//         }
-//       });
-//     }
-//     // --- 固定版頭
-//     table_Arrow() {
-//       if ($('table').parents('.table_list').length == 0 && $('table').parents('.fix_th_table').length == 0 && $(this).parent('form').length == 0) {
-//         if ($('.scroltable-wrapper').length > 0) {
-//           var stickyArrowTop = Math.floor($('.scroltable-wrapper').offset().top),
-//             thisScroll = Math.floor($(this).scrollTop());
-//           if (thisScroll > stickyArrowTop - 230) {
-//             $('.scroltable-wrapper .tablearrow_left').css('display', 'block');
-//             $('.scroltable-wrapper .tablearrow_left').css(
-//               {
-//                 top: thisScroll - stickyArrowTop + 220,
-//               },
-//               100,
-//               'easeOutQuint'
-//             );
-//             $('.scroltable-wrapper .tablearrow_right').css('display', 'block');
-//             $('.scroltable-wrapper .tablearrow_right').css(
-//               {
-//                 top: thisScroll - stickyArrowTop + 220,
-//               },
-//               100,
-//               'easeOutQuint'
-//             );
-//           } else {
-//             $('.scroltable-wrapper .tablearrow_left').css({
-//               top: '10px',
-//               display: 'none',
-//             });
-//             $('.scroltable-wrapper .tablearrow_right').css({
-//               top: '10px',
-//               display: 'none',
-//             });
-//           }
-//         }
-//       }
-//     }
-//     jsScroll() {
-//       let that = this;
-//       that._window.scroll(function (event) {
-//         that.table_Arrow();
-//       });
-//     }
-//     scrollFn() {
-//       var scrollTimer;
-//       let that = this;
-//       that._window.scroll(function () {
-//         clearTimeout(scrollTimer);
-//         scrollTimer = setTimeout(function () {
-//           that.table_Arrow();
-//         }, 50);
-//       });
-//     }
-//     // --- tablearrow arrow，為了設定箭頭
-//     navLeft() {
-//       $('.scroltable-nav-left').append('<div class="tablearrow_left" style="display:none;"></div>');
-//     }
-//     navRight() {
-//       $('.scroltable-nav-right').append('<div class="tablearrow_right"  style="display:none;"></div>');
-//     }
-//     initial() {
-//       this.haveTableList();
-//       this.table_Arrow();
-//       this.jsScroll();
-//       this.scrollFn();
-//       this.navLeft();
-//       this.navRight();
-//     }
-//   }
-//   let table = new Table({
-//     name: $('table'),
-//   });
-//   table.initial();
-//   // /*------------------------------------*/
-//   // //////////table 加上 data-title//////////
-//   // /*------------------------------------*/
-//   class RwdTable {
-//     constructor(obj) {
-//       this.name = obj.name;
-//     }
-//     rwdFn() {
-//       let that = this;
-//       that.name.find('table').each(function () {
-//         var $row = $(this).find('tr');
-//         rowCount = $row.length;
-//         for (var n = 1; n <= rowCount; n++) {
-//           $(this)
-//             .find('th')
-//             .each(function (index) {
-//               var thText = $(this).text();
-//               $row.eq(n).find('td').eq(index).attr('data-title', thText);
-//             });
-//         }
-//       });
-//     }
-//     initial() {
-//       this.rwdFn();
-//     }
-//   }
-
-//   let rwdtable = new RwdTable({
-//     name: $('.table_list'), // ---綁定的觸發對象
-//   });
-//   rwdtable.initial();
-//   /*-----------------------------------*/
-//   ////////////// lazy load //////////////
-//   /*-----------------------------------*/
-//   var lazyLoadInstance = new LazyLoad({
-//     elements_selector: 'img.lazy',
-//     placeholder: '/images/basic/placeholder.gif',
-//     effect: 'fadeIn',
-//     fadeTime: 600,
-//     threshold: 0,
-//   });
-
-//   /*-----------------------------------*/
-//   //////// 新增 按鈕型 Popovers 設定 ///////
-//   /*-----------------------------------*/
-//   // 電腦版查詢
-//   class Popovers {
-//     constructor(obj) {
-//       this.name = obj.name;
-//     }
-//     btnClick() {
-//       let that = this;
-//       this.name.off().on('click', function (e) {
-//         $(this).parent().siblings().children('.popContent').removeClass('open');
-//         $(this).next().toggleClass('open');
-//         let openContent = $(this).next().hasClass('open');
-//         if (openContent === true) {
-//           $('.popovers button').next().slideUp();
-//           $(this).siblings('.popContent').stop(true, false).slideDown('400', 'easeOutQuint');
-//           $(this).siblings('.customer_service_block').slideUp();
-//           $('body').keydown(function (e) {
-//             if (e.keyCode == 27) {
-//               $('.popContent').slideUp();
-//               this.pop_status = false;
-//             }
-//           });
-
-//           $(window).off('resize');
-//           that.pop_status = true;
-//         } else {
-//           $(this).next().stop().slideUp();
-//         }
-//         e.stopPropagation();
-//       });
-//     }
-//     // 如果點在外面
-//     closePopovers() {
-//       let that = this;
-//       $('body').on('click touchend', function (e) {
-//         that.name.next().slideUp();
-//         $('.popContent').removeClass('open');
-//       });
-//       // 如果點在區域內則不受限制
-//       $('.popContent').click(function (e) {
-//         e.stopPropagation();
-//       });
-//     }
-//     initial() {
-//       this.btnClick();
-//       this.closePopovers();
-//     }
-//   }
-//   let search_btn = new Popovers({
-//     name: $('.search_btn'),
-//   });
-//   search_btn.initial();
-// });
-
-// class A11yKeyMenu {
-//   constructor(obj) {
-//     this.name = obj.name || null;
-//     this.mainMenu = document.querySelector('.mainMenu') || null;
-//   }
-
-//   menuKeyUp() {
-//     // --- 綁定外層的this
-//     let _that = this;
-//     let control;
-//     control = _that.mainMenu.querySelectorAll('li');
-//     control.forEach((i) => {
-//       i.addEventListener('keyup', (e) => {
-//         let siblings = Array.prototype.filter.call(i.parentNode.children, (child) => {
-//           return child !== i;
-//         });
-
-//         siblings.forEach((x) => {
-//           x.classList.remove('active');
-//           x.querySelectorAll('ul').forEach((s) => {
-//             s.style.display = 'none';
-//           });
-//         });
-//       });
-//     });
-//   }
-
-//   menuFocusOut() {
-//     // --- 綁定外層的this
-//     let _that = this;
-//     let lastA = _that.mainMenu.querySelectorAll('a').length - 1;
-//     _that.mainMenu.querySelectorAll('a')[lastA].addEventListener('focusout', () => {
-//       _that.mainMenu.querySelectorAll('li').forEach((i) => {
-//         i.classList.remove('active');
-//       });
-//     });
-//   }
-
-//   menuLiHasChildKeyup() {
-//     // --- 綁定外層的this
-//     let _that = this;
-//     let control;
-//     control = _that.mainMenu.querySelectorAll('li.hasChild > a');
-
-//     control.forEach((i) => {
-//       i.addEventListener('keyup', (e) => {
-//         i.parentNode.querySelector('ul').removeAttribute('style');
-//         i.parentNode.classList.add('active');
-//       });
-//     });
-//   }
-//   initial() {
-//     this.menuKeyUp();
-//     this.menuFocusOut();
-//     this.menuLiHasChildKeyup();
-//   }
-// }
-
-// let a11yKeyMenu = new A11yKeyMenu({
-//   name: $('.menu'),
-// });
-// a11yKeyMenu.initial();

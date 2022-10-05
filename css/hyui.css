@@ -1810,6 +1810,12 @@ body {
   font-family: Lato, "PingFang TC", "Helvetica Neue", Helvetica, 微軟正黑體, Arial, sans-serif;
   -webkit-text-size-adjust: none;
 }
+body.small_size {
+  font-size: 0.938em;
+}
+body.large_size {
+  font-size: 1.125em;
+}
 
 a {
   color: #00a4f9;
@@ -8421,12 +8427,6 @@ body.noscroll {
     flex-basis: 100%;
     max-width: 100%;
   }
-}
-.innerpage.small_size {
-  font-size: 0.938em;
-}
-.innerpage.large_size {
-  font-size: 1.125em;
 }
 
 .hidden {
