@@ -249,3 +249,44 @@ table {
         right: 0.3em;
     }
 }
+
+// scrolltable style
+.table-wrapper {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
+  .scrolltable-nav {
+    width: 60px;
+    position: absolute;
+    transition: 0.5s opacity;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.8) 33%,
+      rgba(255, 255, 255, 0.6) 39%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+  .scrolltable-nav-left {
+    left: 0;
+    display: none;
+  }
+  .scrolltable-nav-right {
+    right: 0;
+    transform: rotateY(180deg);
+  }
+  .scrolltable-nav-left .scrolltable-left-btn {
+    width: 35px;
+    height: 35px;
+    background: url(../vendor/scrolltable/images/arrow-left.png) no-repeat
+      10px center;
+    cursor: pointer;
+  }
+  .scrolltable-nav-right .scrolltable-right-btn {
+    width: 35px;
+    height: 35px;
+
+    background: url(../vendor/scrolltable/images/arrow-left.png) no-repeat
+      10px center;
+    cursor: pointer;
+  }
+  
