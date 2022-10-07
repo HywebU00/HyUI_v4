@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import '../vendor/swiper-8.4.2/swiper-bundle.min.css';
+@import '../vendor/fancybox-4.0.31/fancybox.css';
 .breadcrumb ul li:before {
   content: " / ";
   display: inline-block;
