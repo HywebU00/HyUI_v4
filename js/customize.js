@@ -1,191 +1,70 @@
 // 自行加入的JS請寫在這裡
-$(function () {
-    //sticky sidebar
-    if ($('.stickySidebar').length > 0) {
-        var stickySidebar = new StickySidebar('.stickySidebar', {
-            containerSelector: '.main',
-            topSpacing: 93,
-            bottomSpacing: 0,
-            minWidth: 768,
-            resizeSensor: true,
-        });
-    }
-    // 首頁輪播
-    $('.mpSlider').slick({
-        mobileFirst: true,
-        dots: true,
-        arrows: true,
-        infinite: true,
-        speed: 500,
-        autoplay: true,
-        fade: true,
-        lazyLoaded: true,
-        lazyLoad: 'ondemand',
-        ease: 'ease',
-        customPaging: function (slider, i) {
-            var title = $(slider.$slides[i]).find('img').attr('alt').trim();
-            return $('<button type="button" aria-label="' + title + '"/>').text(title);
-        },
-    });
-    // 廣告輪播
-    $('.adSlider').slick({
-        mobileFirst: true,
-        dots: false,
-        infinite: true,
-        speed: 300,
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        autoplay: true,
-        arrow: true,
-        lazyLoaded: true,
-        lazyLoad: 'ondemand',
-        ease: 'ease',
-        responsive: [
-            {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 5,
-                    slidesToScroll: 1,
-                    arrows: true,
-                },
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 1,
-                    arrows: true,
-                },
-            },
-            {
-                breakpoint: 575,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    arrows: true,
-                },
-            },
-        ],
-    });
-    //燈箱slick+lightBox組合
-    $('.cp_slider').slick({
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        autoplay: false,
-        autoplaySpeed: 1500,
-        pauseOnHover: true,
-        pauseOnFocus: true,
-        focusOnSelect: true,
-        accessibility: true,
-        lazyLoad: 'ondemand',
-        ease: 'ease',
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    infinite: true,
-                    dots: true,
-                },
-            },
-            {
-                breakpoint: 545,
-                settings: {
-                    arrows: true,
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                },
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    arrows: true,
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    arrows: false,
-                },
-            },
-        ],
-    });
-    $('.cp_slider').slickLightbox({
-        caption: 'caption',
-        lazyLoad: 'ondemand',
-        useHistoryApi: 'true',
-        ease: 'ease',
-        lazy: true,
-    });
-    //
-    $('.cppic_slider').slick({
-        dots: true,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        autoplay: false,
-        autoplaySpeed: 1500,
-        // pauseOnHover: true,
-        // pauseOnFocus: true,
-        // focusOnSelect: true,
-        // accessibility: true,
-        // lazyLoad: 'ondemand',
-        // ease: 'ease',
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    infinite: true,
-                    dots: true,
-                },
-            },
-            {
-                breakpoint: 545,
-                settings: {
-                    arrows: true,
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                },
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    arrows: true,
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    arrows: false,
-                },
-            },
-        ],
-    });
-    // cp_photo
-    $('.Slider-for').on('init reInit afterChange', function (event, slick, currentSlide) {
-        var i = (currentSlide ? currentSlide : 0) + 1;
-        $('.controls').html(i + '/' + slick.slideCount);
-    });
-    $('.Slider-for').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        fade: true,
-        swipe: false,
-        swipeToSlide: false,
-        lazyLoad: 'ondemand',
-        asNavFor: '.Slider-nav',
-        infinite: true,
-    });
-    $('.Slider-nav').slick({
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        asNavFor: '.Slider-for',
-        dots: true,
-        arrows: true,
-        lazyLoad: 'ondemand',
-        focusOnSelect: true,
-        infinite: true,
-    });
-});
+(function () {
+  //cp輪播
+  const cpSwiper = new Swiper('.cppic_slider .swiper', {
+    slidesPerView: 4,
+    spaceBetween: 30,
+    loop: false,
+    // 切換點
+    pagination: {
+      el: '.cppic_slider .swiper-dots',
+      bulletElement: 'button',
+      clickable: true,
+    },
+    // 切換箭頭
+    navigation: {
+      nextEl: '.cppic_slider .swiper-arrow.swiper-next', //自行設定樣式
+      prevEl: '.cppic_slider .swiper-arrow.swiper-prev', //自行設定樣式
+      disabledClass: 'swiper-arrow-disabled', //不可點選樣式
+    },
+  });
+
+  //大圖輪播
+  const sliderSwiper = new Swiper('.mpSlider .swiper', {
+    slidesPerView: 1,
+    loop: false,
+    // 切換點
+    pagination: {
+      el: '.mpSlider .swiper-dots',
+      bulletElement: 'button',
+      clickable: true,
+    },
+    // 切換箭頭
+    navigation: {
+      nextEl: '.mpSlider .swiper-arrow.swiper-next', //自行設定樣式
+      prevEl: '.mpSlider .swiper-arrow.swiper-prev', //自行設定樣式
+      disabledClass: 'swiper-arrow-disabled', //不可點選樣式
+    },
+  });
+
+  //廣告輪播
+  const adSwiper = new Swiper('.adSlider .swiper', {
+    slidesPerView: 5,
+    spaceBetween: 30,
+    loop: false,
+    // 切換點
+    pagination: {
+      el: '.adSlider .swiper-dots',
+      bulletElement: 'button',
+      clickable: true,
+    },
+    // 切換箭頭
+    navigation: {
+      nextEl: '.adSlider .swiper-arrow.swiper-next', //自行設定樣式
+      prevEl: '.adSlider .swiper-arrow.swiper-prev', //自行設定樣式
+      disabledClass: '.adSlider swiper-arrow-disabled', //不可點選樣式
+    },
+  });
+
+  //跑馬燈
+  const marqueeSwiper = new Swiper('.marquee .swiper', {
+    direction: 'vertical',
+    // 切換點
+    // 切換箭頭
+    navigation: {
+      nextEl: '.marquee .swiper-arrow.swiper-next', //自行設定樣式
+      prevEl: '.marquee .swiper-arrow.swiper-prev', //自行設定樣式
+      disabledClass: '.marquee swiper-arrow-disabled', //不可點選樣式
+    },
+  });
+})();

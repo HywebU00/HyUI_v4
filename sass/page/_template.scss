@@ -61,6 +61,8 @@ body {
     max-width: 260px;
     margin-right: 40px;
     align-self: flex-start;
+    position: sticky;
+    top: 50px;
     &.hidden {
       + .center_block {
         flex: none;

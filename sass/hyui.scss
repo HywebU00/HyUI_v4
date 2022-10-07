@@ -39,7 +39,7 @@
 @import 'sass/modual/_tabs'; //頁籤
 @import 'sass/modual/_thumbnail'; //縮圖
 @import 'sass/modual/_modal'; //pop視窗
-@import 'sass/modual/_slick'; //slick
+// @import 'sass/modual/_slick'; //slick
 @import 'sass/modual/_function_panel'; //內頁功能面板
 @import 'sass/modual/_marquee'; //跑馬燈
 @import 'sass/modual/_paginations'; //分頁
@@ -47,6 +47,9 @@
 @import 'sass/modual/_accordion.scss'; //收合式選單
 // @import "sass/_lightbox";					//燈箱      買fancybox
 @import 'sass/modual/_tabsBtn'; //新增按鈕頁籤
+
+@import '../vendor/swiper-8.4.2/swiper-bundle.min.css'; //swiper
+@import 'sass/modual/_swiper'; //swiper
 
 // 頁面
 @import 'page/_template'; //版型初始設定

@@ -45,10 +45,7 @@ const slider = (function () {
   }
   // if the element can't has the property of TimerManage what represented the constructor function,repeated creating a constructed function
   TimerManager.makeTimerManage = function (element) {
-    if (
-      !element.TimerManage ||
-      element.TimerManage.constructor !== TimerManager
-    ) {
+    if (!element.TimerManage || element.TimerManage.constructor !== TimerManager) {
       element.TimerManage = new TimerManager();
     }
   };
@@ -89,19 +86,13 @@ const slider = (function () {
           clearInterval(timer);
           element.style.display = 'none';
           element.style.height = totalHeight + 'px';
-          if (
-            element.TimerManage &&
-            element.TimerManage.constructor === TimerManager
-          ) {
+          if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
             element.TimerManage.next();
           }
         }
       }, 10);
     } else {
-      if (
-        element.TimerManage &&
-        element.TimerManage.constructor === TimerManager
-      ) {
+      if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
         element.TimerManage.next();
       }
     }
@@ -122,19 +113,13 @@ const slider = (function () {
         if (currentHeight >= totalHeight) {
           clearInterval(timer);
           element.style.height = totalHeight + 'px';
-          if (
-            element.TimerManage &&
-            element.TimerManage.constructor === TimerManager
-          ) {
+          if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
             element.TimerManage.next();
           }
         }
       }, 10);
     } else {
-      if (
-        element.TimerManage &&
-        element.TimerManage.constructor === TimerManager
-      ) {
+      if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
         element.TimerManage.next();
       }
     }
@@ -254,8 +239,7 @@ class Menu {
     let sidebar = document.createElement('aside');
     sidebar.className = 'sidebar';
     sidebar.style = 'opacity:0';
-    sidebar.innerHTML =
-      '<div class="mobileArea"><button type="button" class="sidebarClose">關閉</button></div><div class="menuOverlay"></div>';
+    sidebar.innerHTML = '<div class="mobileArea"><button type="button" class="sidebarClose">關閉</button></div><div class="menuOverlay"></div>';
     _that.body.insertBefore(sidebar, _that.wrapper);
 
     // --- menu初始化 新增側欄選單按鈕
@@ -394,24 +378,16 @@ class MobileMenu {
     /*-----------------------------------*/
     /////////////// PC版設定 /////////////
     /*-----------------------------------*/
-    this.menu_liHasChild = document
-      .querySelector('.header .mainMenu')
-      .querySelectorAll('li.hasChild');
+    this.menu_liHasChild = document.querySelector('.header .mainMenu').querySelectorAll('li.hasChild');
     /*-----------------------------------*/
     /////////////// 手機版設定 /////////////
     /*-----------------------------------*/
     this.asideMenu = document.querySelectorAll('.sideMainMenu > ul');
     this.asideMenuLi = document.querySelectorAll('.sideMainMenu > ul li');
     this.asideMenuUl = document.querySelectorAll('.sideMainMenu > ul ul');
-    this.asideMenuUl1 = document.querySelectorAll(
-      '.sideMainMenu > ul > li > ul'
-    );
-    this.asideMenuUl2 = document.querySelectorAll(
-      '.sideMainMenu > ul > li > ul > li > ul'
-    );
-    this.asideMenuUl3 = document.querySelectorAll(
-      '.sideMainMenu > ul > li > ul > li > ul > li > ul'
-    );
+    this.asideMenuUl1 = document.querySelectorAll('.sideMainMenu > ul > li > ul');
+    this.asideMenuUl2 = document.querySelectorAll('.sideMainMenu > ul > li > ul > li > ul');
+    this.asideMenuUl3 = document.querySelectorAll('.sideMainMenu > ul > li > ul > li > ul > li > ul');
   }
 
   //設定所有UL的高度，有高度才會有縮起來得效果，最多四層
@@ -419,9 +395,7 @@ class MobileMenu {
     let _that = this;
     _that.sidebar.style = 'display:block;opacity:0';
     _that.mobileAreaOut = _that.mobileArea.offsetWidth;
-    _that.mobileArea.style = `transform: translateX(${
-      _that.mobileAreaOut * -1
-    }px)`;
+    _that.mobileArea.style = `transform: translateX(${_that.mobileAreaOut * -1}px)`;
     _that.asideMenuUl.forEach((i) => {
       i.style.position = 'absolute';
     });
@@ -470,12 +444,9 @@ class MobileMenu {
   mobileMenuSlider() {
     document.querySelectorAll('aside li').forEach((i) => {
       i.addEventListener('click', (e) => {
-        let siblings = Array.prototype.filter.call(
-          i.parentNode.children,
-          (child) => {
-            return child !== i;
-          }
-        );
+        let siblings = Array.prototype.filter.call(i.parentNode.children, (child) => {
+          return child !== i;
+        });
         let content = i.querySelector('ul');
         let secondHeight = content.dataset.secondHeight || 0;
         let thirdHeight = content.dataset.thirdHeight || 0;
@@ -486,20 +457,12 @@ class MobileMenu {
             content.style.height = `${secondHeight}px`;
             e.stopPropagation();
           } else if (i.parentNode.classList.contains('secondLv')) {
-            i.parentNode.style.height = `${
-              Number(i.parentNode.dataset.secondHeight) + Number(thirdHeight)
-            }px`;
+            i.parentNode.style.height = `${Number(i.parentNode.dataset.secondHeight) + Number(thirdHeight)}px`;
             content.style.height = `${thirdHeight}px`;
             e.stopPropagation();
           } else if (i.parentNode.classList.contains('thirdLv')) {
-            i.parentNode.parentNode.parentNode.style.height = `${
-              Number(i.parentNode.parentNode.parentNode.dataset.secondHeight) +
-              Number(i.parentNode.dataset.thirdHeight) +
-              Number(fourthHeight)
-            }px`;
-            i.parentNode.style.height = `${
-              Number(i.parentNode.dataset.thirdHeight) + Number(fourthHeight)
-            }px`;
+            i.parentNode.parentNode.parentNode.style.height = `${Number(i.parentNode.parentNode.parentNode.dataset.secondHeight) + Number(i.parentNode.dataset.thirdHeight) + Number(fourthHeight)}px`;
+            i.parentNode.style.height = `${Number(i.parentNode.dataset.thirdHeight) + Number(fourthHeight)}px`;
             content.style.height = `${fourthHeight}px`;
             e.stopPropagation();
           }
@@ -608,9 +571,7 @@ class MobileMenu {
     let _that = this;
 
     window.requestAnimationFrame(() => {
-      _that.mobileArea.style = `transform: translateX(${
-        _that.mobileAreaOut * -1
-      }px);`;
+      _that.mobileArea.style = `transform: translateX(${_that.mobileAreaOut * -1}px);`;
     });
     setTimeout(() => {
       _that.sidebar.style.display = 'none';
@@ -666,9 +627,7 @@ class Navbar {
 
   getMenuHeight() {
     let _that = this;
-    let mainMenuTop = Math.floor(
-      _that.mainMenu.getBoundingClientRect().top + window.scrollY
-    );
+    let mainMenuTop = Math.floor(_that.mainMenu.getBoundingClientRect().top + window.scrollY);
     _that.jsScroll(mainMenuTop);
     _that.jsResize(mainMenuTop);
     _that.reload(mainMenuTop);
@@ -683,10 +642,7 @@ class Navbar {
 
     //如果 offsetTop 不等於 null 則運行下方函式
     if (offsetTop != null) {
-      if (
-        _that.windowWidth >= _that.windowWidthSmall &&
-        window.scrollY > offsetTop
-      ) {
+      if (_that.windowWidth >= _that.windowWidthSmall && window.scrollY > offsetTop) {
         _that.mainMenu.classList.add('sticky');
         _that.main.style = `padding-top: ${_that.menuHeight}px`;
       } else {
@@ -752,12 +708,9 @@ class A11yKeyMenu {
     control = _that.mainMenu.querySelectorAll('li');
     control.forEach((i) => {
       i.addEventListener('keyup', (e) => {
-        let siblings = Array.prototype.filter.call(
-          i.parentNode.children,
-          (child) => {
-            return child !== i;
-          }
-        );
+        let siblings = Array.prototype.filter.call(i.parentNode.children, (child) => {
+          return child !== i;
+        });
 
         siblings.forEach((x) => {
           x.classList.remove('active');
@@ -773,13 +726,11 @@ class A11yKeyMenu {
     // --- 綁定外層的this
     let _that = this;
     let lastA = _that.mainMenu.querySelectorAll('a').length - 1;
-    _that.mainMenu
-      .querySelectorAll('a')
-      [lastA].addEventListener('focusout', () => {
-        _that.mainMenu.querySelectorAll('li').forEach((i) => {
-          i.classList.remove('active');
-        });
+    _that.mainMenu.querySelectorAll('a')[lastA].addEventListener('focusout', () => {
+      _that.mainMenu.querySelectorAll('li').forEach((i) => {
+        i.classList.remove('active');
       });
+    });
   }
 
   menuLiHasChildKeyup() {
@@ -1180,10 +1131,7 @@ class SelectSlider {
         const sliderItem = e.target.nextElementSibling;
         if (sliderItem === null) {
           return;
-        } else if (
-          sliderItem.offsetHeight !== 0 ||
-          sliderItem.offsetHeight === null
-        ) {
+        } else if (sliderItem.offsetHeight !== 0 || sliderItem.offsetHeight === null) {
           slider.jsSlideUp(sliderItem, 300);
         } else {
           slider.jsSlideDown(sliderItem, 300);
@@ -1281,9 +1229,7 @@ function addFile() {
   function pushFlieName(e) {
     let _fileLen = e.target.files.length;
     let _fileName = '';
-    const uploadInput = e.target.parentNode
-      .closest('.upload_grp')
-      .querySelector('.upload_file');
+    const uploadInput = e.target.parentNode.closest('.upload_grp').querySelector('.upload_file');
     if (_fileLen > 1) {
       _fileName = `${_fileLen} files selected`;
     } else {
@@ -1493,17 +1439,11 @@ class ScrollTables {
   appendEle() {
     this.name.forEach((i) => {
       let _appendLeftEle = document.createElement('div');
-      _appendLeftEle.setAttribute(
-        'class',
-        'scrolltable-nav scrolltable-nav-left'
-      );
+      _appendLeftEle.setAttribute('class', 'scrolltable-nav scrolltable-nav-left');
       _appendLeftEle.style.height = `${i.parentElement.clientHeight}px`;
 
       let _appendRightEle = document.createElement('div');
-      _appendRightEle.setAttribute(
-        'class',
-        'scrolltable-nav scrolltable-nav-right'
-      );
+      _appendRightEle.setAttribute('class', 'scrolltable-nav scrolltable-nav-right');
       _appendRightEle.style.height = `${i.parentElement.clientHeight}px`;
       i.parentElement.style.position = 'relative';
       if (i.parentElement.querySelector('.scrolltable-nav-left') === null) {
@@ -1615,6 +1555,17 @@ let tableScroll = new ScrollTables({
   name: 'table',
 });
 tableScroll.initial();
+
+/*-----------------------------------*/
+////////////// lazy load //////////////
+/*-----------------------------------*/
+var lazyLoadInstance = new LazyLoad({
+  elements_selector: 'img.lazy',
+  placeholder: '/images/basic/placeholder.gif',
+  effect: 'fadeIn',
+  fadeTime: 600,
+  threshold: 0,
+});
 
 /*-----------------------------------*/
 //////////// Accordion設定 ////////////

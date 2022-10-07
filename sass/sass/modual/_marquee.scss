@@ -1,9 +1,11 @@
 .marquee {
-    height: 45px;
+  .swiperBox {
+    margin: 0;
+    padding: 0;
+    list-style: none;
     display: block;
     overflow: hidden;
-    background: #FFF;
-    margin: 2em 4em;
+    background: #fff;
     text-align: left;
     padding: 0 3em 0 2em;
     position: relative;
@@ -14,78 +16,57 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     border-bottom: 1px solid #dadada;
-    @media(max-width:991px) {
-        margin: 1.5em 0em;
+    @media (max-width: 991px) {
+      margin: 1.5em 0em;
     }
-    ul {
-        margin: 0;
-        padding: 0;
-        list-style: none
+    .swiper {
+      height: 40px;
     }
-    .slick-prev {
-        width: 10px;
-        height: 10px;
-        transform: rotate(90deg);
-        right: 0px !important;
-        top: 1px !important;
-        left: auto;
-        opacity: .5;
-        background: url('../vendor/slick/icon_arrow_up_s.png') no-repeat center center;
-        background-size: 16px;
-        width: 20px !important;
-        height: 20px !important;
-        box-shadow: none;
-        &:hover,
-        &:focus {
-            opacity: 1
-        }
-        &:before {
-            width: 10px !important;
-            height: 10px !important
-        }
-    }
-    .slick-next {
-        width: 10px;
-        height: 10px;
-        transform: rotate(-90deg);
-        right: 0px !important;
-        top: 22px !important;
-        left: auto;
-        opacity: .5;
-        width: 20px !important;
-        height: 20px !important;
-        background: url('../vendor/slick/icon_arrow_up_s.png') no-repeat center center;
-        background-size: 16px;
-        box-shadow: none;
-        &:hover,
-        &:focus {
-            opacity: 1
-        }
-        &:before {
-            width: 10px !important;
-            height: 10px !important
-        }
-    }
-    >div {
-        padding: 0;
-        margin: 0
-    }
-    a {
+    .swiper-arrow {
+      position: absolute;
+      cursor: pointer;
+      transform: translateY(0%);
+      padding: 15px 10px;
+      left: 0px;
+      background: rgba(255, 255, 255, 0.4);
+      z-index: 9;
+      &::before {
+        content: '';
+        width: 20px;
+        height: 30px;
         display: block;
-        line-height: 40px;
-        margin-right: 3em;
-        font-weight: bold;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        color: #000;
-      text-decoration: none;
-        span {
-            color:#7cb52f;
-            margin-right: 15px;
+        background: url('../vendor/swiper-8.4.2/ar.svg') center no-repeat;
+      }
+      &.swiper-prev {
+        top: 0;
+      }
+      &.swiper-next {
+        bottom: 0;
+        &::before {
+          transform: rotate(180deg);
         }
-        &:hover {
-            color: #7cb52f;
-        }
+      }
+      &.swiper-arrow-disabled {
+        opacity: 0.3;
+      }
     }
+  }
+  a {
+    display: block;
+    line-height: 40px;
+    margin-right: 3em;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #000;
+    text-decoration: none;
+    span {
+      color: #7cb52f;
+      margin-right: 15px;
+    }
+    &:hover {
+      color: #7cb52f;
+    }
+  }
 }
