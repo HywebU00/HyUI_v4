@@ -17,7 +17,7 @@ $menuItems: 15;
   -webkit-transform: translate3d(0, 0, 0);
   box-sizing: border-box;
 
-  > .menuOverlay {
+  & > .menuOverlay {
     background: RGBA(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
