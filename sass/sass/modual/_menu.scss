@@ -40,16 +40,16 @@
     display: none;
   }
   // 預設選單 ul
-  > ul {
+  & > ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
     // 第一層選單樣式
-    > li {
+    & > li {
       flex: 0 1 calc(100% / 6);
-      > a {
+      & > a {
         display: block;
         padding: 0 1em;
         min-height: 2.5em;
@@ -59,7 +59,7 @@
         color: $color-word;
       }
       &.hasChild {
-        > a {
+        & > a {
           &:after {
             content: '';
             width: 4px;
@@ -76,7 +76,7 @@
         }
       }
       &:hover {
-        > a {
+        & > a {
           color: $aHover;
           &:after {
             border: 2px solid $aHover;
@@ -86,7 +86,7 @@
         }
       }
       &.active {
-        > a {
+        & > a {
           color: $aHover;
           &:after {
             border: 2px solid $aHover;
@@ -135,10 +135,10 @@
           }
         }
         li.hasChild {
-          > ul {
+          & > ul {
             z-index: 999;
           }
-          > a {
+          & > a {
             padding-right: 2em;
             &:hover,
             &:focus {
@@ -173,10 +173,10 @@
       }
     }
   }
-  > ul {
-    > li {
+  & > ul {
+    & > li {
       &.active {
-        > ul {
+        & > ul {
           animation: showMenu 0.3s $cubic;
         }
       }
