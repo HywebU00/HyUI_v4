@@ -425,6 +425,7 @@ function MobileMenu() {
       });
     });
   }
+  pcSet();
 
   // --- 切換 PC/Mobile 選單
   function switchMenu() {
