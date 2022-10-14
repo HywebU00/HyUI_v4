@@ -1,3 +1,65 @@
+// mobile btn for extend
+%mobileCtrlBtn {
+  width: 60px !important;
+  height: 60px !important;
+  position: absolute;
+  top: 0px;
+  display: block;
+  font-size: 0em;
+  padding: 15px;
+  margin: 0;
+  min-width: auto;
+  min-height: auto;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  @include screen('mobile') {
+    display: block !important;
+  }
+}
+// menu
+.sidebarCtrlBtn {
+  display: none;
+  left: 0px;
+  @extend %mobileCtrlBtn;
+  span {
+    position: absolute;
+    background: $primaryColor;
+    width: 50%;
+    height: 3px;
+    top: 20px;
+    left: 50%;
+    margin-left: -25%;
+    display: block;
+    border-radius: 2px;
+    &:nth-child(2) {
+      top: 28px;
+    }
+    &:nth-child(3) {
+      top: 36px;
+    }
+  }
+}
+// search
+.searchCtrlBtn {
+  display: none;
+  right: 0px;
+  font-size: 0em;
+  @extend %mobileCtrlBtn;
+  &:before {
+    width: 40px;
+    height: 40px;
+    background: url(../images/basic/icon_search.png) no-repeat center center;
+    background-size: 28px;
+    opacity: 0.6;
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: block;
+  }
+}
 //header
 .header {
   position: relative;
@@ -27,71 +89,10 @@
       height: 60px;
     }
   }
-  // mobile btn for extend
-  %mobileCtrlBtn {
-    width: 60px !important;
-    height: 60px !important;
-    position: absolute;
-    top: 0px;
-    display: block;
-    font-size: 0em;
-    padding: 15px;
-    margin: 0;
-    min-width: auto;
-    min-height: auto;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    box-sizing: border-box;
-    @include screen('mobile') {
-      display: block !important;
-    }
-  }
-  > .container {
+  & > .container {
     max-width: $container-max;
     overflow: visible;
-    position: relative; // menu
-    .sidebarCtrl {
-      display: none;
-      left: 0px;
-      @extend %mobileCtrlBtn;
-      span {
-        position: absolute;
-        background: $primaryColor;
-        width: 50%;
-        height: 3px;
-        top: 20px;
-        left: 50%;
-        margin-left: -25%;
-        display: block;
-        border-radius: 2px;
-        &:nth-child(2) {
-          top: 28px;
-        }
-        &:nth-child(3) {
-          top: 36px;
-        }
-      }
-    }
-    // search
-    .searchCtrl {
-      display: none;
-      right: 0px;
-      font-size: 0em;
-      @extend %mobileCtrlBtn;
-      &:before {
-        width: 40px;
-        height: 40px;
-        background: url(../images/basic/icon_search.png) no-repeat center center;
-        background-size: 28px;
-        opacity: 0.6;
-        content: '';
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        display: block;
-      }
-    }
+    position: relative;
   }
   h1 {
     float: left;

@@ -3553,6 +3553,68 @@ div.tag ul li a:hover, div.tag ul li a:focus {
   box-shadow: none;
 }
 
+.searchCtrlBtn, .sidebarCtrlBtn {
+  width: 60px !important;
+  height: 60px !important;
+  position: absolute;
+  top: 0px;
+  display: block;
+  font-size: 0em;
+  padding: 15px;
+  margin: 0;
+  min-width: auto;
+  min-height: auto;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 767px) {
+  .searchCtrlBtn, .sidebarCtrlBtn {
+    display: block !important;
+  }
+}
+
+.sidebarCtrlBtn {
+  display: none;
+  left: 0px;
+}
+.sidebarCtrlBtn span {
+  position: absolute;
+  background: #00a4f9;
+  width: 50%;
+  height: 3px;
+  top: 20px;
+  left: 50%;
+  margin-left: -25%;
+  display: block;
+  border-radius: 2px;
+}
+.sidebarCtrlBtn span:nth-child(2) {
+  top: 28px;
+}
+.sidebarCtrlBtn span:nth-child(3) {
+  top: 36px;
+}
+
+.searchCtrlBtn {
+  display: none;
+  right: 0px;
+  font-size: 0em;
+}
+.searchCtrlBtn:before {
+  width: 40px;
+  height: 40px;
+  background: url(../images/basic/icon_search.png) no-repeat center center;
+  background-size: 28px;
+  opacity: 0.6;
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: block;
+}
+
 .header {
   position: relative;
   width: 100%;
@@ -3585,69 +3647,10 @@ div.tag ul li a:hover, div.tag ul li a:focus {
     height: 60px;
   }
 }
-.header > .container .searchCtrl, .header > .container .sidebarCtrl {
-  width: 60px !important;
-  height: 60px !important;
-  position: absolute;
-  top: 0px;
-  display: block;
-  font-size: 0em;
-  padding: 15px;
-  margin: 0;
-  min-width: auto;
-  min-height: auto;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  box-sizing: border-box;
-}
-@media screen and (max-width: 767px) {
-  .header > .container .searchCtrl, .header > .container .sidebarCtrl {
-    display: block !important;
-  }
-}
 .header > .container {
   max-width: 1200px;
   overflow: visible;
   position: relative;
-}
-.header > .container .sidebarCtrl {
-  display: none;
-  left: 0px;
-}
-.header > .container .sidebarCtrl span {
-  position: absolute;
-  background: #00a4f9;
-  width: 50%;
-  height: 3px;
-  top: 20px;
-  left: 50%;
-  margin-left: -25%;
-  display: block;
-  border-radius: 2px;
-}
-.header > .container .sidebarCtrl span:nth-child(2) {
-  top: 28px;
-}
-.header > .container .sidebarCtrl span:nth-child(3) {
-  top: 36px;
-}
-.header > .container .searchCtrl {
-  display: none;
-  right: 0px;
-  font-size: 0em;
-}
-.header > .container .searchCtrl:before {
-  width: 40px;
-  height: 40px;
-  background: url(../images/basic/icon_search.png) no-repeat center center;
-  background-size: 28px;
-  opacity: 0.6;
-  content: "";
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  display: block;
 }
 .header h1 {
   float: left;

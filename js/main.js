@@ -189,38 +189,40 @@ function jsRemoveClass(el, className) {
 /*-----------------------------------*/
 /////////////// MENU初始化 ///////////
 /*-----------------------------------*/
+function TopNav() {}
+TopNav();
+
 function Menu() {
   let nav = document.querySelector('.navigation');
   let body = document.querySelector('body');
-  let siteHeader = document.querySelector('.header .container');
   let mainMenu = document.querySelector('.mainMenu');
   let wrapper = document.querySelector('.wrapper');
+  let siteHeader = document.querySelector('.header .container');
 
   // --- menu初始化 新增側欄選單
   let sidebar = document.createElement('aside');
   sidebar.className = 'sidebar';
   sidebar.style = ';opacity:0';
   sidebar.innerHTML = '<div class="mobileArea"><button type="button" class="sidebarClose">關閉</button></div><div class="menuOverlay"></div>';
-  body.insertBefore(sidebar, wrapper);
-
-  // --- menu初始化 新增側欄選單按鈕
-  let sidebarCtrl = document.createElement('button');
-  sidebarCtrl.className = 'sidebarCtrl';
-  sidebarCtrl.innerHTML = '側欄選單<span></span><span></span><span></span>';
-  sidebarCtrl.setAttribute('type', 'button');
-  siteHeader.insertBefore(sidebarCtrl, nav);
-
-  // --- menu初始化 新增搜尋按鈕
-  let searchCtrl = document.createElement('button');
-  searchCtrl.className = 'searchCtrl';
-  searchCtrl.innerHTML = '查詢';
-  searchCtrl.setAttribute('type', 'button');
-  siteHeader.insertBefore(searchCtrl, nav);
+  body.prepend(sidebar);
 
   let hasChild = mainMenu.querySelectorAll('li ul');
   hasChild.forEach((i) => {
     i.parentNode.classList.add('hasChild');
   });
+
+  // --- menu初始化 新增側欄選單按鈕
+  let sidebarCtrlBtn = document.createElement('button');
+  sidebarCtrlBtn.className = 'sidebarCtrlBtn';
+  sidebarCtrlBtn.innerHTML = '側欄選單<span></span><span></span><span></span>';
+  sidebarCtrlBtn.setAttribute('type', 'button');
+
+  // --- menu初始化 新增搜尋按鈕
+  let searchCtrlBtn = document.createElement('button');
+  searchCtrlBtn.className = 'searchCtrlBtn';
+  searchCtrlBtn.innerHTML = '查詢';
+  searchCtrlBtn.setAttribute('type', 'button');
+  siteHeader.prepend(searchCtrlBtn, sidebarCtrlBtn);
 
   // --- menu初始化 複製手機版側欄選單
   let mobileArea = document.querySelector('.mobileArea');
@@ -231,7 +233,8 @@ function Menu() {
   mobileArea.append(cloneMenu, cloneNav);
   let sideLanguage = document.querySelector('.mobileArea .font_size');
   sideLanguage.remove();
-  // 複製搜尋到手機版側欄
+
+  // --- 複製搜尋到手機版側欄
   let search = document.querySelector('.search');
   let cloneSearch = search.cloneNode(true);
   cloneSearch.removeAttribute('style');
@@ -247,15 +250,14 @@ Menu();
 function MobileSearch(obj) {
   let searchMode = true;
   let body = document.querySelector('body');
-  let searchCtrl = obj.searchCtrl;
+  let searchCtrlBtn = obj.searchCtrlBtn;
   let control = obj.control;
   let mobileSearch = document.querySelector('.mobileSearch');
-  let isAndroid = /android/i.test(navigator.userAgent.toLowerCase());
 
   function stopPop() {
     //點擊時 不觸發冒泡事件
     mobileSearch,
-      searchCtrl.addEventListener('click', (e) => {
+      searchCtrlBtn.addEventListener('click', (e) => {
         e.stopPropagation();
       });
   }
@@ -269,19 +271,23 @@ function MobileSearch(obj) {
     }
     stopPop();
   }
+
+  // --- 點擊搜尋按鈕開關
+  searchCtrlBtn.addEventListener('click', (e) => {
+    searchToggle();
+  });
+
   // --- 點擊搜尋區以外的區塊
-  (function () {
-    // 如果點在外面 則 searchMode 狀態改為false
-    body.addEventListener('click', (e) => {
-      if (searchMode) {
-        searchToggle();
-        searchMode = false;
-      }
-    });
-  })();
+  // --- 如果點在外面 則 searchMode 狀態改為false
+  body.addEventListener('click', (e) => {
+    if (searchMode) {
+      searchToggle();
+      searchMode = false;
+    }
+  });
 }
 MobileSearch({
-  searchCtrl: document.querySelector('.searchCtrl'),
+  searchCtrlBtn: document.querySelector('.searchCtrlBtn'),
   control: document.querySelector('.mobileSearch'),
 });
 
@@ -295,7 +301,7 @@ function MobileMenu() {
   let sidebar = document.querySelector('.sidebar');
   let mobileSearch = document.querySelector('.mobileSearch');
   let sidebarClose = document.querySelector('.sidebarClose');
-  let sidebarCtrl = document.querySelector('.sidebarCtrl');
+  let sidebarCtrlBtn = document.querySelector('.sidebarCtrlBtn');
   let menuOverlay = document.querySelector('.menuOverlay');
   let mobileArea = document.querySelector('.mobileArea');
   /*-----------------------------------*/
@@ -386,7 +392,7 @@ function MobileMenu() {
   });
 
   // --- 點擊選單按鈕 執行 展開側邊選單函式
-  sidebarCtrl.addEventListener('click', (e) => {
+  sidebarCtrlBtn.addEventListener('click', (e) => {
     showSidebar();
     e.preventDefault();
   });
