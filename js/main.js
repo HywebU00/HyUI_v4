@@ -189,23 +189,17 @@ function jsRemoveClass(el, className) {
 /*-----------------------------------*/
 /////////////// MENU初始化 ///////////
 /*-----------------------------------*/
-function TopNav() {}
-TopNav();
 
 function Menu() {
-  let nav = document.querySelector('.navigation');
-  let body = document.querySelector('body');
-  let mainMenu = document.querySelector('.mainMenu');
-  let wrapper = document.querySelector('.wrapper');
-  let siteHeader = document.querySelector('.header .container');
-
   // --- menu初始化 新增側欄選單
+  let body = document.querySelector('body');
   let sidebar = document.createElement('aside');
   sidebar.className = 'sidebar';
   sidebar.style = ';opacity:0';
   sidebar.innerHTML = '<div class="mobileArea"><button type="button" class="sidebarClose">關閉</button></div><div class="menuOverlay"></div>';
   body.prepend(sidebar);
 
+  let mainMenu = document.querySelector('.mainMenu');
   let hasChild = mainMenu.querySelectorAll('li ul');
   hasChild.forEach((i) => {
     i.parentNode.classList.add('hasChild');
@@ -219,6 +213,7 @@ function Menu() {
 
   // --- menu初始化 新增搜尋按鈕
   let searchCtrlBtn = document.createElement('button');
+  let siteHeader = document.querySelector('.header .container');
   searchCtrlBtn.className = 'searchCtrlBtn';
   searchCtrlBtn.innerHTML = '查詢';
   searchCtrlBtn.setAttribute('type', 'button');
@@ -227,12 +222,9 @@ function Menu() {
   // --- menu初始化 複製手機版側欄選單
   let mobileArea = document.querySelector('.mobileArea');
   let cloneMenu = mainMenu.cloneNode(true);
-  let cloneNav = nav.cloneNode(true);
   cloneMenu.classList.add('sideMainMenu');
   cloneMenu.classList.remove('mainMenu', 'megaMenu', 'menu');
-  mobileArea.append(cloneMenu, cloneNav);
-  let sideLanguage = document.querySelector('.mobileArea .font_size');
-  sideLanguage.remove();
+  mobileArea.append(cloneMenu);
 
   // --- 複製搜尋到手機版側欄
   let search = document.querySelector('.search');
@@ -243,6 +235,17 @@ function Menu() {
   body.prepend(cloneSearch);
 }
 Menu();
+
+// --- 複製手機版nav選單
+function TopNav() {
+  let mobileArea = document.querySelector('.mobileArea');
+  let nav = document.querySelector('.navigation');
+  let cloneNav = nav.cloneNode(true);
+  mobileArea.append(cloneNav);
+  let sideLanguage = document.querySelector('.mobileArea .font_size');
+  sideLanguage.remove();
+}
+TopNav();
 
 /*-----------------------------------*/
 ///////// 手機版本search設定 ////////////
@@ -311,34 +314,64 @@ function MobileMenu() {
   /*-----------------------------------*/
   /////////////// 手機版設定 /////////////
   /*-----------------------------------*/
-  let asideMenu = document.querySelectorAll('.sideMainMenu > ul');
-  let asideMenuLi = document.querySelectorAll('.sideMainMenu > ul li');
-  let asideMenuUl = document.querySelectorAll('.sideMainMenu > ul ul');
-  let asideMenuUl1 = document.querySelectorAll('.sideMainMenu > ul > li > ul');
-  let asideMenuUl2 = document.querySelectorAll('.sideMainMenu > ul > li > ul > li > ul');
-  let asideMenuUl3 = document.querySelectorAll('.sideMainMenu > ul > li > ul > li > ul > li > ul');
+  let asideMenu = document.querySelector('.sideMainMenu');
+  let asideMenuLi = asideMenu.querySelectorAll('li');
+  let asideMenuUl = asideMenu.querySelector('ul');
+  let asideMenuNextUl = asideMenuUl.querySelectorAll('ul');
+  // let asideMenuNextUl1 = document.querySelectorAll('.sideMainMenu > ul > li > ul');
+  // let asideMenuNextUl2 = document.querySelectorAll('.sideMainMenu > ul > li > ul > li > ul');
+  // let asideMenuNextUl3 = document.querySelectorAll('.sideMainMenu > ul > li > ul > li > ul > li > ul');
+  let asideMenuNextUl1 = [];
+  let asideMenuNextUl2 = [];
+  let asideMenuNextUl3 = [];
+
+  [...asideMenuUl.children]
+    .filter((child) => {
+      return child.classList.contains('hasChild');
+    })
+    .forEach((i) => {
+      asideMenuNextUl1.push(i.querySelector('ul'));
+    });
+
+  asideMenuNextUl1.forEach((s) => {
+    [...s.children]
+      .filter((child) => {
+        return child.classList.contains('hasChild');
+      })
+      .forEach((i) => {
+        asideMenuNextUl2.push(i.querySelector('ul'));
+      });
+  });
+
+  asideMenuNextUl2.forEach((s) => {
+    [...s.children]
+      .filter((child) => {
+        return child.classList.contains('hasChild');
+      })
+      .forEach((i) => {
+        asideMenuNextUl3.push(i.querySelector('ul'));
+      });
+  });
 
   // --- 設定所有UL的高度，有高度才會有縮起來得效果，最多四層
   let mobileAreaOut = mobileArea.offsetWidth;
   sidebar.style = 'display:block;opacity:0';
   mobileArea.style = `transform: translateX(${mobileAreaOut * -1}px)`;
-  asideMenuUl.forEach((i) => {
+  asideMenuUl.classList.add('firstLv');
+  asideMenuNextUl.forEach((i) => {
     i.style.position = 'absolute';
   });
-  asideMenu.forEach((i) => {
-    i.classList.add('firstLv');
-  });
-  asideMenuUl1.forEach((i) => {
+  asideMenuNextUl1.forEach((i) => {
     i.classList.add('secondLv');
     i.dataset.secondHeight = i.offsetHeight;
     i.style = 'height:0';
   });
-  asideMenuUl2.forEach((i) => {
+  asideMenuNextUl2.forEach((i) => {
     i.classList.add('thirdLv');
     i.dataset.thirdHeight = i.offsetHeight;
     i.style = 'height:0';
   });
-  asideMenuUl3.forEach((i) => {
+  asideMenuNextUl3.forEach((i) => {
     i.classList.add('fourthLv');
     i.dataset.fourthHeight = i.offsetHeight;
     i.style = 'height:0';
@@ -346,9 +379,10 @@ function MobileMenu() {
   sidebar.style = 'display:none;opacity:1;';
 
   // --- 手機版選單開合功能
-  document.querySelectorAll('aside li').forEach((i) => {
+  asideMenu.querySelectorAll('.hasChild').forEach((i) => {
     i.addEventListener('click', (e) => {
-      let siblings = Array.prototype.filter.call(i.parentNode.children, (child) => {
+      e.preventDefault();
+      let siblings = [...i.parentNode.children].filter((child) => {
         return child !== i;
       });
       let content = i.querySelector('ul');
@@ -359,16 +393,13 @@ function MobileMenu() {
         i.classList.add('active');
         if (i.parentNode.classList.contains('firstLv')) {
           content.style.height = `${secondHeight}px`;
-          e.stopPropagation();
         } else if (i.parentNode.classList.contains('secondLv')) {
           i.parentNode.style.height = `${Number(i.parentNode.dataset.secondHeight) + Number(thirdHeight)}px`;
           content.style.height = `${thirdHeight}px`;
-          e.stopPropagation();
         } else if (i.parentNode.classList.contains('thirdLv')) {
           i.parentNode.parentNode.parentNode.style.height = `${Number(i.parentNode.parentNode.parentNode.dataset.secondHeight) + Number(i.parentNode.dataset.thirdHeight) + Number(fourthHeight)}px`;
           i.parentNode.style.height = `${Number(i.parentNode.dataset.thirdHeight) + Number(fourthHeight)}px`;
           content.style.height = `${fourthHeight}px`;
-          e.stopPropagation();
         }
       }
       siblings.forEach((x) => {
@@ -475,7 +506,7 @@ function MobileMenu() {
     mobileArea.classList.remove('open');
     body.classList.remove('noscroll');
     menuOverlay.classList.remove('active');
-    asideMenuUl.forEach((i) => {
+    asideMenuNextUl.forEach((i) => {
       i.style.height = '0px';
     });
 
