@@ -276,17 +276,16 @@ table {
   }
   .scrolltable-nav-left .scrolltable-left-btn {
     width: 35px;
-    height: 35px;
-    background: url(../vendor/scrolltable/images/arrow-left.png) no-repeat
-      10px center;
+    height: 100%;
+    background: url(../images/scrolltable/arrow-left.png) no-repeat
+    center;
     cursor: pointer;
   }
   .scrolltable-nav-right .scrolltable-right-btn {
     width: 35px;
-    height: 35px;
-
-    background: url(../vendor/scrolltable/images/arrow-left.png) no-repeat
-      10px center;
+    height: 100%;
+    background: url(../images/scrolltable/arrow-left.png) no-repeat
+ center;
     cursor: pointer;
   }
   

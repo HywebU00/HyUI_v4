@@ -9,12 +9,40 @@
                 color: #fff;
                 text-decoration: none;
                 padding: 5px;
+                position: relative;
             }
         }
     }
     .accordion-content {
         line-height: 1.45em;
-        padding: 5px 0;
+        // padding: 5px 0;
+        overflow: hidden;
+        transition: height 0.5s;
+        padding: 0;
     }
+    .accordion-arrow {
+        position: absolute;
+        right: 40px;
+        &:after {
+          content: "";
+          border: 2px solid #fff;
+          border-top: none;
+          border-left: none;
+          position: absolute;
+          top: 7px;
+          right: -20px;
+          width: 8px;
+          height: 8px;
+          transform: rotate(45deg);
+          transition: transform 0.5s;
+        }
+        &.open {
+          &:after {
+            top: 8px;
+            transform: rotate(225deg);
+          }
+        }
+      }
 }
 // 
+
