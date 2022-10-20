@@ -668,35 +668,35 @@ document.querySelectorAll('[class*="notice"] a.close').forEach((i) => {
 /*-----------------------------------*/
 /////////////// FatFooter ///////////
 /*-----------------------------------*/
-function FatFooter(obj) {
-  let name = obj.name || null; // --- 控制的對象
+function fatFooter(obj) {
+  let el = obj.name || null; // --- 控制的對象
 
   // --- 點擊時
-  name.addEventListener('click', () => {
+  el.addEventListener('click', () => {
     toggleFatFooter();
   });
 
   function toggleFatFooter() {
-    const _navUl = name.parentNode.querySelectorAll('nav ul li ul');
+    const _navUl = el.parentNode.querySelectorAll('nav ul li ul');
     _navUl.forEach((i) => {
       if (i.offsetHeight !== 0) {
         slider.jsSlideUp(i, 300);
-        name.innerHTML = '收合/CLOSE';
-        name.setAttribute('name', '收合選單/CLOSE');
+        el.innerHTML = '收合/CLOSE';
+        el.setAttribute('name', '收合選單/CLOSE');
       } else {
         slider.jsSlideDown(i, 300);
-        name.innerHTML = '展開/OPEN';
-        name.setAttribute('name', '展開選單/OPEN');
+        el.innerHTML = '展開/OPEN';
+        el.setAttribute('name', '展開選單/OPEN');
       }
     });
-    name.classList.toggle('close');
+    el.classList.toggle('close');
   }
 
   window.addEventListener('resize', () => {
     location.reload();
   });
 }
-FatFooter({
+fatFooter({
   name: document.querySelector('.btn-fatfooter'),
 });
 
@@ -818,12 +818,12 @@ TabFunction();
 /*-----------------------------------*/
 /////////////// FontSize ///////////
 /*-----------------------------------*/
-function FontSize(obj) {
-  let name = obj.name || null; // --- 控制的對象
+function fontSize(obj) {
+  let el = obj.name || null; // --- 控制的對象
   let control = obj.control || null; // --- 控制的對象名稱
 
   // --- 點擊文字大小按鈕
-  name.forEach((i) => {
+  el.forEach((i) => {
     i.querySelectorAll('a').forEach((i) => {
       // --- 移除 active 的 class 名稱
       function removeActiveClass() {
@@ -894,7 +894,7 @@ function FontSize(obj) {
     });
   };
 }
-FontSize({
+fontSize({
   name: document.querySelectorAll('.font_size'), // --- 按鈕列表名稱
   // --- 更新fontsize切換改為全站通用
   control: document.querySelector('body'), // --- 控制的對象名稱
@@ -903,8 +903,8 @@ FontSize({
 /*-----------------------------------*/
 ///////////////置頂go to top////////////
 /*-----------------------------------*/
-function ScrollToTop(obj) {
-  let name = obj.name || null; // --- 控制的對象
+function scrollToTop(obj) {
+  let el = obj.name || null; // --- 控制的對象
 
   function scrollTop() {
     window.scrollTo({
@@ -914,13 +914,13 @@ function ScrollToTop(obj) {
     });
   }
 
-  name.addEventListener('click', (e) => {
+  el.addEventListener('click', (e) => {
     e.preventDefault();
     scrollTop();
   });
 
   // --- 鍵盤點擊置頂按鈕
-  name.addEventListener('keydown', (e) => {
+  el.addEventListener('keydown', (e) => {
     e.preventDefault();
     scrollTop();
     // window.scrollY 等於零的時候 執行 focus
@@ -940,12 +940,12 @@ function ScrollToTop(obj) {
   window.addEventListener('scroll', () => {
     let top = window.scrollY;
     if (top > 200) {
-      name.style.display = 'block';
-      name.style['opacity'] = '1';
-      name.style['transition'] = 'all 0.5s';
+      el.style.display = 'block';
+      el.style['opacity'] = '1';
+      el.style['transition'] = 'all 0.5s';
     } else {
-      name.style['opacity'] = '0';
-      name.style['transition'] = 'all 0.5s';
+      el.style['opacity'] = '0';
+      el.style['transition'] = 'all 0.5s';
       BtnStyleNone();
     }
     //如果 opacity為 0 則 display none
@@ -960,7 +960,7 @@ function ScrollToTop(obj) {
     }
   });
 }
-ScrollToTop({
+scrollToTop({
   name: document.querySelector('.scrollToTop'), // --- 監聽的對象
 });
 
@@ -1160,7 +1160,7 @@ gotoCenter();
 /*-----------------------------------*/
 /////////// 無障礙快捷鍵盤組合  //////////
 /*-----------------------------------*/
-function A11yKeyCode() {
+function a11yKeyCode() {
   let search = document.querySelector('.search input[type="text"]');
   let header = document.querySelector('.header .accesskey');
   let main = document.querySelector('.main .accesskey');
@@ -1216,7 +1216,7 @@ function A11yKeyCode() {
     }
   });
 }
-A11yKeyCode();
+a11yKeyCode();
 
 /*-----------------------------------*/
 //////// 無障礙切換slick箭頭語系  ////////
@@ -1269,10 +1269,10 @@ function tableAddDataAttributes() {
 tableAddDataAttributes();
 
 function ScrollTables(obj) {
-  let name = obj.name || null; // --- 按鈕列表名稱
+  let el = obj.name || null; // --- 按鈕列表名稱
 
   //檢查父層有沒有 table_list
-  name.forEach((i) => {
+  el.forEach((i) => {
     let _hasItem = i.parentElement.classList.contains('table_list');
     if (_hasItem === false) {
       appendEle();
@@ -1282,7 +1282,7 @@ function ScrollTables(obj) {
 
   //在父層 增加左右兩邊div
   function appendEle() {
-    name.forEach((i) => {
+    el.forEach((i) => {
       let _appendLeftEle = document.createElement('div');
       _appendLeftEle.setAttribute(
         'class',
@@ -1313,7 +1313,7 @@ function ScrollTables(obj) {
 
   // 初始化設定
   function displayNoneEle() {
-    name.forEach((i) => {
+    el.forEach((i) => {
       //父層元素的寬
       let _table = i.parentElement.clientWidth;
       //子層元素的寬
@@ -1332,7 +1332,7 @@ function ScrollTables(obj) {
   }
 
   //當父層滾輪滾動
-  name.forEach((i) => {
+  el.forEach((i) => {
     i.parentElement.addEventListener('scroll', () => {
       //父層元素的寬
       let _table = i.parentElement.clientWidth;
