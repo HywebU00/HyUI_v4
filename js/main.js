@@ -1076,10 +1076,10 @@ shareBtnFunction();
 function addFile() {
   const addFileName = document.querySelectorAll('.check_file');
   addFileName.forEach((i) => {
-    i.addEventListener('change', pushFlieName);
+    i.addEventListener('change', pushFileName);
   });
 
-  function pushFlieName(e) {
+  function pushFileName(e) {
     let _fileLen = e.target.files.length;
     let _fileName = '';
     const uploadInput = e.target.parentNode
@@ -1118,13 +1118,13 @@ function categoryActive() {
     item.forEach((tag) => {
       tag.addEventListener('click', (e) => {
         e.preventDefault();
-        removeclass(item);
+        removeClass(item);
         e.target.classList.add('active');
       });
     });
   });
 
-  function removeclass(item) {
+  function removeClass(item) {
     item.forEach((i) => {
       i.classList.remove('active');
     });
