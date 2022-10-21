@@ -189,14 +189,17 @@ function jsRemoveClass(element, className) {
 
 // jsParents 可使用tag或是class，單筆可以直接使用，多筆需要用forEach去調用每一個parents
 function jsParents(element, elementCheck) {
-  let current = element;
   let elementParentsCheck = elementCheck || null;
   let matched = [];
-  while (current.parentNode != null && current.parentNode != document.documentElement) {
-    matched.push(current.parentNode);
-    current = current.parentNode;
-  }
-
+  let elementArr = [];
+  !element.item ? elementArr.push(element) : (elementArr = element);
+  elementArr.forEach((s) => {
+    let current = s;
+    while (current.parentNode != null && current.parentNode != document.documentElement) {
+      matched.push(current.parentNode);
+      current = current.parentNode;
+    }
+  });
   let check = matched.filter((i) => {
     return i.localName == elementParentsCheck ? i : i.classList.contains(elementParentsCheck) ? i : elementParentsCheck === null ? i : '';
   });
