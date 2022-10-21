@@ -45,10 +45,7 @@ const slider = (function () {
   }
   // if the element can't has the property of TimerManage what represented the constructor function,repeated creating a constructed function
   TimerManager.makeTimerManage = function (element) {
-    if (
-      !element.TimerManage ||
-      element.TimerManage.constructor !== TimerManager
-    ) {
+    if (!element.TimerManage || element.TimerManage.constructor !== TimerManager) {
       element.TimerManage = new TimerManager();
     }
   };
@@ -89,19 +86,13 @@ const slider = (function () {
           clearInterval(timer);
           element.style.display = 'none';
           element.style.height = totalHeight + 'px';
-          if (
-            element.TimerManage &&
-            element.TimerManage.constructor === TimerManager
-          ) {
+          if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
             element.TimerManage.next();
           }
         }
       }, 10);
     } else {
-      if (
-        element.TimerManage &&
-        element.TimerManage.constructor === TimerManager
-      ) {
+      if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
         element.TimerManage.next();
       }
     }
@@ -122,19 +113,13 @@ const slider = (function () {
         if (currentHeight >= totalHeight) {
           clearInterval(timer);
           element.style.height = totalHeight + 'px';
-          if (
-            element.TimerManage &&
-            element.TimerManage.constructor === TimerManager
-          ) {
+          if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
             element.TimerManage.next();
           }
         }
       }, 10);
     } else {
-      if (
-        element.TimerManage &&
-        element.TimerManage.constructor === TimerManager
-      ) {
+      if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
         element.TimerManage.next();
       }
     }
@@ -187,19 +172,35 @@ function jsFadeOut(element, speed) {
   }
 }
 
-function jsAddClass(el, className) {
-  if (el.classList) el.classList.add(className);
-  else if (!hasClass(el, className)) {
-    el.className += ' ' + className;
+function jsAddClass(element, className) {
+  if (element.classList) element.classList.add(className);
+  else if (!hasClass(element, className)) {
+    element.className += ' ' + className;
   }
 }
 
-function jsRemoveClass(el, className) {
-  if (el.classList) el.classList.remove(className);
-  else if (hasClass(el, className)) {
+function jsRemoveClass(element, className) {
+  if (element.classList) element.classList.remove(className);
+  else if (hasClass(element, className)) {
     let reg = new RegExp('(\\s|^)' + className + '(\\s|$)');
-    el.className = el.className.replace(reg, ' ');
+    element.className = element.className.replace(reg, ' ');
   }
+}
+
+// jsParents 可使用tag或是class，單筆可以直接使用，多筆需要用forEach去調用每一個parents
+function jsParents(element, elementCheck) {
+  let current = element;
+  let elementParentsCheck = elementCheck || null;
+  let matched = [];
+  while (current.parentNode != null && current.parentNode != document.documentElement) {
+    matched.push(current.parentNode);
+    current = current.parentNode;
+  }
+
+  let check = matched.filter((i) => {
+    return i.localName == elementParentsCheck ? i : i.classList == elementParentsCheck ? i : elementParentsCheck === null ? i : '';
+  });
+  return check.length === 1 ? check[0] : check;
 }
 /*-----------------------------------*/
 /////////////// MENU初始化 ///////////
@@ -211,8 +212,7 @@ function Menu() {
   let sidebar = document.createElement('aside');
   sidebar.className = 'sidebar';
   sidebar.style = ';opacity:0';
-  sidebar.innerHTML =
-    '<div class="mobileArea"><button type="button" class="sidebarClose">關閉</button></div><div class="menuOverlay"></div>';
+  sidebar.innerHTML = '<div class="mobileArea"><button type="button" class="sidebarClose">關閉</button></div><div class="menuOverlay"></div>';
   body.prepend(sidebar);
 
   let mainMenu = document.querySelector('.mainMenu');
@@ -326,9 +326,7 @@ function MobileMenu() {
   /*-----------------------------------*/
   /////////////// PC版設定 /////////////
   /*-----------------------------------*/
-  let menu_liHasChild = document
-    .querySelector('.header .mainMenu')
-    .querySelectorAll('li.hasChild');
+  let menu_liHasChild = document.querySelector('.header .mainMenu').querySelectorAll('li.hasChild');
   /*-----------------------------------*/
   /////////////// 手機版設定 /////////////
   /*-----------------------------------*/
@@ -412,19 +410,12 @@ function MobileMenu() {
         if (i.parentNode.classList.contains('firstLv')) {
           content.style.height = `${secondHeight}px`;
         } else if (i.parentNode.classList.contains('secondLv')) {
-          i.parentNode.style.height = `${
-            Number(i.parentNode.dataset.secondHeight) + Number(thirdHeight)
-          }px`;
+          i.parentNode.style.height = `${Number(i.parentNode.dataset.secondHeight) + Number(thirdHeight)}px`;
           content.style.height = `${thirdHeight}px`;
         } else if (i.parentNode.classList.contains('thirdLv')) {
-          i.parentNode.parentNode.parentNode.style.height = `${
-            Number(i.parentNode.parentNode.parentNode.dataset.secondHeight) +
-            Number(i.parentNode.dataset.thirdHeight) +
-            Number(fourthHeight)
-          }px`;
-          i.parentNode.style.height = `${
-            Number(i.parentNode.dataset.thirdHeight) + Number(fourthHeight)
-          }px`;
+          jsParents(i, 'secondLv').style.height = `${Number(jsParents(i, 'secondLv').dataset.secondHeight) + Number(i.parentNode.dataset.thirdHeight) + Number(fourthHeight)}px`;
+          jsParents(i, 'secondLv').style.height = `${Number(jsParents(i, 'secondLv').dataset.secondHeight) + Number(i.parentNode.dataset.thirdHeight) + Number(fourthHeight)}px`;
+          i.parentNode.style.height = `${Number(i.parentNode.dataset.thirdHeight) + Number(fourthHeight)}px`;
           content.style.height = `${fourthHeight}px`;
         }
       }
@@ -553,9 +544,7 @@ function Navbar() {
   let mainMenu = document.querySelector('.mainMenu');
   let main = document.querySelector('.main');
   let menuHeight = Math.floor(mainMenu.offsetHeight);
-  let mainMenuTop = Math.floor(
-    mainMenu.getBoundingClientRect().top + window.scrollY
-  );
+  let mainMenuTop = Math.floor(mainMenu.getBoundingClientRect().top + window.scrollY);
   let offsetTop = Math.floor(mainMenuTop) || null;
 
   // --- 取menu高度
@@ -619,12 +608,9 @@ function A11yKeyMenu(obj) {
   let control = mainMenu.querySelectorAll('li');
   control.forEach((i) => {
     i.addEventListener('keyup', (e) => {
-      let siblings = Array.prototype.filter.call(
-        i.parentNode.children,
-        (child) => {
-          return child !== i;
-        }
-      );
+      let siblings = Array.prototype.filter.call(i.parentNode.children, (child) => {
+        return child !== i;
+      });
 
       siblings.forEach((x) => {
         x.classList.remove('active');
@@ -981,10 +967,7 @@ class SelectSlider {
         const sliderItem = e.target.nextElementSibling;
         if (sliderItem === null) {
           return;
-        } else if (
-          sliderItem.offsetHeight !== 0 ||
-          sliderItem.offsetHeight === null
-        ) {
+        } else if (sliderItem.offsetHeight !== 0 || sliderItem.offsetHeight === null) {
           slider.jsSlideUp(sliderItem, 300);
         } else {
           slider.jsSlideDown(sliderItem, 300);
@@ -1082,9 +1065,7 @@ function addFile() {
   function pushFileName(e) {
     let _fileLen = e.target.files.length;
     let _fileName = '';
-    const uploadInput = e.target.parentNode
-      .closest('.upload_grp')
-      .querySelector('.upload_file');
+    const uploadInput = e.target.parentNode.closest('.upload_grp').querySelector('.upload_file');
     if (_fileLen > 1) {
       _fileName = `${_fileLen} files selected`;
     } else {
@@ -1284,17 +1265,11 @@ function ScrollTables(obj) {
   function appendEle() {
     el.forEach((i) => {
       let _appendLeftEle = document.createElement('div');
-      _appendLeftEle.setAttribute(
-        'class',
-        'scrolltable-nav scrolltable-nav-left'
-      );
+      _appendLeftEle.setAttribute('class', 'scrolltable-nav scrolltable-nav-left');
       _appendLeftEle.style.height = `${i.parentElement.clientHeight}px`;
 
       let _appendRightEle = document.createElement('div');
-      _appendRightEle.setAttribute(
-        'class',
-        'scrolltable-nav scrolltable-nav-right'
-      );
+      _appendRightEle.setAttribute('class', 'scrolltable-nav scrolltable-nav-right');
       _appendRightEle.style.height = `${i.parentElement.clientHeight}px`;
       i.parentElement.style.position = 'relative';
       if (i.parentElement.querySelector('.scrolltable-nav-left') === null) {
@@ -1417,9 +1392,7 @@ function accordionSlider() {
   });
   document.querySelectorAll('.accordion a').forEach((i) => {
     const itemContent = i.nextElementSibling;
-    const itemLi = i.nextElementSibling.querySelectorAll(
-      '.accordion > ul > li > a'
-    );
+    const itemLi = i.nextElementSibling.querySelectorAll('.accordion > ul > li > a');
     let _itemHeight = 0;
     let _itemContentHeight = 0;
     //取得亂數id
@@ -1484,10 +1457,7 @@ function accordionSlider() {
           //更新子選項的高度
           itemContent.style.height = `${itemContent.dataset.itemHeight}px`;
           //更新父選項的高度
-          accordionParentUL.style.height = `${
-            parseInt(accordionParentUL.dataset.itemHeight) +
-            parseInt(itemContent.dataset.itemHeight)
-          }px`;
+          accordionParentUL.style.height = `${parseInt(accordionParentUL.dataset.itemHeight) + parseInt(itemContent.dataset.itemHeight)}px`;
         } else {
           accordionParentUL.style.height = `${accordionParentUL.dataset.itemHeight}px`;
         }
