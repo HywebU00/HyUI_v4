@@ -198,7 +198,7 @@ function jsParents(element, elementCheck) {
   }
 
   let check = matched.filter((i) => {
-    return i.localName == elementParentsCheck ? i : i.classList == elementParentsCheck ? i : elementParentsCheck === null ? i : '';
+    return i.localName == elementParentsCheck ? i : i.classList.contains(elementParentsCheck) ? i : elementParentsCheck === null ? i : '';
   });
   return check.length === 1 ? check[0] : check;
 }
