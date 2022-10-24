@@ -65,13 +65,11 @@ $container-lg: $container-large-desktop !default;
   margin-left: auto;
   padding-left: floor(calc($gutter / 2));
   padding-right: ceil(calc($gutter / 2));
-  @extend %clearfix;
 }
 /* Creates a wrapper for a series of columns*/
 @mixin make-row($gutter: $grid-gutter-width) {
   margin-left: ceil(calc($gutter / -2));
   margin-right: floor(calc($gutter / -2));
-  @extend %clearfix;
 }
 @mixin gutter($gutter: $grid-gutter-width) {
   position: relative;

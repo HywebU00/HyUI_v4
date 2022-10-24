@@ -106,8 +106,7 @@
         text-decoration: none;
       }
       ul {
-        // display: none;
-        visibility: hidden;
+        display: none;
         overflow: visible;
         width: 99%;
         background: rgba(0, 0, 0, 0.8);
@@ -120,10 +119,9 @@
         list-style: none;
         text-align: left;
         font-size: 0.875em;
-        transition: 0.3s $cubic;
+        // transition: 0.3s $cubic;
         // 第二層選單樣式
         li {
-          float: none;
           a {
             padding: 0.6em 1.2em;
             color: #fff;
@@ -166,9 +164,9 @@
         }
       }
       &.active {
-        > ul {
+        & > ul {
           opacity: 1;
-          visibility: visible;
+          display: block;
         }
       }
     }

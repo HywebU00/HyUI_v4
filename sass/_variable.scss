@@ -22,17 +22,24 @@ $color-word: #222; //一般字的顏色
 $btn-word: #222; //按鈕字的顏色
 // 連結顏色
 $aColor: #00a4f9;
-$aHover: darken($aColor, 10);
-$aFocus: lighten($aColor, 10);
+$aHover: mix($aColor, #000, 90%);
+$aFocus: mix($aColor, #fff, 90%);
 // 表單focus顏色
 $form-focus: #00a4f9; //表單
 $form-btn: #00a4f9; //表單
+// 按鈕設定
+$btn-border: mix($btn-word, #000, 10%);
+$btn-padding: 0.5em 1.25em;
+$btn-radius: 0.2em;
+$btn-bg: #e0e0e0;
+
 //------------------------------------------------------字型--------//
 
 // 字型設定
 $font-family: Lato, 'PingFang TC', 'Helvetica Neue', Helvetica, 微軟正黑體, Arial, sans-serif;
 
 $font-size: 1em;
+$remFontSize: 16;
 
 //------------------------------------------------------格線系統-----//
 
