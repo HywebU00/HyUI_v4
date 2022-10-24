@@ -1,17 +1,14 @@
 .marquee {
   .swiperBox {
     margin: 0;
-    padding: 0;
     list-style: none;
     display: block;
     overflow: hidden;
     background: #fff;
     text-align: left;
-    padding: 0 3em 0 2em;
     position: relative;
     min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 30px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -22,31 +19,31 @@
     .swiper {
       height: 40px;
     }
-    .swiper-arrow {
+    .marquee-arrow {
+      padding: 0;
       position: absolute;
       cursor: pointer;
-      transform: translateY(0%);
-      padding: 15px 10px;
-      left: 0px;
-      background: rgba(255, 255, 255, 0.4);
+      left: 5px;
       z-index: 9;
+      transform: rotate(90deg);
       &::before {
         content: '';
-        width: 20px;
-        height: 30px;
+        width: 10px;
+        height: 20px;
         display: block;
         background: url('../vendor/swiper-8.4.2/ar.svg') center no-repeat;
       }
-      &.swiper-prev {
+      &.marquee-prev {
         top: 0;
       }
-      &.swiper-next {
+      &.marquee-next {
         bottom: 0;
+        left: 4px;
         &::before {
           transform: rotate(180deg);
         }
       }
-      &.swiper-arrow-disabled {
+      &.marquee-arrow-disabled {
         opacity: 0.3;
       }
     }

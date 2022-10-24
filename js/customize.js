@@ -3,7 +3,7 @@
   //cp輪播
   const cpSwiper = new Swiper('.cppic_slider .swiper', {
     slidesPerView: 4,
-    spaceBetween: 30,
+    spaceBetween: 20,
     loop: false,
     // 切換點
     pagination: {
@@ -16,6 +16,14 @@
       nextEl: '.cppic_slider .swiper-arrow.swiper-next', //自行設定樣式
       prevEl: '.cppic_slider .swiper-arrow.swiper-prev', //自行設定樣式
       disabledClass: 'swiper-arrow-disabled', //不可點選樣式
+    },
+    breakpoints: {
+      100: {
+        slidesPerView: 2,
+      },
+      767: {
+        slidesPerView: 4,
+      },
     },
   });
 
@@ -62,9 +70,9 @@
     // 切換點
     // 切換箭頭
     navigation: {
-      nextEl: '.marquee .swiper-arrow.swiper-next', //自行設定樣式
-      prevEl: '.marquee .swiper-arrow.swiper-prev', //自行設定樣式
-      disabledClass: '.marquee swiper-arrow-disabled', //不可點選樣式
+      nextEl: '.marquee .marquee-arrow.marquee-next', //自行設定樣式
+      prevEl: '.marquee .marquee-arrow.marquee-prev', //自行設定樣式
+      disabledClass: '.marquee marquee-arrow-disabled', //不可點選樣式
     },
   });
 })();
