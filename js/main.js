@@ -337,9 +337,6 @@ function MobileMenu() {
   let asideMenuLi = asideMenu.querySelectorAll('li');
   let asideMenuUl = asideMenu.querySelector('ul');
   let asideMenuNextUl = asideMenuUl.querySelectorAll('ul');
-  // let asideMenuNextUl1 = document.querySelectorAll('.sideMainMenu > ul > li > ul');
-  // let asideMenuNextUl2 = document.querySelectorAll('.sideMainMenu > ul > li > ul > li > ul');
-  // let asideMenuNextUl3 = document.querySelectorAll('.sideMainMenu > ul > li > ul > li > ul > li > ul');
   let asideMenuNextUl1 = [];
   let asideMenuNextUl2 = [];
   let asideMenuNextUl3 = [];
