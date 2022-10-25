@@ -158,16 +158,6 @@ $container-lg: $container-large-desktop !default;
     right: percentage(calc($columns / $grid-columns));
   }
 }
-.row {
-  @include make-row();
-  & > div {
-    box-sizing: border-box;
-  }
-}
-.container {
-  position: relative;
-  @include container-fixed;
-}
 
 // 範例
 // .col{

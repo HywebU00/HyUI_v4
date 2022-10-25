@@ -1,20 +1,20 @@
 // 自行加入的JS請寫在這裡
 (function () {
   //cp輪播
-  const cpSwiper = new Swiper('.cppic_slider .swiper', {
+  const cpSwiper = new Swiper('.cp_slider .swiper', {
     slidesPerView: 4,
     spaceBetween: 20,
     loop: false,
     // 切換點
     pagination: {
-      el: '.cppic_slider .swiper-dots',
+      el: '.cp_slider .swiper-dots',
       bulletElement: 'button',
       clickable: true,
     },
     // 切換箭頭
     navigation: {
-      nextEl: '.cppic_slider .swiper-arrow.swiper-next', //自行設定樣式
-      prevEl: '.cppic_slider .swiper-arrow.swiper-prev', //自行設定樣式
+      nextEl: '.cp_slider .swiper-arrow.swiper-next', //自行設定樣式
+      prevEl: '.cp_slider .swiper-arrow.swiper-prev', //自行設定樣式
       disabledClass: 'swiper-arrow-disabled', //不可點選樣式
     },
     breakpoints: {
