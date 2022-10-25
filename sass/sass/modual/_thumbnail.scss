@@ -12,7 +12,7 @@
     display: block;
     @include aSetting(#555);
     position: relative;
-    &:focus {
+    &:focus-visible {
       &:before {
         content: '';
         position: absolute;

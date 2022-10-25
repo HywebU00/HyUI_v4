@@ -23,11 +23,6 @@
   height: calc(#{$line-hight} * #{$value}); // 限定高度為 X * N 的 px 值
 }
 
-//px轉rem 使用方式 Rem(px) px直接輸入數字即可
-@function rem($n: $remFontSize) {
-  @return calc($n / $remFontSize * 1rem);
-}
-
 //範例：
 // p {
 //   background-color: $gray;
@@ -40,3 +35,22 @@
 // p{
 // 	@include text-line(2,23px);                    // 多行（行數、行高）
 // }
+
+// a預設
+@mixin aSetting($color: $aColor, $line: none) {
+  text-decoration: $line;
+  color: $color;
+  &:hover,
+  &:focus-visible {
+    color: $aHover;
+    cursor: pointer;
+  }
+  &:focus:not(:focus-visible) {
+    outline: 0;
+  }
+}
+
+//px轉rem 使用方式 rem(px) px直接輸入數字即可
+@function rem($n: $remFontSize) {
+  @return calc($n / $remFontSize * 1rem);
+}

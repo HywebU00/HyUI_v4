@@ -155,7 +155,7 @@ h2.title {
           border-radius: 3px;
           min-width: 3.5em;
           &:hover,
-          &:focus {
+          &:focus-visible {
             color: #fff;
           }
         }
@@ -170,7 +170,7 @@ h2.title {
         a {
           background: #275cb7;
           &:hover,
-          &:focus {
+          &:focus-visible {
             background: darken(#275cb7, 5%);
           }
         }
@@ -182,7 +182,7 @@ h2.title {
         a {
           background: #387947;
           &:hover,
-          &:focus {
+          &:focus-visible {
             background: darken(#387947, 5%);
           }
         }
@@ -194,7 +194,7 @@ h2.title {
         a {
           background: #c55a3b;
           &:hover,
-          &:focus {
+          &:focus-visible {
             background: darken(#c55a3b, 5%);
           }
         }
@@ -203,7 +203,7 @@ h2.title {
         a {
           background: #c00;
           &:hover,
-          &:focus {
+          &:focus-visible {
             background: darken(#c00, 5%);
           }
         }
@@ -212,7 +212,7 @@ h2.title {
         a {
           background: #eb712e;
           &:hover,
-          &:focus {
+          &:focus-visible {
             background: darken(#eb712e, 5%);
           }
         }
@@ -222,7 +222,7 @@ h2.title {
         a {
           background: #555;
           &:hover,
-          &:focus {
+          &:focus-visible {
             background: darken(#555, 5%);
           }
         }
@@ -231,7 +231,7 @@ h2.title {
         a {
           background: #009999;
           &:hover,
-          &:focus {
+          &:focus-visible {
             background: darken(#009999, 5%);
           }
         }
@@ -241,7 +241,7 @@ h2.title {
         a {
           background: #088ecc;
           &:hover,
-          &:focus {
+          &:focus-visible {
             background: darken(#088ecc, 5%);
           }
         }
@@ -250,7 +250,7 @@ h2.title {
         a {
           background: #6c29a4;
           &:hover,
-          &:focus {
+          &:focus-visible {
             background: darken(#6c29a4, 5%);
           }
         }
@@ -259,7 +259,7 @@ h2.title {
         a {
           background: #430a1f;
           &:hover,
-          &:focus {
+          &:focus-visible {
             background: darken(#430a1f, 5%);
           }
         }
@@ -301,7 +301,7 @@ h2.title {
     a {
       padding: 0.2em 0px;
       display: block;
-      @include aSetting_nocolor;
+      @include aSetting($color-word);
     }
   }
 }

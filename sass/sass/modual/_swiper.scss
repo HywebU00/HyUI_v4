@@ -20,12 +20,12 @@
       height: var(--dotSize);
       border-radius: 50%;
       &:hover,
-      &:focus {
+      &:focus-visible {
         opacity: 1;
         /* 點hover的顏色 */
         background: #21baff;
       }
-      &:focus {
+      &:focus-visible {
         opacity: 1;
         /* 點focus的顏色 */
         background: #ff3e4d;
@@ -39,7 +39,7 @@
           /* 點 active  hover的顏色 */
           background: #ff3e4d;
         }
-        &:focus {
+        &:focus-visible {
           /* 點 active  focus的顏色 */
           background: #ff3e4d;
         }
@@ -121,7 +121,7 @@
     width: 100%;
     height: 100%;
     &:hover,
-    &:focus {
+    &:focus-visible {
       .caption {
         bottom: 0 !important;
       }

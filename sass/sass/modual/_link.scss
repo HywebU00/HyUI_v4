@@ -34,7 +34,7 @@
       position: relative;
       height: 100%;
       box-sizing: border-box;
-      @include aSetting_nocolor;
+      @include aSetting($color-word);
       // @include text-overflow;
       .num {
         position: absolute;
@@ -47,7 +47,7 @@
         }
       }
       &:hover,
-      &:focus {
+      &:focus-visible {
         border: 1px solid $aHover;
         color: $aHover;
       }

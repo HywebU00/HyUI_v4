@@ -17,7 +17,7 @@ footer {
     text-decoration: none;
     color: $primaryColor;
     &:hover,
-    &:focus {
+    &:focus-visible {
       color: darken($primaryColor, 10);
     }
   }
@@ -57,7 +57,7 @@ footer {
         transition: 0.3s ease-out;
         white-space: nowrap;
         &:hover,
-        &:focus {
+        &:focus-visible {
           background: darken($primaryColor, 10);
         }
       }
@@ -81,7 +81,7 @@ footer {
       display: inline-block;
       vertical-align: top;
       position: relative;
-      &:focus {
+      &:focus-visible {
         &:after {
           content: '';
           width: 100%;

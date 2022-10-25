@@ -148,7 +148,7 @@ $menuItems: 15;
                 padding: 0.5em 1em 0.5em 2em !important;
                 border: none;
                 &:hover,
-                &:focus {
+                &:focus-visible {
                 }
               }
               &.hasChild {
@@ -165,7 +165,7 @@ $menuItems: 15;
                   a {
                     padding: 0.5em 1em 0.5em 4em !important;
                     &:hover,
-                    &:focus {
+                    &:focus-visible{
                     }
                     &:after {
                       display: none;
@@ -229,7 +229,7 @@ $menuItems: 15;
             opacity: 0;
           }
           &:hover,
-          &:focus {
+          &:focus-visible {
             &:before {
               left: 0.5em;
               opacity: 1;
@@ -288,7 +288,7 @@ $menuItems: 15;
     background: none;
     border: none;
     &:hover,
-    &:focus {
+    &:focus-visible {
       box-shadow: none;
     }
     &:before {

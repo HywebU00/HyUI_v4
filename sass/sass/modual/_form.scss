@@ -351,7 +351,7 @@ select::-ms-expand {
         pointer-events: none;
 
         &:hover,
-        &:focus {
+        &:focus-visible {
           box-shadow: none;
           border: none !important;
         }
@@ -1349,7 +1349,7 @@ input[type='checkbox']:focus {
 //     }
 
 //     &:hover,
-//     &:focus {
+//     &:focus-visible{
 //         border-color: darken($color-gray, 10);
 //         box-shadow: none; // cursor: not-allowed;
 //     }
@@ -1377,7 +1377,7 @@ input[type='checkbox']:focus {
     border-radius: 4px;
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       cursor: pointer !important;
     }
   }

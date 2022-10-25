@@ -37,7 +37,7 @@
       margin-left: -6px;
     }
     &:hover,
-    &:focus {
+    &:focus-visible {
       background: darken($primaryColor, 10);
       color: #fff;
       text-decoration: none;
@@ -103,7 +103,7 @@
             }
             a {
               display: block;
-              @include aSetting_nocolor;
+              @include aSetting($color-word);
               font-weight: normal;
               text-align: left;
               font-size: 0.938em;

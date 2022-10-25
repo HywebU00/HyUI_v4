@@ -51,7 +51,7 @@
           z-index: 9;
         }
         &:hover,
-        &:focus {
+        &:focus-visible {
           &:before {
             display: block;
             right: 0;

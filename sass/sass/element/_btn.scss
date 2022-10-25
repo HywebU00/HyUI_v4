@@ -20,7 +20,7 @@
     outline: none;
     // @include gradient(lighten($btn-bg, 10), darken($btn-bg, 18), vertical);
   }
-  &:focus {
+  &:focus-visible {
     background: darken($btn-bg, 10); // Old browsers
     border: 1px solid darken($btn-bg, 20);
     cursor: pointer;
@@ -62,7 +62,7 @@
   @include btn_setting;
   text-shadow: none;
   &:hover,
-  &:focus {
+  &:focus-visible {
     color: $btn-word;
     outline: none;
   }
@@ -112,7 +112,7 @@
   border: solid 1px $primaryColor !important;
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     background: darken($primaryColor, 10) !important;
     border: solid 1px $primaryColor !important;
   }
@@ -124,7 +124,7 @@
   border: solid 1px $primaryColor !important;
   text-shadow: none !important;
   &:hover,
-  &:focus {
+  &:focus-visible {
     color: darken($primaryColor, 30) !important;
     background: #b5deff !important;
     border: solid 1px #b5deff !important;
@@ -137,7 +137,7 @@
   border: solid 1px #c3c3c3 !important;
   text-shadow: none !important;
   &:hover,
-  &:focus {
+  &:focus-visible {
     color: darken(#65656e, 15) !important;
     background: #c3c3c3 !important;
     border: solid 1px #c3c3c3 !important;
@@ -150,7 +150,7 @@
   color: #fff !important;
   border: 1px solid #ddd !important;
   &:hover,
-  &:focus {
+  &:focus-visible {
     background: darken($primaryColor, 10) !important;
     border: 1px solid #ddd !important;
   }

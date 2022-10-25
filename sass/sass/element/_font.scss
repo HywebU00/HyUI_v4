@@ -1,29 +1,17 @@
-@mixin fontSetting($FONT-SIZE: $font-size, $WEIGHT: normal) {
-  font-size: $FONT-SIZE;
-  font-weight: $WEIGHT;
-  color: $color-word;
-}
+// @mixin aSetting_nocolor($color: $color-word, $noLine: none) {
+//   color: $color;
+//   text-decoration: $noLine;
+//   &:hover,
+//   &:focus-visible{
+//     color: $aHover;
+//     cursor: pointer;
+//   }
+// }
 
-@mixin aSetting($COLOR: $aColor, $NOLINE: none) {
-  color: $COLOR;
-  text-decoration: $NOLINE;
-  &:hover,
-  &:focus {
-    color: $aHover;
-    cursor: pointer;
-  }
-}
-@mixin aSetting_nocolor($COLOR: $color-word, $NOLINE: none) {
-  color: $COLOR;
-  text-decoration: $NOLINE;
-  &:hover,
-  &:focus {
-    color: $aHover;
-    cursor: pointer;
-  }
-}
 body {
-  @include fontSetting(1em);
+  font-size: 1em;
+  font-weight: normal;
+  color: $color-word;
   line-height: 1.45em;
   font-family: $font-family;
   -webkit-text-size-adjust: none;
@@ -62,6 +50,8 @@ kbd {
     border: none;
   }
 }
+
+// 無障礙文字大小切換
 .font_size {
   display: flex;
   align-items: center;

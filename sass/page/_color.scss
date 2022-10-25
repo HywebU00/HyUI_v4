@@ -1,0 +1,30 @@
+// 同版面，多色快速調整
+// 指定名稱
+$colorStyle: colorStyleA, colorStyleB, colorStyleC;
+// 指定對應顏色
+:root {
+  --colorStyleA: blue;
+  --colorStyleB: red;
+  --colorStyleC: green;
+}
+
+// 迴圈跑出所有css
+@each $item in $colorStyle {
+  #{$item} {
+    .txt {
+      background: $primaryColor;
+      color: var(--#{$item});
+    }
+  }
+}
+
+//以上語法會產生出
+// .colorStyleA .txt {
+//   color: var(--colorStyleA); //color: blue;
+// }
+// .colorStyleB .txt {
+//   color: var(--colorStyleB); //color: red;
+// }
+// .colorStyleC .txt {
+//   color: var(--colorStyleC); //color: green;
+// }

@@ -49,8 +49,8 @@ $sitemapWidth: calc(100% / $sitemapLength);
       font-weight: bold;
       border-bottom: 2px solid $primaryColor;
       &:hover,
-      &:focus {
-        color: $primaryColor !important;
+      &:focus-visible {
+        color: $primaryColor;
         text-decoration: none;
       }
     }

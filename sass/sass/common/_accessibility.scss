@@ -1,9 +1,9 @@
 // 以下皆是設定 測試無障礙關閉js 的純css排版
 
 // tab的外框線
-a:focus {
-  outline: none;
-  box-shadow: 0 0px 0px 2px $aFocus inset;
+a:focus-visible {
+  outline: $aFocus 2px solid;
+  // box-shadow: 0 0px 0px 2px $aFocus inset;
   @include screen('mobile') {
     box-shadow: none;
   }
@@ -41,9 +41,8 @@ a.goCenter {
     display: none;
   }
   &:hover,
-  &:focus {
+  &:focus-visible {
     background: lighten($primaryColor, 10);
-    outline: none;
     top: 0;
     opacity: 1;
     box-shadow: none;
@@ -67,7 +66,7 @@ a.goCenter {
     a {
       color: $primaryColor;
       &:hover,
-      &:focus {
+      &:focus-visible {
         color: $aHover;
       }
     }

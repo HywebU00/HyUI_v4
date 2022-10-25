@@ -2,7 +2,7 @@
   table {
     td {
       a {
-        @include aSetting_nocolor;
+        @include aSetting($color-word);
       }
       &.date {
         text-align: center;

@@ -84,7 +84,7 @@ div.function {
         color: #fff;
         border-radius: 4px;
         &:hover,
-        &:focus {
+        &:focus-visible {
           background: darken($aHover, 0);
           border-color: darken($aHover, 0);
         }
@@ -149,7 +149,7 @@ div.function {
           text-indent: -9999px;
           position: relative;
           &:hover,
-          &:focus {
+          &:focus-visible {
             background: $aHover;
             color: #fff;
             &:before {
@@ -251,7 +251,7 @@ div.function {
       //   margin: 20% auto;
       // }
       &:hover,
-      &:focus {
+      &:focus-visible {
         background: $aHover;
         // img {
         //   filter: invert(100%);
@@ -290,15 +290,13 @@ div.function {
           padding: 0;
           width: 32px;
           height: 32px;
+          border-radius: 50%;
           &:hover,
-          &:focus {
+          &:focus-visible {
             background: transparent;
             img {
               filter: grayscale(1);
             }
-          }
-          &:focus {
-            // outline: 1px solid $primaryColor;
           }
         }
       }

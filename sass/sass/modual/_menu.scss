@@ -127,7 +127,8 @@
             color: #fff;
             font-weight: bold;
             &:hover,
-            &:focus {
+            &:focus-visible {
+              color: #fff;
               background: $aHover;
             }
           }
@@ -139,7 +140,7 @@
           & > a {
             padding-right: 2em;
             &:hover,
-            &:focus {
+            &:focus-visible {
               background: $primaryColor;
             }
             &:after {
