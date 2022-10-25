@@ -1,7 +1,7 @@
 .megaMenu {
   & > ul {
     position: relative;
-    & > li {
+    & > li.active {
       position: initial;
       & > ul {
         display: flex;
@@ -9,7 +9,8 @@
         position: absolute;
         width: 100%;
         gap: 10px;
-        li {
+        & > li {
+          flex-basis: calc((100% - 30px) / 4);
           flex-grow: 1;
         }
         ul {
@@ -18,6 +19,16 @@
           left: 0;
           opacity: 1;
           background: none;
+          padding-left: 20px;
+        }
+      }
+    }
+    ul {
+      li.hasChild {
+        a {
+          &::after {
+            display: none;
+          }
         }
       }
     }

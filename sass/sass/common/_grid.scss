@@ -25,6 +25,9 @@
       max-width: 100% !important;
     }
   }
+  .container {
+    @extend %clearfix;
+  }
 }
 
 // 可用class個別命名
@@ -35,8 +38,8 @@
   }
 }
 // 單欄
-.col-12 {
-}
+// .col-12 {
+// }
 // 兩欄 6-6
 .col-6-6 {
   .col {
