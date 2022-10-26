@@ -237,9 +237,9 @@ menu();
 // -----------------------------------------------------------------------
 
 function topNav() {
-  const mobileArea = document.querySelector('.mobileArea');
-  const nav = document.querySelector('.navigation');
-  const cloneNav = nav.cloneNode(true);
+  let mobileArea = document.querySelector('.mobileArea');
+  let nav = document.querySelector('.navigation');
+  let cloneNav = nav.cloneNode(true);
   mobileArea.append(cloneNav);
   const sideLanguage = document.querySelector('.mobileArea .font_size');
   sideLanguage.remove();
@@ -616,6 +616,10 @@ function a11yKeyMenu() {
   });
 }
 a11yKeyMenu();
+
+// -----------------------------------------------------------------------
+// -----  notice訊息區塊   -------------------------------------------------
+// -----------------------------------------------------------------------
 
 // -----------------------------------------------------------------------
 // -----  notice訊息區塊   -------------------------------------------------
