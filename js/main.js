@@ -1,39 +1,15 @@
-// ================  MENU初始化 v
-// ///////////////// nojs 先移除
-// ================= 手機桌機版本切換及手機版menu設定 v
-// ================= 手機版本search設定
-// ================= menu 訊息區塊 sticky
-// ================= menu的無障礙tab設定
-// ///////////////// notice訊息區塊
-// ////////////////  Accordion設定
-// ================ fatfooter開關
-// //////////////// 多組Tab
-// ================ 置頂go to top
-// /////////////////// 設定img 在IE9+ SAFARI FIREFOX CHROME 可以object-fit
-// /////////////////// form表單 placeholder隱藏/
-// /////////////////// form表單 單個檔案上傳+多個檔案上傳
-// ================ 分享按鈕 share dropdwon
-// ================ 字型大小 font-size
-// /////////////////// category active
-// =================  無障礙快捷鍵盤組合
-// ////////////////// 無障礙切換slick箭頭語系
-// ================ gotoCenter on focus跳到 content
-// ================= 語言模組 無障礙遊走設定
-// table 加上響應式 scroltable-wrapper
-// =================  table 加上 data-title
-// //////////////// lazy load
-// console.log(document.querySelector('.menu'));
-// console.log($('.menu'));
 document.createElement('picture');
-/*-----------------------------------*/
-//////////// nojs 先移除////////////////s
-/*-----------------------------------*/
+
+// -----------------------------------------------------------------------
+// -----  nojs 先移除  ----------------------------------------------------
+// -----------------------------------------------------------------------
 
 let _webHtml = document.documentElement;
 _webHtml.classList.remove('no-js');
-/*-----------------------------------*/
-/////////////// 效果 ///////////
-/*-----------------------------------*/
+
+// -----------------------------------------------------------------------
+// -----  共用效果  -------------------------------------------------------
+// -----------------------------------------------------------------------
 
 const slider = (function () {
   let Slider = {};
@@ -205,11 +181,12 @@ function jsParents(element, elementCheck) {
   });
   return check.length === 1 ? check[0] : check;
 }
-/*-----------------------------------*/
-/////////////// MENU初始化 ///////////
-/*-----------------------------------*/
 
-function Menu() {
+// -----------------------------------------------------------------------
+// -----  MENU初始化 ------------------------------------------------------
+// -----------------------------------------------------------------------
+
+function menu() {
   // --- menu初始化 新增側欄選單
   let body = document.querySelector('body');
   let sidebar = document.createElement('aside');
@@ -253,10 +230,13 @@ function Menu() {
   cloneSearch.classList.remove('search');
   body.prepend(cloneSearch);
 }
-Menu();
+menu();
 
-// --- 複製手機版nav選單
-function TopNav() {
+// -----------------------------------------------------------------------
+// ----- 複製手機版nav選單 -------------------------------------------------
+// -----------------------------------------------------------------------
+
+function topNav() {
   let mobileArea = document.querySelector('.mobileArea');
   let nav = document.querySelector('.navigation');
   let cloneNav = nav.cloneNode(true);
@@ -264,12 +244,13 @@ function TopNav() {
   let sideLanguage = document.querySelector('.mobileArea .font_size');
   sideLanguage.remove();
 }
-TopNav();
+topNav();
 
-/*-----------------------------------*/
-///////// 手機版本search設定 ////////////
-/*-----------------------------------*/
-function MobileSearch(obj) {
+// -----------------------------------------------------------------------
+// ----- 手機版本search設定 ------------------------------------------------
+// -----------------------------------------------------------------------
+
+function mobileSearch(obj) {
   let searchMode = true;
   let body = document.querySelector('body');
   let searchCtrlBtn = obj.searchCtrlBtn;
@@ -277,7 +258,7 @@ function MobileSearch(obj) {
   let mobileSearch = document.querySelector('.mobileSearch');
 
   function stopPop() {
-    //點擊時 不觸發冒泡事件
+    // --- 複點擊時 不觸發冒泡事件
     mobileSearch,
       searchCtrlBtn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -308,15 +289,16 @@ function MobileSearch(obj) {
     }
   });
 }
-MobileSearch({
+mobileSearch({
   searchCtrlBtn: document.querySelector('.searchCtrlBtn'),
   control: document.querySelector('.mobileSearch'),
 });
 
-/*-----------------------------------*/
-//// 手機桌機版本切換及手機版menu設定 //////
-/*-----------------------------------*/
-function MobileMenu() {
+// -----------------------------------------------------------------------
+// ----- 手機桌機版本切換及手機版menu設定 -------------------------------------
+// -----------------------------------------------------------------------
+
+function mobileMenu() {
   let body = document.querySelector('body');
   let windowWidth = window.outerWidth;
   let windowSmall = 768;
@@ -326,13 +308,10 @@ function MobileMenu() {
   let sidebarCtrlBtn = document.querySelector('.sidebarCtrlBtn');
   let menuOverlay = document.querySelector('.menuOverlay');
   let mobileArea = document.querySelector('.mobileArea');
-  /*-----------------------------------*/
-  /////////////// PC版設定 /////////////
-  /*-----------------------------------*/
+
+  // ---  PC版設定
   let menu_liHasChild = document.querySelector('.header .mainMenu').querySelectorAll('li.hasChild');
-  /*-----------------------------------*/
-  /////////////// 手機版設定 /////////////
-  /*-----------------------------------*/
+  // ---  手機版設定
   let asideMenu = document.querySelector('.sideMainMenu');
   let asideMenuLi = asideMenu.querySelectorAll('li');
   let asideMenuUl = asideMenu.querySelector('ul');
@@ -453,9 +432,7 @@ function MobileMenu() {
     jsFadeOut(menuOverlay);
     hideSidebar();
   });
-  /*-----------------------------------*/
-  /////////////// PC版設定 /////////////
-  /*-----------------------------------*/
+  // --- PC版設定
   function pcSet() {
     hideSidebar();
     body.classList.remove('noscroll');
@@ -532,13 +509,13 @@ function MobileMenu() {
     });
   }
 }
-MobileMenu();
+mobileMenu();
 
-/*-----------------------------------*/
-///////  menu 訊息區塊 sticky  /////////
-/*-----------------------------------*/
+// -----------------------------------------------------------------------
+// -----  menu 訊息區塊 sticky  -------------------------------------------
+// -----------------------------------------------------------------------
 
-function Navbar() {
+function navbar() {
   let windowWidth = window.outerWidth;
   let windowWidthSmall = 768;
   let mainMenu = document.querySelector('.mainMenu');
@@ -595,13 +572,13 @@ function Navbar() {
     window.onload = sticky(offsetTop);
   }
 }
-Navbar();
+navbar();
 
-/*-----------------------------------*/
-//////////// menu的無障礙tab設定 /////////
-/*-----------------------------------*/
+// -----------------------------------------------------------------------
+// -----  menu的無障礙tab設定   --------------------------------------------
+// -----------------------------------------------------------------------
 
-function A11yKeyMenu(obj) {
+function a11yKeyMenu() {
   let mainMenu = document.querySelector('.mainMenu') || null;
 
   // --- keyup時
@@ -639,11 +616,12 @@ function A11yKeyMenu(obj) {
     });
   });
 }
-A11yKeyMenu();
+a11yKeyMenu();
 
-/*-----------------------------------*/
-//////////// notice訊息區塊 ////////////
-/*-----------------------------------*/
+// -----------------------------------------------------------------------
+// -----  notice訊息區塊   -------------------------------------------------
+// -----------------------------------------------------------------------
+
 document.querySelectorAll('[class*="notice"] a.close').forEach((i) => {
   i.addEventListener('click', (e) => {
     i.parentNode.style.display = 'none';
@@ -651,9 +629,10 @@ document.querySelectorAll('[class*="notice"] a.close').forEach((i) => {
   });
 });
 
-/*-----------------------------------*/
-/////////////// FatFooter ///////////
-/*-----------------------------------*/
+// -----------------------------------------------------------------------
+// -----  fatFooter   ----------------------------------------------------
+// -----------------------------------------------------------------------
+
 function fatFooter(obj) {
   let el = obj.name || null; // --- 控制的對象
 
@@ -686,9 +665,9 @@ fatFooter({
   name: document.querySelector('.btn-fatfooter'),
 });
 
-/*-----------------------------------*/
-////////////////多組Tab////////////////
-/*-----------------------------------*/
+// -----------------------------------------------------------------------
+// -----  多組Tab   ------------------------------------------------------
+// -----------------------------------------------------------------------
 
 function TabFunction() {
   let activeClass = 'active'; //啟動的 class
@@ -801,9 +780,10 @@ function TabFunction() {
 }
 TabFunction();
 
-/*-----------------------------------*/
-/////////////// FontSize ///////////
-/*-----------------------------------*/
+// -----------------------------------------------------------------------
+// -----  FontSize   -----------------------------------------------------
+// -----------------------------------------------------------------------
+
 function fontSize(obj) {
   let el = obj.name || null; // --- 控制的對象
   let control = obj.control || null; // --- 控制的對象名稱
@@ -886,9 +866,10 @@ fontSize({
   control: document.querySelector('body'), // --- 控制的對象名稱
 });
 
-/*-----------------------------------*/
-///////////////置頂go to top////////////
-/*-----------------------------------*/
+// -----------------------------------------------------------------------
+// -----  置頂go to top   -------------------------------------------------
+// -----------------------------------------------------------------------
+
 function scrollToTop(obj) {
   let el = obj.name || null; // --- 控制的對象
 
@@ -950,9 +931,9 @@ scrollToTop({
   name: document.querySelector('.scrollToTop'), // --- 監聽的對象
 });
 
-/*-----------------------------------*/
-//////// 語言模組 無障礙遊走設定  ////////
-/*-----------------------------------*/
+// -----------------------------------------------------------------------
+// -----  語言模組 dropdwon   ---------------------------------------------
+// -----------------------------------------------------------------------
 
 class SelectSlider {
   constructor(obj) {
@@ -1025,23 +1006,23 @@ class SelectSlider {
     this.sliderFocusout();
   }
 }
-
 const languageSelect = new SelectSlider({
   name: document.querySelectorAll('.language'), // --- 控制的對象
   control: document.querySelectorAll('.language a'), // --- 監聽的對象
 });
 languageSelect.initial();
 
-/*------------------------------------*/
-//////////分享按鈕 share dropdwon////////
-/*------------------------------------*/
+// -----------------------------------------------------------------------
+// -----  分享按鈕 share dropdwon   ---------------------------------------
+// -----------------------------------------------------------------------
+
 function shareBtnFunction() {
   //創造一個a連結的按鈕
   const shareUl = document.querySelector('.share');
   const btn = document.createElement('a');
   if (shareUl) {
     btn.setAttribute('class', 'shareButton');
-    btn.setAttribute('href', '#');
+    btn.setAttribute('role', 'button');
     btn.textContent = 'share分享按鈕';
     shareUl.insertBefore(btn, shareUl.childNodes[0]);
   }
@@ -1053,9 +1034,10 @@ function shareBtnFunction() {
 }
 shareBtnFunction();
 
-/*------------------------------------*/
-/////form表單 單個檔案上傳+多個檔案上傳/////
-/*------------------------------------*/
+// -----------------------------------------------------------------------
+// -----  form表單 單個檔案上傳+多個檔案上傳   --------------------------------
+// -----------------------------------------------------------------------
+
 function addFile() {
   const addFileName = document.querySelectorAll('.check_file');
   addFileName.forEach((i) => {
@@ -1076,9 +1058,10 @@ function addFile() {
 }
 addFile();
 
-/*-----------------------------*/
-/////form表單 placeholder隱藏?? /////
-/*-----------------------------*/
+// -----------------------------------------------------------------------
+// -----  checkboxBlur 失去焦點   -----------------------------------------
+// -----------------------------------------------------------------------
+
 function checkboxBlur() {
   const checkboxList = document.querySelectorAll('input[type="checkbox"]');
   checkboxList.forEach((i) => {
@@ -1089,9 +1072,10 @@ function checkboxBlur() {
 }
 checkboxBlur();
 
-/*-----------------------------------*/
-/////////// category active  //////////
-/*-----------------------------------*/
+// -----------------------------------------------------------------------
+// -----  category active    ---------------------------------------------
+// -----------------------------------------------------------------------
+
 function categoryActive() {
   const categoryList = document.querySelectorAll('.category');
   categoryList.forEach((i) => {
@@ -1113,9 +1097,10 @@ function categoryActive() {
 }
 categoryActive();
 
-/*------------------------------------*/
-/////gotoCenter on focus跳到 content/////
-/*------------------------------------*/
+// -----------------------------------------------------------------------
+// -----  gotoCenter on focus跳到 content   ------------------------------
+// -----------------------------------------------------------------------
+
 function gotoCenter() {
   const goCenterTag = document.querySelector('a.goCenter');
   const acTag = document.querySelector('#aC');
@@ -1138,9 +1123,10 @@ function gotoCenter() {
 }
 gotoCenter();
 
-/*-----------------------------------*/
-/////////// 無障礙快捷鍵盤組合  //////////
-/*-----------------------------------*/
+// -----------------------------------------------------------------------
+// -----  無障礙快捷鍵盤組合   ----------------------------------------------
+// -----------------------------------------------------------------------
+
 function a11yKeyCode() {
   let search = document.querySelector('.search input[type="text"]');
   let header = document.querySelector('.header .accesskey');
@@ -1199,11 +1185,11 @@ function a11yKeyCode() {
 }
 a11yKeyCode();
 
-/*-----------------------------------*/
-//////// 無障礙切換slick箭頭語系  ////////
-/*-----------------------------------*/
-
+// -----------------------------------------------------------------------
+// -----  無障礙錨點切換語系   ----------------------------------------------
+// -----------------------------------------------------------------------
 // 無障礙錨點切換語系，更改accesskey的title名稱
+
 function switchA11TitleName() {
   const webLang = document.querySelector('html').getAttribute('lang');
   const headerTitle = document.querySelector('.header .accesskey');
@@ -1225,9 +1211,10 @@ function switchA11TitleName() {
 }
 switchA11TitleName();
 
-// /*------------------------------------*/
-// //////////table 加上 data-title//////////
-// /*------------------------------------*/
+// -----------------------------------------------------------------------
+// -----   table_list樣式 加上 data-title   -------------------------------
+// -----------------------------------------------------------------------
+
 function tableAddDataAttributes() {
   const el = document.querySelectorAll('.table_list');
   function setTrAttr(i) {
@@ -1236,7 +1223,7 @@ function tableAddDataAttributes() {
     trList.forEach((trItem) => {
       const tdList = trItem.querySelectorAll('td');
       tdList.forEach((i, idx) => {
-        tdList[idx].setAttribute('data-title2', `${thList[idx].textContent}`);
+        tdList[idx].setAttribute('data-title', `${thList[idx].textContent}`);
       });
     });
   }
@@ -1249,7 +1236,11 @@ function tableAddDataAttributes() {
 }
 tableAddDataAttributes();
 
-function ScrollTables(obj) {
+// -----------------------------------------------------------------------
+// -----   scrollTables   ------------------------------------------------
+// -----------------------------------------------------------------------
+
+function scrollTables(obj) {
   let el = obj.name || null; // --- 按鈕列表名稱
 
   //檢查父層有沒有 table_list
@@ -1305,7 +1296,6 @@ function ScrollTables(obj) {
       }
     });
   }
-
   //當父層滾輪滾動
   el.forEach((i) => {
     i.parentElement.addEventListener('scroll', () => {
@@ -1342,7 +1332,6 @@ function ScrollTables(obj) {
       }
     });
   });
-
   //點擊左右按鈕時滾動畫面
   //點擊左邊按鈕
   const leftBtn = document.querySelectorAll('.scrolltable-left-btn');
@@ -1363,14 +1352,14 @@ function ScrollTables(obj) {
     });
   }
 }
-
-ScrollTables({
+scrollTables({
   name: document.querySelectorAll('table'),
 });
 
-/*-----------------------------------*/
-////////////// lazy load //////////////
-/*-----------------------------------*/
+// -----------------------------------------------------------------------
+// -----   lazy load   ---------------------------------------------------
+// -----------------------------------------------------------------------
+
 let lazyLoadInstance = new LazyLoad({
   elements_selector: 'img.lazy',
   placeholder: '/images/basic/placeholder.gif',
@@ -1379,10 +1368,11 @@ let lazyLoadInstance = new LazyLoad({
   threshold: 0,
 });
 
-/*-----------------------------------*/
-//////////// Accordion設定 ////////////
-/*-----------------------------------*/
-//! 這版本只能放兩層
+// -----------------------------------------------------------------------
+// -----   Accordion設定   ------------------------------------------------
+// -----------------------------------------------------------------------
+
+// 只能放兩層
 function accordionSlider() {
   //取消Ａ連結預設行為
   document.querySelectorAll('.accordion a').forEach((i) => {
@@ -1466,5 +1456,4 @@ function accordionSlider() {
     });
   });
 }
-//!
 accordionSlider();
