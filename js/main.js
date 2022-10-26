@@ -408,16 +408,6 @@ function mobileMenu() {
     });
   });
 
-  // --- 行動版/電腦版切換
-  let resizeTimer;
-  window.addEventListener('resize', (e) => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      mobileSearch.style.display = 'none';
-      switchMenu();
-    }, 50);
-  });
-
   // --- 點擊選單按鈕 執行 展開側邊選單函式
   sidebarCtrlBtn.addEventListener('click', (e) => {
     showSidebar();
@@ -461,13 +451,22 @@ function mobileMenu() {
   // --- 切換 PC/Mobile 選單
   function switchMenu() {
     if (windowWidth < windowSmall) {
-      setMenuUlHeight();
-      mobileMenuSlider();
       mobileSet();
     } else {
       pcSet();
     }
   }
+
+  // --- 行動版/電腦版切換
+  let resizeTimer;
+  window.addEventListener('load resize', (e) => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      mobileSearch.style.display = 'none';
+      windowWidth = window.outerWidth;
+      switchMenu();
+    }, 50);
+  });
 
   // --- 展開側邊選單函式
   function showSidebar() {
