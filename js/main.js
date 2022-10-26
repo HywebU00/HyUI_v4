@@ -4,7 +4,7 @@ document.createElement('picture');
 // -----  nojs 先移除  ----------------------------------------------------
 // -----------------------------------------------------------------------
 
-let _webHtml = document.documentElement;
+const _webHtml = document.documentElement;
 _webHtml.classList.remove('no-js');
 
 // -----------------------------------------------------------------------
@@ -165,9 +165,9 @@ function jsRemoveClass(element, className) {
 
 // jsParents 可使用tag或是class，單筆可以直接使用，多筆需要用forEach去調用每一個parents
 function jsParents(element, elementCheck) {
-  let elementParentsCheck = elementCheck || null;
-  let matched = [];
-  let elementArr = [];
+  const elementParentsCheck = elementCheck || null;
+  const matched = [];
+  const elementArr = [];
   !element.item ? elementArr.push(element) : (elementArr = element);
   elementArr.forEach((s) => {
     let current = s;
@@ -176,7 +176,7 @@ function jsParents(element, elementCheck) {
       current = current.parentNode;
     }
   });
-  let check = matched.filter((i) => {
+  const check = matched.filter((i) => {
     return i.localName == elementParentsCheck ? i : i.classList.contains(elementParentsCheck) ? i : elementParentsCheck === null ? i : '';
   });
   return check.length === 1 ? check[0] : check;
@@ -188,43 +188,43 @@ function jsParents(element, elementCheck) {
 
 function menu() {
   // --- menu初始化 新增側欄選單
-  let body = document.querySelector('body');
-  let sidebar = document.createElement('aside');
+  const body = document.querySelector('body');
+  const sidebar = document.createElement('aside');
   sidebar.className = 'sidebar';
   sidebar.style = ';opacity:0';
   sidebar.innerHTML = '<div class="mobileArea"><button type="button" class="sidebarClose">關閉</button></div><div class="menuOverlay"></div>';
   body.prepend(sidebar);
 
-  let mainMenu = document.querySelector('.mainMenu');
-  let hasChild = mainMenu.querySelectorAll('li ul');
+  const mainMenu = document.querySelector('.mainMenu');
+  const hasChild = mainMenu.querySelectorAll('li ul');
   hasChild.forEach((i) => {
     i.parentNode.classList.add('hasChild');
   });
 
   // --- menu初始化 新增側欄選單按鈕
-  let sidebarCtrlBtn = document.createElement('button');
+  const sidebarCtrlBtn = document.createElement('button');
   sidebarCtrlBtn.className = 'sidebarCtrlBtn';
   sidebarCtrlBtn.innerHTML = '側欄選單<span></span><span></span><span></span>';
   sidebarCtrlBtn.setAttribute('type', 'button');
 
   // --- menu初始化 新增搜尋按鈕
-  let searchCtrlBtn = document.createElement('button');
-  let siteHeader = document.querySelector('.header .container');
+  const searchCtrlBtn = document.createElement('button');
+  const siteHeader = document.querySelector('.header .container');
   searchCtrlBtn.className = 'searchCtrlBtn';
   searchCtrlBtn.innerHTML = '查詢';
   searchCtrlBtn.setAttribute('type', 'button');
   siteHeader.prepend(searchCtrlBtn, sidebarCtrlBtn);
 
   // --- menu初始化 複製手機版側欄選單
-  let mobileArea = document.querySelector('.mobileArea');
-  let cloneMenu = mainMenu.cloneNode(true);
+  const mobileArea = document.querySelector('.mobileArea');
+  const cloneMenu = mainMenu.cloneNode(true);
   cloneMenu.classList.add('sideMainMenu');
   cloneMenu.classList.remove('mainMenu', 'megaMenu', 'menu');
   mobileArea.append(cloneMenu);
 
   // --- 複製搜尋到手機版側欄
-  let search = document.querySelector('.search');
-  let cloneSearch = search.cloneNode(true);
+  const search = document.querySelector('.search');
+  const cloneSearch = search.cloneNode(true);
   cloneSearch.removeAttribute('style');
   cloneSearch.classList.add('mobileSearch');
   cloneSearch.classList.remove('search');
@@ -237,11 +237,11 @@ menu();
 // -----------------------------------------------------------------------
 
 function topNav() {
-  let mobileArea = document.querySelector('.mobileArea');
-  let nav = document.querySelector('.navigation');
-  let cloneNav = nav.cloneNode(true);
+  const mobileArea = document.querySelector('.mobileArea');
+  const nav = document.querySelector('.navigation');
+  const cloneNav = nav.cloneNode(true);
   mobileArea.append(cloneNav);
-  let sideLanguage = document.querySelector('.mobileArea .font_size');
+  const sideLanguage = document.querySelector('.mobileArea .font_size');
   sideLanguage.remove();
 }
 topNav();
@@ -252,10 +252,10 @@ topNav();
 
 function mobileSearch(obj) {
   let searchMode = true;
-  let body = document.querySelector('body');
-  let searchCtrlBtn = obj.searchCtrlBtn;
-  let control = obj.control;
-  let mobileSearch = document.querySelector('.mobileSearch');
+  const body = document.querySelector('body');
+  const searchCtrlBtn = obj.searchCtrlBtn;
+  const control = obj.control;
+  const mobileSearch = document.querySelector('.mobileSearch');
 
   function stopPop() {
     // --- 複點擊時 不觸發冒泡事件
@@ -299,26 +299,26 @@ mobileSearch({
 // -----------------------------------------------------------------------
 
 function mobileMenu() {
-  let body = document.querySelector('body');
-  let windowWidth = window.outerWidth;
-  let windowSmall = 768;
-  let sidebar = document.querySelector('.sidebar');
-  let mobileSearch = document.querySelector('.mobileSearch');
-  let sidebarClose = document.querySelector('.sidebarClose');
-  let sidebarCtrlBtn = document.querySelector('.sidebarCtrlBtn');
-  let menuOverlay = document.querySelector('.menuOverlay');
-  let mobileArea = document.querySelector('.mobileArea');
+  const body = document.querySelector('body');
+  const windowWidth = window.outerWidth;
+  const windowSmall = 768;
+  const sidebar = document.querySelector('.sidebar');
+  const mobileSearch = document.querySelector('.mobileSearch');
+  const sidebarClose = document.querySelector('.sidebarClose');
+  const sidebarCtrlBtn = document.querySelector('.sidebarCtrlBtn');
+  const menuOverlay = document.querySelector('.menuOverlay');
+  const mobileArea = document.querySelector('.mobileArea');
 
   // ---  PC版設定
-  let menu_liHasChild = document.querySelector('.header .mainMenu').querySelectorAll('li.hasChild');
+  const menu_liHasChild = document.querySelector('.header .mainMenu').querySelectorAll('li.hasChild');
   // ---  手機版設定
-  let asideMenu = document.querySelector('.sideMainMenu');
-  let asideMenuLi = asideMenu.querySelectorAll('li');
-  let asideMenuUl = asideMenu.querySelector('ul');
-  let asideMenuNextUl = asideMenuUl.querySelectorAll('ul');
-  let asideMenuNextUl1 = [];
-  let asideMenuNextUl2 = [];
-  let asideMenuNextUl3 = [];
+  const asideMenu = document.querySelector('.sideMainMenu');
+  const asideMenuLi = asideMenu.querySelectorAll('li');
+  const asideMenuUl = asideMenu.querySelector('ul');
+  const asideMenuNextUl = asideMenuUl.querySelectorAll('ul');
+  const asideMenuNextUl1 = [];
+  const asideMenuNextUl2 = [];
+  const asideMenuNextUl3 = [];
 
   [...asideMenuUl.children]
     .filter((child) => {
@@ -349,7 +349,7 @@ function mobileMenu() {
   });
 
   // --- 設定所有UL的高度，有高度才會有縮起來得效果，最多四層
-  let mobileAreaOut = mobileArea.offsetWidth;
+  const mobileAreaOut = mobileArea.offsetWidth;
   sidebar.style = 'display:block;opacity:0';
   mobileArea.style = `transform: translateX(${mobileAreaOut * -1}px)`;
   asideMenuUl.classList.add('firstLv');
@@ -377,13 +377,13 @@ function mobileMenu() {
   asideMenu.querySelectorAll('.hasChild').forEach((i) => {
     i.addEventListener('click', (e) => {
       e.preventDefault();
-      let siblings = [...i.parentNode.children].filter((child) => {
+      const siblings = [...i.parentNode.children].filter((child) => {
         return child !== i;
       });
-      let content = i.querySelector('ul');
-      let secondHeight = content.dataset.secondHeight || 0;
-      let thirdHeight = content.dataset.thirdHeight || 0;
-      let fourthHeight = content.dataset.fourthHeight || 0;
+      const content = i.querySelector('ul');
+      const secondHeight = content.dataset.secondHeight || 0;
+      const thirdHeight = content.dataset.thirdHeight || 0;
+      const fourthHeight = content.dataset.fourthHeight || 0;
       if (!i.classList.contains('active')) {
         i.classList.add('active');
         if (i.parentNode.classList.contains('firstLv')) {
@@ -515,10 +515,10 @@ mobileMenu();
 // -----------------------------------------------------------------------
 
 function navbar() {
-  let windowWidth = window.outerWidth;
-  let windowWidthSmall = 768;
-  let mainMenu = document.querySelector('.mainMenu');
-  let main = document.querySelector('.main');
+  const windowWidth = window.outerWidth;
+  const windowWidthSmall = 768;
+  const mainMenu = document.querySelector('.mainMenu');
+  const main = document.querySelector('.main');
   let menuHeight = Math.floor(mainMenu.offsetHeight);
   let mainMenuTop = Math.floor(mainMenu.getBoundingClientRect().top + window.scrollY);
   let offsetTop = Math.floor(mainMenuTop) || null;
@@ -578,13 +578,13 @@ navbar();
 // -----------------------------------------------------------------------
 
 function a11yKeyMenu() {
-  let mainMenu = document.querySelector('.mainMenu') || null;
+  const mainMenu = document.querySelector('.mainMenu') || null;
 
   // --- keyup時
-  let control = mainMenu.querySelectorAll('li');
+  const control = mainMenu.querySelectorAll('li');
   control.forEach((i) => {
     i.addEventListener('keyup', (e) => {
-      let siblings = Array.prototype.filter.call(i.parentNode.children, (child) => {
+      const siblings = Array.prototype.filter.call(i.parentNode.children, (child) => {
         return child !== i;
       });
 
@@ -597,8 +597,8 @@ function a11yKeyMenu() {
     });
   });
 
-  // --- 不focuse時
-  let lastA = mainMenu.querySelectorAll('a').length - 1;
+  // --- 不focus時
+  const lastA = mainMenu.querySelectorAll('a').length - 1;
   mainMenu.querySelectorAll('a')[lastA].addEventListener('focusout', () => {
     mainMenu.querySelectorAll('li').forEach((i) => {
       i.classList.remove('active');
@@ -606,7 +606,7 @@ function a11yKeyMenu() {
   });
 
   // --- child keyup時
-  let childControl = mainMenu.querySelectorAll('li.hasChild > a');
+  const childControl = mainMenu.querySelectorAll('li.hasChild > a');
 
   childControl.forEach((i) => {
     i.addEventListener('keyup', (e) => {
@@ -633,7 +633,7 @@ document.querySelectorAll('[class*="notice"] a.close').forEach((i) => {
 // -----------------------------------------------------------------------
 
 function fatFooter(obj) {
-  let el = obj.name || null; // --- 控制的對象
+  const el = obj.name || null; // --- 控制的對象
 
   // --- 點擊時
   el.addEventListener('click', () => {
@@ -669,110 +669,110 @@ fatFooter({
 // -----------------------------------------------------------------------
 
 function TabFunction() {
-  let activeClass = 'active'; //啟動的 class
-  let tabSet = document.querySelectorAll('.tabSet'); //tab名稱
+  const activeClass = 'active'; //啟動的 class
+  const tabSet = document.querySelectorAll('.tabSet'); //tab名稱
 
   tabSet.forEach((a) => {
-    let _tabBtn = a.querySelectorAll('.tabItems button'); //頁籤按鈕
-    let _tabBtnLength = _tabBtn.length; //頁籤按鈕數量
-    let _tabContent = a.querySelectorAll('.tabContentGroup .tabContent'); //頁籤內容
-    _tabBtn[0].classList.add('active');
-    _tabContent[0].classList.add('active');
+    const tabBtn = a.querySelectorAll('.tabItems button'); //頁籤按鈕
+    const tabBtnLength = tabBtn.length; //頁籤按鈕數量
+    const tabContent = a.querySelectorAll('.tabContentGroup .tabContent'); //頁籤內容
+    tabBtn[0].classList.add('active');
+    tabContent[0].classList.add('active');
 
-    for (let i = 0; i < _tabBtnLength; i++) {
+    tabBtn.forEach((v, i) => {
       (function () {
-        let _this = _tabBtn[i]; //綁定這一個頁籤按鈕
-        let _thisContent = _tabContent[i]; //綁定這一個頁籤內容
-        let _thisPrevItem = _tabContent[i - 1]; //綁定前一個頁籤按鈕
-        let _itemAllA = _thisContent.querySelectorAll('[href], input'); //這一個頁籤內容所有a和input項目
-        let _prevItemAllA;
-        if (_thisPrevItem !== undefined) {
-          _prevItemAllA = _thisPrevItem.querySelectorAll('[href], input'); //前一個頁籤內容所有a和input項目
+        const thisBtn = tabBtn[i]; //綁定這一個頁籤按鈕
+        const thisContent = tabContent[i]; //綁定這一個頁籤內容
+        const thisPrevItem = tabContent[i - 1]; //綁定前一個頁籤按鈕
+        const itemAllA = thisContent.querySelectorAll('[href], input'); //這一個頁籤內容所有a和input項目
+        let prevItemAllA;
+        if (thisPrevItem !== undefined) {
+          prevItemAllA = thisPrevItem.querySelectorAll('[href], input'); //前一個頁籤內容所有a和input項目
         }
-        let _isFirstTab = i === 0; //如果是第一個頁籤
-        let _isLastTab = i === _tabBtnLength - 1; //如果是最後一個頁籤
-        let _itemFirstA = _itemAllA[0]; //頁籤內容第一個a或是input
-        let _itemLastA = _itemAllA[_itemAllA.length - 1]; //頁籤內容最後一個a或是input
-        let _prevItemLastA;
-        if (_thisPrevItem !== undefined) {
-          _prevItemLastA = _prevItemAllA[_prevItemAllA.length - 1]; //前一個頁籤的最後一個a或是input
+        const isFirstTab = i === 0; //如果是第一個頁籤
+        const isLastTab = i === tabBtnLength - 1; //如果是最後一個頁籤
+        const itemFirstA = itemAllA[0]; //頁籤內容第一個a或是input
+        const itemLastA = itemAllA[itemAllA.length - 1]; //頁籤內容最後一個a或是input
+        let prevItemLastA;
+        if (thisPrevItem !== undefined) {
+          prevItemLastA = prevItemAllA[prevItemAllA.length - 1]; //前一個頁籤的最後一個a或是input
         }
 
-        // _this頁籤觸發focus內容裡的第一個a
-        _this.addEventListener('keydown', (e) => {
+        // thisBtn頁籤觸發focus內容裡的第一個a
+        thisBtn.addEventListener('keydown', (e) => {
           //頁籤第幾個按鈕觸發時
           if (e.which === 9 && !e.shiftKey) {
             //e.which偵測按下哪個案件，9代表tab，shiftKey代表shift
             e.preventDefault();
-            startTab(i, _tabBtn, _tabContent); //啟動頁籤切換功能
-            if (_itemAllA.length) {
+            startTab(i, tabBtn, tabContent); //啟動頁籤切換功能
+            if (itemAllA.length) {
               //type number = true，0是false
-              _itemFirstA.focus(); //第一個a或是input focus
+              itemFirstA.focus(); //第一個a或是input focus
             } else {
-              _tabBtn[i + 1].focus(); //當內容沒有a或是input跳轉下一個tab
+              tabBtn[i + 1].focus(); //當內容沒有a或是input跳轉下一個tab
             }
-          } else if (e.which === 9 && e.shiftKey && !_isFirstTab) {
+          } else if (e.which === 9 && e.shiftKey && !isFirstTab) {
             e.preventDefault();
 
-            startTab(i - 1, _tabBtn, _tabContent); //啟動頁籤切換功能
-            if (_prevItemAllA.length) {
-              _prevItemLastA.focus(); //前一個頁籤內容的最後一個a或是input focus
+            startTab(i - 1, tabBtn, tabContent); //啟動頁籤切換功能
+            if (prevItemAllA.length) {
+              prevItemLastA.focus(); //前一個頁籤內容的最後一個a或是input focus
             } else {
-              _tabBtn[i - 1].focus(); //當內容沒有a或是input跳轉上一個tab
+              tabBtn[i - 1].focus(); //當內容沒有a或是input跳轉上一個tab
             }
           }
         });
 
         //當按下shift+tab且為該內容的第一個a或是input
         //將focus目標轉回tab頁籤上，呼叫上方功能startTab(i - 1);往前一個頁籤
-        if (_itemFirstA !== undefined) {
-          _itemFirstA.addEventListener('keydown', (e) => {
+        if (itemFirstA !== undefined) {
+          itemFirstA.addEventListener('keydown', (e) => {
             if (e.which === 9 && e.shiftKey) {
               e.preventDefault();
-              _tabBtn[i].focus();
+              tabBtn[i].focus();
             }
           });
         }
         //當按下shift+tab且為該內容的最後一個a或是input
         //focus到下一個頁籤
-        if (_itemLastA !== undefined) {
-          _itemLastA.addEventListener('keydown', (e) => {
-            if (e.which === 9 && !e.shiftKey && !_isLastTab) {
+        if (itemLastA !== undefined) {
+          itemLastA.addEventListener('keydown', (e) => {
+            if (e.which === 9 && !e.shiftKey && !isLastTab) {
               e.preventDefault();
-              _tabBtn[i + 1].focus();
+              tabBtn[i + 1].focus();
             }
           });
         }
       })();
-    }
-    mouseClick(_tabBtn, _tabContent, _tabBtnLength);
+    });
+    mouseClick(tabBtn, tabContent, tabBtn);
   });
 
   // --- 滑鼠點擊事件
-  function mouseClick(_tabBtn, _tabContent, _tabBtnLength) {
-    for (let i = 0; i < _tabBtnLength; i++) {
-      _tabBtn[i].addEventListener(
+  function mouseClick(tabBtn, tabContent, tabBtn) {
+    tabBtn.forEach((v, i) => {
+      tabBtn[i].addEventListener(
         'click',
         (e) => {
-          startTab(i, _tabBtn, _tabContent);
+          startTab(i, tabBtn, tabContent);
         },
         false
       );
-    }
+    });
   }
 
-  function startTab(_now, _tabBtn, _tabContent) {
-    if (_tabBtn !== undefined) {
-      _tabBtn.forEach((i) => {
+  function startTab(now, tabBtn, tabContent) {
+    if (tabBtn !== undefined) {
+      tabBtn.forEach((i) => {
         i.classList.remove(activeClass);
       });
-      _tabBtn[_now].classList.add(activeClass);
+      tabBtn[now].classList.add(activeClass);
       //頁籤按鈕增加指定class(active)，其他頁籤移除指定class
 
-      _tabContent.forEach((i) => {
+      tabContent.forEach((i) => {
         i.classList.remove(activeClass);
       });
-      _tabContent[_now].classList.add(activeClass);
+      tabContent[now].classList.add(activeClass);
       //顯示當下頁籤內，隱藏其他內容
     }
   }
@@ -784,15 +784,15 @@ TabFunction();
 // -----------------------------------------------------------------------
 
 function fontSize(obj) {
-  let el = obj.name || null; // --- 控制的對象
-  let control = obj.control || null; // --- 控制的對象名稱
+  const el = obj.name || null; // --- 控制的對象
+  const control = obj.control || null; // --- 控制的對象名稱
 
   // --- 點擊文字大小按鈕
   el.forEach((i) => {
     i.querySelectorAll('a').forEach((i) => {
       // --- 移除 active 的 class 名稱
       function removeActiveClass() {
-        let _parentEle = i.parentNode.parentNode;
+        const _parentEle = i.parentNode.parentNode;
         _parentEle.querySelectorAll('a').forEach((i) => {
           i.classList.remove('active');
         });
@@ -829,7 +829,7 @@ function fontSize(obj) {
   // --- 創造新的 字體大小設定
   function createCookie(name, value, days) {
     let _expires;
-    let _date = new Date();
+    const _date = new Date();
     if (days) {
       _date.setTime(_date.getTime() + days * 24 * 60 * 60 * 1000);
       _expires = '; expires=' + _date.toGMTString();
@@ -848,7 +848,7 @@ function fontSize(obj) {
 
   // --- 初始化 字體大小設定
   window.onload = (e) => {
-    let _cookie = readCookie('FontSize');
+    const _cookie = readCookie('FontSize');
     //如果沒有_cookie 則預設值為'medium'
     if (_cookie == null) {
       _cookie = 'medium';
@@ -870,7 +870,7 @@ fontSize({
 // -----------------------------------------------------------------------
 
 function scrollToTop(obj) {
-  let el = obj.name || null; // --- 控制的對象
+  const el = obj.name || null; // --- 控制的對象
 
   function scrollTop() {
     window.scrollTo({
@@ -879,7 +879,6 @@ function scrollToTop(obj) {
       behavior: 'smooth',
     });
   }
-
   el.addEventListener('click', (e) => {
     e.preventDefault();
     scrollTop();
@@ -904,7 +903,7 @@ function scrollToTop(obj) {
 
   // --- 按鈕出現的函式
   window.addEventListener('scroll', () => {
-    let top = window.scrollY;
+    const top = window.scrollY;
     if (top > 200) {
       el.style.display = 'block';
       el.style['opacity'] = '1';
@@ -917,8 +916,8 @@ function scrollToTop(obj) {
     //如果 opacity為 0 則 display none
     function BtnStyleNone() {
       setTimeout(() => {
-        let btn = document.querySelector('.scrollToTop');
-        let btnOpacity = parseInt(btn.style.opacity);
+        const btn = document.querySelector('.scrollToTop');
+        const btnOpacity = parseInt(btn.style.opacity);
         if (btnOpacity === 0) {
           btn.style.display = 'none';
         }
