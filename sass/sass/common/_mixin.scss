@@ -7,6 +7,7 @@
 @import 'mixins/_flex-grid'; // flex 格線系統（for迴圈、mixin化）
 @import 'mixins/_clearfix';
 @import 'mixins/_font'; // ellipsis 文字刪節號 標籤預設
+@import 'mixins/_sr-only'; //針對視覺隱藏，螢幕閱讀器會讀到
 
 // 客製化
 @import 'mixins/_image'; //img設定
