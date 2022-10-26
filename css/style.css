@@ -5887,6 +5887,14 @@ input[type=radio]:focus {
     width: 100%;
     border-collapse: collapse;
   }
+  table caption {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
   @media screen and (max-width: 575px) {
     table {
       width: 100%;
@@ -6047,7 +6055,6 @@ table td {
   .scroltable-wrapper {
     position: relative;
     -webkit-overflow-scrolling: touch;
-    -webkit-transform: translate3d(0, 0, 0);
     overflow-y: hidden;
   }
   .scroltable-container {
@@ -8407,25 +8414,4 @@ h2.title {
 }
 .web_link li a:focus:not(:focus-visible) {
   outline: 0;
-}
-
-:root {
-  --colorStyleA: blue;
-  --colorStyleB: red;
-  --colorStyleC: green;
-}
-
-colorStyleA .txt {
-  background: #00a4f9;
-  color: var(--colorStyleA);
-}
-
-colorStyleB .txt {
-  background: #00a4f9;
-  color: var(--colorStyleB);
-}
-
-colorStyleC .txt {
-  background: #00a4f9;
-  color: var(--colorStyleC);
 }/*# sourceMappingURL=style.css.map */
