@@ -1,5 +1,9 @@
 //http://lab.25sprout.com/responsive_table/
 table {
+  // 無障礙 caption 標題預設隱藏
+  caption {
+    @include sr-only;
+  }
   width: 100%;
   border-collapse: collapse;
   @include screen('xs_mobile') {
@@ -170,7 +174,7 @@ table {
 .scroltable-wrapper {
   position: relative;
   -webkit-overflow-scrolling: touch;
-  -webkit-transform: translate3d(0, 0, 0);
+  // -webkit-transform: translate3d(0, 0, 0);
   overflow-y: hidden;
 }
 .scroltable-container {
