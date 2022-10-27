@@ -639,29 +639,49 @@ document.querySelectorAll('[class*="notice"] a.close').forEach((i) => {
 function fatFooter(obj) {
   const el = obj.name || null; // --- 控制的對象
 
-  // --- 點擊時
-  el.addEventListener('click', () => {
-    toggleFatFooter();
-  });
-
+  function fatFooterInit() {
+    //抓取ＵＩ高度 css樣式修改樣式重新抓取高度
+    const _navUl = el.parentNode.querySelectorAll('nav ul li ul');
+    _navUl.forEach((i) => {
+      let _itemHeight = i.offsetHeight;
+      i.style.height = 'auto';
+      i.dataset.itemHeight = i.offsetHeight;
+      if (Number(_itemHeight) !== 0) {
+        i.dataset.itemHeight = i.offsetHeight;
+        i.style.height = `${Number(i.dataset.itemHeight)}px`;
+      } else {
+        i.style.height = '0px';
+      }
+    });
+  }
   function toggleFatFooter() {
     const _navUl = el.parentNode.querySelectorAll('nav ul li ul');
     _navUl.forEach((i) => {
       if (i.offsetHeight !== 0) {
-        slider.jsSlideUp(i, 300);
+        i.style.height = '0px';
         el.innerHTML = '收合/CLOSE';
         el.setAttribute('name', '收合選單/CLOSE');
       } else {
-        slider.jsSlideDown(i, 300);
+        i.style.height = `${i.dataset.itemHeight}px`;
         el.innerHTML = '展開/OPEN';
         el.setAttribute('name', '展開選單/OPEN');
       }
     });
     el.classList.toggle('close');
   }
+  fatFooterInit();
+  // --- 點擊時
+  el.addEventListener('click', toggleFatFooterEle);
+  function toggleFatFooterEle() {
+    setTimeout(() => {
+      el.addEventListener('click', toggleFatFooterEle);
+    }, 500);
+    el.removeEventListener('click', toggleFatFooterEle);
+    toggleFatFooter();
+  }
 
   window.addEventListener('resize', () => {
-    location.reload();
+    fatFooterInit();
   });
 }
 fatFooter({

@@ -90,6 +90,8 @@
           display: block;
           margin: 0;
           padding: 0 1em 0 0;
+          transition: height 0.5s;
+          overflow: hidden;
           @include screen('mobile') {
             width: auto;
           }
