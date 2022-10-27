@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-Hant" class="no-js">
   <head>
+    <meta name="robots" content="noindex" />
+    <!-- 使用 noindex 禁止 Google 搜尋建立索引，套版時請工程師刪掉這行 -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -207,7 +209,8 @@
                 <h3>格線式表單</h3>
                 <div class="flex-form form_grid">
                   <div class="form_grp">
-                    <label for="username" class="form_title">帳號<abbr class="necessary" title="為必填(選)欄位,不能為空白。">*</abbr></label>
+                    <!-- 使用aria-required屬性指出必填的表單欄位 -->
+                    <label for="username" class="form_title" aria-required="true">帳號<abbr class="necessary" title="為必填(選)欄位,不能為空白。">*</abbr></label>
                     <div class="form_content">
                       <div class="input-i">
                         <i class="i_man"></i>
@@ -217,7 +220,7 @@
                     </div>
                   </div>
                   <div class="form_grp">
-                    <label for="password" class="form_title">密碼<abbr class="necessary" title="為必填(選)欄位,不能為空白。">*</abbr></label>
+                    <label for="password" class="form_title" aria-required="true">密碼<abbr class="necessary" title="為必填(選)欄位,不能為空白。">*</abbr></label>
                     <div class="form_content">
                       <div class="input-i">
                         <i class="i_lock"></i>
@@ -227,7 +230,7 @@
                     </div>
                   </div>
                   <div class="form_grp">
-                    <label for="email" class="form_title">E-mail<abbr class="necessary" title="為必填(選)欄位,不能為空白。">*</abbr></label>
+                    <label for="email" class="form_title" aria-required="true">E-mail<abbr class="necessary" title="為必填(選)欄位,不能為空白。">*</abbr></label>
                     <div class="form_content">
                       <div class="input-i">
                         <input name="email" type="email" id="email" />
@@ -241,7 +244,7 @@
                     </div>
                   </div>
                   <div class="form_grp">
-                    <label for="phone" class="form_title">手機號碼<abbr class="necessary" title="為必填(選)欄位,不能為空白。">*</abbr></label>
+                    <label for="phone" class="form_title" aria-required="true">手機號碼<abbr class="necessary" title="為必填(選)欄位,不能為空白。">*</abbr></label>
                     <div class="form_content">
                       <input name="phone" id="phone" type="tel" />
                     </div>
@@ -605,13 +608,13 @@
                     <div class="form_title">個人資料<abbr class="necessary" title="為必填(選)欄位,不能為空白。">*</abbr></div>
                     <div class="form_content">
                       <div class="form_grp">
-                        <label for="" class="form_title">姓名<abbr class="necessary" title="為必填(選)欄位,不能為空白。">*</abbr></label>
+                        <label for="" class="form_title" aria-required="true">姓名<abbr class="necessary" title="為必填(選)欄位,不能為空白。">*</abbr></label>
                         <div class="form_content">
                           <input name="" type="text" value="" />
                         </div>
                       </div>
                       <div class="form_grp" role="group" aria-labelledby="fake-legend">
-                        <label class="form_title">性別<abbr class="necessary" title="為必填(選)欄位,不能為空白。">*</abbr></label>
+                        <label aria-required="true" class="form_title">性別<abbr class="necessary" title="為必填(選)欄位,不能為空白。">*</abbr></label>
                         <div class="form_content" id="fake-legend">
                           <div class="radio_grp form_inline">
                             <label> <input type="radio" name="sampleRadio5" value="" checked="" />男</label>
@@ -1193,7 +1196,7 @@
             <a target="_blank" href="javascript:;" title="另開視窗">
               <img src="images/basic/accessibility.jpg" alt="" />
             </a>
-            <a target="_blank" href="javascript:;" title="另開視窗">
+            <a target="_blank" href="javascript:;" title="我的e政府,另開新視窗">
               <img src="images/basic/egov.png" alt="" />
             </a>
           </div>

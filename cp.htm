@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-Hant" class="no-js">
   <head>
+     <meta name="robots" content="noindex"><!-- 使用 noindex 禁止 Google 搜尋建立索引，套版時請工程師刪掉這行 -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -384,23 +385,15 @@
                   <!-- <span>這是表格的補充摘要 summary</span> -->
                 </caption>
                 <tr>
-                  <th>th 1</th>
-                  <th>th 2</th>
-                  <th>th 3</th>
-                  <th>th 4</th>
-                  <th>th 5</th>
-                  <th>th 6</th>
+                  <th scope="col">th 1</th>
+                  <th scope="col">th 2</th>
+                  <th scope="col">th 3</th>
+                  <th scope="col">th 4</th>
+                  <th scope="col">th 5</th>
+                  <th scope="col">th 6</th>
                 </tr>
                 <tr>
-                  <th>th A</th>
-                  <td>td 資料</td>
-                  <td>td 資料</td>
-                  <td>td 資料</td>
-                  <td>td 資料</td>
-                  <td>td 資料</td>
-                </tr>
-                <tr>
-                  <th>th B</th>
+                  <th scope="row"></th>>th A</th>
                   <td>td 資料</td>
                   <td>td 資料</td>
                   <td>td 資料</td>
@@ -408,7 +401,15 @@
                   <td>td 資料</td>
                 </tr>
                 <tr>
-                  <th>th C</th>
+                  <th scope="row"></th>>th B</th>
+                  <td>td 資料</td>
+                  <td>td 資料</td>
+                  <td>td 資料</td>
+                  <td>td 資料</td>
+                  <td>td 資料</td>
+                </tr>
+                <tr>
+                  <th scope="row"></th>>th C</th>
                   <td>td 資料</td>
                   <td>td 資料</td>
                   <td>td 資料</td>
@@ -725,7 +726,7 @@
             <a target="_blank" href="javascript:;" title="另開視窗">
               <img src="images/basic/accessibility.jpg" alt="" />
             </a>
-            <a target="_blank" href="javascript:;" title="另開視窗">
+            <a target="_blank" href="javascript:;" title="我的e政府,另開新視窗">
               <img src="images/basic/egov.png" alt="" />
             </a>
           </div>
