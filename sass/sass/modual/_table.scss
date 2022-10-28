@@ -244,8 +244,9 @@ table {
 }
 
 // scrolltable style
-.tableWrapper {
-  overflow-y: scroll;
+.table-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
   scroll-behavior: smooth;
 }
 .scrollTableNav {
@@ -265,12 +266,12 @@ table {
 .scrollTableNavLeft .scrollTableLeftBtn {
   width: 35px;
   height: 100%;
-  background: url(../images/scrolltable/arrow-left.png) no-repeat center;
+  background: url(../images/scrolltable/icon_ar.svg) no-repeat center;
   cursor: pointer;
 }
-.scrollTableNavRight .scrollTableRightBtn {
-  width: 35px;
-  height: 100%;
-  background: url(../images/scrolltable/arrow-left.png) no-repeat center;
-  cursor: pointer;
-}
+// .scrolltableNavRight .scrolltableRightBtn {
+//   width: 35px;
+//   height: 100%;
+//   background: url(../images/scrolltable/ar_left.svg) no-repeat center;
+//   cursor: pointer;
+// }
