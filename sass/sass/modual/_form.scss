@@ -1,15 +1,13 @@
-$form_title_width: 150px; // 表單title寬度
-
-@mixin formStyle($f_color: $color-word, $f_border: $color-gray, $f_radius: $btn-radius) {
-  color: $f_color;
+@mixin formStyle($formColor: $colorWord, $formBorder: $colorGray, $formRadius: $btnRadius) {
+  color: $formColor;
   font-size: 1em;
-  border: 1px solid $f_border;
+  border: 1px solid $formBorder;
   padding: 0.5em;
   background: #fff;
   vertical-align: middle;
   margin: 0.3em;
   box-sizing: border-box;
-  border-radius: $f_radius;
+  border-radius: $formRadius;
   transition: all 0.3s ease-out;
 
   // @include screen('mobile') {
@@ -21,25 +19,25 @@ $form_title_width: 150px; // 表單title寬度
 //     align-items: flex-start;
 //     @include gutter(0);
 
-//     .form_title {
+//     .formTitle {
 //         max-width: calc(100% - .6em);
 //         flex-basis: calc(100% - .6em);
 //         @include gutter(0);
 //         margin: 0 .3em .5em;
 //     }
 
-//     // >input {
+//     // &>input {
 //     //     flex: 1 1 auto;
 //     // }
 
-//     .form_grp {
+//     .formGrp {
 //         border-bottom: 0;
 //         align-items: center;
 
-//         @include screen('xs_mobile') {
+//         @include screen('xsMobile') {
 //             flex-basis: 100%;
 //         }
-//         .form_content{
+//         .formContent{
 //             flex-basis: 100%;
 //             max-width: 100%;
 //             padding:0;
@@ -58,20 +56,20 @@ select::-ms-expand {
   margin: 0px 0.2em;
 }
 
-.form_grid {
+.formGrid {
   border-top: 1px solid #ddd;
 
-  .form_grp {
+  .formGrp {
     border-bottom: 1px dashed #ddd;
     padding: 0.5em 0;
   }
 }
 
-.flex-form {
+.flexForm {
   font-size: 0.938rem;
   margin: 0.5em;
 
-  .form_grp {
+  .formGrp {
     display: flex;
     //overflow: hidden;
     flex-wrap: wrap;
@@ -88,9 +86,9 @@ select::-ms-expand {
     }
   }
 
-  .form_title {
-    max-width: $form_title_width;
-    flex: 0 0 $form_title_width;
+  .formTitle {
+    max-width: $formTitleWidth;
+    flex: 0 0 $formTitleWidth;
     align-self: flex-start;
     padding: 0.3em 1em;
     @include screen('mobile') {
@@ -100,23 +98,23 @@ select::-ms-expand {
       @include gutter(0);
     }
 
-    + .form_content {
-      // &.form_col-6-6,
-      // &.form_col-4-4-4,
-      // &.form_col-3-3-3-3,
-      // &.form_col-3-9,
-      // &.form_col-9-3,
-      // &.form_col-3-3-6,
-      // &.form_col-6-3-3,
-      // &.form_col-2-10,
-      // &.form_col-10-2,
-      // &.form_col-4-8,
-      // &.form_col-8-4,
-      // &.form_col-2-2-8,
-      // &.form_col-8-2-2
-      &[class*='form_col'] {
-        flex-basis: calc(100% - #{$form_title_width});
-        max-width: calc(100% - #{$form_title_width});
+    & + .formContent {
+      // &.formCol_6_6,
+      // &.formCol_4_4_4,
+      // &.formCol_3_3_3_3,
+      // &.formCol_3_9,
+      // &.formCol_9_3,
+      // &.formCol_3_3_6,
+      // &.formCol_6_3_3,
+      // &.formCol_2_10,
+      // &.formCol_10_2,
+      // &.formCol_4_8,
+      // &.formCol_8_4,
+      // &.formCol_2_2_8,
+      // &.formCol_8_2_2
+      &[class*='formCol'] {
+        flex-basis: calc(100% - #{$formTitleWidth});
+        max-width: calc(100% - #{$formTitleWidth});
         padding-top: 0;
         @include gutter();
 
@@ -129,13 +127,13 @@ select::-ms-expand {
     }
   }
 
-  .form_content {
+  .formContent {
     display: flex;
     //padding-top: 3px;
-    max-width: calc(100% - #{$form_title_width});
-    // flex:1 1 calc(100% - #{$form_title_width});
+    max-width: calc(100% - #{$formTitleWidth});
+    // flex:1 1 calc(100% - #{$formTitleWidth});
     flex: auto;
-    flex-basis: calc(100% - #{$form_title_width});
+    flex-basis: calc(100% - #{$formTitleWidth});
     position: relative;
     min-height: 1px;
     overflow: hidden;
@@ -177,15 +175,15 @@ select::-ms-expand {
     }
 
     // 第二層的設定
-    .form_grp {
+    .formGrp {
       flex: 0 0 100%;
       min-height: 2.5em;
       margin: 0;
 
-      .form_content {
+      .formContent {
         flex-shrink: 0;
-        // flex-basis: calc(100% - #{$form_title_width});
-        // max-width:  calc(100% - #{$form_title_width});
+        // flex-basis: calc(100% - #{$formTitleWidth});
+        // max-width:  calc(100% - #{$formTitleWidth});
         display: flex;
         flex-wrap: wrap;
         align-items: center;
@@ -195,7 +193,7 @@ select::-ms-expand {
           flex-basis: 100%;
         }
 
-        &.form_inline {
+        &.formInline {
           input[type='text'],
           input[type='tel'],
           select,
@@ -204,14 +202,11 @@ select::-ms-expand {
             min-width: 100px;
             display: inline-block;
 
-            @include screen('xs_mobile') {
+            @include screen('xsMobile') {
               width: calc(100% - 0.6em);
               display: block;
             }
           }
-        }
-
-        .form_grp {
         }
       }
 
@@ -242,7 +237,7 @@ select::-ms-expand {
         & ~ input {
           width: calc(100% - 200px);
 
-          @include screen('xs_mobile') {
+          @include screen('xsMobile') {
             width: 100% !important;
             display: block !important;
           }
@@ -257,7 +252,7 @@ select::-ms-expand {
         margin-right: 0.5em;
         text-align-last: center;
 
-        @include screen('xs_mobile') {
+        @include screen('xsMobile') {
           width: 88% !important;
           min-width: 88% !important;
           display: inline-block !important;
@@ -271,7 +266,7 @@ select::-ms-expand {
         // ~select {
         //     margin-left: .2em;
 
-        //     // @include screen('xs_mobile') {
+        //     // @include screen('xsMobile') {
         //     //     margin-left: 0;
         //     // }
         // }
@@ -287,7 +282,7 @@ select::-ms-expand {
           text-align: center;
         }
 
-        @include screen('xs_mobile') {
+        @include screen('xsMobile') {
           width: 100px;
           display: inline-block !important;
         }
@@ -305,16 +300,16 @@ select::-ms-expand {
     }
 
     // 日期專屬
-    .datepick {
+    .datePick {
       position: relative;
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: 100%;
         display: block;
         padding-right: 0;
       }
 
-      & + .datepick {
+      & + .datePick {
         margin-left: 0.3em;
         margin-right: 0;
         padding-right: 0;
@@ -325,7 +320,7 @@ select::-ms-expand {
           color: #777;
         }
 
-        @include screen('xs_mobile') {
+        @include screen('xsMobile') {
           margin-left: 0em;
 
           //padding-right:.5em;
@@ -357,45 +352,45 @@ select::-ms-expand {
         }
       }
 
-      > input[type='text'],
-      > input[type='date'] {
+      & > input[type='text'],
+      & > input[type='date'] {
         width: 10em;
 
-        @include screen('xs_mobile') {
+        @include screen('xsMobile') {
           width: calc(100% - 0.6em);
         }
       }
 
-      > input[type='text'] {
+      & > input[type='text'] {
         padding-right: 2em;
       }
     }
   }
 
   //選單格線系統
-  [class*='form_col'] {
+  [class*='formCol'] {
     flex-basis: 100%;
     max-width: 100%;
     align-items: center;
     //justify-content: space-around;
     @include gutter(0);
 
-    > .form_grp {
+    & > .formGrp {
       border-bottom: 0;
       padding-top: 0;
       //margin: 0;
     }
 
-    // >input,
-    // >select,
-    // >label{
+    //& >input,
+    //& >select,
+    //&>label{
     //     margin: .3em 0;
     // }
 
     label {
       @include gutter(0.6em);
       padding-top: 5px;
-      // &.label_hidden{
+      // &.labelHidden{
       //     width: 0;
       //     flex-basis: 0;
       // }
@@ -406,27 +401,27 @@ select::-ms-expand {
     }
   }
 
-  .form_col-6-6 {
-    > .form_grp {
+  .formCol_6_6 {
+    & > .formGrp {
       width: 50%;
       flex-basis: 50%;
       max-width: 50%;
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: 100%;
         flex-basis: 100%;
         max-width: 100%;
       }
     }
 
-    > input,
-    > select,
-    > label {
+    & > input,
+    & > select,
+    & > label {
       width: calc(50% - 0.6em);
       flex-basis: calc(50% - 0.6em);
       max-width: calc(50% - 0.6em);
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: calc(100% - 0.6em);
         flex-basis: calc(100% - 0.6em);
         max-width: calc(100% - 0.6em);
@@ -434,26 +429,26 @@ select::-ms-expand {
     }
   }
 
-  .form_col-4-4-4 {
-    > .form_grp {
+  .formCol_4_4_4 {
+    & > .formGrp {
       width: calc(100% * 0.33333);
       flex-basis: calc(100% * 0.33333);
       max-width: calc(100% * 0.33333);
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: 100%;
         flex-basis: 100%;
         max-width: 100%;
       }
     }
-    > input,
-    > select,
-    > label {
+    & > input,
+    & > select,
+    & > label {
       width: calc(100% * 0.33333 - 0.6em);
       flex-basis: calc(100% * 0.33333 - 0.6em);
       max-width: calc(100% * 0.33333 - 0.6em);
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: calc(100% - 0.6em);
         flex-basis: calc(100% - 0.6em);
         max-width: calc(100% - 0.6em);
@@ -461,8 +456,8 @@ select::-ms-expand {
     }
   }
 
-  .form_col-3-3-3-3 {
-    > .form_grp {
+  .formCol_3_3_3_3 {
+    & > .formGrp {
       width: 25%;
       flex-basis: 25%;
       max-width: 25%;
@@ -473,20 +468,20 @@ select::-ms-expand {
         max-width: 50%;
       }
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: 100%;
         flex-basis: 100%;
         max-width: 100%;
       }
     }
-    > input,
-    > select,
-    > label {
+    & > input,
+    & > select,
+    & > label {
       width: calc(25% - 0.6em);
       flex-basis: calc(25% - 0.6em);
       max-width: calc(25% - 0.6em);
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: calc(100% - 0.6em);
         flex-basis: calc(100% - 0.6em);
         max-width: calc(100% - 0.6em);
@@ -494,8 +489,8 @@ select::-ms-expand {
     }
   }
 
-  .form_col-2-2-2-2-2-2 {
-    > .form_grp {
+  .formCol_2_2_2_2_2_2 {
+    & > .formGrp {
       width: calc(100% / 6);
       flex-basis: calc(100% / 6);
       max-width: calc(100% / 6);
@@ -506,19 +501,19 @@ select::-ms-expand {
         max-width: 50%;
       }
 
-      // @include screen('xs_mobile') {
+      // @include screen('xsMobile') {
       //     flex-basis: 100%;
       //     width: 100%;
       // }
     }
-    > input,
-    > select,
-    > label {
+    & > input,
+    & > select,
+    & > label {
       width: calc(100% / 6 - 0.6em);
       flex-basis: calc(100% / 6 - 0.6em);
       max-width: calc(100% / 6 - 0.6em);
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: calc(50% - 0.6em);
         flex-basis: calc(50% - 0.6em);
         max-width: calc(50% - 0.6em);
@@ -526,13 +521,13 @@ select::-ms-expand {
     }
   }
 
-  .form_col-3-9 {
-    > .form_grp {
+  .formCol_3_9 {
+    & > .formGrp {
       width: 25%;
       flex-basis: 25%;
       max-width: 25%;
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: 100%;
         flex-basis: 100%;
         max-width: 100%;
@@ -542,21 +537,21 @@ select::-ms-expand {
         flex-basis: 75%;
         max-width: 75%;
 
-        @include screen('xs_mobile') {
+        @include screen('xsMobile') {
           width: 100%;
           flex-basis: 100%;
           max-width: 100%;
         }
       }
     }
-    > input,
-    > select,
-    > label {
+    & > input,
+    & > select,
+    & > label {
       width: calc(25% - 0.6em);
       max-width: calc(25% - 0.6em);
       flex-basis: calc(25% - 0.6em);
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: calc(25% - 0.6em);
         max-width: calc(25% - 0.6em);
         flex-basis: calc(100% - 0.6em);
@@ -566,7 +561,7 @@ select::-ms-expand {
         flex-basis: calc(75% - 0.6em);
         max-width: calc(75% - 0.6em);
 
-        @include screen('xs_mobile') {
+        @include screen('xsMobile') {
           width: calc(100% - 0.6em);
           flex-basis: calc(100% - 0.6em);
           max-width: calc(100% - 0.6em);
@@ -575,13 +570,13 @@ select::-ms-expand {
     }
   }
 
-  .form_col-9-3 {
-    > .form_grp {
+  .formCol_9_3 {
+    & > .formGrp {
       flex-basis: 75%;
       max-width: 75%;
       width: 75%;
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         flex-basis: 100%;
         max-width: 100%;
         width: 100%;
@@ -591,21 +586,21 @@ select::-ms-expand {
         max-width: 25%;
         width: 25%;
 
-        @include screen('xs_mobile') {
+        @include screen('xsMobile') {
           flex-basis: 100%;
           max-width: 100%;
           width: 100%;
         }
       }
     }
-    > input,
-    > select,
-    > label {
+    & > input,
+    & > select,
+    & > label {
       width: calc(75% - 0.6em);
       max-width: calc(75% - 0.6em);
       flex-basis: calc(75% - 0.6em);
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: calc(100% - 0.6em);
         max-width: calc(100% - 0.6em);
         flex-basis: calc(100% - 0.6em);
@@ -616,7 +611,7 @@ select::-ms-expand {
         max-width: calc(25% - 0.6em);
         flex-basis: calc(25% - 0.6em);
 
-        @include screen('xs_mobile') {
+        @include screen('xsMobile') {
           width: calc(100% - 0.6em);
           max-width: calc(100% - 0.6em);
           flex-basis: calc(100% - 0.6em);
@@ -625,13 +620,13 @@ select::-ms-expand {
     }
   }
 
-  .form_col-3-3-6 {
-    > .form_grp {
+  .formCol_3_3_6 {
+    & > .formGrp {
       width: 25%;
       flex-basis: 25%;
       max-width: 25%;
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: 50%;
         flex-basis: 50%;
         max-width: 50%;
@@ -641,21 +636,21 @@ select::-ms-expand {
         flex-basis: 50%;
         max-width: 50%;
 
-        @include screen('xs_mobile') {
+        @include screen('xsMobile') {
           width: 100%;
           flex-basis: 100%;
           max-width: 100%;
         }
       }
     }
-    > input,
-    > select,
-    > label {
+    & > input,
+    & > select,
+    & > label {
       width: calc(25% - 0.6em);
       max-width: calc(25% - 0.6em);
       flex-basis: calc(25% - 0.6em);
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: calc(50% - 0.6em);
         max-width: calc(50% - 0.6em);
         flex-basis: calc(50% - 0.6em);
@@ -665,7 +660,7 @@ select::-ms-expand {
         max-width: calc(50% - 0.6em);
         flex-basis: calc(50% - 0.6em);
 
-        @include screen('xs_mobile') {
+        @include screen('xsMobile') {
           width: calc(100% - 0.6em);
           max-width: calc(100% - 0.6em);
           flex-basis: calc(100% - 0.6em);
@@ -674,30 +669,30 @@ select::-ms-expand {
     }
   }
 
-  .form_col-6-3-3 {
-    > .form_grp,
-    > input[type='text'],
-    > select {
+  .formCol_6_3_3 {
+    & > .formGrp,
+    & > input[type='text'],
+    & > select {
       width: 25%;
       flex-basis: 25%;
       max-width: 25%;
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: 50%;
         max-width: 50%;
         flex-basis: 50%;
       }
     }
 
-    > .form_grp,
-    > input[type='text'],
-    > select {
+    & > .formGrp,
+    & > input[type='text'],
+    & > select {
       &:first-child {
         width: 50%;
         max-width: 50%;
         flex-basis: 50%;
 
-        @include screen('xs_mobile') {
+        @include screen('xsMobile') {
           width: 100%;
           max-width: 100%;
           flex-basis: 100%;
@@ -706,13 +701,13 @@ select::-ms-expand {
     }
   }
 
-  .form_col-4-8 {
-    > .form_grp {
+  .formCol_4_8 {
+    & > .formGrp {
       width: calc(100% / 3);
       max-width: calc(100% / 3);
       flex-basis: calc(100% / 3);
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: 50%;
         max-width: 50%;
         flex-basis: 50%;
@@ -722,7 +717,7 @@ select::-ms-expand {
         max-width: calc(100% / 3 * 2);
         flex-basis: calc(100% / 3 * 2);
 
-        @include screen('xs_mobile') {
+        @include screen('xsMobile') {
           width: 100%;
           max-width: 100%;
           flex-basis: 100%;
@@ -730,14 +725,14 @@ select::-ms-expand {
       }
     }
 
-    > input,
-    > select,
-    > label {
+    & > input,
+    & > select,
+    & > label {
       width: calc(100% / 3 - 0.6em);
       max-width: calc(100% / 3 - 0.6em);
       flex-basis: calc(100% / 3 - 0.6em);
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: calc(100% - 0.6em);
         max-width: calc(100% - 0.6em);
         flex-basis: calc(100% - 0.6em);
@@ -747,7 +742,7 @@ select::-ms-expand {
         max-width: calc(100% / 3 * 2 - 0.6em);
         flex-basis: calc(100% / 3 * 2 - 0.6em);
 
-        @include screen('xs_mobile') {
+        @include screen('xsMobile') {
           width: calc(100% - 0.6em);
           max-width: calc(100% - 0.6em);
           flex-basis: calc(100% - 0.6em);
@@ -756,13 +751,13 @@ select::-ms-expand {
     }
   }
 
-  .form_col-2-10 {
-    > .form_grp {
+  .formCol_2_10 {
+    & > .formGrp {
       width: calc(100% / 6);
       max-width: calc(100% / 6);
       flex-basis: calc(100% / 6);
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: 100%;
         max-width: 100%;
         flex-basis: 100%;
@@ -772,7 +767,7 @@ select::-ms-expand {
         flex-basis: calc(100% / 12 * 10);
         width: calc(100% / 12 * 10);
 
-        @include screen('xs_mobile') {
+        @include screen('xsMobile') {
           max-width: 100%;
           flex-basis: 100%;
           width: 100%;
@@ -780,14 +775,14 @@ select::-ms-expand {
       }
     }
 
-    > input,
-    > select,
-    > label {
+    & > input,
+    & > select,
+    & > label {
       width: calc(100% / 12 * 2 - 0.6em);
       max-width: calc(100% / 12 * 2 - 0.6em);
       flex-basis: calc(100% / 12 * 2 - 0.6em);
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: calc(100% - 0.6em);
         max-width: calc(100% - 0.6em);
         flex-basis: calc(100% - 0.6em);
@@ -797,7 +792,7 @@ select::-ms-expand {
         max-width: calc(100% / 12 * 10 - 0.6em);
         flex-basis: calc(100% / 12 * 10 - 0.6em);
 
-        @include screen('xs_mobile') {
+        @include screen('xsMobile') {
           width: calc(100% - 0.6em);
           max-width: calc(100% - 0.6em);
           flex-basis: calc(100% - 0.6em);
@@ -806,13 +801,13 @@ select::-ms-expand {
     }
   }
 
-  .form_col-10-2 {
-    > .form_grp {
+  .formCol_10_2 {
+    & > .formGrp {
       width: calc(100% / 6);
       max-width: calc(100% / 6);
       flex-basis: calc(100% / 6);
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: 100%;
         max-width: 100%;
         flex-basis: 100%;
@@ -822,7 +817,7 @@ select::-ms-expand {
         max-width: calc(100% / 12 * 10);
         flex-basis: calc(100% / 12 * 10);
 
-        @include screen('xs_mobile') {
+        @include screen('xsMobile') {
           width: 100%;
           max-width: 100%;
           flex-basis: 100%;
@@ -830,14 +825,14 @@ select::-ms-expand {
       }
     }
 
-    > input,
-    > select,
-    > label {
+    & > input,
+    & > select,
+    & > label {
       width: calc(100% / 12 * 2 - 0.6em);
       max-width: calc(100% / 12 * 2 - 0.6em);
       flex-basis: calc(100% / 12 * 2 - 0.6em);
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: calc(100% - 0.6em);
         max-width: calc(100% - 0.6em);
         flex-basis: calc(100% - 0.6em);
@@ -847,7 +842,7 @@ select::-ms-expand {
         max-width: calc(100% / 12 * 10 - 0.6em);
         flex-basis: calc(100% / 12 * 10 - 0.6em);
 
-        @include screen('xs_mobile') {
+        @include screen('xsMobile') {
           width: calc(100% - 0.6em);
           max-width: calc(100% - 0.6em);
           flex-basis: calc(100% - 0.6em);
@@ -856,13 +851,13 @@ select::-ms-expand {
     }
   }
 
-  .form_col-2-2-8 {
-    > .form_grp {
+  .formCol_2_2_8 {
+    & > .formGrp {
       width: calc(100% / 12 * 2);
       max-width: calc(100% / 12 * 2);
       flex-basis: calc(100% / 12 * 2);
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: 50%;
         max-width: 50%;
         flex-basis: 50%;
@@ -872,7 +867,7 @@ select::-ms-expand {
         max-width: calc(100% / 12 * 8);
         flex-basis: calc(100% / 12 * 8);
 
-        @include screen('xs_mobile') {
+        @include screen('xsMobile') {
           width: 100%;
           max-width: 100%;
           flex-basis: 100%;
@@ -880,14 +875,14 @@ select::-ms-expand {
       }
     }
 
-    > input,
-    > select,
-    > label {
+    & > input,
+    & > select,
+    & > label {
       width: calc(100% / 12 * 2 - 0.6em);
       max-width: calc(100% / 12 * 2 - 0.6em);
       flex-basis: calc(100% / 12 * 2 - 0.6em);
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: calc(50% - 0.6em);
         max-width: calc(50% - 0.6em);
         flex-basis: calc(50% - 0.6em);
@@ -897,7 +892,7 @@ select::-ms-expand {
         max-width: calc(100% / 12 * 8 - 0.6em);
         flex-basis: calc(100% / 12 * 8 - 0.6em);
 
-        @include screen('xs_mobile') {
+        @include screen('xsMobile') {
           width: calc(100% - 0.6em);
           max-width: calc(100% - 0.6em);
           flex-basis: calc(100% - 0.6em);
@@ -906,13 +901,13 @@ select::-ms-expand {
     }
   }
 
-  .form_col-8-2-2 {
-    > .form_grp {
+  .formCol_8_2_2 {
+    & > .formGrp {
       width: calc(100% / 12 * 2);
       max-width: calc(100% / 12 * 2);
       flex-basis: calc(100% / 12 * 2);
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: 50%;
         max-width: 50%;
         flex-basis: 50%;
@@ -922,7 +917,7 @@ select::-ms-expand {
         max-width: calc(100% / 12 * 8);
         flex-basis: calc(100% / 12 * 8);
 
-        @include screen('xs_mobile') {
+        @include screen('xsMobile') {
           width: 100%;
           max-width: 100%;
           flex-basis: 100%;
@@ -930,14 +925,14 @@ select::-ms-expand {
       }
     }
 
-    > input,
-    > select,
-    > label {
+    & > input,
+    & > select,
+    & > label {
       width: calc(100% / 12 * 2 - 0.6em);
       max-width: calc(100% / 12 * 2 - 0.6em);
       flex-basis: calc(100% / 12 * 2 - 0.6em);
 
-      @include screen('xs_mobile') {
+      @include screen('xsMobile') {
         width: calc(50% - 0.6em);
         max-width: calc(50% - 0.6em);
         flex-basis: calc(50% - 0.6em);
@@ -948,7 +943,7 @@ select::-ms-expand {
         max-width: calc(100% / 12 * 8 - 0.6em);
         flex-basis: calc(100% / 12 * 8 - 0.6em);
 
-        @include screen('xs_mobile') {
+        @include screen('xsMobile') {
           width: calc(100% - 0.6em);
           max-width: calc(100% - 0.6em);
           flex-basis: calc(100% - 0.6em);
@@ -957,12 +952,12 @@ select::-ms-expand {
     }
   }
 
-  .btn_grp {
+  .btnGrp {
     justify-content: center;
 
     .btn,
-    .btn-reset,
-    .btn-submit,
+    .btnReset,
+    .btnSubmit,
     input[type='submit'],
     input[type='reset'],
     input[type='button'],
@@ -980,11 +975,11 @@ select::-ms-expand {
   }
 
   //---------------------------------------------form setting--------//
-  .form_grp,
-  .check_grp,
-  .radio_grp,
-  .btn_grp,
-  .upload_grp {
+  .formGrp,
+  .checkGrp,
+  .radioGrp,
+  .btnGrp,
+  .uploadGrp {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -996,8 +991,8 @@ select::-ms-expand {
     }
   }
 
-  .check_grp,
-  .radio_grp {
+  .checkGrp,
+  .radioGrp {
     label {
       position: relative;
       //display: block;
@@ -1027,7 +1022,7 @@ select::-ms-expand {
     }
 
     // radio與check個別行內設定
-    &.form_inline {
+    &.formInline {
       label {
         //display: inline-block;
         margin: 0 0.5em 0 0;
@@ -1039,29 +1034,29 @@ select::-ms-expand {
     }
   }
 
-  &.form_inline,
-  .form_inline {
-    .check_grp,
-    .radio_grp {
+  &.formInline,
+  .formInline {
+    .checkGrp,
+    .radioGrp {
       label {
         flex-basis: auto;
       }
     }
   }
 
-  .form_grp,
-  .upload_grp {
+  .formGrp,
+  .uploadGrp {
     // 文字表單個別行內設定
-    &.form_inline {
+    &.formInline {
       label {
         display: inline-block;
         margin-right: 0.5em;
       }
 
-      > input,
-      > textarea,
-      > select,
-      > .input-i {
+      & > input,
+      & > textarea,
+      & > select,
+      & > .input_i {
         width: auto;
         flex: 0 1 auto;
       }
@@ -1075,7 +1070,7 @@ select::-ms-expand {
 }
 
 // form 全域行內設定
-.form_inline {
+.formInline {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -1104,16 +1099,16 @@ select::-ms-expand {
   input[type='reset'],
   input[type='button'],
   input[type='search'],
-  .input-i {
+  .input_i {
     width: auto;
     flex: 0 0 auto;
   }
 
-  .form_grp,
-  .check_grp,
-  .radio_grp,
-  .btn_grp,
-  .upload_grp {
+  .formGrp,
+  .checkGrp,
+  .radioGrp,
+  .btnGrp,
+  .uploadGrp {
     display: flex;
     margin-right: 0.5em;
     width: auto;
@@ -1123,7 +1118,7 @@ select::-ms-expand {
     // }
   }
 
-  .btn_grp {
+  .btnGrp {
     padding: 0;
 
     .btn,
@@ -1145,7 +1140,7 @@ legend {
   margin: 0 0 0.5em 0;
   @include gutter(0.6em);
 
-  @include screen('xs_mobile') {
+  @include screen('xsMobile') {
     display: block;
   }
 
@@ -1157,7 +1152,7 @@ legend {
     }
   }
 
-  &.label_hidden {
+  &.labelHidden {
     font-size: 0;
     line-height: 1;
     width: 0;
@@ -1191,8 +1186,8 @@ textarea {
     width: 100%;
   }
 }
-
-.input-i {
+//notice 必免語意不清需討論
+.input_i {
   input {
     width: calc(100% - 0.6em);
   }
@@ -1207,42 +1202,42 @@ input[type='mail'],
 input[type='number'] {
   &::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
-    color: darken($color-gray, 20);
+    color: darken($colorGray, 20);
   }
 
   &::-moz-placeholder {
     /* Firefox 19+ */
-    color: darken($color-gray, 20);
+    color: darken($colorGray, 20);
   }
 
   &:-ms-input-placeholder {
     /* IE 10+ */
-    color: darken($color-gray, 20);
+    color: darken($colorGray, 20);
   }
 
   &:-moz-placeholder {
     /* Firefox 18- */
-    color: darken($color-gray, 20);
+    color: darken($colorGray, 20);
   }
 }
 
-button,
-input[type='button'] {
-  // @extend %btn;
-  // @include btn_setting($form-focus, #FFF);
-}
+// button,
+// input[type='button'] {
+//   @extend %btn;
+//   @include btnSetting($formFocus, #FFF);
+// }
 
-input[type='submit'] {
-  // @extend %btn;
-  // @include btn_setting($form-focus, #FFF);
-}
+// input[type='submit'] {
+//   @extend %btn;
+//   @include btnSetting($formFocus, #FFF);
+// }
 
 textarea {
   @include formStyle();
   height: 5em;
   overflow-y: scroll;
 
-  @include screen('xs_mobile') {
+  @include screen('xsMobile') {
     width: 100%;
   }
 }
@@ -1256,8 +1251,8 @@ input[type='email']:focus,
 input[type='password']:focus,
 textarea:focus,
 select:focus {
-  border: 1px solid lighten($form-focus, 20);
-  box-shadow: 0px 0px 0px 2px lighten($form-focus, 20);
+  border: 1px solid lighten($formFocus, 20);
+  box-shadow: 0px 0px 0px 2px lighten($formFocus, 20);
   outline: none;
 }
 
@@ -1266,7 +1261,7 @@ select:focus {
 select {
   line-height: 1.35em;
   padding: 0.5em 24px 0.5em 0.5em;
-  border: 1px solid $color-gray;
+  border: 1px solid $colorGray;
   background: #fff url(../images/icon/icon_select_arrow.png) no-repeat right center;
   background-size: 16px;
 
@@ -1282,11 +1277,11 @@ select {
 }
 
 //---------------------------------------------reset--------//
-input[type='reset'] {
-  // @extend %btn;
-  // @include btn_setting(darken($color-gray, 20), #FFF);
-  // text-shadow: none;
-}
+// input[type='reset'] {
+//   @extend %btn;
+//   @include btnSetting(darken($colorGray, 20), #FFF);
+//   text-shadow: none;
+// }
 
 //---------------------------------------------checkbox & radio--------//
 input[type='checkbox'],
@@ -1296,7 +1291,7 @@ input[type='radio'] {
   width: 1em;
   height: 1em;
   background-color: #f7f6ee;
-  border: 2px solid $color-gray;
+  border: 2px solid $colorGray;
 }
 
 input[type='radio'] {
@@ -1307,8 +1302,8 @@ input[type='checkbox']:checked,
 input[type='checkbox']:focus,
 input[type='radio']:checked,
 input[type='radio']:focus {
-  border-color: $form-focus;
-  background-color: $form-focus;
+  border-color: $formFocus;
+  background-color: $formFocus;
   outline: none;
 }
 
@@ -1317,47 +1312,47 @@ input[type='checkbox']:checked {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 98%;
-  box-shadow: $form-focus 0 0 0 2px;
+  box-shadow: $formFocus 0 0 0 2px;
   border-radius: 2px;
 }
 
 input[type='radio']:checked {
-  box-shadow: #fff 0 0 0 3px inset, $form-focus 0 0 0 2px;
+  box-shadow: #fff 0 0 0 3px inset, $formFocus 0 0 0 2px;
 }
 
 input[type='radio']:focus {
-  border-color: $form-focus;
-  background-color: $form-focus;
-  box-shadow: #fff 0 0 0 3px inset, $form-focus 0 0 0 2px;
+  border-color: $formFocus;
+  background-color: $formFocus;
+  box-shadow: #fff 0 0 0 3px inset, $formFocus 0 0 0 2px;
 }
 
 input[type='checkbox']:focus {
-  border-color: $form-focus;
-  background-color: $form-focus;
-  box-shadow: $form-focus 0 0 0 2px;
+  border-color: $formFocus;
+  background-color: $formFocus;
+  box-shadow: $formFocus 0 0 0 2px;
 }
 
 //---------------------------------------------readonly disable -------//
 // input[readonly],
 // input[disable] {
-//     background: lighten($color-gray, 15);
-//     color: darken($color-gray, 10);
-//     border-color: darken($color-gray, 10);
+//     background: lighten($colorGray, 15);
+//     color: darken($colorGray, 10);
+//     border-color: darken($colorGray, 10);
 
 //     &~label {
-//         color: darken($color-gray, 10);
+//         color: darken($colorGray, 10);
 //     }
 
 //     &:hover,
 //     &:focus-visible{
-//         border-color: darken($color-gray, 10);
+//         border-color: darken($colorGray, 10);
 //         box-shadow: none; // cursor: not-allowed;
 //     }
 // }
 
 // 檔案上傳
 // https://codepen.io/shubhamc_007/pen/oZyodd
-.upload_grp {
+.uploadGrp {
   position: relative;
 
   input[readonly],
@@ -1366,13 +1361,13 @@ input[type='checkbox']:focus {
     color: #666;
   }
 
-  .upload_btn {
+  .uploadBtn {
     position: absolute;
     overflow: hidden;
     top: 10px;
     right: 0.5em;
     @extend %btn;
-    @include btn_setting($form-focus, #fff);
+    @include btnSetting($formFocus, #fff);
     padding: 0.2em 1em !important;
     border-radius: 4px;
 
@@ -1412,7 +1407,7 @@ img.captcha {
   //     margin-top: -1px;
   // }
 
-  ~ img {
+  & ~ img {
     display: inline-block;
     vertical-align: middle;
     max-height: 2.4em;
@@ -1427,7 +1422,7 @@ abbr[title] {
 }
 
 //---------------------------前面有icon的input------------------//
-.input-i {
+.input_i {
   position: relative;
   width: 100%;
 
@@ -1437,7 +1432,7 @@ abbr[title] {
     left: 0.5em;
     top: 0.6em;
     background: none;
-    border-right: 1px solid $color-gray;
+    border-right: 1px solid $colorGray;
     width: 2.4em;
     pointer-events: none;
 
@@ -1460,7 +1455,7 @@ abbr[title] {
 
     & + i {
       border-right: none;
-      border-left: 1px solid $color-gray;
+      border-left: 1px solid $colorGray;
       right: 0.5em;
       left: auto;
     }

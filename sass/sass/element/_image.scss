@@ -1,9 +1,9 @@
 img {
-  &.img_rounded {
+  &.imgRounded {
     //導角，可自訂
-    border-radius: $rounded-angle;
+    border-radius: $roundedAngle;
   }
-  &.img_circle {
+  &.imgCircle {
     //圓形
     border-radius: 50%;
   }
@@ -29,10 +29,10 @@ img {
 }
 // 設定img 在IE9+ SAFARI FIREFOX CHROME 可以object-fit
 /*for IE */
-.img-container {
+.imgContainer {
   width: 100%;
   position: relative;
-  @include aspect-ratio(4, 3);
+  @include aspectRatio(4, 3);
   background: #f1f1f1;
   a {
     height: 100%;
@@ -55,7 +55,7 @@ img {
       right: 0;
       z-index: 2;
       text-align: center;
-      @include text-overflow;
+      @include textOverflow;
       box-sizing: border-box;
       @include screen('mobile') {
         width: 100%;
@@ -98,45 +98,20 @@ img {
     right: 0;
     bottom: 0;
   }
-}
-%ie_setting {
-  position: relative;
-  background-position: center center;
-  background-repeat: no-repeat;
-  img {
-    opacity: 0;
-    width: 0px;
-    height: 0px;
+
+  .fill {
+    object-fit: fill;
   }
-}
-.ie-object-none {
-  @extend %ie_setting;
-  background-size: auto;
-}
-.ie-object-cover {
-  @extend %ie_setting;
-  background-size: cover;
-}
-.ie-object-fill {
-  @extend %ie_setting;
-  background-size: 100% 100%;
-}
-.ie-object-contain {
-  @extend %ie_setting;
-  background-size: contain;
-}
-.fill {
-  object-fit: fill;
-}
-.contain {
-  object-fit: contain;
-}
-.cover {
-  object-fit: cover;
-}
-.none {
-  object-fit: none;
-}
-.scale-down {
-  object-fit: scale-down;
+  .contain {
+    object-fit: contain;
+  }
+  .cover {
+    object-fit: cover;
+  }
+  .none {
+    object-fit: none;
+  }
+  .scale-down {
+    object-fit: scale-down;
+  }
 }

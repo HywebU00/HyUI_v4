@@ -25,7 +25,7 @@
   @extend %mobileCtrlBtn;
   span {
     position: absolute;
-    background: $primaryColor;
+    background: $colorPrimary;
     width: 50%;
     height: 3px;
     top: 20px;
@@ -89,7 +89,7 @@
     }
   }
   & > .container {
-    max-width: $container-max;
+    max-width: $containerMax;
     overflow: visible;
     position: relative;
   }
@@ -129,7 +129,7 @@
     }
     box-sizing: border-box;
     display: flex;
-    .navlist {
+    .navList {
       flex: 1 1 auto;
       margin: 0.25em 0.5em 0 0;
       ul {
@@ -147,7 +147,7 @@
           display: block;
           padding: 0.5em;
           text-decoration: none;
-          @include aSetting($color-word);
+          @include aSetting($colorWord);
         }
       }
     }
@@ -181,7 +181,7 @@
   label {
     font-size: 0em;
   }
-  .form_grp {
+  .formGrp {
     flex: 0 0 auto;
     margin: 0;
     input {
@@ -199,7 +199,7 @@
     }
     button,
     .btn,
-    .btn-search {
+    .btnSearch {
       min-width: auto;
       padding: 0.2em 0.8em;
       margin: 0;
@@ -209,13 +209,13 @@
       }
     }
   }
-  .btn_grp {
+  .btnGrp {
     flex: 0 0 auto;
     padding: 0 0.5em 0;
     margin: 0;
     button,
     .btn,
-    .btn-search {
+    .btnSearch {
       min-width: auto;
       padding: 0.2em 0.8em;
       margin: 0;
@@ -243,7 +243,7 @@
         flex: 0 0 auto;
       }
       a {
-        @include aSetting($color-word);
+        @include aSetting($colorWord);
       }
     }
   }
@@ -267,7 +267,7 @@
     font-size: 0em;
     line-height: 0;
   }
-  .form_grp {
+  .formGrp {
     display: flex;
     align-items: center;
     label {
@@ -285,7 +285,7 @@
       }
     }
     .btn,
-    .btn-search {
+    .btnSearch {
       min-width: auto;
       padding: 0.5em 0.8em;
       margin: 0;
@@ -297,7 +297,7 @@
       }
     }
   }
-  .btn_grp {
+  .btnGrp {
     flex: 1 1 auto;
     padding: 0.25em 0.5em;
     border-bottom: solid 1px #444;

@@ -9,8 +9,8 @@ a.more {
   height: 2.5em;
   margin: 0.5em auto 0.5em;
   line-height: 2.5;
-  color: $primaryColor;
-  border: 1px solid $primaryColor;
+  color: $colorPrimary;
+  border: 1px solid $colorPrimary;
   text-align: center;
   overflow: hidden;
   vertical-align: middle;
@@ -43,7 +43,7 @@ a.more {
     left: 0;
     right: 0;
     bottom: 0;
-    background: $primaryColor;
+    background: $colorPrimary;
     -webkit-transform: scale(0);
     transform: scale(0);
     -webkit-transition-property: transform;
@@ -68,7 +68,7 @@ a.more {
 }
 
 // 範例：
-.demosection {
+.demoSection {
   [class^='col'] {
     border: 2px solid #fff;
     background: #dedede;
@@ -79,8 +79,8 @@ a.more {
   width: 100%;
   padding-bottom: 3em;
   @include gutter(0);
-  .img-container {
-    @include aspect-ratio(5, 2);
+  .imgContainer {
+    @include aspectRatio(5, 2);
   }
 }
 // 廣告輪播
@@ -93,17 +93,17 @@ a.more {
   .swiper {
     margin: 0 40px;
   }
-  .swiper-arrow {
+  .swiperArrow {
     padding: 0;
     background: none;
-    &.swiper-prev {
+    &.prev {
       left: 0px;
     }
-    &.swiper-next {
+    &.next {
       right: 0px;
     }
   }
-  .img-container {
+  .imgContainer {
     width: 165px;
     height: 55px;
     margin: 0px 15px;
@@ -125,7 +125,7 @@ a.more {
         left: 0;
         bottom: 0;
         right: 0;
-        box-shadow: 0 0px 0px 3px $primaryColor inset;
+        box-shadow: 0 0px 0px 3px $colorPrimary inset;
       }
     }
   }

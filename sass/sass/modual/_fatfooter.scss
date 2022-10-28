@@ -1,21 +1,21 @@
-.fatfooter {
+.fatFooter {
   overflow: hidden;
   padding-bottom: 1em;
   margin: 0 auto;
-  background: $fatfooterBgColor;
+  background: $fatFooterBgColor;
   .container {
     overflow: hidden;
     box-sizing: border-box;
     @include gutter;
   }
   // 按鈕
-  .btn-fatfooter {
+  .btnFatFooter {
     font-size: 0.813em;
     display: block;
     width: 6em;
     color: #fff;
     border: none;
-    background: $primaryColor;
+    background: $colorPrimary;
     position: absolute;
     left: 50%;
     top: 0;
@@ -38,7 +38,7 @@
     }
     &:hover,
     &:focus-visible {
-      background: darken($primaryColor, 10);
+      background: darken($colorPrimary, 10);
       color: #fff;
       text-decoration: none;
       cursor: pointer;
@@ -64,7 +64,7 @@
     }
     ul {
       display: flex;
-      @include li-reset;
+      @include liReset;
       @include screen('mobile') {
         flex-flow: wrap row;
       }
@@ -105,14 +105,14 @@
             }
             a {
               display: block;
-              @include aSetting($color-word);
+              @include aSetting($colorWord);
               font-weight: normal;
               text-align: left;
               font-size: 0.938em;
               line-height: 1.5em;
               padding: 0.5em 0;
               background: none;
-              @include screen('xs_mobile') {
+              @include screen('xsMobile') {
                 font-size: 0.813rem;
                 padding: 0.25em 0;
               }

@@ -1,21 +1,21 @@
 // 自行加入的JS請寫在這裡
 (function () {
   //cp輪播
-  const cpSwiper = new Swiper('.cp_slider .swiper', {
+  const cpSwiper = new Swiper('.cpSlider .swiper', {
     slidesPerView: 4,
     spaceBetween: 20,
     loop: false,
     // 切換點
     pagination: {
-      el: '.cp_slider .swiper-dots',
+      el: '.cpSlider .swiper-dots',
       bulletElement: 'button',
       clickable: true,
     },
     // 切換箭頭
     navigation: {
-      nextEl: '.cp_slider .swiper-arrow.swiper-next', //自行設定樣式
-      prevEl: '.cp_slider .swiper-arrow.swiper-prev', //自行設定樣式
-      disabledClass: 'swiper-arrow-disabled', //不可點選樣式
+      nextEl: '.cpSlider .swiperArrow.next', //自行設定樣式
+      prevEl: '.cpSlider .swiperArrow.prev', //自行設定樣式
+      disabledClass: 'swiperArrow-disabled', //不可點選樣式
     },
     breakpoints: {
       100: {
@@ -39,9 +39,9 @@
     },
     // 切換箭頭
     navigation: {
-      nextEl: '.mpSlider .swiper-arrow.swiper-next', //自行設定樣式
-      prevEl: '.mpSlider .swiper-arrow.swiper-prev', //自行設定樣式
-      disabledClass: 'swiper-arrow-disabled', //不可點選樣式
+      nextEl: '.mpSlider .swiperArrow.next', //自行設定樣式
+      prevEl: '.mpSlider .swiperArrow.prev', //自行設定樣式
+      disabledClass: 'swiperArrow-disabled', //不可點選樣式
     },
   });
 
@@ -58,9 +58,9 @@
     },
     // 切換箭頭
     navigation: {
-      nextEl: '.adSlider .swiper-arrow.swiper-next', //自行設定樣式
-      prevEl: '.adSlider .swiper-arrow.swiper-prev', //自行設定樣式
-      disabledClass: '.adSlider swiper-arrow-disabled', //不可點選樣式
+      nextEl: '.adSlider .swiperArrow.next', //自行設定樣式
+      prevEl: '.adSlider .swiperArrow.prev', //自行設定樣式
+      disabledClass: '.adSlider swiperArrow-disabled', //不可點選樣式
     },
   });
 

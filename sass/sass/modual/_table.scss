@@ -2,26 +2,15 @@
 table {
   // 無障礙 caption 標題預設隱藏
   caption {
-    @include sr-only;
+    @include srOnly;
   }
   width: 100%;
   border-collapse: collapse;
-  @include screen('xs_mobile') {
+  @include screen('xsMobile') {
     width: 100%;
   }
   th,
-    // td:not(.gsib_b,.gsc-search-button) {
-    //     padding: .5em;
-    //     text-align: left;
-    // }
-    // td:not(.gsib_a,.gsc-search-button){
-    //     border: #ddd 1px solid;
-    //     word-break: break-all;
-    //     a {
-    //         word-break: break-all;
-    //     }
-    // }
-    td {
+  td {
     padding: 0.5em;
     text-align: left;
   }
@@ -39,19 +28,19 @@ table {
     text-align: center;
     white-space: nowrap;
   }
-  &.table_hover {
+  &.tableHover {
     tr:hover {
       background: #f3f3f3;
     }
   }
-  &.table_sprite {
+  &.tableSprite {
     tr:nth-child(even) {
       background: #f5f5f5;
     }
   }
 }
-.table_list {
-  @include screen('xs_mobile') {
+.tableList {
+  @include screen('xsMobile') {
     background-color: transparent !important; //Force table to not be like tables anymore
     thead,
     tbody,
@@ -95,8 +84,8 @@ table {
     }
   }
 }
-// fix_th_table
-.fix_th_table {
+// fixThTable
+.fixThTable {
   margin: 1em 0;
   @include screen('mobile') {
     position: relative;
@@ -151,7 +140,7 @@ table {
     }
   }
 }
-.table_wrapper {
+.tableWrapper {
   @include screen('mobile') {
     width: 100%;
     display: block;
@@ -168,19 +157,19 @@ table {
     }
   }
 }
-.scroltable {
+.scrolTable {
   min-width: 600px !important;
 }
-.scroltable-wrapper {
+.scrolTableWrapper {
   position: relative;
   -webkit-overflow-scrolling: touch;
   // -webkit-transform: translate3d(0, 0, 0);
   overflow-y: hidden;
 }
-.scroltable-container {
+.scrolTableContainer {
   overflow: auto;
 }
-.scroltable-nav {
+.scrolTableNav {
   display: none;
   position: absolute;
   width: 60px;
@@ -188,10 +177,10 @@ table {
   cursor: pointer;
   z-index: 9;
 }
-.scroltable-nav.scroltable-nav-left {
+.scrolTableNav.scrolTableNavLeft {
   left: 0;
   @include gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0), horizontal);
-  .tablearrow_left {
+  .tableArrowLeft {
     position: fixed;
     left: 0em;
     top: 0em;
@@ -209,14 +198,14 @@ table {
       background: url(../vendor/scrolltable/images/arrow-left.png) no-repeat 10px center;
       content: '';
       z-index: 2;
-      // animation: arrow_left .3s linear infinite alternate;
+      // animation: arrowLeft .3s linear infinite alternate;
     }
   }
 }
-.scroltable-nav.scroltable-nav-right {
+.scrolTableNav.scrolTableNavRight {
   right: 0;
   @include gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1), horizontal);
-  .tablearrow_right {
+  .tableArrowRight {
     position: fixed;
     top: 0em;
     right: 0em;
@@ -237,7 +226,7 @@ table {
     }
   }
 }
-@keyframes arrow_left {
+@keyframes arrowLeft {
   from {
     left: -0.2em;
   }
@@ -245,7 +234,7 @@ table {
     left: 0.3em;
   }
 }
-@keyframes arrow_right {
+@keyframes arrowRight {
   from {
     right: -0.2em;
   }
@@ -255,31 +244,31 @@ table {
 }
 
 // scrolltable style
-.table-wrapper {
+.tableWrapper {
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
-.scrolltable-nav {
+.scrollTableNav {
   width: 60px;
   position: absolute;
   transition: 0.5s opacity;
   background: linear-gradient(to right, rgba(255, 255, 255, 0.8) 33%, rgba(255, 255, 255, 0.6) 39%, rgba(255, 255, 255, 0) 100%);
 }
-.scrolltable-nav-left {
+.scrollTableNavLeft {
   left: 0;
   display: none;
 }
-.scrolltable-nav-right {
+.scrollTableNavRight {
   right: 0;
   transform: rotateY(180deg);
 }
-.scrolltable-nav-left .scrolltable-left-btn {
+.scrollTableNavLeft .scrollTableLeftBtn {
   width: 35px;
   height: 100%;
   background: url(../images/scrolltable/arrow-left.png) no-repeat center;
   cursor: pointer;
 }
-.scrolltable-nav-right .scrolltable-right-btn {
+.scrollTableNavRight .scrollTableRightBtn {
   width: 35px;
   height: 100%;
   background: url(../images/scrolltable/arrow-left.png) no-repeat center;

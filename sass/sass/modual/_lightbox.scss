@@ -1,6 +1,6 @@
 // 相簿列表
 .album {
-  .lightbox {
+  .lightBox {
     position: fixed;
     top: 0px;
     left: 0px;
@@ -8,7 +8,7 @@
     height: 100%;
     z-index: 1000000;
     display: none;
-    .galler_overlay {
+    .galleryOverlay {
       position: fixed;
       background: rgba(0, 0, 0, 0.8);
       width: 100vw;
@@ -28,8 +28,8 @@
       margin-left: -30%;
       line-height: 1.3em;
     }
-    .light_prev,
-    .light_next {
+    .lightPrev,
+    .lightNext {
       position: absolute;
       top: 50%;
       margin-top: -20px;
@@ -44,17 +44,17 @@
       background: rgba(0, 0, 0, 0.8);
       transition: 0.3s ease-out;
     }
-    .light_next {
+    .lightNext {
       right: 0px;
       left: auto;
     }
-    .light_prev:hover,
-    .light_next:hover {
+    .lightPrev:hover,
+    .lightNext:hover {
       background: #fff;
       color: #000;
       cursor: pointer;
     }
-    .light_close {
+    .lightClose {
       position: absolute;
       top: 5px;
       right: 5px;

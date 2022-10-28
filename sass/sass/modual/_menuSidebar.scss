@@ -1,7 +1,3 @@
-// 可設定背景顏色
-$sidebar_bgColor: saturate(darken($primaryColor, 18), 20);
-// 選色參考：https://sassme.jim-nielsen.com/
-$menuItems: 15;
 // 行動版選單sidebar
 .sidebar {
   position: fixed;
@@ -45,7 +41,7 @@ $menuItems: 15;
     top: 0;
     left: 0;
     height: 100%;
-    background: $sidebar_bgColor;
+    background: $colorSidebarBg;
     overflow: hidden;
     overflow-y: auto;
     z-index: 9999;
@@ -159,21 +155,6 @@ $menuItems: 15;
                   }
                 }
               }
-              /*
-              ul {
-                li {
-                  a {
-                    padding: 0.5em 1em 0.5em 4em !important;
-                    &:hover,
-                    &:focus-visible{
-                    }
-                    &:after {
-                      display: none;
-                    }
-                  }
-                }
-              }
-*/
             }
           }
           &.active {
@@ -269,7 +250,7 @@ $menuItems: 15;
         }
       }
     }
-    .font_size {
+    .fontSize {
       display: none;
     }
   }

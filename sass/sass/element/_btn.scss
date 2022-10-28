@@ -1,42 +1,42 @@
 // 按鈕外框
-.btn_grp {
+.btnGrp {
   text-align: center;
   padding: 1em 0;
 }
 
 // 按鈕的共用設定
-@mixin btn_setting($btn-bg: #e0e0e0, $btn-word: $btn-word) {
-  background: $btn-bg;
-  border: 1px solid $btn-bg;
-  color: $btn-word;
+@mixin btnSetting($btnBg: #e0e0e0, $btnWordColor: $btnWordColor) {
+  background: $btnBg;
+  border: 1px solid $btnBg;
+  color: $btnWordColor;
   // text-shadow:1px 1px 1px RGBA(0,0,0,.3);
-  // border-radius: $btn-radius;
-  // @include gradient(lighten($btn-bg, 5), darken($btn-bg, 15), vertical);
+  // border-radius: $btnRadius;
+  // @include gradient(lighten($btnBg, 5), darken($btnBg, 15), vertical);
   &:hover {
-    background: darken($btn-bg, 10); // Old browsers
-    border: 1px solid darken($btn-bg, 20);
+    background: darken($btnBg, 10); // Old browsers
+    border: 1px solid darken($btnBg, 20);
     cursor: pointer;
     color: #fff;
     outline: none;
-    // @include gradient(lighten($btn-bg, 10), darken($btn-bg, 18), vertical);
+    // @include gradient(lighten($btnBg, 10), darken($btnBg, 18), vertical);
   }
   &:focus-visible {
-    background: darken($btn-bg, 10); // Old browsers
-    border: 1px solid darken($btn-bg, 20);
+    background: darken($btnBg, 10); // Old browsers
+    border: 1px solid darken($btnBg, 20);
     cursor: pointer;
     color: #fff;
     outline: none;
     box-shadow: 0 0px 0px 2px $aFocus !important;
-    // @include gradient(lighten($btn-bg, 10), darken($btn-bg, 18), vertical);
+    // @include gradient(lighten($btnBg, 10), darken($btnBg, 18), vertical);
   }
   &.active {
-    background: lighten($btn-bg, 5);
+    background: lighten($btnBg, 5);
     cursor: pointer;
   }
 }
 // 按鈕預設陰影
 %btn {
-  font-size: $font-size;
+  font-size: $fontSize;
   touch-action: manipulation;
   background-image: none; //修正firefox
   display: inline-block;
@@ -46,7 +46,7 @@
   white-space: nowrap;
   line-height: normal;
   width: auto;
-  padding: $btn-padding;
+  padding: $btnPadding;
   min-width: 4em;
   margin: 0.25em 0.1em;
 
@@ -59,79 +59,79 @@
 .btn {
   @extend %btn;
   // box-sizing: border-box;
-  @include btn_setting;
+  @include btnSetting;
   text-shadow: none;
   &:hover,
   &:focus-visible {
-    color: $btn-word;
+    color: $btnWordColor;
     outline: none;
   }
 }
 //按鈕顏色
-//@include btn_setting(按鈕顏色,字的顏色);
+//@include btnSetting(按鈕顏色,字的顏色);
 .btn-green {
   // @extend %btn;
-  @include btn_setting($color-green, #fff);
+  @include btnSetting($colorGreen, #fff);
 }
 .btn-blue {
   // @extend %btn;
-  @include btn_setting($color-blue, #fff);
+  @include btnSetting($colorBlue, #fff);
 }
 .btn-yellow {
   // @extend %btn;
-  @include btn_setting(lighten($color-yellow, 5), #333);
+  @include btnSetting(lighten($colorYellow, 5), #333);
 }
 .btn-orange {
   // @extend %btn;
-  @include btn_setting(lighten($color-orange, 0), #fff);
+  @include btnSetting(lighten($colorOrange, 0), #fff);
 }
 .btn-red {
   // @extend %btn;
-  @include btn_setting($color-red, #fff);
+  @include btnSetting($colorRed, #fff);
 }
 .btn-purple {
   // @extend %btn;
-  @include btn_setting(lighten($color-purple, 5), #fff);
+  @include btnSetting(lighten($colorPurple, 5), #fff);
 }
-.btn-submit {
+.btnSubmit {
   // @extend %btn;
-  @include btn_setting(lighten($primaryColor, 5), #fff);
+  @include btnSetting(lighten($colorPrimary, 5), #fff);
 }
-.btn-reset {
+.btnReset {
   // @extend %btn;
-  color: lighten($color-word, 15);
+  color: lighten($colorWord, 15);
 }
-.btn-search {
+.btnSearch {
   // @extend %btn;
-  @include btn_setting(lighten($primaryColor, 5), #fff);
+  @include btnSetting(lighten($colorPrimary, 5), #fff);
 }
 // 主要按鈕
-.btn-primary {
-  background: $primaryColor !important;
+.btnPrimary {
+  background: $colorPrimary !important;
   color: #fff !important;
-  border: solid 1px $primaryColor !important;
+  border: solid 1px $colorPrimary !important;
 
   &:hover,
   &:focus-visible {
-    background: darken($primaryColor, 10) !important;
-    border: solid 1px $primaryColor !important;
+    background: darken($colorPrimary, 10) !important;
+    border: solid 1px $colorPrimary !important;
   }
 }
 // 次要按鈕
-.btn-secondary {
+.btnSecondary {
   background: #fff !important;
-  color: darken($primaryColor, 15) !important;
-  border: solid 1px $primaryColor !important;
+  color: darken($colorPrimary, 15) !important;
+  border: solid 1px $colorPrimary !important;
   text-shadow: none !important;
   &:hover,
   &:focus-visible {
-    color: darken($primaryColor, 30) !important;
+    color: darken($colorPrimary, 30) !important;
     background: #b5deff !important;
     border: solid 1px #b5deff !important;
   }
 }
 // 一般按鈕
-.btn-normal {
+.btnNormal {
   background: #f1f1f1 !important;
   color: #65656e !important;
   border: solid 1px #c3c3c3 !important;
@@ -145,13 +145,13 @@
 }
 
 // 返回
-.btn-back {
+.btnBack {
   background: #555 !important;
   color: #fff !important;
   border: 1px solid #ddd !important;
   &:hover,
   &:focus-visible {
-    background: darken($primaryColor, 10) !important;
+    background: darken($colorPrimary, 10) !important;
     border: 1px solid #ddd !important;
   }
 }
@@ -171,14 +171,14 @@
 
 // 按鈕大小
 .btn-xl {
-  font-size: $font-size * 1.5; //24px
+  font-size: $fontSize * 1.5; //24px
 }
-.btn-lg {
-  font-size: $font-size * 1.25; //20px
+.btnLg {
+  font-size: $fontSize * 1.25; //20px
 }
-.btn-sm {
-  font-size: $font-size * 0.938; //15px
+.btnSm {
+  font-size: $fontSize * 0.938; //15px
 }
-.btn-xs {
-  font-size: $font-size * 0.75; //12px
+.btnXs {
+  font-size: $fontSize * 0.75; //12px
 }

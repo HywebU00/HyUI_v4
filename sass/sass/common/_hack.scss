@@ -31,7 +31,7 @@ br {
 }
 .gs-result .gs-title,
 .gs-result .gs-title * {
-  color: $primaryColor !important;
+  color: $colorPrimary !important;
 }
 
 .gsst_a .gscb_a {
@@ -39,7 +39,7 @@ br {
   line-height: 2rem !important;
 }
 .gs-webResult div.gs-visibleUrl {
-  color: $secondaryColor !important;
+  color: $colorSecondary !important;
 }
 .gsc-search-button.gsc-search-button-v2 {
   border: 0 !important;
@@ -47,7 +47,7 @@ br {
 .gsc-search-button-v2,
 .gsc-search-button-v2:hover,
 .gsc-search-button-v2:focus {
-  background-color: $primaryColor !important;
+  background-color: $colorPrimary !important;
 }
 .gsc-tabHeader {
   font-size: 1rem !important;

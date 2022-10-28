@@ -16,14 +16,10 @@ body {
   }
 }
 .row {
-  @include make-row();
+  @include makeRow();
   & > div {
     box-sizing: border-box;
   }
-}
-.container {
-  position: relative;
-  @include container-fixed;
 }
 // 最外圍預設為100%
 .wrapper {
@@ -39,7 +35,9 @@ body {
 .container {
   padding: 0;
   margin: 0 auto;
-  max-width: $container-max; //請看_variable.scss
+  max-width: $containerMax; //請看_variable.scss
+  position: relative;
+  @include containerFixed;
 }
 .main {
   position: relative;
@@ -47,25 +45,25 @@ body {
   @include screen('mobile') {
     padding-top: 60px;
   }
-  // 可先設定一個中央區塊最大寬，限制accesskey對齊
+  // 可先設定一個中央區塊最大寬，限制accessKey對齊
   h2 {
     line-height: 1.25em;
   }
 }
 ////////////////////////////////////////////////////////////
-// 為了與首頁區隔，請在內頁加上innerpage ClassName
-.innerpage {
-  > .container {
+// 為了與首頁區隔，請在內頁加上innerPage ClassName
+.innerPage {
+  & > .container {
     padding-top: 1em;
     @include gutter(); //gutter 代表左右要留白
     display: flex;
   }
-  .center_block {
+  .centerBlock {
     flex: none;
     flex-basis: 100%;
     max-width: 100%;
   }
-  .left_block {
+  .leftBlock {
     flex: none;
     flex-basis: 260px;
     max-width: 260px;
@@ -74,20 +72,20 @@ body {
     position: sticky;
     top: 50px;
     &.hidden {
-      + .center_block {
+      & + .centerBlock {
         flex: none;
         flex-basis: 100%;
         max-width: 100%;
       }
     }
-    + .center_block {
+    & + .centerBlock {
       flex: auto;
       flex-basis: calc(100% - 300px);
       max-width: calc(100% - 300px);
     }
     @include screen('tablet') {
       display: none;
-      + .center_block {
+      & + .centerBlock {
         flex: none;
         flex-basis: 100%;
         max-width: 100%;

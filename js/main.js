@@ -241,7 +241,7 @@ function topNav() {
   let nav = document.querySelector('.navigation');
   let cloneNav = nav.cloneNode(true);
   mobileArea.append(cloneNav);
-  const sideLanguage = document.querySelector('.mobileArea .font_size');
+  const sideLanguage = document.querySelector('.mobileArea .fontSize');
   sideLanguage.remove();
 }
 topNav();
@@ -654,7 +654,7 @@ function fatFooter(obj) {
       }
     });
   }
-  function toggleFatFooter() {
+  function togglefatFooter() {
     const _navUl = el.parentNode.querySelectorAll('nav ul li ul');
     _navUl.forEach((i) => {
       if (i.offsetHeight !== 0) {
@@ -671,13 +671,13 @@ function fatFooter(obj) {
   }
   fatFooterInit();
   // --- 點擊時
-  el.addEventListener('click', toggleFatFooterEle);
-  function toggleFatFooterEle() {
+  el.addEventListener('click', togglefatFooterEle);
+  function togglefatFooterEle() {
     setTimeout(() => {
-      el.addEventListener('click', toggleFatFooterEle);
+      el.addEventListener('click', togglefatFooterEle);
     }, 500);
-    el.removeEventListener('click', toggleFatFooterEle);
-    toggleFatFooter();
+    el.removeEventListener('click', togglefatFooterEle);
+    togglefatFooter();
   }
 
   window.addEventListener('resize', () => {
@@ -685,7 +685,7 @@ function fatFooter(obj) {
   });
 }
 fatFooter({
-  name: document.querySelector('.btn-fatfooter'),
+  name: document.querySelector('.btnFatFooter'),
 });
 
 // -----------------------------------------------------------------------
@@ -836,16 +836,16 @@ function fontSize(obj) {
     }
     switch (targetName) {
       case 'small':
-        control.classList.remove('large_size', 'medium_size');
-        control.classList.add('small_size');
+        control.classList.remove('largeSize', 'medium_size');
+        control.classList.add('smallSize');
         break;
       case 'medium':
-        control.classList.remove('small_size', 'large_size');
+        control.classList.remove('smallSize', 'largeSize');
         control.classList.add('medium_size');
         break;
       case 'large':
-        control.classList.remove('small_size', 'medium_size');
-        control.classList.add('large_size');
+        control.classList.remove('smallSize', 'medium_size');
+        control.classList.add('largeSize');
         break;
     }
   }
@@ -884,7 +884,7 @@ function fontSize(obj) {
   };
 }
 fontSize({
-  name: document.querySelectorAll('.font_size'), // --- 按鈕列表名稱
+  name: document.querySelectorAll('.fontSize'), // --- 按鈕列表名稱
   // --- 更新fontsize切換改為全站通用
   control: document.querySelector('body'), // --- 控制的對象名稱
 });
@@ -1069,7 +1069,7 @@ function addFile() {
   function pushFileName(e) {
     let _fileLen = e.target.files.length;
     let _fileName = '';
-    const uploadInput = e.target.parentNode.closest('.upload_grp').querySelector('.upload_file');
+    const uploadInput = e.target.parentNode.closest('.uploadGrp').querySelector('.upload_file');
     if (_fileLen > 1) {
       _fileName = `${_fileLen} files selected`;
     } else {
@@ -1126,10 +1126,10 @@ categoryActive();
 function gotoCenter() {
   const goCenterTag = document.querySelector('a.goCenter');
   const acTag = document.querySelector('#aC');
-  const mainAccesskey = document.querySelector('.main .accesskey');
+  const mainaccessKey = document.querySelector('.main .accessKey');
   const headerHeight = document.querySelector('.header').offsetHeight;
-  //.accesskey 到top 的距離等於 header + .accesskey到父層上方的距離
-  let _distance = headerHeight + mainAccesskey.offsetTop;
+  //.accessKey 到top 的距離等於 header + .accessKey到父層上方的距離
+  let _distance = headerHeight + mainaccessKey.offsetTop;
   if (goCenterTag) {
     goCenterTag.addEventListener('keydown', (e) => {
       if (e.which === 13) {
@@ -1151,9 +1151,9 @@ gotoCenter();
 
 function a11yKeyCode() {
   let search = document.querySelector('.search input[type="text"]');
-  let header = document.querySelector('.header .accesskey');
-  let main = document.querySelector('.main .accesskey');
-  let footer = document.querySelector('footer .accesskey');
+  let header = document.querySelector('.header .accessKey');
+  let main = document.querySelector('.main .accessKey');
+  let footer = document.querySelector('footer .accessKey');
   let distance = 0;
 
   //focus element
@@ -1210,13 +1210,13 @@ a11yKeyCode();
 // -----------------------------------------------------------------------
 // -----  無障礙錨點切換語系   ----------------------------------------------
 // -----------------------------------------------------------------------
-// 無障礙錨點切換語系，更改accesskey的title名稱
+// 無障礙錨點切換語系，更改accessKey的title名稱
 
 function switchA11TitleName() {
   const webLang = document.querySelector('html').getAttribute('lang');
-  const headerTitle = document.querySelector('.header .accesskey');
-  const mainTitle = document.querySelector('.main .accesskey');
-  const footerTitle = document.querySelector('footer .accesskey');
+  const headerTitle = document.querySelector('.header .accessKey');
+  const mainTitle = document.querySelector('.main .accessKey');
+  const footerTitle = document.querySelector('footer .accessKey');
   const searchTitle = document.querySelector('.search');
   let _lang = webLang.substring(0, 2);
   if (_lang === 'zh') {
@@ -1234,11 +1234,11 @@ function switchA11TitleName() {
 switchA11TitleName();
 
 // -----------------------------------------------------------------------
-// -----   table_list樣式 加上 data-title   -------------------------------
+// -----   tableList樣式 加上 data-title   -------------------------------
 // -----------------------------------------------------------------------
 
 function tableAddDataAttributes() {
-  const el = document.querySelectorAll('.table_list');
+  const el = document.querySelectorAll('.tableList');
   function setTrAttr(i) {
     const thList = i.querySelectorAll('th');
     const trList = i.querySelectorAll('tr');
@@ -1265,9 +1265,9 @@ tableAddDataAttributes();
 function scrollTables(obj) {
   let el = obj.name || null; // --- 按鈕列表名稱
 
-  //檢查父層有沒有 table_list
+  //檢查父層有沒有 tableList
   el.forEach((i) => {
-    let _hasItem = i.parentElement.classList.contains('table_list');
+    let _hasItem = i.parentElement.classList.contains('tableList');
     if (_hasItem === false) {
       appendEle();
       displayNoneEle();
@@ -1278,22 +1278,22 @@ function scrollTables(obj) {
   function appendEle() {
     el.forEach((i) => {
       let _appendLeftEle = document.createElement('div');
-      _appendLeftEle.setAttribute('class', 'scrolltable-nav scrolltable-nav-left');
+      _appendLeftEle.setAttribute('class', 'scrollTableNav scrollTableNavLeft');
       _appendLeftEle.style.height = `${i.parentElement.clientHeight}px`;
 
       let _appendRightEle = document.createElement('div');
-      _appendRightEle.setAttribute('class', 'scrolltable-nav scrolltable-nav-right');
+      _appendRightEle.setAttribute('class', 'scrollTableNav scrollTableNavRight');
       _appendRightEle.style.height = `${i.parentElement.clientHeight}px`;
       i.parentElement.style.position = 'relative';
-      if (i.parentElement.querySelector('.scrolltable-nav-left') === null) {
+      if (i.parentElement.querySelector('.scrollTableNavLeft') === null) {
         i.parentElement.prepend(_appendLeftEle, _appendRightEle);
         //增加左邊按鈕
         let _leftBtn = document.createElement('div');
-        _leftBtn.setAttribute('class', 'scrolltable-left-btn');
+        _leftBtn.setAttribute('class', 'scrollTableLeftBtn');
         _appendLeftEle.appendChild(_leftBtn);
         //增加右邊按鈕
         let _rightBtn = document.createElement('div');
-        _rightBtn.setAttribute('class', 'scrolltable-right-btn');
+        _rightBtn.setAttribute('class', 'scrollTableRightBtn');
         _appendRightEle.appendChild(_rightBtn);
       }
     });
@@ -1307,9 +1307,9 @@ function scrollTables(obj) {
       //子層元素的寬
       let _tableItem = i.scrollWidth;
       //左邊遮罩
-      let _rightEle = i.parentElement.querySelector('.scrolltable-nav-right');
+      let _rightEle = i.parentElement.querySelector('.scrollTableNavRight');
       //右邊遮罩
-      let _leftEle = i.parentElement.querySelector('.scrolltable-nav-left');
+      let _leftEle = i.parentElement.querySelector('.scrollTableNavLeft');
       if (_table === _tableItem) {
         _leftEle.style.display = 'none';
         _rightEle.style.display = 'none';
@@ -1326,9 +1326,9 @@ function scrollTables(obj) {
       //子層元素的寬
       let _tableItem = i.scrollWidth;
       //左邊遮罩
-      let _rightEle = i.parentElement.querySelector('.scrolltable-nav-right');
+      let _rightEle = i.parentElement.querySelector('.scrollTableNavRight');
       //右邊遮罩
-      let _leftEle = i.parentElement.querySelector('.scrolltable-nav-left');
+      let _leftEle = i.parentElement.querySelector('.scrollTableNavLeft');
       //捲軸位置
       let _scrollPosition = i.parentElement.scrollLeft;
       _rightEle.style.right = `-${i.parentElement.scrollLeft}px`;
@@ -1356,7 +1356,7 @@ function scrollTables(obj) {
   });
   //點擊左右按鈕時滾動畫面
   //點擊左邊按鈕
-  const leftBtn = document.querySelectorAll('.scrolltable-left-btn');
+  const leftBtn = document.querySelectorAll('.scrollTableLeftBtn');
   if (leftBtn.length !== 0) {
     leftBtn.forEach((i) => {
       i.addEventListener('click', (item) => {
@@ -1365,7 +1365,7 @@ function scrollTables(obj) {
     });
   }
   //點擊右邊按鈕
-  const rightBtn = document.querySelectorAll('.scrolltable-right-btn');
+  const rightBtn = document.querySelectorAll('.scrollTableRightBtn');
   if (rightBtn.length !== 0) {
     rightBtn.forEach((i) => {
       i.addEventListener('click', (item) => {
@@ -1421,7 +1421,7 @@ function accordionSlider() {
       itemContent.dataset.itemHeight = itemContent.offsetHeight;
     }
     itemContent.style.height = '0';
-    // 點擊後重新計算 item 的 accordion-content 高度
+    // 點擊後重新計算 item 的 accordionContent 高度
     i.addEventListener('click', function () {
       itemContent.style.height = `${itemContent.dataset.itemHeight}px`;
       itemContent.classList.toggle('active');
@@ -1438,8 +1438,8 @@ function accordionSlider() {
         const accordionUL = i.parentNode.parentNode;
         const accordionParentUL = accordionUL.parentNode.parentNode;
         const openBtn = accordionUL.querySelectorAll('.accordion-btn');
-        const arrowBtn = accordionUL.querySelectorAll('.accordion-arrow');
-        accordionUL.querySelectorAll('.accordion-content').forEach((i) => {
+        const arrowBtn = accordionUL.querySelectorAll('.accordionArrow ');
+        accordionUL.querySelectorAll('.accordionContent').forEach((i) => {
           if (!i.classList.contains('active')) {
             i.style.height = '0';
           }
@@ -1464,7 +1464,7 @@ function accordionSlider() {
           }
           //更新箭頭按鈕
           if (arrowBtn.length !== 0) {
-            i.querySelector('.accordion-arrow').classList.add('open');
+            i.querySelector('.accordionArrow ').classList.add('open');
           }
           //更新子選項的高度
           itemContent.style.height = `${itemContent.dataset.itemHeight}px`;

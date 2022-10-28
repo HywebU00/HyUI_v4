@@ -9,13 +9,13 @@ a:focus-visible {
   }
 }
 // 導盲磚
-.accesskey {
+.accessKey {
   position: absolute;
   top: 5px;
   left: 5px;
   z-index: 9;
-  color: $color-word;
-  font-size: $font-size;
+  color: $colorWord;
+  font-size: $fontSize;
   @include screen('mobile') {
     display: none;
   }
@@ -29,7 +29,7 @@ a.goCenter {
   padding: 0 0.5em;
   height: 2em;
   line-height: 2em;
-  background: $primaryColor;
+  background: $colorPrimary;
   color: #fff;
   text-decoration: none;
   z-index: 999999999999;
@@ -42,7 +42,7 @@ a.goCenter {
   }
   &:hover,
   &:focus-visible {
-    background: lighten($primaryColor, 10);
+    background: lighten($colorPrimary, 10);
     top: 0;
     opacity: 1;
     box-shadow: none;
@@ -54,7 +54,7 @@ a.goCenter {
   noscript {
     display: block;
     padding: 0.5em;
-    border: 2px solid $primaryColor;
+    border: 2px solid $colorPrimary;
     background: #fff;
     color: #666;
     overflow: hidden;
@@ -64,7 +64,7 @@ a.goCenter {
     border-radius: 4px;
     box-sizing: border-box;
     a {
-      color: $primaryColor;
+      color: $colorPrimary;
       &:hover,
       &:focus-visible {
         color: $aHover;
@@ -72,7 +72,7 @@ a.goCenter {
     }
   }
   .mpSlider {
-    .img-container {
+    .imgContainer {
       display: none;
       img {
         object-fit: cover;
@@ -88,7 +88,7 @@ a.goCenter {
       width: auto;
       position: absolute;
       right: 160px;
-      > a {
+      & > a {
         display: none;
       }
       ul {
@@ -118,7 +118,7 @@ a.goCenter {
       color: #000;
       margin-bottom: 0px;
       border-bottom: 3px solid #ddd;
-      > a {
+      & > a {
         background: none;
         font-size: 1.5em;
         color: #000;
@@ -132,7 +132,7 @@ a.goCenter {
         display: block;
         position: relative;
         border-bottom: 3px solid #ddd;
-        > a {
+        & > a {
           color: #000;
           background: none;
         }
@@ -145,8 +145,8 @@ a.goCenter {
     }
   }
   // cl_slider
-  .cp_slider {
-    .img-container {
+  .cpSlider {
+    .imgContainer {
       display: inline-block;
       width: 30%;
       margin: 0 1% 1em;
@@ -160,7 +160,7 @@ a.goCenter {
     }
   }
   .adSlider {
-    .img-container {
+    .imgContainer {
       display: inline-block;
       width: 22%;
       margin: 0 1% 1em;

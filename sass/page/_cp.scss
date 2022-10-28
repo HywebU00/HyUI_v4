@@ -41,7 +41,7 @@ h2.title {
     background: #fff;
   }
   img {
-    &.float_left {
+    &.floatLeft {
       float: left;
       margin: 0px 1em 1em 0;
       width: auto;
@@ -52,7 +52,7 @@ h2.title {
         margin: 0px auto;
       }
     }
-    &.float_right {
+    &.floatRight {
       float: right;
       margin: 0px 0 1em 1em;
       width: auto;
@@ -67,12 +67,12 @@ h2.title {
   a {
     @include aSetting;
   }
-  .publish_info {
+  .publishInfo {
     font-size: 0.875em;
     line-height: 1.5em;
     list-style: none;
     margin: 0 0 0.7em 0;
-    border-left: solid 5px $primaryColor;
+    border-left: solid 5px $colorPrimary;
     padding: 0.8em 1.5em 0.8em;
     background: #f2f2f2;
     display: flex;
@@ -93,7 +93,7 @@ h2.title {
 }
 
 // 檔案下載
-.file_download {
+.fileDownload {
   width: 100%;
   margin: 0 auto 2em;
   @include clearfix();
@@ -101,7 +101,7 @@ h2.title {
     font-size: 1.5em;
     padding: 12px 0px 15px 0px;
     margin: 0.5em 0px 0.2em;
-    border-bottom: 1px solid $primaryColor;
+    border-bottom: 1px solid $colorPrimary;
   }
   ul {
     list-style-type: none;
@@ -126,7 +126,7 @@ h2.title {
       color: #666;
     }
 
-    .file_name {
+    .fileName {
       line-height: 1.8em;
       margin: 0.2em 0.5em 0.2em 0;
       color: #222;
@@ -145,6 +145,7 @@ h2.title {
       }
     }
     $fileType: doc, docx, odt, xls, xlsx, csv, ods, ppt, pptx, odp, zip, txt, mov, mp3, jpg, wmv, mp4, pdf, other;
+    //notice 保留file_比較清楚知道是對應什麼
     @each $fileType in $fileType {
       span.file_#{$fileType} {
         a {
@@ -267,13 +268,13 @@ h2.title {
   }
 }
 // 外部連結
-.web_link {
+.webLink {
   margin: 1em 0;
   h3 {
     font-size: 1.5em;
     padding: 12px 0px 15px 0px;
     margin: 0.5em 0px 0.2em;
-    border-bottom: 1px solid $primaryColor;
+    border-bottom: 1px solid $colorPrimary;
   }
   ol,
   ul {
@@ -300,7 +301,7 @@ h2.title {
     a {
       padding: 0.2em 0px;
       display: block;
-      @include aSetting($color-word);
+      @include aSetting($colorWord);
     }
   }
 }

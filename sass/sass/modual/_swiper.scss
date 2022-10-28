@@ -1,7 +1,7 @@
 :swiper {
   --dotSize: 15px;
 }
-.cp_slider {
+.cpSlider {
   padding: 1em 0;
 }
 .swiperBox {
@@ -47,7 +47,7 @@
     }
   }
 }
-.swiper-arrow {
+.swiperArrow {
   position: absolute;
   cursor: pointer;
   top: 50%;
@@ -62,21 +62,21 @@
     display: block;
     background: url('../vendor/swiper/ar.svg') center no-repeat;
   }
-  &.swiper-prev {
+  &.prev {
     left: 0px;
   }
-  &.swiper-next {
+  &.next {
     right: 0px;
     &::before {
       transform: rotate(180deg);
     }
   }
-  &.swiper-arrow-disabled {
+  &.swiperArrow-disabled {
     opacity: 0.3;
   }
 }
 
-.cp_slider .swiper {
+.cpSlider .swiper {
   margin: 0 40px;
   background: #fff;
   overflow: hidden;
@@ -85,13 +85,13 @@
     font-size: 1.5em;
     padding: 12px 0px 15px 0px;
     margin: 0.5em 0px 1.2em;
-    border-bottom: 1px solid $primaryColor;
+    border-bottom: 1px solid $colorPrimary;
   }
-  .cp_slider {
+  .cpSlider {
     @include gutter;
   }
-  .img-container {
-    @include aspect-ratio(4, 3);
+  .imgContainer {
+    @include aspectRatio(4, 3);
     overflow: hidden;
     img {
       object-fit: contain;
@@ -108,7 +108,7 @@
     height: 2em !important;
     line-height: 1 !important;
     width: 100%;
-    @include text-overflow;
+    @include textOverflow;
     transition: 0.3s ease-out;
   }
   a {
@@ -126,7 +126,7 @@
       }
     }
   }
-  .swiper-arrow {
+  .swiperArrow {
     padding: 0;
   }
 }

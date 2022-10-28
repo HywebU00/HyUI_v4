@@ -2,7 +2,7 @@
   text-align: left;
   margin: 1em auto;
   ul {
-    @include li-reset;
+    @include liReset;
     display: flex;
     flex-wrap: wrap;
 
@@ -26,8 +26,8 @@
     &:focus,
     &.active {
       color: #fff;
-      background: lighten($primaryColor, 5);
-      border: 1px solid lighten($primaryColor, 5);
+      background: lighten($colorPrimary, 5);
+      border: 1px solid lighten($colorPrimary, 5);
       box-shadow: none;
     }
     span {

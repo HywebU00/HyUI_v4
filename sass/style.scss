@@ -12,7 +12,7 @@
   // 共通 common
   @import 'sass/common/_normalize'; //reset
   @import 'sass/common/_grid'; //格線 - bootstrap
-  @import 'sass/common/_grid-flex'; //格線 - flex
+  @import 'sass/common/_gridFlex'; //格線 - flex
   @import 'sass/common/_typography'; //CP文字排版
   @import 'sass/common/_accessibility'; //無障礙關閉js設定
   @import 'sass/common/_hack'; //瀏覽器修正
@@ -33,9 +33,9 @@
   @import 'sass/modual/_menu'; //menu
   @import 'sass/modual/_megamenu'; //megamenu
   @import 'sass/modual/_menuSidebar'; //menuSidebar
-  @import 'sass/modual/_fixed_sidebar'; //固定側邊欄
+  @import 'sass/modual/_fixedSidebar'; //固定側邊欄
   @import 'sass/modual/_footer'; //footer
-  @import 'sass/modual/_fatfooter'; //fatfooter
+  @import 'sass/modual/_fatFooter'; //fatFooter
   @import 'sass/modual/_form'; //表單
   @import 'sass/modual/_table'; //表格
   @import 'sass/modual/_list'; //表單樣式
@@ -43,7 +43,7 @@
   @import 'sass/modual/_tabs'; //頁籤
   @import 'sass/modual/_thumbnail'; //縮圖
   @import 'sass/modual/_modal'; //pop視窗
-  @import 'sass/modual/_function_panel'; //內頁功能面板
+  @import 'sass/modual/_functionPanel'; //內頁功能面板
   @import 'sass/modual/_marquee'; //跑馬燈
   @import 'sass/modual/_paginations'; //分頁
   @import 'sass/modual/_notice'; //提示
@@ -51,7 +51,7 @@
   @import 'sass/modual/_tabsBtn'; //新增按鈕頁籤
   @import 'sass/common/_print'; //列印樣式
   @import 'page/_sitemap'; //Sitemap
-  @import 'page/_left_block'; //左欄left_block
+  @import 'page/_leftBlock'; //左欄leftBlock
   @import 'page/_template'; //版型初始設定
 }
 // 下方scss權重較高

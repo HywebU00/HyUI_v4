@@ -6,7 +6,7 @@
 // ================= menu的無障礙tab設定
 // ///////////////// notice訊息區塊
 // ////////////////  Accordion設定
-// ================ fatfooter開關
+// ================ fatFooter開關
 // //////////////// 多組Tab
 // ================ 置頂go to top
 // /////////////////// 設定img 在IE9+ SAFARI FIREFOX CHROME 可以object-fit
@@ -19,7 +19,7 @@
 // ////////////////// 無障礙切換slick箭頭語系
 // ================ gotoCenter on focus跳到 content
 // ================= 語言模組 無障礙遊走設定
-// table 加上響應式 scroltable-wrapper
+// table 加上響應式 scrolTableWrapper
 // =================  table 加上 data-title
 // //////////////// lazy load
 // console.log(document.querySelector('.menu'));
@@ -272,7 +272,7 @@ class Menu {
     cloneMenu.classList.add('sideMainMenu');
     cloneMenu.classList.remove('mainMenu', 'megaMenu', 'menu');
     mobileArea.append(cloneMenu, cloneNav);
-    let sideLanguage = document.querySelector('.mobileArea .font_size');
+    let sideLanguage = document.querySelector('.mobileArea .fontSize');
     sideLanguage.remove();
     // 複製搜尋到手機版側欄
     let search = document.querySelector('.search');
@@ -769,19 +769,19 @@ document.querySelectorAll('[class*="notice"] a.close').forEach((i) => {
 });
 
 /*-----------------------------------*/
-/////////////// FatFooter ///////////
+/////////////// fatFooter ///////////
 /*-----------------------------------*/
-class FatFooter {
+class fatFooter {
   constructor(obj) {
     this.name = document.querySelector(`${obj.el}`) || null; // --- 控制的對象
   }
-  clickFatFooter() {
+  clickfatFooter() {
     const _that = this;
     this.name.addEventListener('click', () => {
-      this.toggleFatFooter(_that);
+      this.togglefatFooter(_that);
     });
   }
-  toggleFatFooter(_that) {
+  togglefatFooter(_that) {
     const _navUl = _that.name.parentNode.querySelectorAll('nav ul li ul');
     _navUl.forEach((i) => {
       if (i.offsetHeight !== 0) {
@@ -802,12 +802,12 @@ class FatFooter {
     });
   }
   initial() {
-    this.clickFatFooter();
+    this.clickfatFooter();
     this.changeScreenSize();
   }
 }
-const fatFooter = new FatFooter({
-  el: '.btn-fatfooter',
+const fatFooter = new fatFooter({
+  el: '.btnFatFooter',
 }); // --- 控制的對象
 fatFooter.initial();
 
@@ -975,16 +975,16 @@ class FontSize {
     }
     switch (targetName) {
       case 'small':
-        this.control.classList.remove('large_size', 'medium_size');
-        this.control.classList.add('small_size');
+        this.control.classList.remove('largeSize', 'medium_size');
+        this.control.classList.add('smallSize');
         break;
       case 'medium':
-        this.control.classList.remove('small_size', 'large_size');
+        this.control.classList.remove('smallSize', 'largeSize');
         this.control.classList.add('medium_size');
         break;
       case 'large':
-        this.control.classList.remove('small_size', 'medium_size');
-        this.control.classList.add('large_size');
+        this.control.classList.remove('smallSize', 'medium_size');
+        this.control.classList.add('largeSize');
         break;
     }
   }
@@ -1032,7 +1032,7 @@ class FontSize {
 }
 
 let fontsize = new FontSize({
-  el: '.font_size', // --按鈕列表名稱
+  el: '.fontSize', // --按鈕列表名稱
   // --更新fontsize切換改為全站通用
   control: 'body', // --控制的對象名稱
 });
@@ -1229,7 +1229,7 @@ function addFile() {
   function pushFlieName(e) {
     let _fileLen = e.target.files.length;
     let _fileName = '';
-    const uploadInput = e.target.parentNode.closest('.upload_grp').querySelector('.upload_file');
+    const uploadInput = e.target.parentNode.closest('.uploadGrp').querySelector('.upload_file');
     if (_fileLen > 1) {
       _fileName = `${_fileLen} files selected`;
     } else {
@@ -1283,10 +1283,10 @@ categoryActive();
 function gotoCenter() {
   const goCenterTag = document.querySelector('a.goCenter');
   const acTag = document.querySelector('#aC');
-  const mainAccesskey = document.querySelector('.main .accesskey');
+  const mainaccessKey = document.querySelector('.main .accessKey');
   const headerHeight = document.querySelector('.header').offsetHeight;
-  //.accesskey 到top 的距離等於 header + .accesskey到父層上方的距離
-  let _distance = headerHeight + mainAccesskey.offsetTop;
+  //.accessKey 到top 的距離等於 header + .accessKey到父層上方的距離
+  let _distance = headerHeight + mainaccessKey.offsetTop;
   if (goCenterTag) {
     goCenterTag.addEventListener('keydown', (e) => {
       if (e.which === 13) {
@@ -1309,9 +1309,9 @@ gotoCenter();
 class A11yKeyCode {
   constructor() {
     this.search = document.querySelector('.search input[type="text"]');
-    this.header = document.querySelector('.header .accesskey');
-    this.main = document.querySelector('.main .accesskey');
-    this.footer = document.querySelector('footer .accesskey');
+    this.header = document.querySelector('.header .accessKey');
+    this.main = document.querySelector('.main .accessKey');
+    this.footer = document.querySelector('footer .accessKey');
     this.distance = 0;
   }
 
@@ -1375,12 +1375,12 @@ a11Keycode.initial();
 //////// 無障礙切換slick箭頭語系  ////////
 /*-----------------------------------*/
 
-// 無障礙錨點切換語系，更改accesskey的title名稱
+// 無障礙錨點切換語系，更改accessKey的title名稱
 function switchA11TitleName() {
   const webLang = document.querySelector('html').getAttribute('lang');
-  const headerTitle = document.querySelector('.header .accesskey');
-  const mainTitle = document.querySelector('.main .accesskey');
-  const footerTitle = document.querySelector('footer .accesskey');
+  const headerTitle = document.querySelector('.header .accessKey');
+  const mainTitle = document.querySelector('.main .accessKey');
+  const footerTitle = document.querySelector('footer .accessKey');
   const searchTitle = document.querySelector('.search');
   let _lang = webLang.substring(0, 2);
   if (_lang === 'zh') {
@@ -1401,7 +1401,7 @@ switchA11TitleName();
 // //////////table 加上 data-title//////////
 // /*------------------------------------*/
 function tableAddDataAttributes() {
-  const el = document.querySelectorAll('.table_list');
+  const el = document.querySelectorAll('.tableList');
   function setTrAttr(i) {
     const thList = i.querySelectorAll('th');
     const trList = i.querySelectorAll('tr');
@@ -1425,10 +1425,10 @@ class ScrollTables {
   constructor(obj) {
     this.name = document.querySelectorAll(`${obj.name}`) || null;
   }
-  //檢查父層有沒有 table_list
+  //檢查父層有沒有 tableList
   haveTableList() {
     this.name.forEach((i) => {
-      let _hasItem = i.parentElement.classList.contains('table_list');
+      let _hasItem = i.parentElement.classList.contains('tableList');
       if (_hasItem === false) {
         this.appendEle();
         this.displayNoneEle();
@@ -1439,23 +1439,23 @@ class ScrollTables {
   appendEle() {
     this.name.forEach((i) => {
       let _appendLeftEle = document.createElement('div');
-      _appendLeftEle.setAttribute('class', 'scrolltable-nav scrolltable-nav-left');
+      _appendLeftEle.setAttribute('class', 'scrollTableNav scrollTableNavLeft');
       _appendLeftEle.style.height = `${i.parentElement.clientHeight}px`;
 
       let _appendRightEle = document.createElement('div');
-      _appendRightEle.setAttribute('class', 'scrolltable-nav scrolltable-nav-right');
+      _appendRightEle.setAttribute('class', 'scrollTableNav scrollTableNavRight');
       _appendRightEle.style.height = `${i.parentElement.clientHeight}px`;
       i.parentElement.style.position = 'relative';
-      if (i.parentElement.querySelector('.scrolltable-nav-left') === null) {
+      if (i.parentElement.querySelector('.scrollTableNavLeft') === null) {
         i.parentElement.prepend(_appendLeftEle, _appendRightEle);
         //增加左邊按鈕
         let _leftBtn = document.createElement('div');
-        _leftBtn.setAttribute('class', 'scrolltable-left-btn');
+        _leftBtn.setAttribute('class', 'scrollTableLeftBtn');
         _leftBtn.style.marginTop = `${i.parentElement.clientHeight / 2}px`;
         _appendLeftEle.appendChild(_leftBtn);
         //增加右邊按鈕
         let _rightBtn = document.createElement('div');
-        _rightBtn.setAttribute('class', 'scrolltable-right-btn');
+        _rightBtn.setAttribute('class', 'scrollTableRightBtn');
         _rightBtn.style.marginTop = `${i.parentElement.clientHeight / 2}px`;
         _appendRightEle.appendChild(_rightBtn);
       }
@@ -1469,9 +1469,9 @@ class ScrollTables {
       //子層元素的寬
       let _tableItem = i.scrollWidth;
       //左邊遮罩
-      let _rightEle = i.parentElement.querySelector('.scrolltable-nav-right');
+      let _rightEle = i.parentElement.querySelector('.scrollTableNavRight');
       //右邊遮罩
-      let _leftEle = i.parentElement.querySelector('.scrolltable-nav-left');
+      let _leftEle = i.parentElement.querySelector('.scrollTableNavLeft');
       if (_table === _tableItem) {
         _leftEle.style.display = 'none';
         _rightEle.style.display = 'none';
@@ -1489,9 +1489,9 @@ class ScrollTables {
         //子層元素的寬
         let _tableItem = i.scrollWidth;
         //左邊遮罩
-        let _rightEle = i.parentElement.querySelector('.scrolltable-nav-right');
+        let _rightEle = i.parentElement.querySelector('.scrollTableNavRight');
         //右邊遮罩
-        let _leftEle = i.parentElement.querySelector('.scrolltable-nav-left');
+        let _leftEle = i.parentElement.querySelector('.scrollTableNavLeft');
         //捲軸位置
         let _scrollPosition = i.parentElement.scrollLeft;
         _rightEle.style.right = `-${i.parentElement.scrollLeft}px`;
@@ -1522,7 +1522,7 @@ class ScrollTables {
   //點擊左右按鈕時滾動畫面
   //點擊左邊按鈕
   clickLeftBtn() {
-    const leftBtn = document.querySelectorAll('.scrolltable-left-btn');
+    const leftBtn = document.querySelectorAll('.scrollTableLeftBtn');
     if (leftBtn.length !== 0) {
       leftBtn.forEach((i) => {
         i.addEventListener('click', (item) => {
@@ -1533,7 +1533,7 @@ class ScrollTables {
   }
   //點擊右邊按鈕
   clickRightBtn() {
-    const rightBtn = document.querySelectorAll('.scrolltable-right-btn');
+    const rightBtn = document.querySelectorAll('.scrollTableRightBtn');
     if (rightBtn.length !== 0) {
       rightBtn.forEach((i) => {
         i.addEventListener('click', (item) => {
@@ -1572,14 +1572,14 @@ var lazyLoadInstance = new LazyLoad({
 /*-----------------------------------*/
 // $(function () {
 //   $('.accordion').each(function () {
-//     $(this).find('.accordion-content').hide();
+//     $(this).find('.accordionContent').hide();
 //     var _accordionItem = $(this).children('ul').children('li').children('a');
 //     _accordionItem.each(function () {
 //       function accordion(e) {
 //         $(this).parent('li').siblings().children('a').removeClass('active');
 //         $(this).toggleClass('active');
-//         $(this).parent('li').siblings().children('.accordion-content').slideUp();
-//         $(this).next('.accordion-content').slideToggle();
+//         $(this).parent('li').siblings().children('.accordionContent').slideUp();
+//         $(this).next('.accordionContent').slideToggle();
 //         e.preventDefault();
 //       }
 //       $(this).click(accordion);

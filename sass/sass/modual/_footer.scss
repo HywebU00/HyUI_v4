@@ -15,19 +15,19 @@ footer {
   }
   a {
     text-decoration: none;
-    color: $primaryColor;
+    color: $colorPrimary;
     &:hover,
     &:focus-visible {
-      color: darken($primaryColor, 10);
+      color: darken($colorPrimary, 10);
     }
   }
-  .footer_logo {
+  .footerLogo {
     flex: 0 1 240px;
   }
-  .footer_info {
+  .footerInfo {
     flex: 1 1 auto;
   }
-  .footer_icon {
+  .footerIcon {
     flex: 0 1 200px;
     @include screen('tablet') {
       flex: 1 1 100%;
@@ -35,8 +35,8 @@ footer {
     }
   }
   // 版權連結
-  .footer_link {
-    @include li-reset();
+  .footerLink {
+    @include liReset();
     clear: both;
     display: flex;
     @include screen('mobile') {
@@ -51,14 +51,14 @@ footer {
       a {
         display: block;
         padding: 0.25em 1em;
-        background: $primaryColor;
+        background: $colorPrimary;
         color: #fff;
         text-align: center;
         transition: 0.3s ease-out;
         white-space: nowrap;
         &:hover,
         &:focus-visible {
-          background: darken($primaryColor, 10);
+          background: darken($colorPrimary, 10);
         }
       }
     }
@@ -72,11 +72,11 @@ footer {
     margin-right: 5px;
     em {
       font-style: normal;
-      color: $primaryColor;
+      color: $colorPrimary;
       padding: 0 0.5em;
     }
   }
-  .footer_icon {
+  .footerIcon {
     a {
       display: inline-block;
       vertical-align: top;

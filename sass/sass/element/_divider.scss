@@ -1,5 +1,5 @@
 // $dividerColor from _variable.scss
-%divider_setting {
+%dividerSetting {
   text-align: center;
   white-space: nowrap;
   -webkit-user-select: none;
@@ -13,8 +13,8 @@
   display: block;
 }
 .divider,
-.divider-vertical {
-  @extend %divider_setting;
+.dividerVertical {
+  @extend %dividerSetting;
 }
 .divider {
   display: table;
@@ -38,7 +38,7 @@
   }
 }
 
-.divider-vertical {
+.dividerVertical {
   position: absolute;
   z-index: 2;
   top: 50%;

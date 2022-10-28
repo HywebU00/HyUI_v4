@@ -13,14 +13,14 @@
       }
     }
   }
-  .accordion-content {
+  .accordionContent {
     line-height: 1.45em;
     // padding: 5px 0;
     overflow: hidden;
     transition: height 0.5s;
     padding: 0;
   }
-  .accordion-arrow {
+  .accordionArrow {
     position: absolute;
     right: 40px;
     &:after {

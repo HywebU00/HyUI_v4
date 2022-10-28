@@ -1,4 +1,4 @@
-.nav-tab {
+.navTab {
   .nav {
     display: flex;
     flex-wrap: wrap;
@@ -6,19 +6,19 @@
     margin-bottom: 1em;
     list-style: none;
   }
-  .nav-list {
-    .nav-link.active {
+  .navList {
+    .navLink.active {
       color: #fff;
-      background-color: $color-blue;
+      background-color: $colorBlue;
     }
   }
-  .tab-content > .tab-pane {
+  .tabContent > .tab-pane {
     display: none;
   }
-  .tab-content > .active {
+  .tabContent > .active {
     display: block;
   }
-  .tab-content {
+  .tabContent {
     padding: 0 1em;
     ul {
       list-style-type: none;

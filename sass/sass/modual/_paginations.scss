@@ -4,11 +4,11 @@
   display: block;
   text-align: center;
   font-size: 0.938em;
-  .form_inline {
+  .formInline {
     justify-content: center;
   }
   span {
-    color: $primaryColor;
+    color: $colorPrimary;
     margin: 0px 0.5em;
   }
   .page {
@@ -31,22 +31,22 @@
         display: block;
         white-space: nowrap;
         font-size: 1em;
-        color: $color-word;
+        color: $colorWord;
         background: #eee;
         border: #ccc solid 1px;
         margin: 0 0.1em 0.25em;
         &:hover,
         &:focus-visible {
-          background: $primaryColor;
+          background: $colorPrimary;
           color: #fff !important;
-          border: $primaryColor solid 1px;
+          border: $colorPrimary solid 1px;
         }
       }
       &.active {
         a {
           color: #fff !important;
-          background: $form-focus;
-          border: darken($form-focus, 5) solid 1px;
+          background: $formFocus;
+          border: darken($formFocus, 5) solid 1px;
         }
       }
       %arrow {
@@ -133,23 +133,6 @@
       min-width: auto;
       padding: 0.4em 1em !important;
     }
-    // input[type="button"] {
-    //     @include gradient(#F7F7F7, #EAEAEA, vertical);
-    //     border: 1px solid #CCC;
-    //     color: #222;
-    //     padding: .4em 1em !important;
-    //     min-width: 3em;
-    //     display: inline-block;
-    //     vertical-align: middle;
-    //     box-shadow: none;
-    //     text-shadow: none;
-    //     &:hover, &:focus-visible{
-    //         color: #fff !important;
-    //         background: $form-focus;
-    //         border: darken($form-focus, 5) solid 1px;
-    //         box-shadow: none !important;
-    //     }
-    // }
   }
   .items {
     display: inline-block;
@@ -157,13 +140,13 @@
 
     a {
       padding: 0 5px;
-      color: $primaryColor;
+      color: $colorPrimary;
       text-decoration: none;
     }
   }
 }
 @include screen('mobile') {
-  .pagination .total select.form-control {
+  .pagination .total select.formControl {
     margin: 0px 0px;
     text-align: center;
   }

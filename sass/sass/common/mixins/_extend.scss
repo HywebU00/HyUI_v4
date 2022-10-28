@@ -8,7 +8,7 @@
 }
 
 // 箭頭
-%arrow_setting {
+%arrowSetting {
   display: inline-block;
   vertical-align: middle;
   margin-right: 0.5em;
@@ -17,29 +17,29 @@
   height: 0;
   border-style: solid;
 }
-%arrow_down {
-  @extend %arrow_setting;
+%arrowDown {
+  @extend %arrowSetting;
   border-width: 6px 3px 0 3px;
   border-color: #555 transparent transparent transparent;
 }
-%arrow_right {
-  @extend %arrow_setting;
+%arrowRight {
+  @extend %arrowSetting;
   border-width: 3px 0 3px 6px;
   border-color: transparent transparent transparent #555;
 }
-%arrow_up {
-  @extend %arrow_setting;
+%arrowUp {
+  @extend %arrowSetting;
   border-width: 0 3px 6px 3px;
   border-color: transparent transparent #555 transparent;
 }
-%arrow_left {
-  @extend %arrow_setting;
+%arrowLeft {
+  @extend %arrowSetting;
   border-width: 3px 6px 3px 0;
   border-color: transparent #555 transparent transparent;
 }
 
 // 啟動display:flex
-%flex_set {
+%flexSet {
   display: flex;
   flex-flow: row wrap;
   // 預設均分
@@ -48,9 +48,9 @@
 
 // 繼承
 // @extend %slash;              // 斜線
-// @extend %arrow_setting;      // 箭頭
-// @extend %arrow_down;         // 箭頭：下
-// @extend %arrow_right;        // 箭頭：右
-// @extend %arrow_up;           // 箭頭：上
-// @extend %arrow_left;         // 箭頭：左
-// @extend %flex_set;           // 啟動 display:flex
+// @extend %arrowSetting;      // 箭頭
+// @extend %arrowDown;         // 箭頭：下
+// @extend %arrowRight;        // 箭頭：右
+// @extend %arrowUp;           // 箭頭：上
+// @extend %arrowLeft;         // 箭頭：左
+// @extend %flexSet;           // 啟動 display:flex

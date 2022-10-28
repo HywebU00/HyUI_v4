@@ -1,7 +1,7 @@
 // 自動產生編號：https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Lists_and_Counters/Using_CSS_counters
 
 // 選項次層
-.sub_menu {
+.submenu {
   ul,
   ol {
     display: flex;
@@ -34,8 +34,8 @@
       position: relative;
       height: 100%;
       box-sizing: border-box;
-      @include aSetting($color-word);
-      // @include text-overflow;
+      @include aSetting($colorWord);
+      // @include textOverflow;
       .num {
         position: absolute;
         width: 1em;

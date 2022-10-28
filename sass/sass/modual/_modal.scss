@@ -14,7 +14,7 @@
   box-shadow: 1px 1px 15px RGBA(0, 0, 0, 0.5);
   animation: scaleUp 0.5s ease-out;
   h2 {
-    border-bottom: 1px solid $primaryColor;
+    border-bottom: 1px solid $colorPrimary;
     padding-bottom: 0.5em;
   }
   .close {
@@ -45,7 +45,7 @@
     opacity: 1;
   }
 }
-.modal_overlay {
+.modalOverlay {
   position: fixed;
   display: block;
   top: 0;

@@ -4,7 +4,7 @@
   font-size: 0.813em;
   margin: 0px auto 5px;
   ul {
-    @include li-reset;
+    @include liReset;
     display: flex;
     flex-flow: row wrap;
     li {
@@ -21,6 +21,6 @@
     }
   }
   a {
-    @include aSetting($color-word);
+    @include aSetting($colorWord);
   }
 }
