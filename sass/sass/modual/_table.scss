@@ -256,30 +256,31 @@ table {
 
 // scrolltable style
 .table-wrapper {
-  overflow-y: scroll;
+  overflow-x: scroll;
+  overflow-y: hidden;
   scroll-behavior: smooth;
 }
-.scrolltable-nav {
+.scrolltableNav {
   width: 60px;
   position: absolute;
   transition: 0.5s opacity;
   background: linear-gradient(to right, rgba(255, 255, 255, 0.8) 33%, rgba(255, 255, 255, 0.6) 39%, rgba(255, 255, 255, 0) 100%);
 }
-.scrolltable-nav-left {
+.scrolltableNavLeft {
   left: 0;
   display: none;
 }
-.scrolltable-nav-right {
+.scrolltableNavRight {
   right: 0;
   transform: rotateY(180deg);
 }
-.scrolltable-nav-left .scrolltable-left-btn {
+.scrolltableNavLeft .scrolltableLeftBtn {
   width: 35px;
   height: 100%;
   background: url(../images/scrolltable/arrow-left.png) no-repeat center;
   cursor: pointer;
 }
-.scrolltable-nav-right .scrolltable-right-btn {
+.scrolltableNavRight .scrolltableRightBtn {
   width: 35px;
   height: 100%;
   background: url(../images/scrolltable/arrow-left.png) no-repeat center;
