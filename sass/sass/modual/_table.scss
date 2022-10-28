@@ -274,15 +274,16 @@ table {
   right: 0;
   transform: rotateY(180deg);
 }
-.scrolltableNavLeft .scrolltableLeftBtn {
-  width: 35px;
-  height: 100%;
-  background: url(../images/scrolltable/arrow-left.png) no-repeat center;
-  cursor: pointer;
-}
+.scrolltableNavLeft .scrolltableLeftBtn,
 .scrolltableNavRight .scrolltableRightBtn {
   width: 35px;
   height: 100%;
-  background: url(../images/scrolltable/arrow-left.png) no-repeat center;
+  background: url(../images/scrolltable/icon_ar.svg) no-repeat center;
   cursor: pointer;
 }
+// .scrolltableNavRight .scrolltableRightBtn {
+//   width: 35px;
+//   height: 100%;
+//   background: url(../images/scrolltable/ar_left.svg) no-repeat center;
+//   cursor: pointer;
+// }
