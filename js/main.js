@@ -1271,23 +1271,23 @@ function scrollTables(obj) {
       let _appendLeftEle;
       let _appendRightEle;
       let _hasItem = i.parentElement.classList.contains('table_list');
-      let _hasNavLeft = i.parentElement.querySelector('.scrolltableNavLeft');
+      let _hasNavLeft = i.parentElement.querySelector('.scrollTableNavLeft');
       if (!_hasItem && _hasNavLeft === null) {
         _appendLeftEle = document.createElement('div');
-        _appendLeftEle.setAttribute('class', 'scrolltableNav scrolltableNavLeft');
+        _appendLeftEle.setAttribute('class', 'scrollTableNav scrollTableNavLeft');
         _appendLeftEle.style.height = `${i.parentElement.clientHeight}px`;
         _appendRightEle = document.createElement('div');
-        _appendRightEle.setAttribute('class', 'scrolltableNav scrolltableNavRight');
+        _appendRightEle.setAttribute('class', 'scrollTableNav scrollTableNavRight');
         _appendRightEle.style.height = `${i.parentElement.clientHeight}px`;
         i.parentElement.style.position = 'relative';
         i.parentElement.prepend(_appendLeftEle, _appendRightEle);
         //增加左邊按鈕
         _leftBtn = document.createElement('div');
-        _leftBtn.setAttribute('class', 'scrolltableLeftBtn');
+        _leftBtn.setAttribute('class', 'scrollTableLeftBtn');
         _appendLeftEle.appendChild(_leftBtn);
         //增加右邊按鈕
         _rightBtn = document.createElement('div');
-        _rightBtn.setAttribute('class', 'scrolltableRightBtn');
+        _rightBtn.setAttribute('class', 'scrollTableRightBtn');
         _appendRightEle.appendChild(_rightBtn);
         displayNoneEle();
       }
@@ -1307,9 +1307,9 @@ function scrollTables(obj) {
         //子層元素的寬
         let _tableItem = el.scrollWidth;
         //左邊遮罩
-        let _rightEle = el.parentElement.querySelector('.scrolltableNavRight');
+        let _rightEle = el.parentElement.querySelector('.scrollTableNavRight');
         //右邊遮罩
-        let _leftEle = el.parentElement.querySelector('.scrolltableNavLeft');
+        let _leftEle = el.parentElement.querySelector('.scrollTableNavLeft');
         //如果沒有建立遮罩
         if (_rightEle == null) {
           return;
@@ -1336,9 +1336,9 @@ function scrollTables(obj) {
         //子層元素的寬
         let _tableItem = i.scrollWidth;
         //左邊遮罩
-        let _rightEle = i.parentElement.querySelector('.scrolltableNavRight');
+        let _rightEle = i.parentElement.querySelector('.scrollTableNavRight');
         //右邊遮罩
-        let _leftEle = i.parentElement.querySelector('.scrolltableNavLeft');
+        let _leftEle = i.parentElement.querySelector('.scrollTableNavLeft');
         //捲軸位置
         let _scrollPosition = i.parentElement.scrollLeft;
         _rightEle.style.right = `-${i.parentElement.scrollLeft}px`;
@@ -1369,7 +1369,7 @@ function scrollTables(obj) {
   //點擊左右按鈕時滾動畫面
   function clickEleBtn() {
     //點擊左邊按鈕
-    const leftBtn = document.querySelectorAll('.scrolltableLeftBtn');
+    const leftBtn = document.querySelectorAll('.scrollTableLeftBtn');
     if (leftBtn.length !== 0) {
       leftBtn.forEach((i) => {
         i.addEventListener('click', (item) => {
@@ -1378,7 +1378,7 @@ function scrollTables(obj) {
       });
     }
     //點擊右邊按鈕
-    const rightBtn = document.querySelectorAll('.scrolltableRightBtn');
+    const rightBtn = document.querySelectorAll('.scrollTableRightBtn');
     if (rightBtn.length !== 0) {
       rightBtn.forEach((i) => {
         i.addEventListener('click', (item) => {

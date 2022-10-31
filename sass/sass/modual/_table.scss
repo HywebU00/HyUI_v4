@@ -1,9 +1,9 @@
 //http://lab.25sprout.com/responsive_table/
 table {
   // 無障礙 caption 標題預設隱藏
-  caption {
-    @include srOnly;
-  }
+  // caption {
+  //   @include srOnly;
+  // }
   width: 100%;
   border-collapse: collapse;
   @include screen('xsMobile') {
@@ -13,6 +13,17 @@ table {
   td {
     padding: 0.5em;
     text-align: left;
+  }
+  caption {
+    font-weight: bold;
+    text-align: left;
+    font-size: 1.125rem;
+    margin-bottom: 0.5em;
+    .summary {
+      display: block;
+      font-size: 1em;
+      font-weight: normal;
+    }
   }
   td {
     border: #ddd 1px solid;
@@ -141,6 +152,9 @@ table {
   }
 }
 .tableWrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
   @include screen('mobile') {
     width: 100%;
     display: block;
@@ -157,94 +171,97 @@ table {
     }
   }
 }
-.scrolTable {
+.scrollTable {
   min-width: 600px !important;
-}
-.scrolTableWrapper {
-  position: relative;
-  -webkit-overflow-scrolling: touch;
-  // -webkit-transform: translate3d(0, 0, 0);
-  overflow-y: hidden;
-}
-.scrolTableContainer {
-  overflow: auto;
-}
-.scrolTableNav {
-  display: none;
-  position: absolute;
-  width: 60px;
-  height: 100%;
-  cursor: pointer;
-  z-index: 9;
-}
-.scrolTableNav.scrolTableNavLeft {
-  left: 0;
-  @include gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0), horizontal);
-  .tableArrowLeft {
-    position: fixed;
-    left: 0em;
-    top: 0em;
-    display: none;
-    z-index: 9;
-    @include screen('mobile') {
-      display: block;
-    }
-    &:before {
-      position: absolute;
-      top: 0em;
-      left: -0.2em;
-      width: 30px;
-      height: 30px;
-      background: url(../vendor/scrolltable/images/arrow-left.png) no-repeat 10px center;
-      content: '';
-      z-index: 2;
-      // animation: arrowLeft .3s linear infinite alternate;
-    }
+  caption {
+    @include srOnly;
   }
 }
-.scrolTableNav.scrolTableNavRight {
-  right: 0;
-  @include gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1), horizontal);
-  .tableArrowRight {
-    position: fixed;
-    top: 0em;
-    right: 0em;
-    display: none;
-    z-index: 9;
-    @include screen('mobile') {
-      display: block;
-    }
-    &:before {
-      position: absolute;
-      top: 0em;
-      right: -0.2em;
-      width: 30px;
-      height: 30px;
-      background: url(../vendor/scrolltable/images/arrow-right.png) no-repeat right 10px center;
-      content: '';
-      z-index: 2;
-    }
-  }
-}
-@keyframes arrowLeft {
-  from {
-    left: -0.2em;
-  }
-  to {
-    left: 0.3em;
-  }
-}
-@keyframes arrowRight {
-  from {
-    right: -0.2em;
-  }
-  to {
-    right: 0.3em;
-  }
-}
+// .scrolTableWrapper {
+//   position: relative;
+//   -webkit-overflow-scrolling: touch;
+//   // -webkit-transform: translate3d(0, 0, 0);
+//   overflow-y: hidden;
+// }
+// .scrolTableContainer {
+//   overflow: auto;
+// }
+// .scrolTableNav {
+//   display: none;
+//   position: absolute;
+//   width: 60px;
+//   height: 100%;
+//   cursor: pointer;
+//   z-index: 9;
+// }
+// .scrolTableNav.scrolTableNavLeft {
+//   left: 0;
+//   @include gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0), horizontal);
+//   .tableArrowLeft {
+//     position: fixed;
+//     left: 0em;
+//     top: 0em;
+//     display: none;
+//     z-index: 9;
+//     @include screen('mobile') {
+//       display: block;
+//     }
+//     &:before {
+//       position: absolute;
+//       top: 0em;
+//       left: -0.2em;
+//       width: 30px;
+//       height: 30px;
+//       background: url(../vendor/scrolltable/images/arrow-left.png) no-repeat 10px center;
+//       content: '';
+//       z-index: 2;
+//       // animation: arrowLeft .3s linear infinite alternate;
+//     }
+//   }
+// }
+// .scrolTableNav.scrolTableNavRight {
+//   right: 0;
+//   @include gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1), horizontal);
+//   .tableArrowRight {
+//     position: fixed;
+//     top: 0em;
+//     right: 0em;
+//     display: none;
+//     z-index: 9;
+//     @include screen('mobile') {
+//       display: block;
+//     }
+//     &:before {
+//       position: absolute;
+//       top: 0em;
+//       right: -0.2em;
+//       width: 30px;
+//       height: 30px;
+//       background: url(../vendor/scrolltable/images/arrow-right.png) no-repeat right 10px center;
+//       content: '';
+//       z-index: 2;
+//     }
+//   }
+// }
+// @keyframes arrowLeft {
+//   from {
+//     left: -0.2em;
+//   }
+//   to {
+//     left: 0.3em;
+//   }
+// }
+// @keyframes arrowRight {
+//   from {
+//     right: -0.2em;
+//   }
+//   to {
+//     right: 0.3em;
+//   }
+// }
 
 // scrolltable style
-.table-wrapper {
+.tableWrapper {
   overflow-x: scroll;
   overflow-y: hidden;
   scroll-behavior: smooth;
@@ -263,15 +280,10 @@ table {
   right: 0;
   transform: rotateY(180deg);
 }
-.scrollTableNavLeft .scrollTableLeftBtn {
+.scrollTableNavLeft .scrollTableLeftBtn,
+.scrollTableNavRight .scrollTableRightBtn {
   width: 35px;
   height: 100%;
-  background: url(../images/scrolltable/icon_ar.svg) no-repeat center;
+  background: url(../images/basic/icon_ar.svg) no-repeat center;
   cursor: pointer;
 }
-// .scrolltableNavRight .scrolltableRightBtn {
-//   width: 35px;
-//   height: 100%;
-//   background: url(../images/scrolltable/ar_left.svg) no-repeat center;
-//   cursor: pointer;
-// }
