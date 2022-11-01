@@ -1,6 +1,7 @@
 .accordion {
   ul {
     list-style: none;
+    padding: 0;
     li {
       margin-bottom: 0.5em;
       a {
@@ -19,6 +20,9 @@
     overflow: hidden;
     transition: height 0.5s;
     padding: 0;
+  }
+  .accordionBtn {
+    margin-left: 10px;
   }
   .accordionArrow {
     position: absolute;

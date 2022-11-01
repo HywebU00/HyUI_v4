@@ -1,3 +1,27 @@
+// -----  基本功能開關   ---------------------------------------------------
+import { topNav, navSticky, fatFooter, tableAddDataAttributes, scrollTables, accordionSlider } from './main.js';
+topNav(); // 手機版顯示nav選單
+navSticky(); // 固定主選單
+fatFooter(); // fatFooter是否要展開
+scrollTables('table'); // table捲動功能
+tableAddDataAttributes({
+  elemClass: '.tableList',
+  dataName: 'title',
+}); // tableList樣式 加上 data-title
+
+//手風琴功能
+accordionSlider({
+  accordionList: '.accordionList', // 問題區塊
+  accordionContent: '.accordionContent', // 回答區塊
+  accordionInfo: {
+    switch: true, // 是否加入開關文字
+    open: '展開', // 收合時顯示
+    close: '收合', // 展開時顯示
+  },
+});
+
+// -----  基本功能開關   ---------------------------------------------------
+
 // 自行加入的JS請寫在這裡
 (function () {
   //cp輪播
