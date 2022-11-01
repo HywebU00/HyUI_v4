@@ -1893,19 +1893,19 @@ th {
     color: #222;
     outline: none;
   }
-  .btn_green {
+  .btnGreen {
     background: #298729;
     border: 1px solid #298729;
     color: #fff;
   }
-  .btn_green:hover {
+  .btnGreen:hover {
     background: #1d601d;
     border: 1px solid #113911;
     cursor: pointer;
     color: #fff;
     outline: none;
   }
-  .btn_green:focus-visible {
+  .btnGreen:focus-visible {
     background: #1d601d;
     border: 1px solid #113911;
     cursor: pointer;
@@ -1913,23 +1913,23 @@ th {
     outline: none;
     box-shadow: 0 0px 0px 2px #1aadfa !important;
   }
-  .btn_green.active {
+  .btnGreen.active {
     background: #2f9b2f;
     cursor: pointer;
   }
-  .btn_blue {
+  .btnBlue {
     background: #0066cc;
     border: 1px solid #0066cc;
     color: #fff;
   }
-  .btn_blue:hover {
+  .btnBlue:hover {
     background: #004d99;
     border: 1px solid #003366;
     cursor: pointer;
     color: #fff;
     outline: none;
   }
-  .btn_blue:focus-visible {
+  .btnBlue:focus-visible {
     background: #004d99;
     border: 1px solid #003366;
     cursor: pointer;
@@ -1937,23 +1937,23 @@ th {
     outline: none;
     box-shadow: 0 0px 0px 2px #1aadfa !important;
   }
-  .btn_blue.active {
+  .btnBlue.active {
     background: #0073e6;
     cursor: pointer;
   }
-  .btn_yellow {
+  .btnYellow {
     background: #fec61c;
     border: 1px solid #fec61c;
     color: #333;
   }
-  .btn_yellow:hover {
+  .btnYellow:hover {
     background: #e7ae01;
     border: 1px solid #b48801;
     cursor: pointer;
     color: #fff;
     outline: none;
   }
-  .btn_yellow:focus-visible {
+  .btnYellow:focus-visible {
     background: #e7ae01;
     border: 1px solid #b48801;
     cursor: pointer;
@@ -1961,23 +1961,23 @@ th {
     outline: none;
     box-shadow: 0 0px 0px 2px #1aadfa !important;
   }
-  .btn_yellow.active {
+  .btnYellow.active {
     background: #fecd36;
     cursor: pointer;
   }
-  .btn_orange {
+  .btnOrange {
     background: #d04500;
     border: 1px solid #d04500;
     color: #fff;
   }
-  .btn_orange:hover {
+  .btnOrange:hover {
     background: #9d3400;
     border: 1px solid #6a2300;
     cursor: pointer;
     color: #fff;
     outline: none;
   }
-  .btn_orange:focus-visible {
+  .btnOrange:focus-visible {
     background: #9d3400;
     border: 1px solid #6a2300;
     cursor: pointer;
@@ -1985,23 +1985,23 @@ th {
     outline: none;
     box-shadow: 0 0px 0px 2px #1aadfa !important;
   }
-  .btn_orange.active {
+  .btnOrange.active {
     background: #ea4d00;
     cursor: pointer;
   }
-  .btn_red {
+  .btnRed {
     background: #d30000;
     border: 1px solid #d30000;
     color: #fff;
   }
-  .btn_red:hover {
+  .btnRed:hover {
     background: #a00000;
     border: 1px solid #6d0000;
     cursor: pointer;
     color: #fff;
     outline: none;
   }
-  .btn_red:focus-visible {
+  .btnRed:focus-visible {
     background: #a00000;
     border: 1px solid #6d0000;
     cursor: pointer;
@@ -2009,23 +2009,23 @@ th {
     outline: none;
     box-shadow: 0 0px 0px 2px #1aadfa !important;
   }
-  .btn_red.active {
+  .btnRed.active {
     background: #ed0000;
     cursor: pointer;
   }
-  .btn_purple {
+  .btnPurple {
     background: #8c248d;
     border: 1px solid #8c248d;
     color: #fff;
   }
-  .btn_purple:hover {
+  .btnPurple:hover {
     background: #641a65;
     border: 1px solid #3c0f3c;
     cursor: pointer;
     color: #fff;
     outline: none;
   }
-  .btn_purple:focus-visible {
+  .btnPurple:focus-visible {
     background: #641a65;
     border: 1px solid #3c0f3c;
     cursor: pointer;
@@ -2033,7 +2033,7 @@ th {
     outline: none;
     box-shadow: 0 0px 0px 2px #1aadfa !important;
   }
-  .btn_purple.active {
+  .btnPurple.active {
     background: #a029a2;
     cursor: pointer;
   }
@@ -7655,7 +7655,6 @@ a.more:hover:after, a.more:focus:after, a.more.active:after {
 .adSlider .imgContainer {
   width: 165px;
   height: 55px;
-  margin: 0px 15px;
 }
 .adSlider .imgContainer a {
   display: block;

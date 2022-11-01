@@ -56,7 +56,7 @@
           </nav>
           <!-- navigation End -->
           <h1>
-            <a href="index.htm"><img src="images/logo.png" alt="網站標題" /></a>
+            <a href="index.html"><img src="images/logo.png" alt="網站標題" /></a>
           </h1>
           <!-- Search Start -->
           <div class="search" role="search">
@@ -83,7 +83,7 @@
             <a href="#">網站導覽</a>
           </noscript>
           <!-- menu Start -->
-          <nav class="mainMenu menu" role="navigation" aria-label="About page">
+          <nav class="menu mainMenu" role="navigation" aria-label="About page">
             <ul>
               <li>
                 <a href="#">第一層選單</a>
@@ -157,230 +157,104 @@
       </header>
       <!-- header End -->
       <!-- main Start -->
-      <div id="center" class="main">
+      <div id="center" class="main innerPage">
+        <!-- 內頁新增一個classname-->
         <a class="accessKey" href="#aC" id="aC" accesskey="C" title="主要內容區">:::</a>
-        <!-- 任何一個section下一層都要包下一層都要包div container作對齊 -->
-        <!-- //// class 都可以隨意命名 !!! ///// -->
-        <!-- flex start -->
-        <!-- type 1：自由分配 -->
-        <!-- 多欄 = 12 -->
-        <section class="flex_3_6_3">
-          <div class="container">
-            <h2>flex_3_6_3</h2>
-            <div class="flexSet">
-              <div class="col">
-                <h3>次標題一</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo facilis sequi quidem velit quae voluptas temporibus aliquam quasi doloremque sunt? Sapiente ea dolorem dolore sit itaque facere sunt voluptatem deleniti!</p>
-              </div>
-              <div class="col">
-                <h3>次標題二</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo facilis sequi quidem velit quae voluptas temporibus aliquam quasi doloremque sunt? Sapiente ea dolorem dolore sit itaque facere sunt voluptatem deleniti!</p>
-              </div>
-              <div class="col">
-                <h3>次標題三</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo facilis sequi quidem velit quae voluptas temporibus aliquam quasi doloremque sunt? Sapiente ea dolorem dolore sit itaque facere sunt voluptatem deleniti!</p>
-              </div>
+        <div class="container">
+          <!-- 主要內容區 -->
+          <div class="centerBlock">
+            <!-- breadcrumb路徑 -->
+            <div class="breadcrumb">
+              <ul>
+                <li><a href="#">首頁</a></li>
+                <li><a href="#">節點</a></li>
+                <li>節點</li>
+              </ul>
             </div>
-          </div>
-        </section>
-        <section class="flex_4_8">
-          <div class="container">
-            <h2>flex_4_8</h2>
-            <div class="flexSet">
-              <div class="col">
-                <h3>次標題一</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo facilis sequi quidem velit quae voluptas temporibus aliquam quasi doloremque sunt? Sapiente ea dolorem dolore sit itaque facere sunt voluptatem deleniti!</p>
-              </div>
-              <div class="col">
-                <h3>次標題二</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo facilis sequi quidem velit quae voluptas temporibus aliquam quasi doloremque sunt? Sapiente ea dolorem dolore sit itaque facere sunt voluptatem deleniti!</p>
-              </div>
+            <!-- h2節點 -->
+            <h2 class="title">頁籤</h2>
+            <!-- function功能區塊 -->
+            <div class="function">
+              <ul>
+                <li class="icon_back"><a href="#">回上一頁</a></li>
+                <li class="icon_print"><a href="#">友善列印</a></li>
+                <li class="icon_forward"><a href="#">轉寄友人</a></li>
+              </ul>
             </div>
+            <section>
+              <div class="tabSet">
+                <div class="tabItems">
+                  <button type="button" class="item">頁籤A</button>
+                  <button type="button" class="item">頁籤B</button>
+                  <button type="button" class="item">頁籤C</button>
+                  <button type="button" class="item">頁籤D</button>
+                </div>
+                <div class="tabContentGroup">
+                  <div class="tabContent" title="頁籤A內容">
+                    <div>頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容</div>
+                    <p><a href="#">頁籤項目一的內容1-1</a></p>
+                    <p><a href="#">頁籤項目一的內容1-2</a></p>
+                    <p><a href="#">頁籤項目一的內容1-3</a></p>
+                  </div>
+                  <div class="tabContent" title="頁籤B內容">
+                    <div>頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容</div>
+                    <p><a href="#">頁籤項目二的內容2-1</a></p>
+                    <p><a href="#">頁籤項目二的內容2-2</a></p>
+                    <p><a href="#">頁籤項目二的內容2-3</a></p>
+                    <div><a href="#">more</a></div>
+                  </div>
+                  <div class="tabContent" title="頁籤C內容">
+                    <div>頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容</div>
+                    <p>＊＊＊這個頁籤內容沒有 a 或其他 focusable 元件</p>
+                  </div>
+                  <div class="tabContent" title="頁籤D內容">
+                    <div>頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容</div>
+                    <p><a href="#">頁籤項目四的內容4-1</a></p>
+                    <p><a href="#">頁籤項目四的內容4-2</a></p>
+                  </div>
+                </div>
+              </div>
+              <div class="tabSet">
+                <div class="tabItems">
+                  <button class="item">頁籤A</button>
+                  <button class="item">頁籤B</button>
+                  <button class="item">頁籤C</button>
+                  <button class="item">頁籤D</button>
+                  <button class="item">頁籤E</button>
+                </div>
+                <div class="tabContentGroup">
+                  <div class="tabContent" title="頁籤A內容">
+                    <div>頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容</div>
+                    <p><a href="#">頁籤項目一的內容1-1</a></p>
+                    <p><a href="#">頁籤項目一的內容1-2</a></p>
+                    <p><a href="#">頁籤項目一的內容1-3</a></p>
+                  </div>
+                  <div class="tabContent" title="頁籤B內容">
+                    <div>頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容</div>
+                    <p><a href="#">頁籤項目二的內容2-1</a></p>
+                    <p><a href="#">頁籤項目二的內容2-2</a></p>
+                    <p><a href="#">頁籤項目二的內容2-3</a></p>
+                    <div><a href="#">more</a></div>
+                  </div>
+                  <div class="tabContent" title="頁籤C內容">
+                    <div>頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容</div>
+                    <p>＊＊＊這個頁籤內容沒有 a 或其他 focusable 元件</p>
+                  </div>
+                  <div class="tabContent" title="頁籤D內容">
+                    <div>頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容</div>
+                    <p><a href="#">頁籤項目四的內容4-1</a></p>
+                    <p><a href="#">頁籤項目四的內容4-2</a></p>
+                  </div>
+                  <div class="tabContent" title="頁籤E內容">
+                    <div>頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容</div>
+                    <p><a href="#">頁籤項目五的內容5-1</a></p>
+                    <p><a href="#">頁籤項目五的內容5-2</a></p>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
-        </section>
-        <section class="flex_8_4">
-          <div class="container">
-            <h2>flex_8_4</h2>
-            <div class="flexSet">
-              <div class="col">
-                <h3>次標題一</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo facilis sequi quidem velit quae voluptas temporibus aliquam quasi doloremque sunt? Sapiente ea dolorem dolore sit itaque facere sunt voluptatem deleniti!</p>
-              </div>
-              <div class="col">
-                <h3>次標題二</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo facilis sequi quidem velit quae voluptas temporibus aliquam quasi doloremque sunt? Sapiente ea dolorem dolore sit itaque facere sunt voluptatem deleniti!</p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <hr />
-        <!-- type 2：均分 -->
-        <!-- 2、 -->
-        <section class="flexEqual_2">
-          <div class="container">
-            <h2>均分 2 欄</h2>
-            <div class="flexSet">
-              <div class="col">
-                <h3>title 1</h3>
-                <p>col Lorem ipsum dolor sit amet, quos similique?</p>
-              </div>
-              <div class="col">
-                <h3>title 2</h3>
-                <p>col Lorem ipsum dolor sit</p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- 3、 -->
-        <section class="flexEqual_3">
-          <div class="container">
-            <h2>均分 3 欄</h2>
-            <div class="flexSet">
-              <div class="col">
-                <h3>title 1</h3>
-                <p>col Lorem ipsum dolor sit amet, quos similique?</p>
-              </div>
-              <div class="col">
-                <h3>title 2</h3>
-                <p>col Lorem ipsum dolor sit amet, quos similique?</p>
-              </div>
-              <div class="col">
-                <h3>title 3</h3>
-                <p>col Lorem ipsum dolor sit amet, quos similique?</p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- 4、 -->
-        <section class="flexEqual_4">
-          <div class="container">
-            <h2>均分 4 欄</h2>
-            <div class="flexSet">
-              <div class="col">
-                <h3>title 1</h3>
-                <p>col Lorem ipsum dolor sit amet, quos similique?</p>
-              </div>
-              <div class="col">
-                <h3>title 2</h3>
-                <p>col Lorem ipsum dolor sit amet, quos similique?</p>
-              </div>
-              <div class="col">
-                <h3>title 3</h3>
-                <p>col Lorem ipsum dolor sit amet, quos similique?</p>
-              </div>
-              <div class="col">
-                <h3>title 4</h3>
-                <p>col Lorem ipsum dolor sit amet, quos similique?</p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- 3 thumbnail、 -->
-        <section class="flexEqual_3">
-          <div class="container">
-            <h2>主標題 thumbnail</h2>
-            <div class="flexSet">
-              <div class="thumbnail">
-                <a href="#">
-                  <div class="imgContainer">
-                    <picture>
-                      <source media="(min-width: 1200px)" data-srcset="images/demo/01.jpg" />
-                      <source media="(min-width: 992px)" data-srcset="images/demo/01.jpg" />
-                      <source media="(min-width: 576px)" data-srcset="images/demo/01.jpg" />
-                      <source media="(max-width: 575px)" data-srcset="images/demo/01.jpg" />
-                      <img data-src="images/demo/01.jpg" class="lazy" alt="圖說" />
-                      <noscript><img src="images/demo/01.jpg" alt="圖說" /></noscript>
-                    </picture>
-                  </div>
-                  <div class="caption">
-                    <time>2018-01-01</time>
-                    <h3>標題標題</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio temporibus dolor repellendus unde, rem ducimus aut cupiditate amet beatae minus repellat laboriosam reiciendis libero dolorem quo, recusandae deserunt, omnis qui?</p>
-                  </div>
-                </a>
-              </div>
-              <div class="thumbnail">
-                <a href="#">
-                  <div class="imgContainer">
-                    <picture>
-                      <source media="(min-width: 1200px)" data-srcset="images/demo/01.jpg" />
-                      <source media="(min-width: 992px)" data-srcset="images/demo/01.jpg" />
-                      <source media="(min-width: 576px)" data-srcset="images/demo/01.jpg" />
-                      <source media="(max-width: 575px)" data-srcset="images/demo/01.jpg" />
-                      <img data-src="images/demo/01.jpg" class="lazy" alt="圖說" />
-                      <noscript><img src="images/demo/01.jpg" alt="圖說" /></noscript>
-                    </picture>
-                  </div>
-                  <div class="caption">
-                    <time>2018-01-01</time>
-                    <h3>標題標題</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio temporibus dolor repellendus unde, rem ducimus aut cupiditate amet beatae minus repellat laboriosam reiciendis libero dolorem quo, recusandae deserunt, omnis qui?</p>
-                  </div>
-                </a>
-              </div>
-              <div class="thumbnail">
-                <a href="#">
-                  <div class="imgContainer">
-                    <picture>
-                      <source media="(min-width: 1200px)" data-srcset="images/demo/01.jpg" />
-                      <source media="(min-width: 992px)" data-srcset="images/demo/01.jpg" />
-                      <source media="(min-width: 576px)" data-srcset="images/demo/01.jpg" />
-                      <source media="(max-width: 575px)" data-srcset="images/demo/01.jpg" />
-                      <img data-src="images/demo/01.jpg" class="lazy" alt="圖說" />
-                      <noscript><img src="images/demo/01.jpg" alt="圖說" /></noscript>
-                    </picture>
-                  </div>
-                  <div class="caption">
-                    <time>2018-01-01</time>
-                    <h3>標題標題</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio temporibus dolor repellendus unde, rem ducimus aut cupiditate amet beatae minus repellat laboriosam reiciendis libero dolorem quo, recusandae deserunt, omnis qui?</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- mix -->
-        <section class="mixEqual_2">
-          <div class="container">
-            <h2>均分 併 自由分配</h2>
-            <div class="flexSet">
-              <div class="col">
-                <h3>次標題一</h3>
-                <section class="inner_4_8">
-                  <div class="imgContainer">
-                    <picture>
-                      <source media="(min-width: 1200px)" data-srcset="images/demo/01.jpg" />
-                      <source media="(min-width: 992px)" data-srcset="images/demo/01.jpg" />
-                      <source media="(min-width: 576px)" data-srcset="images/demo/01.jpg" />
-                      <source media="(max-width: 575px)" data-srcset="images/demo/01.jpg" />
-                      <img data-src="images/demo/01.jpg" class="cover lazy" alt="圖說" />
-                      <noscript><img src="images/demo/01.jpg" alt="圖說" /></noscript>
-                    </picture>
-                  </div>
-                  <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum nam, aperiam error accusamus, distinctio laboriosam minus nesciunt cum labore voluptate consectetur magni, illum in recusandae. Optio, ab voluptatibus suscipit magnam.</div>
-                </section>
-              </div>
-              <div class="col">
-                <h3>次標題二</h3>
-                <section class="inner_4_8">
-                  <div class="imgContainer">
-                    <picture>
-                      <source media="(min-width: 1200px)" data-srcset="images/demo/01.jpg" />
-                      <source media="(min-width: 992px)" data-srcset="images/demo/01.jpg" />
-                      <source media="(min-width: 576px)" data-srcset="images/demo/01.jpg" />
-                      <source media="(max-width: 575px)" data-srcset="images/demo/01.jpg" />
-                      <img data-src="images/demo/01.jpg" class="cover lazy" alt="圖說" />
-                      <noscript><img src="images/demo/01.jpg" alt="圖說" /></noscript>
-                    </picture>
-                  </div>
-                  <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum nam, aperiam error accusamus, distinctio laboriosam minus nesciunt cum labore voluptate consectetur magni, illum in recusandae. Optio, ab voluptatibus suscipit magnam.</div>
-                </section>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- flex end -->
+        </div>
       </div>
       <!-- fatFooter Start -->
       <section class="fatFooter">
@@ -498,13 +372,9 @@
     <script src="vendor/lazyload/lazyload.js"></script>
     <!-- picturefill -->
     <script src="vendor/picturefill/picturefill.min.js" async></script>
-    <!-- fancybox -->
-    <script src="vendor/fancybox/fancybox.js"></script>
     <!-- swiper -->
     <script src="vendor/swiper/swiper-bundle.min.js"></script>
-    <!-- mainJs -->
-    <script src="js/main.js"></script>
-    <!-- 客製js -->
-    <script src="js/customize.js"></script>
+    <!-- js -->
+    <script src="js/customize.js" type="module"></script>
   </body>
 </html>

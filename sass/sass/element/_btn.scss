@@ -69,27 +69,27 @@
 }
 //按鈕顏色
 //@include btnSetting(按鈕顏色,字的顏色);
-.btn_green {
+.btnGreen {
   // @extend %btn;
   @include btnSetting($colorGreen, #fff);
 }
-.btn_blue {
+.btnBlue {
   // @extend %btn;
   @include btnSetting($colorBlue, #fff);
 }
-.btn_yellow {
+.btnYellow {
   // @extend %btn;
   @include btnSetting(lighten($colorYellow, 5), #333);
 }
-.btn_orange {
+.btnOrange {
   // @extend %btn;
   @include btnSetting(lighten($colorOrange, 0), #fff);
 }
-.btn_red {
+.btnRed {
   // @extend %btn;
   @include btnSetting($colorRed, #fff);
 }
-.btn_purple {
+.btnPurple {
   // @extend %btn;
   @include btnSetting(lighten($colorPurple, 5), #fff);
 }

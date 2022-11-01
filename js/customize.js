@@ -86,6 +86,17 @@ accordionSlider({
       prevEl: '.adSlider .swiperArrow.prev', //自行設定樣式
       disabledClass: '.adSlider swiperArrow-disabled', //不可點選樣式
     },
+    breakpoints: {
+      100: {
+        slidesPerView: 2,
+      },
+      767: {
+        slidesPerView: 3,
+      },
+      1000: {
+        slidesPerView: 4,
+      },
+    },
   });
 
   //跑馬燈

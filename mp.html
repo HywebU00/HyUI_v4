@@ -7,9 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>HyUI kit</title>
-    <!--HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries [if lt IE 9]>
-        <script src="js/html5shiv.js"></script>
-        <script src="js/respond.min.js"></script>-->
+
     <!-- style css -->
     <link rel="stylesheet" href="css/style.css" />
     <!-- favicon -->
@@ -58,7 +56,7 @@
           </nav>
           <!-- navigation End -->
           <h1>
-            <a href="index.htm"><img src="images/logo.png" alt="網站標題" /></a>
+            <a href="index.html"><img src="images/logo.png" alt="網站標題" /></a>
           </h1>
           <!-- Search Start -->
           <div class="search" role="search">
@@ -104,7 +102,19 @@
                   <li><a href="#">第二層選單</a></li>
                   <li><a href="#">第二層選單</a></li>
                   <li><a href="#">第二層選單</a></li>
-                  <li><a href="#">第二層選單</a></li>
+                  <li>
+                    <a href="#">第二層選單</a>
+                    <ul>
+                      <li><a href="http://www.google.com">第三層有連結</a></li>
+                      <li><a href="#">第三層選單</a></li>
+                      <li><a href="#">第三層選單</a></li>
+                      <li><a href="#">第三層選單</a></li>
+                      <li><a href="#">第三層選單</a></li>
+                      <li><a href="#">第三層選單</a></li>
+                      <li><a href="#">第三層選單</a></li>
+                      <li><a href="#">第三層選單</a></li>
+                    </ul>
+                  </li>
                   <li><a href="#">第二層選單</a></li>
                   <li><a href="#">第二層選單</a></li>
                   <li><a href="#">第二層選單</a></li>
@@ -125,7 +135,9 @@
                           <li><a href="#">第四層選單</a></li>
                         </ul>
                       </li>
-                      <li><a href="http://www.google.com">第三層選單有連結</a></li>
+                      <li>
+                        <a href="http://www.google.com">第三層選單有連結</a>
+                      </li>
                       <li><a href="#">第三層選單</a></li>
                     </ul>
                   </li>
@@ -157,133 +169,112 @@
       </header>
       <!-- header End -->
       <!-- main Start -->
-      <div id="center" class="main innerPage">
-        <!-- 內頁新增一個classname-->
+      <div id="center" class="main">
         <a class="accessKey" href="#aC" id="aC" accesskey="C" title="主要內容區">:::</a>
-        <div class="container">
-          <!-- 主要內容區 -->
-          <div class="centerBlock">
-            <!-- breadcrumb路徑 -->
-            <div class="breadcrumb">
-              <ul>
-                <li><a href="#">首頁</a></li>
-                <li><a href="#">節點</a></li>
-                <li>節點</li>
-              </ul>
-            </div>
-            <!-- h2節點 -->
-            <div class="mpSlider">
-              <h2 class="title">圖片輪播</h2>
-              <!-- 圖片輪播 start -->
-              <div class="swiperBox">
-                <div class="swiper">
-                  <div class="swiper-wrapper">
-                    <div class="imgContainer swiper-slide">
-                      <a href="#" title="">
-                        <picture>
-                          <source media="(min-width: 1200px)" data-srcset="images/demo/01.jpg" />
-                          <source media="(min-width: 992px)" data-srcset="images/demo/01.jpg" />
-                          <source media="(min-width: 576px)" data-srcset="images/demo/01.jpg" />
-                          <source media="(max-width: 575px)" data-srcset="images/demo/01.jpg" />
-                          <img src="images/demo/01.jpg" class="cover" alt="圖說1" />
-                          <noscript><img src="images/demo/01.jpg" alt="圖說1" /></noscript>
-                        </picture>
-                        <span class="caption">圖說1</span>
-                      </a>
-                    </div>
-                    <div class="imgContainer swiper-slide">
-                      <a href="#" title="">
-                        <picture>
-                          <source media="(min-width: 1200px)" data-srcset="images/demo/02.jpg" />
-                          <source media="(min-width: 992px)" data-srcset="images/demo/02.jpg" />
-                          <source media="(min-width: 576px)" data-srcset="images/demo/02.jpg" />
-                          <source media="(max-width: 575px)" data-srcset="images/demo/02.jpg" />
-                          <img src="images/demo/02.jpg" class="cover" alt="圖說2" />
-                          <noscript><img src="images/demo/02.jpg" alt="圖說2" /></noscript>
-                        </picture>
-                        <span class="caption">圖說2</span>
-                      </a>
-                    </div>
-                    <div class="imgContainer swiper-slide">
-                      <a href="#" title="">
-                        <picture>
-                          <source media="(min-width: 1200px)" data-srcset="images/demo/03.jpg" />
-                          <source media="(min-width: 992px)" data-srcset="images/demo/03.jpg" />
-                          <source media="(min-width: 576px)" data-srcset="images/demo/03.jpg" />
-                          <source media="(max-width: 575px)" data-srcset="images/demo/03.jpg" />
-                          <img src="images/demo/03.jpg" class="cover" alt="圖說3" />
-                          <noscript><img src="images/demo/03.jpg" alt="圖說3" /></noscript>
-                        </picture>
-                        <span class="caption">圖說3</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <!-- swiper 左邊箭頭-->
-                <div class="swiperArrow prev"></div>
-                <!-- swiper 右邊箭頭-->
-                <div class="swiperArrow next"></div>
-                <!-- swiper 點切換-->
-                <div class="swiper-dots"></div>
-              </div>
-            </div>
-            <!-- 圖片輪播 end -->
-            <!-- 廣告輪播   start -->
-            <div class="adSlider">
-              <div class="swiperBox">
-                <div class="swiper">
-                  <div class="swiper-wrapper">
-                    <div class="imgContainer swiper-slide">
-                      <a href="#" title="">
-                        <img src="images/demo/ad_01.jpg" class="contain" alt="圖片說明1" />
-                      </a>
-                    </div>
-                    <div class="imgContainer swiper-slide">
-                      <a href="#" title="">
-                        <img src="images/demo/ad_02.jpg" class="contain" alt="圖片說明2" />
-                      </a>
-                    </div>
-                    <div class="imgContainer swiper-slide">
-                      <a href="#" title="">
-                        <img src="images/demo/ad_03.jpg" class="contain" alt="圖片說明3" />
-                      </a>
-                    </div>
-                    <div class="imgContainer swiper-slide">
-                      <a href="#" title="">
-                        <img src="images/demo/ad_04.jpg" class="contain" alt="圖片說明4" />
-                      </a>
-                    </div>
-                    <div class="imgContainer swiper-slide">
-                      <a href="#" title="">
-                        <img src="images/demo/ad_05.jpg" class="contain" alt="圖片說明5" />
-                      </a>
-                    </div>
-                    <div class="imgContainer swiper-slide">
-                      <a href="#" title="">
-                        <img src="images/demo/ad_06.jpg" class="contain" alt="圖片說明6" />
-                      </a>
-                    </div>
-                    <div class="imgContainer swiper-slide">
-                      <a href="#" title="">
-                        <img src="images/demo/ad_07.jpg" class="cover" alt="圖片說明7" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <!-- swiper 左邊箭頭-->
-                <div class="swiperArrow prev"></div>
-                <!-- swiper 右邊箭頭-->
-                <div class="swiperArrow next"></div>
-              </div>
-            </div>
-            <!-- 廣告輪播   end -->
+        <!-- 任何一個section下一層都要包下一層都要包div container作對齊 -->
+        <!-- //// class 都可以隨意命名 !!! ///// -->
+        <section class="demoSection col-12 full">
+          <div class="container">
+            <div class="col">1欄滿版</div>
           </div>
-        </div>
+        </section>
+        <section class="demoSection col-12">
+          <div class="container">
+            <div class="col">1欄</div>
+          </div>
+        </section>
+        <!--  兩欄樣式 -->
+        <section class="demoSection col_6_6">
+          <div class="container">
+            <div class="col">2欄</div>
+            <div class="col">2欄</div>
+          </div>
+        </section>
+        <!--  兩欄樣式 8-4 -->
+        <section class="demoSection col_8_4">
+          <div class="container">
+            <div class="col">2欄</div>
+            <div class="col">2欄</div>
+          </div>
+        </section>
+        <!--  兩欄樣式 4-8 -->
+        <section class="demoSection col_4_8">
+          <div class="container">
+            <div class="col">2欄</div>
+            <div class="col">2欄</div>
+          </div>
+        </section>
+        <!--  三欄樣式 -->
+        <section class="demoSection col_4_4_4">
+          <div class="container">
+            <div class="col">3欄</div>
+            <div class="col">3欄</div>
+            <div class="col">3欄</div>
+          </div>
+        </section>
+        <!--  四欄樣式 -->
+        <section class="demoSection col_3_3_3_3">
+          <div class="container">
+            <div class="col">4欄</div>
+            <div class="col">4欄</div>
+            <div class="col">4欄</div>
+            <div class="col">4欄</div>
+          </div>
+        </section>
+        <!--  六欄樣式 -->
+        <section class="demoSection col_2_2_2_2_2_2">
+          <div class="container">
+            <div class="col">6欄</div>
+            <div class="col">6欄</div>
+            <div class="col">6欄</div>
+            <div class="col">6欄</div>
+            <div class="col">6欄</div>
+            <div class="col">6欄</div>
+          </div>
+        </section>
+        <!--  四欄樣式 有底色 -->
+        <section class="demoSection col_3_3_3_3 bg">
+          <h2>有底色</h2>
+          <div class="container">
+            <div class="col">4欄</div>
+            <div class="col">4欄</div>
+            <div class="col">4欄</div>
+            <div class="col">4欄</div>
+          </div>
+        </section>
+        <!-- 可用有意義名稱命名 -->
+        <section class="demoSection cssName">
+          <h2>可用有意義語意classname</h2>
+          <div class="container">
+            <div class="col news">News區塊- 8</div>
+            <div class="col video">Video區塊 -4</div>
+          </div>
+        </section>
+        <!-- 進階設定，class名稱一樣可用nth-child 控制個別寬度 -->
+        <section class="demoSection col_3_6_3">
+          <h2>可自由編輯大小順序</h2>
+          <div class="container">
+            <div class="col">小欄-3</div>
+            <div class="col">大欄-6</div>
+            <div class="col">小欄-3</div>
+          </div>
+        </section>
+        <!-- 進階設定，class名稱一樣可用nth-child 控制個別寬度 -->
+        <section class="demoSection col_5">
+          <h2>可利用offset，製作單數欄格線</h2>
+          <div class="container">
+            <div class="col">5欄</div>
+            <div class="col">5欄</div>
+            <div class="col">5欄</div>
+            <div class="col">5欄</div>
+            <div class="col">5欄</div>
+          </div>
+        </section>
       </div>
       <!-- fatFooter Start -->
       <section class="fatFooter">
         <div class="container">
-          <button type="button" name="展開選單/OPEN" aria-label="導覽選單展開/收合" class="btn btnFatFooter">收合</button>
+          <!-- <button type="button" name="展開選單/OPEN" aria-label="導覽選單展開/收合" class="btn btnFatFooter">收合</button> -->
           <nav>
             <ul>
               <li>
@@ -371,7 +362,8 @@
             <p>
               總公司：新竹縣竹北市台元一街8號5樓之6TEL：03-5601296 <br />
               台北分公司：台北市重慶南路二段51號5樓 TEL：02-2395-6966 <br />
-              台中分公司：台中市西屯區臺灣大道三段658號6樓A1 TEL：04-2706-3968 <br />
+              台中分公司：台中市西屯區臺灣大道三段658號6樓A1 TEL：04-2706-3968
+              <br />
               高雄分公司：高雄市新興區中正三路55號26樓之5 TEL：07-2223606
             </p>
             <span class="update">更新日期:<em>2018/01/01</em></span>
@@ -395,11 +387,11 @@
     <script src="vendor/lazyload/lazyload.js"></script>
     <!-- picturefill -->
     <script src="vendor/picturefill/picturefill.min.js" async></script>
+    <!-- fancybox -->
+    <script src="vendor/fancybox/fancybox.js"></script>
     <!-- swiper -->
     <script src="vendor/swiper/swiper-bundle.min.js"></script>
-    <!-- mainJs -->
-    <script src="js/main.js"></script>
     <!-- 客製js -->
-    <script src="js/customize.js"></script>
+    <script src="js/customize.js" type="module"></script>
   </body>
 </html>

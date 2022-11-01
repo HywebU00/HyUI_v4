@@ -46,7 +46,7 @@
             </div>
             <!-- language -->
             <div class="language">
-              <a href="#">語言選擇</a>
+              <a role="button">語言選擇</a>
               <ul>
                 <li><a href="#">繁體中文</a></li>
                 <li><a href="#">简体中文</a></li>
@@ -56,7 +56,7 @@
           </nav>
           <!-- navigation End -->
           <h1>
-            <a href="index.htm"><img src="images/logo.png" alt="網站標題" /></a>
+            <a href="index.html"><img src="images/logo.png" alt="網站標題" /></a>
           </h1>
           <!-- Search Start -->
           <div class="search" role="search">
@@ -160,8 +160,8 @@
         <a class="accessKey" href="#aC" id="aC" accesskey="C" title="主要內容區">:::</a>
         <div class="container">
           <!-- 左側 -->
-          <!-- 如果不要sticky效果，就移除stickySidebar classname -->
-          <div class="leftBlock stickySidebar">
+          <!-- 如果不要sticky效果，就移除.innerPage .leftBlock{position: sticky;} -->
+          <div class="leftBlock">
             <div class="listBlock">
               <div class="title">標題文字</div>
               <ul>
@@ -191,20 +191,6 @@
                   <a href="#">連結文字樣式連結文字樣式連結文字樣式連結文字樣式</a>
                 </li>
               </ul>
-            </div>
-            <div class="banner">
-              <div class="item">
-                <a href="#"><img src="https://source.unsplash.com/random/1" alt="圖說" /></a>
-              </div>
-              <div class="item">
-                <a href="#"><img src="https://source.unsplash.com/random/2" alt="圖說" /></a>
-              </div>
-              <div class="item">
-                <a href="#"><img src="https://source.unsplash.com/random/3" alt="圖說" /></a>
-              </div>
-              <div class="item">
-                <a href="#"><img src="https://source.unsplash.com/random/4" alt="圖說" /></a>
-              </div>
             </div>
           </div>
           <!-- 主要內容區 -->
@@ -332,66 +318,227 @@
                 <li>更新日期:2018-03-20</li>
                 <li>點閱次數:123456</li>
               </ul>
-              <!-- yncSlider -->
-              <div class="Syncing_slider">
-                <h3>相片集錦</h3>
-                <!--大圖slider-for-->
-                <div class="Slider-for">
-                  <div>
-                    <div class="imgContainer">
-                      <img alt="圖說1" src="https://assets.imgix.net/examples/kingfisher.jpg?w=500&h=480&fit=crop&auto=format%2Cenhance&usm=20" />
+              <figure class="pic">
+                <!-- 此範例為4:3比例 -->
+                <picture>
+                  <source media="(min-width: 768px)" srcset="images/demo/01.jpg" />
+                  <source media="(max-width: 767px)" srcset="images/demo/01.jpg" />
+                  <img data-src="images/demo/01.jpg" class="lazy" alt="圖說" />
+                  <noscript><img src="images/demo/01.jpg" alt="圖說" /></noscript>
+                </picture>
+                <figcaption>圖說</figcaption>
+              </figure>
+              <p>
+                <a href="#">連結文字樣式 </a
+                >大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。
+              </p>
+              <h2>標題二</h2>
+              <p>
+                <a href="#">連結文字樣式</a
+                >大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。
+              </p>
+              <h3>標題三</h3>
+              <p>大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。</p>
+              <blockquote>大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。</blockquote>
+              <h4>標題四</h4>
+              <p>
+                <a href="#">連結文字樣式 </a
+                >大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。
+              </p>
+              <h5>標題五</h5>
+              <p>
+                <a href="#">連結文字樣式</a
+                >大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。
+              </p>
+              <h6>標題六</h6>
+              <p>
+                <a href="#">連結文字樣式</a
+                >大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。大更沒於正時節直只們來壓算有先，求化化看雨的了元得前意要，性說用。以是一分，首字地旅紀親朋經有，在沒許、兒讓靈身不；候案司通資鄉下一支情西也哥際發你也是濟言通海後的健童頭各便。
+              </p>
+              <!-- tooltip -->
+              <h3>tooltip</h3>
+              <div class="tooltip">
+                <span tooltip="上方的tooltop說明文字">上</span>
+                <span tooltip="左方的tooltop說明文字" flow="down">下</span>
+                <span tooltip="下方的tooltop說明文字" flow="left">左</span>
+                <span tooltip="右方的tooltop說明文字" flow="right">右</span>
+              </div>
+              <p>Lorem, ipsum dolor sit amet <em tooltip="上方的tooltop說明文字">consectetur</em> adipisicing elit. Aliquid, aspernatur! Dolore quas sapiente, possimus veritatis! Eveniet, minus similique sint cum quidem eaque voluptatum eius ipsam rerum quae culpa quasi nisi!</p>
+              <h3>列表樣式</h3>
+              <ul>
+                <li>影開兒中不們西動會味理化由子常洲國有標題</li>
+                <li>首動我行得流事個要使著獨操大</li>
+                <li>推列黃上道有畫走長市上</li>
+                <li>證會不就人推陸跑公片重</li>
+                <li>處來在山工國生即工球一，易心個長什去實用當們公有也候</li>
+              </ul>
+              <ol>
+                <li>影開兒中不們西動會味理化由子常洲國有標題</li>
+                <li>首動我行得流事個要使著獨操大</li>
+                <li>推列黃上道有畫走長市上</li>
+                <li>證會不就人推陸跑公片重</li>
+                <li>處來在山工國生即工球一，易心個長什去實用當們公有也候</li>
+              </ol>
+              <h3>表格樣式</h3>
+              <table>
+                <!-- 無障礙 caption 標題預設隱藏 -->
+                <caption>
+                  無障礙表格標題
+                  <!-- 若表格內容複雜，可以補充摘要(summary)來加強說明表格內容，但 內容不要與標題重複 -->
+                  <!-- <span class="summary">表格摘要</span> -->
+                </caption>
+                <tr>
+                  <th scope="col">th 1</th>
+                  <th scope="col">th 2</th>
+                  <th scope="col">th 3</th>
+                  <th scope="col">th 4</th>
+                  <th scope="col">th 5</th>
+                  <th scope="col">th 6</th>
+                </tr>
+                <tr>
+                  <th scope="row">th A</th>
+                  <td>td 資料</td>
+                  <td>td 資料</td>
+                  <td>td 資料</td>
+                  <td>td 資料</td>
+                  <td>td 資料</td>
+                </tr>
+                <tr>
+                  <th scope="row">th B</th>
+                  <td>td 資料</td>
+                  <td>td 資料</td>
+                  <td>td 資料</td>
+                  <td>td 資料</td>
+                  <td>td 資料</td>
+                </tr>
+                <tr>
+                  <th scope="row">th C</th>
+                  <td>td 資料</td>
+                  <td>td 資料</td>
+                  <td>td 資料</td>
+                  <td>td 資料</td>
+                  <td>td 資料</td>
+                </tr>
+              </table>
+              <!-- cpSlider+slick_lightBox -->
+              <!-- <div class="lightBoxSlider">
+                            <h3>燈箱照片</h3>
+                            <div class="cpSlider">
+                                <div class="imgContainer">
+                                    <a href="images/demo/06.jpg" data-caption="第1張圖說">
+                                        <img data-lazy="images/demo/06.jpg" alt="">
+                                        <noscript><img src="images/demo/06.jpg" alt=""></noscript>
+                                        <span class="caption">第1張圖說</span>
+                                    </a>
+                                </div>
+                                <div class="imgContainer">
+                                    <a href="images/demo/07.jpg" data-caption="第2張圖說">
+                                        <img data-lazy="images/demo/07.jpg" alt="">
+                                        <noscript><img src="images/demo/07.jpg" alt=""></noscript>
+                                        <span class="caption">第2張圖說</span>
+                                    </a>
+                                </div>
+                                <div class="imgContainer">
+                                    <a href="images/demo/08.jpg" data-caption="第3張圖說">
+                                        <img data-lazy="images/demo/08.jpg" alt="">
+                                        <noscript><img src="images/demo/08.jpg" alt=""></noscript>
+                                        <span class="caption">第3張圖說</span>
+                                    </a>
+                                </div>
+                                <div class="imgContainer">
+                                    <a href="images/demo/10.jpg" data-caption="第4張圖說">
+                                        <img data-lazy="images/demo/10.jpg" alt="">
+                                        <noscript><img src="images/demo/10.jpg" alt=""></noscript>
+                                        <span class="caption">第4張圖說</span>
+                                    </a>
+                                </div>
+                                <div class="imgContainer">
+                                    <a href="images/demo/12.jpg" data-caption="第5張圖說">
+                                        <img data-lazy="images/demo/12.jpg" alt="">
+                                        <noscript><img src="images/demo/12.jpg" alt=""></noscript>
+                                        <span class="caption">第5張圖說</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div> -->
+              <!-- fanybox cpSlider-->
+              <div class="cpSlider">
+                <h3>燈箱照片</h3>
+                <div class="swiperBox">
+                  <div class="swiper">
+                    <div class="swiper-wrapper">
+                      <div class="imgContainer swiper-slide">
+                        <a href="images/demo/06.jpg" data-fancybox="gallery" data-caption="第1張圖說" data-alt="第1張圖說">
+                          <img src="images/demo/06.jpg" alt="第1張圖說" />
+                          <noscript><img src="images/demo/06.jpg" alt="第1張圖說" /></noscript>
+                          <span class="caption">第1張圖說</span>
+                        </a>
+                      </div>
+
+                      <div class="imgContainer swiper-slide">
+                        <a href="images/demo/07.jpg" data-fancybox="gallery" data-caption="第2張圖說" data-alt="第2張圖說">
+                          <img src="images/demo/07.jpg" alt="第2張圖說" />
+                          <noscript><img src="images/demo/07.jpg" alt="第2張圖說" /></noscript>
+                          <span class="caption">第2張圖說</span>
+                        </a>
+                      </div>
+                      <div class="imgContainer swiper-slide">
+                        <a href="images/demo/08.jpg" data-fancybox="gallery" data-caption="第3張圖說" data-alt="第3張圖說">
+                          <img src="images/demo/08.jpg" alt="第3張圖說" />
+                          <noscript><img src="images/demo/08.jpg" alt="第3張圖說" /></noscript>
+                          <span class="caption">第3張圖說</span>
+                        </a>
+                      </div>
+                      <div class="imgContainer swiper-slide">
+                        <a href="images/demo/10.jpg" data-fancybox="gallery" data-caption="第4張圖說" data-alt="第4張圖說">
+                          <img src="images/demo/10.jpg" alt="第4張圖說" />
+                          <noscript><img src="images/demo/10.jpg" alt="第4張圖說" /></noscript>
+                          <span class="caption">第4張圖說</span>
+                        </a>
+                      </div>
+                      <div class="imgContainer swiper-slide">
+                        <a href="images/demo/12.jpg" data-fancybox="gallery" data-caption="第5張圖說" data-alt="第5張圖說">
+                          <img src="images/demo/12.jpg" alt="第5張圖說" />
+                          <noscript><img src="images/demo/12.jpg" alt="第5張圖說" /></noscript>
+                          <span class="caption">第5張圖說</span>
+                        </a>
+                      </div>
                     </div>
-                    <p>第一張圖說</p>
                   </div>
-                  <div>
-                    <div class="imgContainer">
-                      <img alt="圖說2" src="https://assets.imgix.net/examples/puffins.jpg?w=800&h=480&fit=crop&auto=format%2Cenhance&usm=20" />
-                    </div>
-                    <p>第二張圖說</p>
-                  </div>
-                  <div>
-                    <div class="imgContainer">
-                      <img alt="圖說3" src="https://assets.imgix.net/examples/womanlandscape.jpg?w=800&h=480&fit=crop&auto=format%2Cenhance&usm=20" />
-                    </div>
-                    <p>第三張圖說</p>
-                  </div>
-                  <div>
-                    <div class="imgContainer">
-                      <img alt="圖說4" src="https://assets.imgix.net/unsplash/paperlamp.jpg?w=800&h=480&fit=crop&auto=format%2Cenhance&usm=20" />
-                    </div>
-                    <p>第四張圖說</p>
-                  </div>
+                  <!-- swiper 左邊箭頭-->
+                  <div class="swiperArrow prev"></div>
+                  <!-- swiper 右邊箭頭-->
+                  <div class="swiperArrow next"></div>
+                  <!-- swiper 點切換-->
+                  <div class="swiper-dots"></div>
                 </div>
-                <!-- slider-for end-->
-                <div class="controls"></div>
-                <!--小圖slider-nav-->
-                <div class="Slider-nav">
-                  <div>
-                    <div class="imgContainer">
-                      <img alt="圖說1" src="https://assets.imgix.net/examples/kingfisher.jpg?w=800&h=480&fit=crop&auto=format%2Cenhance&usm=20" />
+              </div>
+
+              <!-- marquee 跑馬燈-->
+              <div class="marquee">
+                <h3>跑馬燈</h3>
+                <div class="swiperBox">
+                  <div class="swiper">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <a href="javascript:;"><span>2018-11-13</span>因尼莎颱風來襲，7/31下午2時之我國化學物質管理政策綱領第一次跨部會研商會取消。</a>
+                      </div>
+                      <div class="swiper-slide">
+                        <a href="javascript:;"><span>2018-11-13</span>因尼莎颱風來襲，7/31下午2時之我國化學物質管理政策綱領第一次跨部會研商會取消。</a>
+                      </div>
+                      <div class="swiper-slide">
+                        <a href="javascript:;"><span>2018-11-13</span>因尼莎颱風來襲，7/31下午2時之我國化學物質管理政策綱領第一次跨部會研商會取消。</a>
+                      </div>
+                      <div class="swiper-slide">
+                        <a href="javascript:;"><span>2018-11-13</span>因尼莎颱風來襲，7/31下午2時之我國化學物質管理政策綱領第一次跨部會研商會取消。</a>
+                      </div>
                     </div>
-                    <p>第一張圖說</p>
                   </div>
-                  <div>
-                    <div class="imgContainer">
-                      <img alt="圖說2" src="https://assets.imgix.net/examples/puffins.jpg?w=800&h=480&fit=crop&auto=format%2Cenhance&usm=20" />
-                    </div>
-                    <p>第二張圖說</p>
-                  </div>
-                  <div>
-                    <div class="imgContainer">
-                      <img alt="圖說3" src="https://assets.imgix.net/examples/womanlandscape.jpg?w=800&h=480&fit=crop&auto=format%2Cenhance&usm=20" />
-                    </div>
-                    <p>第三張圖說</p>
-                  </div>
-                  <div>
-                    <div class="imgContainer">
-                      <img alt="圖說4" src="https://assets.imgix.net/unsplash/paperlamp.jpg?w=800&h=480&fit=crop&auto=format%2Cenhance&usm=20" />
-                    </div>
-                    <p>第四張圖說</p>
-                  </div>
+                  <!-- swiper 往上-->
+                  <div class="marquee-arrow marquee-prev"></div>
+                  <!-- swiper 往下-->
+                  <div class="marquee-arrow marquee-next"></div>
                 </div>
-                <!-- slider-nav end-->
               </div>
               <!-- weblink 外部連結 -->
               <div class="webLink">
@@ -440,6 +587,42 @@
                   </li>
                 </ul>
               </div>
+              <!-- <div class="fileDownload">
+                            <h3>檔案下載</h3>
+                            <ul>
+                                <li>
+                                    <span class="fileName">檔案名稱</span>
+                                    <span class="file"><a href="xxxx.doc" class="file_doc">檔案名稱.doc</a>823.8 KB，下載 1,489 次</span>
+                                    <span class="file"><a href="xxxx.doc" class="file_docx">檔案名稱.doc</a>823.8 KB，下載 1,489 次</span>
+                                    <span class="file"><a href="xxxx.doc" class="file_odt">檔案名稱.doc</a>823.8 KB，下載 1,489 次</span>
+                                    <span class="file"><a href="xxxx.other" class="file_other">檔案名稱.other</a>823.8 KB，下載 1,489 次</span>
+                                </li>
+                                <li>
+                                    <span class="fileName">檔案名稱</span>
+                                    <span class="file"><a href="xxxx.xls" class="file_xls">檔案名稱.xls</a>823.8 KB，下載 1,489 次</span>
+                                    <span class="file"><a href="xxxx.xlsx" class="file_xlsx">檔案名稱.xlsx</a>823.8 KB，下載 1,489 次</span>
+                                    <span class="file"><a href="xxxx.csv" class="file_csv">檔案名稱.csv</a>823.8 KB，下載 1,489 次</span>
+                                    <span class="file"><a href="xxxx.ods" class="file_ods">檔案名稱.ods</a>823.8 KB，下載 1,489 次</span>
+                                </li>
+                                <li>
+                                    <span class="fileName">檔案名稱</span>
+                                    <span class="file"><a href="xxxx.ppt" class="file_ppt">檔案名稱.ppt</a>823.8 KB，下載 1,489 次</span>
+                                    <span class="file"><a href="xxxx.pptx" class="file_pptx">檔案名稱.pptx</a>823.8 KB，下載 1,489 次</span>
+                                    <span class="file"><a href="xxxx.odp" class="file_odp">檔案名稱.odp</a>823.8 KB，下載 1,489 次</span>
+                                </li>
+                                <li>
+                                    <span class="fileName">檔案名稱</span>
+                                    <span class="file"><a href="xxxx.pdf" class="file_pdf">檔案名稱.pdf</a>823.8 KB，下載 1,489 次</span>
+                                    <span class="file"><a href="xxxx.zip" class="file_zip">檔案名稱.zip</a>823.8 KB，下載 1,489 次</span>
+                                    <span class="file"><a href="xxxx.txt" class="file_txt">檔案名稱.txt</a>823.8 KB，下載 1,489 次</span>
+                                    <span class="file"><a href="xxxx.mov" class="file_mov">檔案名稱.mov</a>823.8 KB，下載 1,489 次</span>
+                                    <span class="file"><a href="xxxx.mp3" class="file_mp3">檔案名稱.mp3</a>823.8 KB，下載 1,489 次</span>
+                                    <span class="file"><a href="xxxx.jpg" class="file_jpg">檔案名稱.jpg</a>823.8 KB，下載 1,489 次</span>
+                                    <span class="file"><a href="xxxx.mp4" class="file_mp4">檔案名稱.mp4</a>823.8 KB，下載 1,489 次</span>
+                                    <span class="file"><a href="xxxx.wmv" class="file_wmv">檔案名稱.wmv</a>823.8 KB，下載 1,489 次</span>
+                                </li>
+                            </ul>
+                        </div> -->
             </section>
             <!-- CP End -->
           </div>
@@ -564,9 +747,7 @@
     <script src="vendor/fancybox/fancybox.js"></script>
     <!-- swiper -->
     <script src="vendor/swiper/swiper-bundle.min.js"></script>
-    <!-- mainJs -->
-    <script src="js/main.js"></script>
-    <!-- 客製js -->
-    <script src="js/customize.js"></script>
+    <!-- js -->
+    <script src="js/customize.js" type="module"></script>
   </body>
 </html>
