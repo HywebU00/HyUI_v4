@@ -1400,26 +1400,35 @@ switchA11TitleName();
 // /*------------------------------------*/
 // //////////table 加上 data-title//////////
 // /*------------------------------------*/
-function tableAddDataAttributes() {
-  const el = document.querySelectorAll('.tableList');
-  function setTrAttr(i) {
-    const thList = i.querySelectorAll('th');
-    const trList = i.querySelectorAll('tr');
-    trList.forEach((trItem) => {
-      const tdList = trItem.querySelectorAll('td');
-      tdList.forEach((i, idx) => {
-        tdList[idx].setAttribute('data-title2', `${thList[idx].textContent}`);
-      });
-    });
-  }
-  el.forEach((i) => {
-    const tableItem = i.querySelectorAll('table');
-    tableItem.forEach((i) => {
-      setTrAttr(i);
-    });
-  });
-}
-tableAddDataAttributes();
+
+//  class TableAddDataAttributes {
+//   constructor(obj) {
+//     this.el = document.querySelectorAll(obj.elemClass);
+//     this.dataName = obj.dataName;
+//   }
+//   setTable() {
+//     this.el.forEach((i) => {
+//       const tableItem = i.querySelectorAll('table');
+//       tableItem.forEach((i) => {
+//         const thList = i.querySelectorAll('th');
+//         const trList = i.querySelectorAll('tr');
+//         trList.forEach((trItem) => {
+//           const tdList = trItem.querySelectorAll('td');
+//           tdList.forEach((i, idx) => {
+//             tdList[idx].setAttribute(`data-${this.dataName}`, `${thList[idx].textContent}`);
+//           });
+//         });
+//       });
+//     });
+//   }
+//   initial() {
+//     this.setTable();
+//   }
+// }
+// const tableAddDataAttributes = new TableAddDataAttributes({
+//   elemClass: '.tableList',
+//   dataName: 'title',
+// }).initial(); // tableList樣式 加上 data-title
 
 class ScrollTables {
   constructor(obj) {
@@ -1570,20 +1579,103 @@ var lazyLoadInstance = new LazyLoad({
 /*-----------------------------------*/
 //////////// Accordion設定 ////////////
 /*-----------------------------------*/
-// $(function () {
-//   $('.accordion').each(function () {
-//     $(this).find('.accordionContent').hide();
-//     var _accordionItem = $(this).children('ul').children('li').children('a');
-//     _accordionItem.each(function () {
-//       function accordion(e) {
-//         $(this).parent('li').siblings().children('a').removeClass('active');
-//         $(this).toggleClass('active');
-//         $(this).parent('li').siblings().children('.accordionContent').slideUp();
-//         $(this).next('.accordionContent').slideToggle();
-//         e.preventDefault();
-//       }
-//       $(this).click(accordion);
-//       $(this).keyup(accordion);
+
+// 只能放兩層(accordion, accordionContent)
+//  class AccordionSlider {
+//   constructor(obj) {
+//     this.accordionList = document.querySelectorAll(obj.accordionList);
+//     this.accordion = document.querySelector(obj.accordionList) !== null ? document.querySelector(obj.accordionList).parentNode.parentNode : '';
+//     this.accordionContent = obj.accordionContent;
+//     this.accordionInfo = obj.accordionInfo.switch;
+//     this.accordionInfoOpen = obj.accordionInfo.open;
+//     this.accordionInfoClose = obj.accordionInfo.close;
+//   }
+//   // ---初始化
+//   addElem() {
+//     let _that = this;
+//     _that.accordionList.forEach((i) => {
+//       _that.accordionInfo ? (i.innerHTML += `<span class="accordionBtn">${_that.accordionInfoOpen}</span>`) : '';
+//       i.innerHTML += `<span class="accordionArrow"></span>`;
 //     });
-//   });
-// });
+//   }
+
+//   // ---抓取高度
+//   checkContentHeight() {
+//     let _that = this;
+//     _that.accordionList.forEach((i) => {
+//       const itemContent = i.nextElementSibling;
+//       const accordionBtn = i.querySelector('.accordionBtn');
+//       itemContent.style.height = 'auto';
+//       itemContent.dataset.itemHeight = itemContent.offsetHeight;
+//       itemContent.style.height = '0';
+//       _that.accordionInfo ? (accordionBtn.textContent = `${_that.accordionInfoOpen}`) : '';
+//       _that.accordion.querySelectorAll('.active').forEach((s) => s.classList.remove('active'));
+//     });
+//   }
+
+//   // ---操控開合
+//   toggleContent() {
+//     let _that = this;
+//     _that.accordionList.forEach((i) => {
+//       const itemContent = i.nextElementSibling;
+//       const accordionBtn = i.querySelector('.accordionBtn');
+
+//       i.addEventListener('click', (e) => {
+//         //取消Ａ連結預設行為
+//         e.preventDefault();
+//         const contentHeight = itemContent.dataset.itemHeight || 0;
+//         const siblings = [...i.parentNode.parentNode.children].filter((child) => {
+//           return child !== i;
+//         });
+//         if (!i.classList.contains('open')) {
+//           itemContent.style.height = `${contentHeight}px`;
+//           _that.accordion.querySelectorAll('.active').forEach((s) => {
+//             s.querySelector(this.accordionContent).style.height = '0';
+//             siblings.forEach((v) => {
+//               _that.accordionInfo ? (v.querySelector('.accordionBtn').textContent = `${_that.accordionInfoOpen}`) : '';
+//               v.querySelector('.open') !== null ? v.querySelector('.open').classList.remove('open') : '';
+//             });
+//             s.classList.remove('active');
+//           });
+//           _that.accordionInfo ? (accordionBtn.textContent = `${_that.accordionInfoClose}`) : '';
+//           i.classList.add('open');
+//           i.parentNode.classList.add('active');
+//         } else {
+//           itemContent.style.height = `0px`;
+//           accordionBtn.textContent = `${_that.accordionInfoOpen}`;
+//           i.parentNode.classList.remove('active');
+//           i.classList.remove('open');
+//         }
+//       });
+//     });
+//   }
+//   jsResize() {
+//     let _that = this;
+//     let resizeNavTimer;
+//     window.addEventListener('resize', (e) => {
+//       // --- 算出 menu 距離上方的高度
+//       clearTimeout(resizeNavTimer);
+//       resizeNavTimer = setTimeout(() => {
+//         _that.checkContentHeight();
+//         _that.accordionList.forEach((v) => {
+//           v.classList.remove('open');
+//         });
+//       }, 200);
+//     });
+//   }
+//   initial() {
+//     this.addElem();
+//     this.checkContentHeight();
+//     this.toggleContent();
+//     this.jsResize();
+//   }
+// }
+// let accordionSlider = new AccordionSlider({
+//   accordionList: '.accordionList',
+//   accordionContent: '.accordionContent',
+//   accordionInfo: {
+//     switch: true,
+//     open: '展開',
+//     close: '收合',
+//   },
+// }).initial();

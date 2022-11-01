@@ -1,15 +1,19 @@
 // -----  基本功能開關   ---------------------------------------------------
-import { topNav, navSticky, fatFooter, tableAddDataAttributes, scrollTables, accordionSlider } from './main.js';
 topNav(); // 手機版顯示nav選單
-navSticky(); // 固定主選單
+navSticky(); // 捲動時固定主選單
 fatFooter(); // fatFooter是否要展開
+tabFunction(); // tab功能
 scrollTables('table'); // table捲動功能
+fontSize({
+  name: document.querySelectorAll('.fontSize'), // 按鈕列表名稱
+  control: document.querySelector('body'), // 控制的對象名稱
+});
 tableAddDataAttributes({
-  elemClass: '.tableList',
-  dataName: 'title',
-}); // tableList樣式 加上 data-title
+  elemClass: '.tableList', // 目標table
+  dataName: 'title', // tableList樣式 加上 data-title
+});
 
-//手風琴功能
+// 手風琴功能
 accordionSlider({
   accordionList: '.accordionList', // 問題區塊
   accordionContent: '.accordionContent', // 回答區塊

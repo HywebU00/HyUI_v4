@@ -1695,9 +1695,7 @@ th {
   a:hover, a:focus-visible {
     color: #0094e0;
     cursor: pointer;
-  }
-  a:focus:not(:focus-visible) {
-    outline: 0;
+    outline: #1aadfa 2px solid;
   }
   kbd {
     background: #fff;
@@ -2181,9 +2179,7 @@ th {
   .breadcrumb a:hover, .breadcrumb a:focus-visible {
     color: #0094e0;
     cursor: pointer;
-  }
-  .breadcrumb a:focus:not(:focus-visible) {
-    outline: 0;
+    outline: #1aadfa 2px solid;
   }
   .divider,
 .dividerVertical {
@@ -2985,9 +2981,7 @@ th {
   em[tooltip]:hover, em[tooltip]:focus-visible {
     color: #0094e0;
     cursor: pointer;
-  }
-  em[tooltip]:focus:not(:focus-visible) {
-    outline: 0;
+    outline: #1aadfa 2px solid;
   }
   [tooltip]:before,
 [tooltip]:after {
@@ -3223,9 +3217,7 @@ th {
   .tag ul li a:hover, .tag ul li a:focus-visible {
     color: #0094e0;
     cursor: pointer;
-  }
-  .tag ul li a:focus:not(:focus-visible) {
-    outline: 0;
+    outline: #1aadfa 2px solid;
   }
   .scrollToTop {
     width: 50px;
@@ -3409,9 +3401,7 @@ th {
   .header .navigation .navList li a:hover, .header .navigation .navList li a:focus-visible {
     color: #0094e0;
     cursor: pointer;
-  }
-  .header .navigation .navList li a:focus:not(:focus-visible) {
-    outline: 0;
+    outline: #1aadfa 2px solid;
   }
   .header .navigation .language {
     flex-grow: 0;
@@ -3513,9 +3503,7 @@ th {
   .search .keywordHot ul a:hover, .search .keywordHot ul a:focus-visible {
     color: #0094e0;
     cursor: pointer;
-  }
-  .search .keywordHot ul a:focus:not(:focus-visible) {
-    outline: 0;
+    outline: #1aadfa 2px solid;
   }
   .mobileSearch {
     width: 100% !important;
@@ -4451,9 +4439,7 @@ footer .counter em {
   .fatFooter nav ul li ul li a:hover, .fatFooter nav ul li ul li a:focus-visible {
     color: #0094e0;
     cursor: pointer;
-  }
-  .fatFooter nav ul li ul li a:focus:not(:focus-visible) {
-    outline: 0;
+    outline: #1aadfa 2px solid;
   }
   @media screen and (max-width: 575px) {
     .fatFooter nav ul li ul li a {
@@ -5943,9 +5929,7 @@ table td {
   .lp table td a:hover, .lp table td a:focus-visible {
     color: #0094e0;
     cursor: pointer;
-  }
-  .lp table td a:focus:not(:focus-visible) {
-    outline: 0;
+    outline: #1aadfa 2px solid;
   }
   .lp table td.date {
     text-align: center;
@@ -6066,9 +6050,7 @@ table td {
   .submenu li a:hover, .submenu li a:focus-visible {
     color: #0094e0;
     cursor: pointer;
-  }
-  .submenu li a:focus:not(:focus-visible) {
-    outline: 0;
+    outline: #1aadfa 2px solid;
   }
   .submenu li a .num {
     position: absolute;
@@ -6157,9 +6139,7 @@ table td {
   .thumbnail a:hover, .thumbnail a:focus-visible {
     color: #0094e0;
     cursor: pointer;
-  }
-  .thumbnail a:focus:not(:focus-visible) {
-    outline: 0;
+    outline: #1aadfa 2px solid;
   }
   .thumbnail a:focus-visible:before {
     content: "";
@@ -7750,9 +7730,7 @@ h2.title {
 .cp a:hover, .cp a:focus-visible {
   color: #0094e0;
   cursor: pointer;
-}
-.cp a:focus:not(:focus-visible) {
-  outline: 0;
+  outline: #1aadfa 2px solid;
 }
 .cp .publishInfo {
   font-size: 0.875em;
@@ -8118,7 +8096,5 @@ h2.title {
 .webLink li a:hover, .webLink li a:focus-visible {
   color: #0094e0;
   cursor: pointer;
-}
-.webLink li a:focus:not(:focus-visible) {
-  outline: 0;
+  outline: #1aadfa 2px solid;
 }/*# sourceMappingURL=style.css.map */
