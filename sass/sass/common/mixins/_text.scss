@@ -44,11 +44,10 @@
   &:focus-visible {
     color: $aHover;
     cursor: pointer;
+  }
+  &:focus-visible {
     outline: #1aadfa 2px solid;
   }
-  // &:focus:not(:focus-visible) {
-  //   outline: 0;
-  // }
 }
 
 //px轉rem 使用方式 rem(px) px直接輸入數字即可

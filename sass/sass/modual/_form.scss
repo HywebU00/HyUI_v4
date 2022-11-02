@@ -1242,6 +1242,19 @@ textarea {
   }
 }
 
+button:focus-visible,
+input[type='text']:focus-visible,
+input[type='reset']:focus-visible,
+input[type='file']:focus-visible,
+input[type='tel']:focus-visible,
+input[type='email']:focus-visible,
+input[type='password']:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  border: 1px solid lighten($formFocus, 20);
+  box-shadow: 0px 0px 0px 2px lighten($formFocus, 20);
+  outline: none;
+}
 button:focus,
 input[type='text']:focus,
 input[type='reset']:focus,
@@ -1251,8 +1264,6 @@ input[type='email']:focus,
 input[type='password']:focus,
 textarea:focus,
 select:focus {
-  border: 1px solid lighten($formFocus, 20);
-  box-shadow: 0px 0px 0px 2px lighten($formFocus, 20);
   outline: none;
 }
 

@@ -179,7 +179,7 @@ function jsParents(element, elementCheck) {
 // -----  MENU初始化 ------------------------------------------------------
 // -----------------------------------------------------------------------
 
-(function () {
+function menu() {
   // --- menu初始化 新增側欄選單
   const body = document.querySelector('body');
   const sidebar = document.createElement('aside');
@@ -222,7 +222,8 @@ function jsParents(element, elementCheck) {
   cloneSearch.classList.add('mobileSearch');
   cloneSearch.classList.remove('search');
   body.prepend(cloneSearch);
-})();
+}
+menu();
 
 // -----------------------------------------------------------------------
 // ----- 複製手機版nav選單 -------------------------------------------------
@@ -290,9 +291,8 @@ mobileSearch({
 // ----- 手機桌機版本切換及手機版menu設定 -------------------------------------
 // -----------------------------------------------------------------------
 
-(function () {
+function mainMenuSetup() {
   const body = document.querySelector('body');
-  const windowWidth = window.outerWidth;
   const windowSmall = 768;
   const sidebar = document.querySelector('.sidebar');
   const mobileSearch = document.querySelector('.mobileSearch');
@@ -300,10 +300,13 @@ mobileSearch({
   const sidebarCtrlBtn = document.querySelector('.sidebarCtrlBtn');
   const menuOverlay = document.querySelector('.menuOverlay');
   const mobileArea = document.querySelector('.mobileArea');
+  const mobileAreaOut = mobileArea.offsetWidth;
+  let windowWidth = window.outerWidth;
   let searchMode = false;
 
   // ---  PC版設定
-  const menu_liHasChild = document.querySelector('.header .mainMenu').querySelectorAll('li.hasChild');
+  const menuLiHasChild = document.querySelector('.header .mainMenu').querySelectorAll('li.hasChild');
+  const menuLi = document.querySelectorAll('.header .mainMenu > ul > li');
   // ---  手機版設定
   const asideMenu = document.querySelector('.sideMainMenu');
   const asideMenuLi = asideMenu.querySelectorAll('li');
@@ -313,6 +316,16 @@ mobileSearch({
   const asideMenuNextUl2 = [];
   const asideMenuNextUl3 = [];
 
+  // ---  判斷PC版選單超過畫面時左邊增加.leftSlider
+  menuLi.forEach((v, i) => {
+    let menuLiLeft = v.offsetLeft;
+    let leftWidth = v.offsetWidth * v.querySelectorAll('ul').length;
+    if (menuLiLeft + leftWidth > windowWidth) {
+      v.classList.add('leftSlider');
+    }
+  });
+
+  // ---  手機版抓取ul設定各層的class
   [...asideMenuUl.children]
     .filter((child) => {
       return child.classList.contains('hasChild');
@@ -342,7 +355,6 @@ mobileSearch({
   });
 
   // --- 設定所有UL的高度，有高度才會有縮起來得效果，最多四層
-  const mobileAreaOut = mobileArea.offsetWidth;
   sidebar.style = 'display:block;opacity:0';
   mobileArea.style = `transform: translateX(${mobileAreaOut * -1}px)`;
   asideMenuUl.classList.add('firstLv');
@@ -415,6 +427,7 @@ mobileSearch({
     jsFadeOut(menuOverlay);
     hideSidebar();
   });
+
   // --- PC版設定
   function pcSet() {
     hideSidebar();
@@ -423,7 +436,7 @@ mobileSearch({
     document.querySelector('.language ul').style.display = 'none';
     // --- 副選單滑出
 
-    menu_liHasChild.forEach((i) => {
+    menuLiHasChild.forEach((i) => {
       i.addEventListener('mouseenter', (e) => {
         i.classList.add('active');
       });
@@ -432,7 +445,7 @@ mobileSearch({
       });
     });
 
-    menu_liHasChild.forEach((i) => {
+    menuLiHasChild.forEach((i) => {
       i.addEventListener('click', (e) => {
         e.stopPropagation();
       });
@@ -442,9 +455,7 @@ mobileSearch({
 
   // --- 切換 PC/Mobile 選單
   function switchMenu() {
-    if (windowWidth < windowSmall) {
-      mobileSet();
-    } else {
+    if (windowWidth > windowSmall) {
       pcSet();
     }
   }
@@ -452,13 +463,14 @@ mobileSearch({
   // --- 行動版/電腦版切換
   window.addEventListener('resize', switchResizeFunction);
   window.addEventListener('load', switchResizeFunction);
+
   function switchResizeFunction() {
-    let resizeTimer = setTimeout(() => {
+    setTimeout(() => {
       mobileSearch.style.display = 'none';
       windowWidth = window.outerWidth;
       switchMenu();
+      hideSidebar();
     }, 50);
-    clearTimeout(resizeTimer);
   }
 
   // --- 展開側邊選單函式
@@ -500,17 +512,18 @@ mobileSearch({
       i.classList.remove('active');
     });
   }
-})();
+}
+mainMenuSetup();
 
 // -----------------------------------------------------------------------
 // -----  menu 訊息區塊 sticky  -------------------------------------------
 // -----------------------------------------------------------------------
 
 function navSticky() {
-  const windowWidth = window.outerWidth;
   const windowWidthSmall = 768;
   const mainMenu = document.querySelector('.mainMenu');
   const main = document.querySelector('.main');
+  let windowWidth = window.outerWidth;
   let menuHeight = Math.floor(mainMenu.offsetHeight);
   let mainMenuTop = Math.floor(mainMenu.getBoundingClientRect().top + window.scrollY);
   let offsetTop = Math.floor(mainMenuTop) || null;
@@ -545,13 +558,11 @@ function navSticky() {
 
   // --- 當 resize 觸發 判斷 menu的種類
   function jsResize(mainMenuTop) {
-    let resizeNavTimer;
     // --- 如果 有 menu 的話 執行固定 menu_stickyNavbar
     window.addEventListener('resize', (e) => {
       // --- 算出 menu 距離上方的高度
       offsetTop = Math.floor(mainMenuTop) || null;
-      clearTimeout(resizeNavTimer);
-      resizeNavTimer = setTimeout(() => {
+      setTimeout(() => {
         main.removeAttribute('style');
         sticky(offsetTop);
       }, 200);
@@ -569,7 +580,7 @@ function navSticky() {
 // -----  menu的無障礙tab設定 a11yKeyMenu  ---------------------------------
 // -----------------------------------------------------------------------
 
-(function () {
+function a11yKeyMenu() {
   const mainMenu = document.querySelector('.mainMenu') || null;
 
   // --- keyup時
@@ -606,7 +617,8 @@ function navSticky() {
       i.parentNode.classList.add('active');
     });
   });
-})();
+}
+a11yKeyMenu();
 
 // -----------------------------------------------------------------------
 // -----  notice訊息區塊   -------------------------------------------------
@@ -1136,7 +1148,7 @@ gotoCenter();
 // -----  無障礙快捷鍵盤組合 a11yKeyCode   ----------------------------------------------
 // -----------------------------------------------------------------------
 
-(function () {
+function a11yKeyCode() {
   let search = document.querySelector('.search input[type="text"]');
   let header = document.querySelector('.header .accessKey');
   let main = document.querySelector('.main .accessKey');
@@ -1191,7 +1203,8 @@ gotoCenter();
         break;
     }
   });
-})();
+}
+a11yKeyCode();
 
 // -----------------------------------------------------------------------
 // -----  無障礙錨點切換語系   ----------------------------------------------
@@ -1471,11 +1484,9 @@ function accordionSlider(obj) {
     });
   }
   function jsResize() {
-    let resizeNavTimer;
     window.addEventListener('resize', (e) => {
       // --- 算出 menu 距離上方的高度
-      clearTimeout(resizeNavTimer);
-      resizeNavTimer = setTimeout(() => {
+      setTimeout(() => {
         checkContentHeight();
         accordionList.forEach((v) => {
           v.classList.remove('open');

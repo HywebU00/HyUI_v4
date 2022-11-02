@@ -1695,6 +1695,8 @@ th {
   a:hover, a:focus-visible {
     color: #0094e0;
     cursor: pointer;
+  }
+  a:focus-visible {
     outline: #1aadfa 2px solid;
   }
   kbd {
@@ -2179,6 +2181,8 @@ th {
   .breadcrumb a:hover, .breadcrumb a:focus-visible {
     color: #0094e0;
     cursor: pointer;
+  }
+  .breadcrumb a:focus-visible {
     outline: #1aadfa 2px solid;
   }
   .divider,
@@ -2981,6 +2985,8 @@ th {
   em[tooltip]:hover, em[tooltip]:focus-visible {
     color: #0094e0;
     cursor: pointer;
+  }
+  em[tooltip]:focus-visible {
     outline: #1aadfa 2px solid;
   }
   [tooltip]:before,
@@ -3217,6 +3223,8 @@ th {
   .tag ul li a:hover, .tag ul li a:focus-visible {
     color: #0094e0;
     cursor: pointer;
+  }
+  .tag ul li a:focus-visible {
     outline: #1aadfa 2px solid;
   }
   .scrollToTop {
@@ -3401,6 +3409,8 @@ th {
   .header .navigation .navList li a:hover, .header .navigation .navList li a:focus-visible {
     color: #0094e0;
     cursor: pointer;
+  }
+  .header .navigation .navList li a:focus-visible {
     outline: #1aadfa 2px solid;
   }
   .header .navigation .language {
@@ -3503,6 +3513,8 @@ th {
   .search .keywordHot ul a:hover, .search .keywordHot ul a:focus-visible {
     color: #0094e0;
     cursor: pointer;
+  }
+  .search .keywordHot ul a:focus-visible {
     outline: #1aadfa 2px solid;
   }
   .mobileSearch {
@@ -3599,18 +3611,18 @@ th {
   }
   @-webkit-keyframes showMenu {
     0% {
-      left: 20px;
+      transform: translateX(30px);
     }
     100% {
-      left: 0px;
+      transform: translateX(0px);
     }
   }
   @keyframes showMenu {
     0% {
-      left: 20px;
+      transform: translateX(30px);
     }
     100% {
-      left: 0px;
+      transform: translateX(0px);
     }
   }
   .mainMenu {
@@ -3762,6 +3774,10 @@ th {
   .mainMenu > ul > li.active > ul {
     -webkit-animation: showMenu 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
             animation: showMenu 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+  }
+  .mainMenu > ul > li.leftSlider ul ul {
+    left: auto;
+    right: 100%;
   }
   .megaMenu > ul {
     position: relative;
@@ -4439,6 +4455,8 @@ footer .counter em {
   .fatFooter nav ul li ul li a:hover, .fatFooter nav ul li ul li a:focus-visible {
     color: #0094e0;
     cursor: pointer;
+  }
+  .fatFooter nav ul li ul li a:focus-visible {
     outline: #1aadfa 2px solid;
   }
   @media screen and (max-width: 575px) {
@@ -5539,6 +5557,19 @@ input[type=number]:-moz-placeholder {
       width: 100%;
     }
   }
+  button:focus-visible,
+input[type=text]:focus-visible,
+input[type=reset]:focus-visible,
+input[type=file]:focus-visible,
+input[type=tel]:focus-visible,
+input[type=email]:focus-visible,
+input[type=password]:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    border: 1px solid #60c9ff;
+    box-shadow: 0px 0px 0px 2px #60c9ff;
+    outline: none;
+  }
   button:focus,
 input[type=text]:focus,
 input[type=reset]:focus,
@@ -5548,8 +5579,6 @@ input[type=email]:focus,
 input[type=password]:focus,
 textarea:focus,
 select:focus {
-    border: 1px solid #60c9ff;
-    box-shadow: 0px 0px 0px 2px #60c9ff;
     outline: none;
   }
   select {
@@ -5929,6 +5958,8 @@ table td {
   .lp table td a:hover, .lp table td a:focus-visible {
     color: #0094e0;
     cursor: pointer;
+  }
+  .lp table td a:focus-visible {
     outline: #1aadfa 2px solid;
   }
   .lp table td.date {
@@ -6050,6 +6081,8 @@ table td {
   .submenu li a:hover, .submenu li a:focus-visible {
     color: #0094e0;
     cursor: pointer;
+  }
+  .submenu li a:focus-visible {
     outline: #1aadfa 2px solid;
   }
   .submenu li a .num {
@@ -6139,6 +6172,8 @@ table td {
   .thumbnail a:hover, .thumbnail a:focus-visible {
     color: #0094e0;
     cursor: pointer;
+  }
+  .thumbnail a:focus-visible {
     outline: #1aadfa 2px solid;
   }
   .thumbnail a:focus-visible:before {
@@ -7730,6 +7765,8 @@ h2.title {
 .cp a:hover, .cp a:focus-visible {
   color: #0094e0;
   cursor: pointer;
+}
+.cp a:focus-visible {
   outline: #1aadfa 2px solid;
 }
 .cp .publishInfo {
@@ -8096,5 +8133,7 @@ h2.title {
 .webLink li a:hover, .webLink li a:focus-visible {
   color: #0094e0;
   cursor: pointer;
+}
+.webLink li a:focus-visible {
   outline: #1aadfa 2px solid;
 }/*# sourceMappingURL=style.css.map */
