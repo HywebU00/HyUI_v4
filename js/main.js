@@ -317,13 +317,17 @@ function mainMenuSetup() {
   const asideMenuNextUl3 = [];
 
   // ---  判斷PC版選單超過畫面時左邊增加.leftSlider
-  menuLi.forEach((v, i) => {
-    let menuLiLeft = v.offsetLeft;
-    let leftWidth = v.offsetWidth * v.querySelectorAll('ul').length;
-    if (menuLiLeft + leftWidth > windowWidth) {
-      v.classList.add('leftSlider');
-    }
-  });
+  function checkUlWidth() {
+    // 計算
+    let menuLeft = document.querySelector('.header .container').offsetLeft;
+    menuLi.forEach((v, i) => {
+      // let menuLeft = v.getBoundingClientRect().left;
+      // console.log(menuLeft);
+      let menuLiLeft = v.offsetLeft;
+      let leftWidth = v.offsetWidth * v.querySelectorAll('ul').length;
+      menuLiLeft + leftWidth + menuLeft > windowWidth ? v.classList.add('leftSlider') : v.classList.remove('leftSlider');
+    });
+  }
 
   // ---  手機版抓取ul設定各層的class
   [...asideMenuUl.children]
@@ -469,6 +473,7 @@ function mainMenuSetup() {
       mobileSearch.style.display = 'none';
       windowWidth = window.outerWidth;
       switchMenu();
+      checkUlWidth();
       hideSidebar();
     }, 50);
   }
@@ -483,7 +488,7 @@ function mainMenuSetup() {
     });
     setTimeout(() => {
       mobileArea.classList.add('open');
-    }, 10);
+    }, 50);
 
     body.classList.add('noscroll');
     menuOverlay.classList.add('active');
@@ -565,7 +570,7 @@ function navSticky() {
       setTimeout(() => {
         main.removeAttribute('style');
         sticky(offsetTop);
-      }, 200);
+      }, 50);
     });
   }
 
@@ -1491,7 +1496,7 @@ function accordionSlider(obj) {
         accordionList.forEach((v) => {
           v.classList.remove('open');
         });
-      }, 200);
+      }, 50);
     });
   }
   addElem();
