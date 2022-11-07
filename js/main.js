@@ -645,22 +645,25 @@ document.querySelectorAll('[class*="notice"] a.close').forEach((i) => {
 
 function fatFooter(obj) {
   const el = document.querySelector('.btnFatFooter') || null; // --- 控制的對象
+  const fontBtn = document.querySelectorAll('.fontSize ul li a');
 
   function fatFooterInit() {
-    // --- 抓取ＵＩ高度 css樣式修改樣式重新抓取高度
+    // --- 抓取UI高度 css樣式修改樣式重新抓取高度
     const _navUl = el.parentNode.querySelectorAll('nav ul li ul');
-    _navUl.forEach((i) => {
-      let _itemHeight = i.offsetHeight;
-      i.style.height = 'auto';
-      i.dataset.itemHeight = i.offsetHeight;
-      if (Number(_itemHeight) !== 0) {
-        i.dataset.itemHeight = i.offsetHeight;
-        i.style.height = `${Number(i.dataset.itemHeight)}px`;
-      } else {
-        i.style.height = '0px';
-      }
-    });
+    setTimeout(() => {
+      _navUl.forEach((i) => {
+        i.setAttribute('style', '');
+        let _itemHeight = i.offsetHeight;
+        i.dataset.itemHeight = _itemHeight;
+        if (Number(_itemHeight) !== 0) {
+          i.style.height = `${Number(i.dataset.itemHeight)}px`;
+        } else {
+          i.style.height = '0px';
+        }
+      });
+    }, 20);
   }
+
   function toggleFatFooter() {
     const _navUl = el.parentNode.querySelectorAll('nav ul li ul');
     _navUl.forEach((i) => {
@@ -689,6 +692,14 @@ function fatFooter(obj) {
 
   window.addEventListener('resize', () => {
     fatFooterInit();
+  });
+  fontBtn.forEach((i) => {
+    i.addEventListener('click', function () {
+      fatFooterInit();
+      el.innerHTML = '展開/OPEN';
+      el.setAttribute('name', '展開選單/OPEN');
+      el.classList.remove('close');
+    });
   });
 }
 // fatFooter();
@@ -1445,65 +1456,78 @@ function accordionSlider(obj) {
   function checkContentHeight() {
     accordionList.forEach((i) => {
       let itemContent = i.nextElementSibling;
-      let accordionBtn = i.querySelector('.accordionBtn');
       itemContent.setAttribute('style', '');
       itemContent.dataset.itemHeight = itemContent.offsetHeight;
       itemContent.style.height = 0;
-
-      accordionBtn.textContent = `${accordionInfoOpen}`;
       accordion.querySelectorAll('.active').forEach((s) => s.classList.remove('active'));
     });
+    toggleAccordion();
   }
-
   // ---操控開合
-  function toggleContent() {
-    accordionList.forEach((i) => {
-      function startAccordion(i) {
-        const itemContent = i.nextElementSibling;
-        const accordionBtn = i.querySelector('.accordionBtn');
-        const contentHeight = itemContent.dataset.itemHeight || 0;
-        const siblings = [...i.parentNode.parentNode.children].filter((child) => {
-          return child !== i;
-        });
-        if (!i.parentNode.classList.contains('active')) {
-          itemContent.style.height = `${contentHeight}px`;
-          accordion.querySelectorAll('.active').forEach((s) => {
-            s.querySelector(accordionContent).style.height = '0';
-            siblings.forEach((v) => {
-              v.querySelector('.accordionBtn').textContent = `${accordionInfoOpen}`;
-            });
-            s.classList.remove('active');
-          });
-          accordionBtn.textContent = `${accordionInfoClose}`;
-          i.parentNode.classList.add('active');
-        } else {
-          itemContent.style.height = `0px`;
-          accordionBtn.textContent = `${accordionInfoOpen}`;
-          i.parentNode.classList.remove('active');
-        }
+  function toggleAccordion() {
+    accordionList.forEach((i, index) => {
+      const isFirstAccordion = index === 0; // --- 如果是第一個頁籤
+      const contentHeight = i.nextElementSibling.dataset.itemHeight || 0;
+
+      const thisPrevItem = accordionList[index - 1]; // --- 綁定前一個頁籤按鈕
+      let prevItemAllA;
+      if (thisPrevItem !== undefined) {
+        prevItemAllA = thisPrevItem.nextElementSibling.querySelectorAll('[href], input'); // --- 前一個頁籤內容所有a和input項目
+      }
+      let prevItemLastA;
+      if (thisPrevItem !== undefined) {
+        prevItemLastA = prevItemAllA[prevItemAllA.length];
       }
 
+      i.querySelector('.accordionBtn').innerHTML = `${accordionInfoOpen}`;
       i.addEventListener('keydown', (e) => {
-        if (e.which === 9 && e.shiftKey) {
+        if (e.which === 9 && !e.shiftKey) {
+          accordionList.forEach((s) => {
+            s.nextElementSibling.style.height = `0px`;
+            s.parentNode.classList.remove('active');
+            s.querySelector('.accordionBtn').innerHTML = `${accordionInfoOpen}`;
+          });
+          i.nextElementSibling.style.height = `${contentHeight}px`;
+          i.parentNode.classList.add('active');
+          i.querySelector('.accordionBtn').innerHTML = `${accordionInfoClose}`;
+        } else if (e.which === 9 && e.shiftKey && !isFirstAccordion) {
+          if (prevItemAllA.length) {
+            accordionList.forEach((s) => {
+              s.nextElementSibling.style.height = `0px`;
+              s.parentNode.classList.remove('active');
+              s.querySelector('.accordionBtn').innerHTML = `${accordionInfoOpen}`;
+            });
+            accordionList[index - 1].parentNode.classList.add('active');
+            accordionList[index - 1].nextElementSibling.style.height = `${accordionList[index - 1].nextElementSibling.dataset.itemHeight}px`;
+            accordionList[index - 1].querySelector('.accordionBtn').innerHTML = `${accordionInfoClose}`;
+          }
         }
       });
 
       i.addEventListener('click', (e) => {
         //取消Ａ連結預設行為
         e.preventDefault();
-        startAccordion(i);
+        accordionList.forEach((s) => {
+          s.parentNode.classList.remove('active');
+          s.nextElementSibling.style.height = `0px`;
+          s.querySelector('.accordionBtn').innerHTML = `${accordionInfoOpen}`;
+        });
+        i.nextElementSibling.style.height = `${contentHeight}px`;
+        i.parentNode.classList.add('active');
+        i.querySelector('.accordionBtn').innerHTML = `${accordionInfoClose}`;
       });
     });
   }
+
   window.addEventListener('resize', (e) => {
     // --- 算出 menu 距離上方的高度
     setTimeout(() => {
       checkContentHeight();
       accordionList.forEach((v) => {
-        v.classList.remove('open');
+        v.parentNode.classList.remove('active');
+        v.nextElementSibling.style.height = `0px`;
+        v.querySelector('.accordionBtn').innerHTML = `${accordionInfoOpen}`;
       });
     }, 50);
   });
-  checkContentHeight();
-  toggleContent();
 }
