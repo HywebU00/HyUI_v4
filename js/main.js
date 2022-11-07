@@ -318,7 +318,7 @@ function mainMenuSetup() {
 
   // ---  判斷PC版選單超過畫面時左邊增加.leftSlider
   function checkUlWidth() {
-    // 計算
+    // --- 計算
     let menuLeft = document.querySelector('.header .container').offsetLeft;
     menuLi.forEach((v, i) => {
       // let menuLeft = v.getBoundingClientRect().left;
@@ -329,7 +329,7 @@ function mainMenuSetup() {
     });
   }
 
-  // ---  手機版抓取ul設定各層的class
+  // --- 手機版抓取ul設定各層的class
   [...asideMenuUl.children]
     .filter((child) => {
       return child.classList.contains('hasChild');
@@ -461,6 +461,9 @@ function mainMenuSetup() {
   function switchMenu() {
     if (windowWidth > windowSmall) {
       pcSet();
+      fontSize();
+    } else {
+      body.classList.remove('largeSize', 'medium_size');
     }
   }
 
@@ -641,12 +644,10 @@ document.querySelectorAll('[class*="notice"] a.close').forEach((i) => {
 // -----------------------------------------------------------------------
 
 function fatFooter(obj) {
-  const footerBox = document.querySelector('.fatFooter > .container');
-  footerBox.innerHTML += `<button type="button" name="展開選單/OPEN" aria-label="導覽選單展開/收合" class="btn btnFatFooter">收合</button>`;
   const el = document.querySelector('.btnFatFooter') || null; // --- 控制的對象
 
   function fatFooterInit() {
-    //抓取ＵＩ高度 css樣式修改樣式重新抓取高度
+    // --- 抓取ＵＩ高度 css樣式修改樣式重新抓取高度
     const _navUl = el.parentNode.querySelectorAll('nav ul li ul');
     _navUl.forEach((i) => {
       let _itemHeight = i.offsetHeight;
@@ -660,7 +661,7 @@ function fatFooter(obj) {
       }
     });
   }
-  function togglefatFooter() {
+  function toggleFatFooter() {
     const _navUl = el.parentNode.querySelectorAll('nav ul li ul');
     _navUl.forEach((i) => {
       if (i.offsetHeight !== 0) {
@@ -677,13 +678,13 @@ function fatFooter(obj) {
   }
   fatFooterInit();
   // --- 點擊時
-  el.addEventListener('click', togglefatFooterEle);
-  function togglefatFooterEle() {
+  el.addEventListener('click', toggleFatFooterEle);
+  function toggleFatFooterEle() {
     setTimeout(() => {
-      el.addEventListener('click', togglefatFooterEle);
+      el.addEventListener('click', toggleFatFooterEle);
     }, 500);
-    el.removeEventListener('click', togglefatFooterEle);
-    togglefatFooter();
+    el.removeEventListener('click', toggleFatFooterEle);
+    toggleFatFooter();
   }
 
   window.addEventListener('resize', () => {
@@ -696,89 +697,82 @@ function fatFooter(obj) {
 // -----  多組Tab   ------------------------------------------------------
 // -----------------------------------------------------------------------
 
-function tabFunction() {
-  const activeClass = 'active'; //啟動的 class
-  const tabSet = document.querySelectorAll('.tabSet'); //tab名稱
+function tabFunction(elem) {
+  const activeClass = 'active'; // --- 啟動的 class
+  const tabSet = document.querySelectorAll(elem); // --- tab名稱
 
   tabSet.forEach((a) => {
-    const tabBtn = a.querySelectorAll('.tabItems button'); //頁籤按鈕
-    const tabBtnLength = tabBtn.length; //頁籤按鈕數量
-    const tabContent = a.querySelectorAll('.tabContentGroup .tabContent'); //頁籤內容
+    const tabBtn = a.querySelectorAll('.tabItems button'); // --- 頁籤按鈕
+    const tabBtnLength = tabBtn.length; // --- 頁籤按鈕數量
+    const tabContent = a.querySelectorAll('.tabContentGroup .tabContent'); // --- 頁籤內容
     tabBtn[0].classList.add('active');
     tabContent[0].classList.add('active');
 
     tabBtn.forEach((v, i) => {
-      (function () {
-        const thisBtn = tabBtn[i]; //綁定這一個頁籤按鈕
-        const thisContent = tabContent[i]; //綁定這一個頁籤內容
-        const thisPrevItem = tabContent[i - 1]; //綁定前一個頁籤按鈕
-        const itemAllA = thisContent.querySelectorAll('[href], input'); //這一個頁籤內容所有a和input項目
-        let prevItemAllA;
-        if (thisPrevItem !== undefined) {
-          prevItemAllA = thisPrevItem.querySelectorAll('[href], input'); //前一個頁籤內容所有a和input項目
-        }
-        const isFirstTab = i === 0; //如果是第一個頁籤
-        const isLastTab = i === tabBtnLength - 1; //如果是最後一個頁籤
-        const itemFirstA = itemAllA[0]; //頁籤內容第一個a或是input
-        const itemLastA = itemAllA[itemAllA.length - 1]; //頁籤內容最後一個a或是input
-        let prevItemLastA;
-        if (thisPrevItem !== undefined) {
-          prevItemLastA = prevItemAllA[prevItemAllA.length - 1]; //前一個頁籤的最後一個a或是input
-        }
+      const thisBtn = tabBtn[i]; // --- 綁定這一個頁籤按鈕
+      const thisContent = tabContent[i]; // --- 綁定這一個頁籤內容
+      const thisPrevItem = tabContent[i - 1]; // --- 綁定前一個頁籤按鈕
+      const itemAllA = thisContent.querySelectorAll('[href], input'); // --- 這一個頁籤內容所有a和input項目
+      let prevItemAllA;
+      if (thisPrevItem !== undefined) {
+        prevItemAllA = thisPrevItem.querySelectorAll('[href], input'); // --- 前一個頁籤內容所有a和input項目
+      }
+      const isFirstTab = i === 0; // --- 如果是第一個頁籤
+      const isLastTab = i === tabBtnLength - 1; // --- 如果是最後一個頁籤
+      const itemFirstA = itemAllA[0]; // --- 頁籤內容第一個a或是input
+      const itemLastA = itemAllA[itemAllA.length - 1]; // --- 頁籤內容最後一個a或是input
+      let prevItemLastA;
+      if (thisPrevItem !== undefined) {
+        prevItemLastA = prevItemAllA[prevItemAllA.length - 1]; // --- 前一個頁籤的最後一個a或是input
+      }
 
-        // thisBtn頁籤觸發focus內容裡的第一個a
-        thisBtn.addEventListener('keydown', (e) => {
-          //頁籤第幾個按鈕觸發時
-          if (e.which === 9 && !e.shiftKey) {
-            //e.which偵測按下哪個案件，9代表tab，shiftKey代表shift
-            e.preventDefault();
-            startTab(i, tabBtn, tabContent); //啟動頁籤切換功能
-            if (itemAllA.length) {
-              //type number = true，0是false
-              itemFirstA.focus(); //第一個a或是input focus
-            } else {
-              tabBtn[i + 1].focus(); //當內容沒有a或是input跳轉下一個tab
-            }
-          } else if (e.which === 9 && e.shiftKey && !isFirstTab) {
-            e.preventDefault();
+      // --- thisBtn頁籤觸發focus內容裡的第一個a
+      thisBtn.addEventListener('keydown', (e) => {
+        // --- 頁籤第幾個按鈕觸發時
+        if (e.which === 9 && !e.shiftKey) {
+          // --- e.which偵測按下哪個案件，9代表tab，shiftKey代表shift
+          e.preventDefault();
+          startTab(i, tabBtn, tabContent); // --- 啟動頁籤切換功能
+          if (itemAllA.length) {
+            // --- type number = true，0是false
+            itemFirstA.focus(); // --- 第一個a或是input focus
+          } else {
+            tabBtn[i + 1].focus(); // --- 當內容沒有a或是input跳轉下一個tab
+          }
+        } else if (e.which === 9 && e.shiftKey && !isFirstTab) {
+          e.preventDefault();
 
-            startTab(i - 1, tabBtn, tabContent); //啟動頁籤切換功能
-            if (prevItemAllA.length) {
-              prevItemLastA.focus(); //前一個頁籤內容的最後一個a或是input focus
-            } else {
-              tabBtn[i - 1].focus(); //當內容沒有a或是input跳轉上一個tab
-            }
+          startTab(i - 1, tabBtn, tabContent); // --- 啟動頁籤切換功能
+          if (prevItemAllA.length) {
+            prevItemLastA.focus(); // --- 前一個頁籤內容的最後一個a或是input focus
+          } else {
+            tabBtn[i - 1].focus(); // --- 當內容沒有a或是input跳轉上一個tab
+          }
+        }
+      });
+
+      // --- 當按下shift+tab且為該內容的第一個a或是input
+      // --- 將focus目標轉回tab頁籤上，呼叫上方功能startTab(i - 1);往前一個頁籤
+      if (itemFirstA !== undefined) {
+        itemFirstA.addEventListener('keydown', (e) => {
+          if (e.which === 9 && e.shiftKey) {
+            e.preventDefault();
+            tabBtn[i].focus();
           }
         });
+      }
+      // --- 當按下tab且為該內容的最後一個a或是input
+      // --- focus到下一個頁籤
+      if (itemLastA !== undefined) {
+        itemLastA.addEventListener('keydown', (e) => {
+          if (e.which === 9 && !e.shiftKey && !isLastTab) {
+            e.preventDefault();
+            tabBtn[i + 1].focus();
+          }
+        });
+      }
 
-        //當按下shift+tab且為該內容的第一個a或是input
-        //將focus目標轉回tab頁籤上，呼叫上方功能startTab(i - 1);往前一個頁籤
-        if (itemFirstA !== undefined) {
-          itemFirstA.addEventListener('keydown', (e) => {
-            if (e.which === 9 && e.shiftKey) {
-              e.preventDefault();
-              tabBtn[i].focus();
-            }
-          });
-        }
-        //當按下shift+tab且為該內容的最後一個a或是input
-        //focus到下一個頁籤
-        if (itemLastA !== undefined) {
-          itemLastA.addEventListener('keydown', (e) => {
-            if (e.which === 9 && !e.shiftKey && !isLastTab) {
-              e.preventDefault();
-              tabBtn[i + 1].focus();
-            }
-          });
-        }
-      })();
-    });
-    mouseClick(tabBtn, tabContent, tabBtn);
-  });
-
-  // --- 滑鼠點擊事件
-  function mouseClick(tabBtn, tabContent) {
-    tabBtn.forEach((v, i) => {
+      // --- 滑鼠點擊事件
       tabBtn[i].addEventListener(
         'click',
         (e) => {
@@ -787,7 +781,7 @@ function tabFunction() {
         false
       );
     });
-  }
+  });
 
   function startTab(now, tabBtn, tabContent) {
     if (tabBtn !== undefined) {
@@ -795,13 +789,13 @@ function tabFunction() {
         i.classList.remove(activeClass);
       });
       tabBtn[now].classList.add(activeClass);
-      //頁籤按鈕增加指定class(active)，其他頁籤移除指定class
+      // --- 頁籤按鈕增加指定class(active)，其他頁籤移除指定class
 
       tabContent.forEach((i) => {
         i.classList.remove(activeClass);
       });
       tabContent[now].classList.add(activeClass);
-      //顯示當下頁籤內，隱藏其他內容
+      // --- 顯示當下頁籤內，隱藏其他內容
     }
   }
 }
@@ -810,9 +804,9 @@ function tabFunction() {
 // -----  FontSize   -----------------------------------------------------
 // -----------------------------------------------------------------------
 
-function fontSize(obj) {
-  const el = obj.name || null; // --- 控制的對象
-  const control = obj.control || null; // --- 控制的對象名稱
+function fontSize() {
+  const el = document.querySelectorAll('.fontSize') || null; // --- 控制的對象
+  const control = document.querySelector('body') || null; // --- 控制的對象名稱
 
   // --- 點擊文字大小按鈕
   el.forEach((i) => {
@@ -876,7 +870,7 @@ function fontSize(obj) {
   // --- 初始化 字體大小設定
   window.onload = (e) => {
     const _cookie = readCookie('FontSize');
-    //如果沒有_cookie 則預設值為'medium'
+    // --- 如果沒有_cookie 則預設值為'medium'
     if (_cookie == null) {
       _cookie = 'medium';
     }
@@ -887,9 +881,8 @@ function fontSize(obj) {
   };
 }
 // fontSize({
-//   name: document.querySelectorAll('.fontSize'), // --- 按鈕列表名稱
-//   // --- 更新fontsize切換改為全站通用
-//   control: document.querySelector('body'), // --- 控制的對象名稱
+//   name: document.querySelectorAll('.fontSize'), // 按鈕列表名稱
+//   control: document.querySelector('body'), // 控制的對象名稱
 // });
 
 // -----------------------------------------------------------------------
@@ -915,7 +908,7 @@ function scrollToTop(obj) {
   el.addEventListener('keydown', (e) => {
     e.preventDefault();
     scrollTop();
-    // window.scrollY 等於零的時候 執行 focus
+    // --- window.scrollY 等於零的時候 執行 focus
     window.addEventListener('scroll', focusTopBtn);
 
     function focusTopBtn() {
@@ -940,7 +933,7 @@ function scrollToTop(obj) {
       el.style['transition'] = 'all 0.5s';
       BtnStyleNone();
     }
-    //如果 opacity為 0 則 display none
+    // --- 如果 opacity為 0 則 display none
     function BtnStyleNone() {
       setTimeout(() => {
         const btn = document.querySelector('.scrollToTop');
@@ -963,7 +956,7 @@ scrollToTop({
 class SelectSlider {
   constructor(obj) {
     this.name = obj.name || null; // --- 按鈕列表名稱
-    this.control = obj.control || null; // --控制的對象名稱
+    this.control = obj.control || null; // --- 控制的對象名稱
   }
   // --- 點擊 語言模組
   sliderClick() {
@@ -1005,7 +998,7 @@ class SelectSlider {
       });
     });
   }
-  //--- 關閉語言模組
+  // --- 關閉語言模組
   sliderClose(item) {
     const sliderItem = item.nextElementSibling;
     const that = this;
@@ -1043,7 +1036,7 @@ languageSelect.initial();
 // -----------------------------------------------------------------------
 
 function shareBtnFunction() {
-  //創造一個a連結的按鈕
+  // --- 創造一個a連結的按鈕
   const shareUl = document.querySelector('.share');
   const btn = document.createElement('a');
   if (shareUl) {
@@ -1132,7 +1125,7 @@ function gotoCenter() {
   const acTag = document.querySelector('#aC');
   const mainaccessKey = document.querySelector('.main .accessKey');
   const headerHeight = document.querySelector('.header').offsetHeight;
-  //.accessKey 到top 的距離等於 header + .accessKey到父層上方的距離
+  // --- .accessKey 到top 的距離等於 header + .accessKey到父層上方的距離
   let _distance = headerHeight + mainaccessKey.offsetTop;
   if (goCenterTag) {
     goCenterTag.addEventListener('keydown', (e) => {
@@ -1160,14 +1153,14 @@ function a11yKeyCode() {
   let footer = document.querySelector('footer .accessKey');
   let distance = 0;
 
-  //focus element
+  // --- focus element
   function focusElem(distance, el) {
     if (window.scrollY === distance) {
       el.focus();
     }
   }
 
-  // scroll to element position
+  // --- scroll to element position
   function scrollAnime(distance, el) {
     window.scrollTo({
       top: distance,
@@ -1178,7 +1171,7 @@ function a11yKeyCode() {
     });
   }
 
-  // click a11 button
+  // --- click a11 button
   document.addEventListener('keydown', (e) => {
     switch (e.altKey && e.code) {
       // alt+S 查詢
@@ -1186,19 +1179,19 @@ function a11yKeyCode() {
         scrollAnime(0, search);
         focusElem(0, search);
         break;
-      // alt+U header
+      // --- alt+U header
       case true && 'KeyU':
         scrollAnime(0, header);
         focusElem(0, header);
         break;
-      // alt+C 主要內容區
+      // --- alt+C 主要內容區
       case true && 'KeyC':
         main.focus();
         let _headerHeight = document.querySelector('header').offsetHeight;
         scrollAnime(_headerHeight, main);
         focusElem(_headerHeight, main);
         break;
-      // alt+Z footer
+      // --- alt+Z footer
       case true && 'KeyZ':
         let _bodyScrollHeight = document.documentElement.scrollHeight;
         let _bodyClientHeight = document.documentElement.clientHeight;
@@ -1214,7 +1207,7 @@ a11yKeyCode();
 // -----------------------------------------------------------------------
 // -----  無障礙錨點切換語系   ----------------------------------------------
 // -----------------------------------------------------------------------
-// 無障礙錨點切換語系，更改accessKey的title名稱
+// --- 無障礙錨點切換語系，更改accessKey的title名稱
 
 function switchA11TitleName() {
   const webLang = document.querySelector('html').getAttribute('lang');
@@ -1272,7 +1265,7 @@ function tableAddDataAttributes(obj) {
 function scrollTables(obj) {
   let el = document.querySelectorAll(obj) || null; // --- 按鈕列表名稱
 
-  //檢查父層有沒有 tableList
+  // --- 檢查父層有沒有 tableList
   function appendEle() {
     el.forEach((i) => {
       let _appendLeftEle;
@@ -1290,11 +1283,11 @@ function scrollTables(obj) {
         _appendRightEle.style.height = `${i.parentElement.clientHeight}px`;
         i.parentElement.style.position = 'relative';
         i.parentElement.prepend(_appendLeftEle, _appendRightEle);
-        //增加左邊按鈕
+        // --- 增加左邊按鈕
         _leftBtn = document.createElement('div');
         _leftBtn.setAttribute('class', 'scrollTableLeftBtn');
         _appendLeftEle.appendChild(_leftBtn);
-        //增加右邊按鈕
+        // --- 增加右邊按鈕
         _rightBtn = document.createElement('div');
         _rightBtn.setAttribute('class', 'scrollTableRightBtn');
         _appendRightEle.appendChild(_rightBtn);
@@ -1303,7 +1296,7 @@ function scrollTables(obj) {
     });
   }
 
-  // 開關遮罩功能
+  // --- 開關遮罩功能
   function displayNoneEle() {
     el.forEach((i) => {
       let _hasItem = i.parentElement.classList.contains('tableList');
@@ -1311,19 +1304,19 @@ function scrollTables(obj) {
         hiddenEle(i);
       }
       function hiddenEle(el) {
-        // 父層元素的寬;
+        // --- 父層元素的寬;
         let _table = el.parentElement.clientWidth;
-        //子層元素的寬
+        // --- 子層元素的寬
         let _tableItem = el.scrollWidth;
-        //左邊遮罩
+        // --- 左邊遮罩
         let _rightEle = el.parentElement.querySelector('.scrollTableNavRight');
-        //右邊遮罩
+        // --- 右邊遮罩
         let _leftEle = el.parentElement.querySelector('.scrollTableNavLeft');
-        //如果沒有建立遮罩
+        // --- 如果沒有建立遮罩
         if (_rightEle == null) {
           return;
         }
-        //如果子層跟父層一樣寬度
+        // --- 如果子層跟父層一樣寬度
         if (_table === _tableItem) {
           _leftEle.style.display = 'none';
           _rightEle.style.display = 'none';
@@ -1336,19 +1329,19 @@ function scrollTables(obj) {
       }
     });
   }
-  //當父層滾輪滾動
+  // --- 當父層滾輪滾動
   function eleScroll() {
     el.forEach((i) => {
       i.parentElement.addEventListener('scroll', () => {
-        //父層元素的寬
+        // --- 父層元素的寬
         let _table = i.parentElement.clientWidth;
-        //子層元素的寬
+        // --- 子層元素的寬
         let _tableItem = i.scrollWidth;
-        //左邊遮罩
+        // --- 左邊遮罩
         let _rightEle = i.parentElement.querySelector('.scrollTableNavRight');
-        //右邊遮罩
+        // --- 右邊遮罩
         let _leftEle = i.parentElement.querySelector('.scrollTableNavLeft');
-        //捲軸位置
+        // --- 捲軸位置
         let _scrollPosition = i.parentElement.scrollLeft;
         _rightEle.style.right = `-${i.parentElement.scrollLeft}px`;
         _leftEle.style.left = `${i.parentElement.scrollLeft}px`;
@@ -1357,17 +1350,17 @@ function scrollTables(obj) {
           _leftEle.style.opacity = 0;
           _rightEle.style.opacity = 1;
         }
-        //如果捲軸位置還沒到底
+        // --- 如果捲軸位置還沒到底
         if (_scrollPosition > 0) {
           _leftEle.style.opacity = 1;
         }
-        // 如果捲軸位置＋父層寬度 ＝ 子層寬度
+        // --- 如果捲軸位置＋父層寬度 ＝ 子層寬度
         if (_scrollPosition + _table === _tableItem) {
           _rightEle.style.opacity = 0;
           _leftEle.style.opacity = 1;
           _leftEle.style.display = 'block';
         }
-        // 如果捲軸位置＋父層寬度 < 子層寬度
+        // --- 如果捲軸位置＋父層寬度 < 子層寬度
         if (_scrollPosition + _table < _tableItem) {
           _rightEle.style.opacity = 1;
         }
@@ -1375,9 +1368,9 @@ function scrollTables(obj) {
     });
   }
 
-  //點擊左右按鈕時滾動畫面
+  // --- 點擊左右按鈕時滾動畫面
   function clickEleBtn() {
-    //點擊左邊按鈕
+    // --- 點擊左邊按鈕
     const leftBtn = document.querySelectorAll('.scrollTableLeftBtn');
     if (leftBtn.length !== 0) {
       leftBtn.forEach((i) => {
@@ -1386,7 +1379,7 @@ function scrollTables(obj) {
         });
       });
     }
-    //點擊右邊按鈕
+    // --- 點擊右邊按鈕
     const rightBtn = document.querySelectorAll('.scrollTableRightBtn');
     if (rightBtn.length !== 0) {
       rightBtn.forEach((i) => {
@@ -1399,7 +1392,7 @@ function scrollTables(obj) {
 
   appendEle();
   clickEleBtn();
-  //resize
+  // --- resize
   window.addEventListener('resize', () => {
     let _hasItem;
     el.forEach((i) => {
@@ -1435,23 +1428,29 @@ function accordionSlider(obj) {
   const accordionInfo = obj.accordionInfo.switch;
   const accordionInfoOpen = obj.accordionInfo.open;
   const accordionInfoClose = obj.accordionInfo.close;
+  const fontBtn = document.querySelectorAll('.fontSize ul li a');
   // ---初始化
-  function addElem() {
-    accordionList.forEach((i) => {
-      accordionInfo ? (i.innerHTML += `<span class="accordionBtn">${accordionInfoOpen}</span>`) : '';
-      i.innerHTML += `<span class="accordionArrow"></span>`;
+  fontBtn.forEach((i) => {
+    i.addEventListener('click', function () {
+      checkContentHeight();
     });
-  }
+  });
+
+  accordionList.forEach((i) => {
+    i.innerHTML += `<span class="accordionBtn">${accordionInfoOpen}</span>`;
+    i.innerHTML += `<span class="accordionArrow"></span>`;
+  });
 
   // ---抓取高度
   function checkContentHeight() {
     accordionList.forEach((i) => {
-      const itemContent = i.nextElementSibling;
-      const accordionBtn = i.querySelector('.accordionBtn');
-      itemContent.style.height = 'auto';
+      let itemContent = i.nextElementSibling;
+      let accordionBtn = i.querySelector('.accordionBtn');
+      itemContent.setAttribute('style', '');
       itemContent.dataset.itemHeight = itemContent.offsetHeight;
-      itemContent.style.height = '0';
-      accordionInfo ? (accordionBtn.textContent = `${accordionInfoOpen}`) : '';
+      itemContent.style.height = 0;
+
+      accordionBtn.textContent = `${accordionInfoOpen}`;
       accordion.querySelectorAll('.active').forEach((s) => s.classList.remove('active'));
     });
   }
@@ -1459,12 +1458,9 @@ function accordionSlider(obj) {
   // ---操控開合
   function toggleContent() {
     accordionList.forEach((i) => {
-      const itemContent = i.nextElementSibling;
-      const accordionBtn = i.querySelector('.accordionBtn');
-
-      i.addEventListener('click', (e) => {
-        //取消Ａ連結預設行為
-        e.preventDefault();
+      function startAccordion(i) {
+        const itemContent = i.nextElementSibling;
+        const accordionBtn = i.querySelector('.accordionBtn');
         const contentHeight = itemContent.dataset.itemHeight || 0;
         const siblings = [...i.parentNode.parentNode.children].filter((child) => {
           return child !== i;
@@ -1474,33 +1470,40 @@ function accordionSlider(obj) {
           accordion.querySelectorAll('.active').forEach((s) => {
             s.querySelector(accordionContent).style.height = '0';
             siblings.forEach((v) => {
-              accordionInfo ? (v.querySelector('.accordionBtn').textContent = `${accordionInfoOpen}`) : '';
+              v.querySelector('.accordionBtn').textContent = `${accordionInfoOpen}`;
             });
             s.classList.remove('active');
           });
-          accordionInfo ? (accordionBtn.textContent = `${accordionInfoClose}`) : '';
+          accordionBtn.textContent = `${accordionInfoClose}`;
           i.parentNode.classList.add('active');
         } else {
           itemContent.style.height = `0px`;
           accordionBtn.textContent = `${accordionInfoOpen}`;
           i.parentNode.classList.remove('active');
         }
+      }
+
+      i.addEventListener('keydown', (e) => {
+        if (e.which === 9 && e.shiftKey) {
+        }
+      });
+
+      i.addEventListener('click', (e) => {
+        //取消Ａ連結預設行為
+        e.preventDefault();
+        startAccordion(i);
       });
     });
   }
-  function jsResize() {
-    window.addEventListener('resize', (e) => {
-      // --- 算出 menu 距離上方的高度
-      setTimeout(() => {
-        checkContentHeight();
-        accordionList.forEach((v) => {
-          v.classList.remove('open');
-        });
-      }, 50);
-    });
-  }
-  addElem();
+  window.addEventListener('resize', (e) => {
+    // --- 算出 menu 距離上方的高度
+    setTimeout(() => {
+      checkContentHeight();
+      accordionList.forEach((v) => {
+        v.classList.remove('open');
+      });
+    }, 50);
+  });
   checkContentHeight();
   toggleContent();
-  jsResize();
 }

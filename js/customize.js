@@ -2,12 +2,9 @@
 topNav(); // 手機版顯示nav選單
 navSticky(); // 捲動時固定主選單
 fatFooter(); // fatFooter是否要展開
-tabFunction(); // tab功能
+tabFunction('.tabSet'); // tab功能
 scrollTables('table'); // table捲動功能
-fontSize({
-  name: document.querySelectorAll('.fontSize'), // 按鈕列表名稱
-  control: document.querySelector('body'), // 控制的對象名稱
-});
+fontSize();
 tableAddDataAttributes({
   elemClass: '.tableList', // 目標table
   dataName: 'title', // tableList樣式 加上 data-title
@@ -18,7 +15,6 @@ accordionSlider({
   accordionList: '.accordionList', // 問題區塊
   accordionContent: '.accordionContent', // 回答區塊
   accordionInfo: {
-    switch: true, // 是否加入開關文字
     open: '展開', // 收合時顯示
     close: '收合', // 展開時顯示
   },

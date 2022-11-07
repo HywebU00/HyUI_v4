@@ -4362,7 +4362,7 @@ footer .counter em {
     top: 12px;
     margin-left: -6px;
   }
-  .fatFooter .btnFatFooter:hover, .fatFooter .btnFatFooter:focus-visible {
+  .fatFooter .btnFatFooter:hover, .fatFooter .btnFatFooter:focus {
     background: #0082c6;
     color: #fff;
     text-decoration: none;
@@ -6844,7 +6844,7 @@ div.function ul li a:focus-visible {
   .accordion ul li {
     margin-bottom: 0.5em;
   }
-  .accordion ul li a {
+  .accordion ul li .accordionList {
     display: block;
     background-color: #21baff;
     color: #fff;
@@ -6854,9 +6854,11 @@ div.function ul li a:focus-visible {
   }
   .accordion .accordionContent {
     line-height: 1.45em;
+    transition: height 0.3s linear;
     overflow: hidden;
-    transition: height 0.5s;
-    padding: 0;
+  }
+  .accordion .accordionContent .content {
+    padding: 10px;
   }
   .accordion .accordionBtn {
     margin-left: 10px;
