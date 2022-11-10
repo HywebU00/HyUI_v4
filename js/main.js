@@ -217,11 +217,13 @@ function menu() {
 
   // --- 複製搜尋到手機版側欄
   const search = document.querySelector('.search');
-  const cloneSearch = search.cloneNode(true);
-  cloneSearch.removeAttribute('style');
-  cloneSearch.classList.add('mobileSearch');
-  cloneSearch.classList.remove('search');
-  body.prepend(cloneSearch);
+  if (search !== null) {
+    const cloneSearch = search.cloneNode(true);
+    cloneSearch.removeAttribute('style');
+    cloneSearch.classList.add('mobileSearch');
+    cloneSearch.classList.remove('search');
+    body.prepend(cloneSearch);
+  }
 }
 menu();
 
@@ -235,7 +237,7 @@ function topNav() {
   let cloneNav = nav.cloneNode(true);
   mobileArea.append(cloneNav);
   const sideLanguage = document.querySelector('.mobileArea .fontSize');
-  sideLanguage.remove();
+  sideLanguage !== null ? sideLanguage.remove() : '';
 }
 // topNav();
 
@@ -244,47 +246,39 @@ function topNav() {
 // -----------------------------------------------------------------------
 
 function mobileSearch(obj) {
-  let searchMode = true;
+  let searchOpen = false;
   const body = document.querySelector('body');
   const searchCtrlBtn = obj.searchCtrlBtn;
-  const control = obj.control;
   const mobileSearch = document.querySelector('.mobileSearch');
 
-  function stopPop() {
-    // --- 複點擊時 不觸發冒泡事件
-    mobileSearch,
-      searchCtrlBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-      });
-  }
-  function searchToggle() {
-    if (!searchMode) {
-      slider.jsSlideDown(control, 300);
-      searchMode = true;
-    } else {
-      control.style.display = 'none';
-      searchMode = false;
-    }
-    stopPop();
-  }
+  const searchBg = document.createElement('div');
+  searchBg.className = 'searchBg';
+  body.prepend(searchBg);
 
-  // --- 點擊搜尋按鈕開關
   searchCtrlBtn.addEventListener('click', (e) => {
-    searchToggle();
+    e.stopPropagation();
+    mobileSearch.classList.toggle('active');
+    searchBg.classList.toggle('active');
+    searchOpen = true;
+    // --- 點擊搜尋區以外的區塊
+    // --- 如果點在外面 則 searchMode 狀態改為false
+  });
+  searchBg.addEventListener('click', (e) => {
+    if (searchOpen) {
+      mobileSearch.classList.remove('active');
+      searchBg.classList.remove('active');
+    }
   });
 
-  // --- 點擊搜尋區以外的區塊
-  // --- 如果點在外面 則 searchMode 狀態改為false
-  body.addEventListener('click', (e) => {
-    if (searchMode) {
-      searchToggle();
-      searchMode = false;
-    }
+  window.addEventListener('resize', (e) => {
+    setTimeout(() => {
+      searchOpen = false;
+      mobileSearch !== null ? mobileSearch.classList.remove('active') : '';
+    }, 50);
   });
 }
 mobileSearch({
   searchCtrlBtn: document.querySelector('.searchCtrlBtn'),
-  control: document.querySelector('.mobileSearch'),
 });
 
 // -----------------------------------------------------------------------
@@ -421,6 +415,7 @@ function mainMenuSetup() {
   sidebarCtrlBtn.addEventListener('click', (e) => {
     showSidebar();
     e.preventDefault();
+    mobileSearch !== null ? mobileSearch.classList.remove('active') : '';
   });
 
   menuOverlay.addEventListener('click', (e) => {
@@ -430,14 +425,16 @@ function mainMenuSetup() {
   sidebarClose.addEventListener('click', (e) => {
     jsFadeOut(menuOverlay);
     hideSidebar();
+    mobileSearch !== null ? mobileSearch.classList.remove('active') : '';
   });
 
   // --- PC版設定
   function pcSet() {
+    let language = document.querySelector('.language ul');
     hideSidebar();
     body.classList.remove('noscroll');
-    mobileSearch.style.display = 'none';
-    document.querySelector('.language ul').style.display = 'none';
+    // mobileSearch !== null ? (mobileSearch.style.display = 'none') : '';
+    language !== null ? (language.style.display = 'none') : '';
     // --- 副選單滑出
 
     menuLiHasChild.forEach((i) => {
@@ -473,7 +470,7 @@ function mainMenuSetup() {
 
   function switchResizeFunction() {
     setTimeout(() => {
-      mobileSearch.style.display = 'none';
+      // mobileSearch !== null ? (mobileSearch.style.display = 'none') : '';
       windowWidth = window.outerWidth;
       switchMenu();
       checkUlWidth();
@@ -495,7 +492,7 @@ function mainMenuSetup() {
 
     body.classList.add('noscroll');
     menuOverlay.classList.add('active');
-    mobileSearch.style.display = 'none';
+    // mobileSearch !== null ? (mobileSearch.style.display = 'none') : '';
     searchMode = false;
     jsFadeIn(menuOverlay);
   }
@@ -1231,12 +1228,20 @@ function switchA11TitleName() {
     headerTitle.setAttribute('title', '上方功能區塊');
     mainTitle.setAttribute('title', '中央內容區塊');
     footerTitle.setAttribute('title', '下方功能區塊');
-    searchTitle.setAttribute('title', '關鍵字搜尋：文章關鍵字搜尋');
   } else {
     headerTitle.setAttribute('title', 'header');
     mainTitle.setAttribute('title', 'content');
-    searchTitle.setAttribute('title', 'footer');
-    searchTitle.setAttribute('title', 'search');
+  }
+  if (searchTitle !== null) {
+    if (_lang === 'zh') {
+      searchTitle.setAttribute('title', '關鍵字搜尋：文章關鍵字搜尋');
+    } else {
+      searchTitle.setAttribute('title', 'footer');
+      searchTitle.setAttribute('title', 'search');
+    }
+  }
+  if (footerTitle !== null) {
+    footerTitle.setAttribute('title', '下方功能區塊');
   }
 }
 switchA11TitleName();
@@ -1441,11 +1446,13 @@ function accordionSlider(obj) {
   const accordionInfoClose = obj.accordionInfo.close;
   const fontBtn = document.querySelectorAll('.fontSize ul li a');
   // ---初始化
-  fontBtn.forEach((i) => {
-    i.addEventListener('click', function () {
-      checkContentHeight();
+  if (fontBtn !== null) {
+    fontBtn.forEach((i) => {
+      i.addEventListener('click', function () {
+        checkContentHeight();
+      });
     });
-  });
+  }
 
   accordionList.forEach((i) => {
     i.innerHTML += `<span class="accordionBtn">${accordionInfoOpen}</span>`;
@@ -1530,4 +1537,5 @@ function accordionSlider(obj) {
       });
     }, 50);
   });
+  window.addEventListener('load', checkContentHeight);
 }

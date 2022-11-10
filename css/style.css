@@ -3517,6 +3517,19 @@ th {
   .search .keywordHot ul a:focus-visible {
     outline: #1aadfa 2px solid;
   }
+  .searchBg {
+    position: fixed;
+    inset: 0;
+    z-index: 91;
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.3s linear;
+  }
+  .searchBg.active {
+    transform: translateY(0%);
+    opacity: 1;
+  }
   .mobileSearch {
     width: 100% !important;
     max-width: 100% !important;
@@ -3529,8 +3542,14 @@ th {
     left: 0;
     z-index: 98;
     background: #333;
-    display: none;
+    transform: translateY(-100%);
+    opacity: 0;
     margin: 0;
+    transition: all 0.3s linear;
+  }
+  .mobileSearch.active {
+    transform: translateY(0%);
+    opacity: 1;
   }
   .mobileSearch label {
     font-size: 0em;
