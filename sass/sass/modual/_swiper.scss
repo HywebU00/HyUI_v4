@@ -1,4 +1,4 @@
-:swiper {
+:root {
   --dotSize: 15px;
 }
 .cpSlider {
@@ -98,15 +98,15 @@
     }
   }
   .caption {
-    padding: 0.5em !important;
+    padding: 0.5em;
     position: absolute;
-    background: rgba(0, 0, 0, 0.75) !important;
+    background: rgba(0, 0, 0, 0.75);
     color: #fff;
-    bottom: -2em !important;
+    bottom: -2em;
     left: 0;
-    font-size: 0.938em !important;
-    height: 2em !important;
-    line-height: 1 !important;
+    font-size: 0.938em;
+    height: 2em;
+    line-height: 1;
     width: 100%;
     @include textOverflow;
     transition: 0.3s ease-out;
