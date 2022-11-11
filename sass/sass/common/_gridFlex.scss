@@ -5,6 +5,20 @@
 // 子層欄寬（均分）: @include flex-瀏覽器寬度Equal(欄數, margin );
 // 子層欄寬（自由）: @include flex-瀏覽器寬度(欄數, margin);
 
+// 啟動display:flex
+%flexSet {
+  display: flex;
+  flex-flow: row wrap;
+  // 預設均分
+  justify-content: space-between;
+}
+
+@mixin flexSet {
+  display: flex;
+  flex-flow: row wrap;
+  // 預設均分
+  justify-content: space-between;
+}
 // step 0、設定 flex 的 margin gutter
 $mGutter: 4px;
 

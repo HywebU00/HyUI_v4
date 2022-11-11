@@ -1,5 +1,21 @@
 // 父層啟動flex： @extend %flexSet;
+// 父層啟動flex： @include %flexSet;
 // @for $i from 1 through 12 {}
+
+// 啟動display:flex
+%flexSet {
+  display: flex;
+  flex-flow: row wrap;
+  // 預設均分
+  justify-content: space-between;
+}
+
+@mixin flexSet {
+  display: flex;
+  flex-flow: row wrap;
+  // 預設均分
+  justify-content: space-between;
+}
 
 ////////////////////////////////////////////////////
 ////////////////// 均分 equal         //////////////
