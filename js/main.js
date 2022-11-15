@@ -216,7 +216,7 @@ function menu() {
   mobileArea.append(cloneMenu);
 
   // --- 複製搜尋到手機版側欄
-  const search = document.querySelector('.search');
+  const search = document.querySelector('.webSearch');
   if (search !== null) {
     const cloneSearch = search.cloneNode(true);
     cloneSearch.removeAttribute('style');
