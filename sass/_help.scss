@@ -77,6 +77,7 @@
     // 2. flex-flow: row wrap;
     // 3. justify-content: space-between;
     @extend %flexSet;
+    @include flexSet;
 
     // 子層設定：欄數、margin、padding
     // margin、padding，務必加上『單位』才能計算！

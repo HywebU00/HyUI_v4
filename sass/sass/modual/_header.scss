@@ -42,7 +42,7 @@
   }
 }
 // search
-.searchCtrlBtn {
+.webSearchCtrlBtn {
   display: none;
   right: 0px;
   font-size: 0em;
@@ -166,7 +166,7 @@
   }
 }
 //search
-.search {
+.webSearch {
   display: flex;
   justify-content: flex-end;
   flex-wrap: wrap;
@@ -247,7 +247,7 @@
   }
 }
 // mobileSearch
-.searchBg {
+.webSearchBg {
   position: fixed;
   inset: 0;
   z-index: 91;
