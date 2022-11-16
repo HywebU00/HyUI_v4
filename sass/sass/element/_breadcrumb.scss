@@ -9,14 +9,10 @@
     flex-flow: row wrap;
     li {
       margin: 0px 0.1em 0.1em 0px;
-      &:before {
-        @extend %slash;
-      }
-      &:first-child:before {
-        content: '';
-        color: #666;
-        margin-left: 0;
-        padding: 0;
+      & + li {
+        &:before {
+          @extend %slash;
+        }
       }
     }
   }

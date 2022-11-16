@@ -65,6 +65,16 @@ $mGutter: 4px;
       @include flexLgEqual(2, $mGutter);
       @include gutter();
     }
+    .thumbnail {
+      margin-bottom: 30px;
+      @include flexXsEqual(1, 0px);
+      @include flexSmEqual(2, $mGutter);
+      @include flexMdEqual(2, $mGutter);
+      @include flexLgEqual(2, $mGutter);
+      @include screen('mobile') {
+        justify-content: center;
+      }
+    }
   }
 }
 .flexEqual_3 {
@@ -97,19 +107,39 @@ $mGutter: 4px;
       @include flexLgEqual(4, $mGutter);
       @include gutter();
     }
+    .thumbnail {
+      margin-bottom: 30px;
+      @include flexXsEqual(1, 0px);
+      @include flexSmEqual(2, $mGutter);
+      @include flexMdEqual(4, $mGutter);
+      @include flexLgEqual(4, $mGutter);
+      @include screen('mobile') {
+        justify-content: center;
+      }
+    }
   }
 }
-// .flexEqual-5 {
-//     .flexSet {
-//         .col {
-//             @include flexXsEqual(1, 0px);
-//             @include flexSmEqual(2, $mGutter);
-//             @include flexMdEqual(5, $mGutter);
-//             @include flexLgEqual(5, $mGutter);
-//             @include gutter();
-//         }
-//     }
-// }
+.flexEqual-5 {
+  .flexSet {
+    .col {
+      @include flexXsEqual(1, 0px);
+      @include flexSmEqual(2, $mGutter);
+      @include flexMdEqual(4, $mGutter);
+      @include flexLgEqual(5, $mGutter);
+      @include gutter();
+    }
+    .thumbnail {
+      margin-bottom: 30px;
+      @include flexXsEqual(1, 0px);
+      @include flexSmEqual(2, $mGutter);
+      @include flexMdEqual(4, $mGutter);
+      @include flexLgEqual(5, $mGutter);
+      @include screen('mobile') {
+        justify-content: center;
+      }
+    }
+  }
+}
 // .flexEqual-6 {
 //     .flexSet {
 //         .col {

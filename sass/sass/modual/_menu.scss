@@ -57,6 +57,10 @@
         line-height: 2.5em;
         white-space: nowrap;
         color: $colorWord;
+        box-sizing: border-box;
+        &:focus-visible {
+          box-shadow: 0 0 0 2px inset $aHover;
+        }
       }
       &.hasChild {
         & > a {

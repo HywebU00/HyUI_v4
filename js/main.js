@@ -1035,7 +1035,7 @@ class SelectSlider {
 
 const languageSelect = new SelectSlider({
   name: document.querySelectorAll('.language'), // --- 控制的對象
-  control: document.querySelectorAll('.language a'), // --- 監聽的對象
+  control: document.querySelectorAll('.language button'), // --- 監聽的對象
 });
 languageSelect.initial();
 
