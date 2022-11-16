@@ -40,31 +40,6 @@ img {
     position: absolute;
     top: 0;
     left: 0;
-    .caption {
-      position: absolute;
-      width: 100%;
-      height: 3em;
-      line-height: 3em;
-      background: rgba(0, 0, 0, 0.45);
-      padding: 0 1em;
-      font-size: 1.25em;
-      color: #fff;
-      margin: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 2;
-      text-align: center;
-      @include textOverflow;
-      box-sizing: border-box;
-      @include screen('mobile') {
-        width: 100%;
-        height: 2em;
-        line-height: 2em;
-        left: 0;
-        padding: 0 1em;
-      }
-    }
     &:focus-visible {
       &:before {
         content: '';
@@ -80,6 +55,31 @@ img {
       }
     }
   }
+  .caption {
+    position: absolute;
+    width: 100%;
+    height: 3em;
+    line-height: 3em;
+    background: rgba(0, 0, 0, 0.45);
+    padding: 0 1em;
+    font-size: 1.25em;
+    color: #fff;
+    margin: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    text-align: center;
+    @include textOverflow;
+    box-sizing: border-box;
+    @include screen('mobile') {
+      width: 100%;
+      height: 2em;
+      line-height: 2em;
+      left: 0;
+      padding: 0 1em;
+    }
+  }
   img {
     position: absolute;
     width: 100% !important;
@@ -88,6 +88,7 @@ img {
     left: 0;
     right: 0;
     bottom: 0;
+    object-fit: contain;
   }
   iframe {
     position: absolute;

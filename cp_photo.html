@@ -336,60 +336,68 @@
               <div class="Syncing_slider">
                 <h3>相片集錦</h3>
                 <!--大圖slider-for-->
-                <div class="Slider-for">
-                  <div>
-                    <div class="imgContainer">
-                      <img alt="圖說1" src="https://assets.imgix.net/examples/kingfisher.jpg?w=500&h=480&fit=crop&auto=format%2Cenhance&usm=20" />
+                <div class="sliderFor">
+                  <div class="swiper">
+                    <div class="swiper-wrapper">
+                      <div class="imgContainer swiper-slide">
+                        <a href="javascript:;" title="">
+                          <img data-src="https://hywebu00.github.io/hyui_flex/images/demo/01.jpg" class="swiper-lazy" alt="圖說1" />
+                        </a>
+                      </div>
+                      <div class="imgContainer swiper-slide">
+                        <a href="javascript:;" title="">
+                          <img data-src="https://hywebu00.github.io/hyui_flex/images/demo/02.jpg" class="swiper-lazy" alt="圖說2" />
+                        </a>
+                      </div>
+                      <div class="imgContainer swiper-slide">
+                        <a href="javascript:;" title="">
+                          <img data-src="https://hywebu00.github.io/hyui_flex/images/demo/03.jpg" class="swiper-lazy" alt="圖說3" />
+                        </a>
+                      </div>
+                      <div class="imgContainer swiper-slide">
+                        <a href="javascript:;" title="">
+                          <img data-src="https://hywebu00.github.io/hyui_flex/images/demo/04.jpg" class="swiper-lazy" alt="圖說4" />
+                        </a>
+                      </div>
+                      <div class="imgContainer swiper-slide">
+                        <a href="javascript:;" title="">
+                          <img data-src="https://hywebu00.github.io/hyui_flex/images/demo/05.jpg" class="swiper-lazy" alt="圖說5" />
+                        </a>
+                      </div>
                     </div>
-                    <p>第一張圖說</p>
                   </div>
-                  <div>
-                    <div class="imgContainer">
-                      <img alt="圖說2" src="https://assets.imgix.net/examples/puffins.jpg?w=800&h=480&fit=crop&auto=format%2Cenhance&usm=20" />
-                    </div>
-                    <p>第二張圖說</p>
-                  </div>
-                  <div>
-                    <div class="imgContainer">
-                      <img alt="圖說3" src="https://assets.imgix.net/examples/womanlandscape.jpg?w=800&h=480&fit=crop&auto=format%2Cenhance&usm=20" />
-                    </div>
-                    <p>第三張圖說</p>
-                  </div>
-                  <div>
-                    <div class="imgContainer">
-                      <img alt="圖說4" src="https://assets.imgix.net/unsplash/paperlamp.jpg?w=800&h=480&fit=crop&auto=format%2Cenhance&usm=20" />
-                    </div>
-                    <p>第四張圖說</p>
-                  </div>
+                  <!--分頁-->
+                  <div class="pagination"></div>
                 </div>
+
                 <!-- slider-for end-->
-                <div class="controls"></div>
                 <!--小圖slider-nav-->
-                <div class="Slider-nav">
-                  <div>
-                    <div class="imgContainer">
-                      <img alt="圖說1" src="https://assets.imgix.net/examples/kingfisher.jpg?w=800&h=480&fit=crop&auto=format%2Cenhance&usm=20" />
+
+                <div class="navSlider">
+                  <div class="swiper">
+                    <div class="swiper-wrapper">
+                      <div class="imgContainer swiper-slide">
+                        <img data-src="https://hywebu00.github.io/hyui_flex/images/demo/01.jpg" class="swiper-lazy" alt="圖說1" />
+                      </div>
+                      <div class="imgContainer swiper-slide">
+                        <img data-src="https://hywebu00.github.io/hyui_flex/images/demo/02.jpg" class="swiper-lazy" alt="圖說2" />
+                      </div>
+                      <div class="imgContainer swiper-slide">
+                        <img data-src="https://hywebu00.github.io/hyui_flex/images/demo/03.jpg" class="swiper-lazy" alt="圖說3" />
+                      </div>
+                      <div class="imgContainer swiper-slide">
+                        <img data-src="https://hywebu00.github.io/hyui_flex/images/demo/04.jpg" class="swiper-lazy" alt="圖說4" />
+                      </div>
+                      <div class="imgContainer swiper-slide">
+                        <img data-src="https://hywebu00.github.io/hyui_flex/images/demo/05.jpg" class="swiper-lazy" alt="圖說5" />
+                      </div>
                     </div>
-                    <p>第一張圖說</p>
                   </div>
-                  <div>
-                    <div class="imgContainer">
-                      <img alt="圖說2" src="https://assets.imgix.net/examples/puffins.jpg?w=800&h=480&fit=crop&auto=format%2Cenhance&usm=20" />
-                    </div>
-                    <p>第二張圖說</p>
-                  </div>
-                  <div>
-                    <div class="imgContainer">
-                      <img alt="圖說3" src="https://assets.imgix.net/examples/womanlandscape.jpg?w=800&h=480&fit=crop&auto=format%2Cenhance&usm=20" />
-                    </div>
-                    <p>第三張圖說</p>
-                  </div>
-                  <div>
-                    <div class="imgContainer">
-                      <img alt="圖說4" src="https://assets.imgix.net/unsplash/paperlamp.jpg?w=800&h=480&fit=crop&auto=format%2Cenhance&usm=20" />
-                    </div>
-                    <p>第四張圖說</p>
-                  </div>
+                  <!--操控物件可以隨意放，但注意設定要對應到-->
+                  <!--前一筆-->
+                  <div class="prevSlider swiperArrow"></div>
+                  <!--下一筆-->
+                  <div class="nextSlider swiperArrow"></div>
                 </div>
                 <!-- slider-nav end-->
               </div>

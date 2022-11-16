@@ -1,48 +1,47 @@
 :root {
   --dotSize: 15px;
 }
+
 .cpSlider {
   padding: 1em 0;
 }
 .swiperBox {
   position: relative;
-  .swiper-dots {
-    display: flex;
-    position: absolute;
-    bottom: -30px;
-    justify-content: center;
-    align-items: center;
-    .swiper-pagination-bullet {
-      /* 點的顏色 */
-      background: #666;
-      opacity: 0.4;
-      width: var(--dotSize);
-      height: var(--dotSize);
-      border-radius: 50%;
-      &:hover,
-      &:focus-visible {
-        opacity: 1;
-        /* 點hover的顏色 */
-        background: #21baff;
-      }
-      &:focus-visible {
-        opacity: 1;
-        /* 點focus的顏色 */
+}
+.swiperDots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .swiper-pagination-bullet {
+    /* 點的顏色 */
+    background: #666;
+    opacity: 0.4;
+    width: var(--dotSize);
+    height: var(--dotSize);
+    border-radius: 50%;
+    &:hover,
+    &:focus-visible {
+      opacity: 1;
+      /* 點hover的顏色 */
+      background: #21baff;
+    }
+    &:focus-visible {
+      opacity: 1;
+      /* 點focus的顏色 */
+      background: #ff3e4d;
+      // box-shadow: 0px 0px 0px 1px #ff3e4d; /* 讓focus過去的點大一些 */
+    }
+    &.swiper-pagination-bullet-active {
+      opacity: 1;
+      /* 點 active 的顏色 */
+      background: $aHover;
+      &:hover {
+        /* 點 active  hover的顏色 */
         background: #ff3e4d;
-        // box-shadow: 0px 0px 0px 1px #ff3e4d; /* 讓focus過去的點大一些 */
       }
-      &.swiper-pagination-bullet-active {
-        opacity: 1;
-        /* 點 active 的顏色 */
-        background: $aHover;
-        &:hover {
-          /* 點 active  hover的顏色 */
-          background: #ff3e4d;
-        }
-        &:focus-visible {
-          /* 點 active  focus的顏色 */
-          background: #ff3e4d;
-        }
+      &:focus-visible {
+        /* 點 active  focus的顏色 */
+        background: #ff3e4d;
       }
     }
   }
@@ -62,10 +61,10 @@
     display: block;
     background: url('../vendor/swiper/ar.svg') center no-repeat;
   }
-  &.prev {
+  &.prevSlider {
     left: 0px;
   }
-  &.next {
+  &.nextSlider {
     right: 0px;
     &::before {
       transform: rotate(180deg);
@@ -128,5 +127,20 @@
   }
   .swiperArrow {
     padding: 0;
+  }
+}
+
+.navSlider {
+  position: relative;
+  .swiper-slide {
+    max-height: 180px;
+    a {
+      position: relative;
+      display: block;
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
   }
 }

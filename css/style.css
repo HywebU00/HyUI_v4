@@ -2798,7 +2798,19 @@ th {
     top: 0;
     left: 0;
   }
-  .imgContainer a .caption {
+  .imgContainer a:focus-visible:before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    box-shadow: 0 0px 0px 2px #0094e0 inset;
+  }
+  .imgContainer .caption {
     position: absolute;
     width: 100%;
     height: 3em;
@@ -2819,25 +2831,13 @@ th {
     box-sizing: border-box;
   }
   @media screen and (max-width: 767px) {
-    .imgContainer a .caption {
+    .imgContainer .caption {
       width: 100%;
       height: 2em;
       line-height: 2em;
       left: 0;
       padding: 0 1em;
     }
-  }
-  .imgContainer a:focus-visible:before {
-    content: "";
-    position: absolute;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    box-shadow: 0 0px 0px 2px #0094e0 inset;
   }
   .imgContainer img {
     position: absolute;
@@ -2847,6 +2847,8 @@ th {
     left: 0;
     right: 0;
     bottom: 0;
+    -o-object-fit: contain;
+       object-fit: contain;
   }
   .imgContainer iframe {
     position: absolute;
@@ -7644,14 +7646,13 @@ li:first-line {
 .swiperBox {
   position: relative;
 }
-.swiperBox .swiper-dots {
+
+.swiperDots {
   display: flex;
-  position: absolute;
-  bottom: -30px;
   justify-content: center;
   align-items: center;
 }
-.swiperBox .swiper-dots .swiper-pagination-bullet {
+.swiperDots .swiper-pagination-bullet {
   /* 點的顏色 */
   background: #666;
   opacity: 0.4;
@@ -7659,26 +7660,26 @@ li:first-line {
   height: var(--dotSize);
   border-radius: 50%;
 }
-.swiperBox .swiper-dots .swiper-pagination-bullet:hover, .swiperBox .swiper-dots .swiper-pagination-bullet:focus-visible {
+.swiperDots .swiper-pagination-bullet:hover, .swiperDots .swiper-pagination-bullet:focus-visible {
   opacity: 1;
   /* 點hover的顏色 */
   background: #21baff;
 }
-.swiperBox .swiper-dots .swiper-pagination-bullet:focus-visible {
+.swiperDots .swiper-pagination-bullet:focus-visible {
   opacity: 1;
   /* 點focus的顏色 */
   background: #ff3e4d;
 }
-.swiperBox .swiper-dots .swiper-pagination-bullet.swiper-pagination-bullet-active {
+.swiperDots .swiper-pagination-bullet.swiper-pagination-bullet-active {
   opacity: 1;
   /* 點 active 的顏色 */
   background: #0094e0;
 }
-.swiperBox .swiper-dots .swiper-pagination-bullet.swiper-pagination-bullet-active:hover {
+.swiperDots .swiper-pagination-bullet.swiper-pagination-bullet-active:hover {
   /* 點 active  hover的顏色 */
   background: #ff3e4d;
 }
-.swiperBox .swiper-dots .swiper-pagination-bullet.swiper-pagination-bullet-active:focus-visible {
+.swiperDots .swiper-pagination-bullet.swiper-pagination-bullet-active:focus-visible {
   /* 點 active  focus的顏色 */
   background: #ff3e4d;
 }
@@ -7699,13 +7700,13 @@ li:first-line {
   display: block;
   background: url("../vendor/swiper/ar.svg") center no-repeat;
 }
-.swiperArrow.prev {
+.swiperArrow.prevSlider {
   left: 0px;
 }
-.swiperArrow.next {
+.swiperArrow.nextSlider {
   right: 0px;
 }
-.swiperArrow.next::before {
+.swiperArrow.nextSlider::before {
   transform: rotate(180deg);
 }
 .swiperArrow.swiperArrow-disabled {
@@ -7781,6 +7782,22 @@ li:first-line {
 }
 .cpSlider .swiper .swiperArrow {
   padding: 0;
+}
+
+.navSlider {
+  position: relative;
+}
+.navSlider .swiper-slide {
+  max-height: 180px;
+}
+.navSlider .swiper-slide a {
+  position: relative;
+  display: block;
+}
+.navSlider .swiper-slide a img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 a.more {

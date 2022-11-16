@@ -31,14 +31,14 @@ accordionSlider({
     loop: false,
     // 切換點
     pagination: {
-      el: '.cpSlider .swiper-dots',
+      el: '.cpSlider .swiperDots',
       bulletElement: 'button',
       clickable: true,
     },
     // 切換箭頭
     navigation: {
-      nextEl: '.cpSlider .swiperArrow.next', //自行設定樣式
-      prevEl: '.cpSlider .swiperArrow.prev', //自行設定樣式
+      nextEl: '.cpSlider .nextSlider', //自行設定樣式
+      prevEl: '.cpSlider .prevSlider', //自行設定樣式
       disabledClass: 'swiperArrow-disabled', //不可點選樣式
     },
     breakpoints: {
@@ -57,14 +57,14 @@ accordionSlider({
     loop: false,
     // 切換點
     pagination: {
-      el: '.mpSlider .swiper-dots',
+      el: '.mpSlider .swiperDots',
       bulletElement: 'button',
       clickable: true,
     },
     // 切換箭頭
     navigation: {
-      nextEl: '.mpSlider .swiperArrow.next', //自行設定樣式
-      prevEl: '.mpSlider .swiperArrow.prev', //自行設定樣式
+      nextEl: '.mpSlider .nextSlider', //自行設定樣式
+      prevEl: '.mpSlider .prevSlider', //自行設定樣式
       disabledClass: 'swiperArrow-disabled', //不可點選樣式
     },
   });
@@ -76,7 +76,7 @@ accordionSlider({
     loop: false,
     // 切換點
     pagination: {
-      el: '.adSlider .swiper-dots',
+      el: '.adSlider .swiperDots',
       bulletElement: 'button',
       clickable: true,
     },
@@ -105,9 +105,39 @@ accordionSlider({
     // 切換點
     // 切換箭頭
     navigation: {
-      nextEl: '.marquee .marquee-arrow.marquee-next', //自行設定樣式
-      prevEl: '.marquee .marquee-arrow.marquee-prev', //自行設定樣式
+      nextEl: '.marquee .marquee-next', //自行設定樣式
+      prevEl: '.marquee .marquee-prev', //自行設定樣式
       disabledClass: '.marquee marquee-arrow-disabled', //不可點選樣式
+    },
+  });
+
+  //cp_photo
+  const navSlider = new Swiper('.navSlider .swiper', {
+    lazy: true, // lazy load
+    preloadImages: false, // 多筆設定lazy時須設定
+    centeredSlides: false, // 多筆設定lazy時須設定
+    slidesPerView: 4,
+    // watchSlidesProgress: true,
+    navigation: {
+      nextEl: '.navSlider .nextSlider', //下一張class，無障礙設定關係需要增加.nextSlider
+      prevEl: '.navSlider .prevSlider', //前一張class，無障礙設定關係需要增加.prevSlider
+      disabledClass: 'swiperArrow-disabled', //不可點選樣式
+    },
+  });
+
+  const sliderFor = new Swiper('.sliderFor .swiper', {
+    slidesPerView: 1, //顯示張數
+    effect: 'fade', //淡入
+    fadeEffect: {
+      crossFade: true, //上一張淡出，false上一張不淡出，下一張疊在上方
+    },
+    pagination: {
+      el: '.sliderFor .pagination',
+      type: 'fraction', //顯示分頁
+    },
+    lazy: true,
+    thumbs: {
+      swiper: navSlider, //設定指向到哪個swiper，使用另一個設定的參數
     },
   });
 })();
