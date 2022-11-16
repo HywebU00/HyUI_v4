@@ -7651,6 +7651,7 @@ li:first-line {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
 }
 .swiperDots .swiper-pagination-bullet {
   /* 點的顏色 */
