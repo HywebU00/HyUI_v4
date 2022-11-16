@@ -2226,7 +2226,8 @@ th {
     margin: 2px;
     align-items: center;
   }
-  .fontSize ul li a {
+  .fontSize ul li button,
+.fontSize ul li a {
     display: block;
     text-align: center;
     line-height: 32px;
@@ -2235,16 +2236,23 @@ th {
     width: 32px;
     height: 32px;
     color: #333;
+    margin: 0;
+    padding: 0;
   }
-  .fontSize ul li a:hover, .fontSize ul li a:focus, .fontSize ul li a.active {
+  .fontSize ul li button:hover, .fontSize ul li button:focus, .fontSize ul li button.active,
+.fontSize ul li a:hover,
+.fontSize ul li a:focus,
+.fontSize ul li a.active {
     background: #0094e0;
     color: #fff;
     box-shadow: none;
   }
-  .fontSize ul li a.small {
+  .fontSize ul li button.small,
+.fontSize ul li a.small {
     font-size: 0.938em;
   }
-  .fontSize ul li a.large {
+  .fontSize ul li button.large,
+.fontSize ul li a.large {
     font-size: 1.125em;
   }
   @media screen and (max-width: 767px) {
@@ -2907,13 +2915,13 @@ th {
     margin-bottom: 0.1em;
   }
   .i_arrowUp_deep:before {
-    background: url(../images/icon/icon_arrowUp_deep.svg) center center no-repeat;
+    background: url(../images/icon/icon_arrow_up_deep.svg) center center no-repeat;
     background-size: contain;
     margin-top: -0.1em;
     margin-bottom: 0.1em;
   }
   .i_arrowDown_deep:before {
-    background: url(../images/icon/icon_arrowDown_deep.svg) center center no-repeat;
+    background: url(../images/icon/icon_arrow_down_deep.svg) center center no-repeat;
     background-size: contain;
     margin-top: -0.1em;
     margin-bottom: 0.1em;
