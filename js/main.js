@@ -1252,6 +1252,12 @@ switchA11TitleName();
 
 function tableAddDataAttributes(obj) {
   const el = document.querySelectorAll(obj.elemClass);
+  el.forEach((i) => {
+    const tableItem = i.querySelectorAll('table');
+    tableItem.forEach((i) => {
+      setTrAttr(i);
+    });
+  });
   function setTrAttr(i) {
     const thList = i.querySelectorAll('th');
     const trList = i.querySelectorAll('tr');
@@ -1262,12 +1268,6 @@ function tableAddDataAttributes(obj) {
       });
     });
   }
-  el.forEach((i) => {
-    const tableItem = i.querySelectorAll('table');
-    tableItem.forEach((i) => {
-      setTrAttr(i);
-    });
-  });
 }
 // tableAddDataAttributes({
 //   elemClass: '.tableList',
@@ -1511,18 +1511,26 @@ function accordionSlider(obj) {
         }
       });
 
-      i.addEventListener('click', (e) => {
-        //取消Ａ連結預設行為
-        e.preventDefault();
-        accordionList.forEach((s) => {
-          s.parentNode.classList.remove('active');
-          s.nextElementSibling.style.height = `0px`;
-          s.querySelector('.accordionBtn').innerHTML = `${accordionInfoOpen}`;
-        });
-        i.nextElementSibling.style.height = `${contentHeight}px`;
-        i.parentNode.classList.add('active');
-        i.querySelector('.accordionBtn').innerHTML = `${accordionInfoClose}`;
-      });
+      i.addEventListener(
+        'click',
+        (e) => {
+          //取消Ａ連結預設行為
+          e.preventDefault();
+          accordionList.forEach((s) => {
+            s.parentNode.classList.remove('active');
+            s.nextElementSibling.style.height = `0px`;
+            s.querySelector('.accordionBtn').innerHTML = `${accordionInfoOpen}`;
+          });
+          if (i.nextElementSibling.offsetHeight < contentHeight) {
+            i.nextElementSibling.style.height = `${contentHeight}px`;
+            i.parentNode.classList.add('active');
+            i.querySelector('.accordionBtn').innerHTML = `${accordionInfoClose}`;
+          } else {
+            i.nextElementSibling.style.height = `0px`;
+          }
+        },
+        false
+      );
     });
   }
 

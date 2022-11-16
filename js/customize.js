@@ -123,6 +123,17 @@ accordionSlider({
       prevEl: '.navSlider .prevSlider', //前一張class，無障礙設定關係需要增加.prevSlider
       disabledClass: 'swiperArrow-disabled', //不可點選樣式
     },
+    breakpoints: {
+      100: {
+        slidesPerView: 2,
+      },
+      767: {
+        slidesPerView: 3,
+      },
+      1000: {
+        slidesPerView: 4,
+      },
+    },
   });
 
   const sliderFor = new Swiper('.sliderFor .swiper', {
