@@ -2847,8 +2847,8 @@ th {
     left: 0;
     right: 0;
     bottom: 0;
-    -o-object-fit: contain;
-       object-fit: contain;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
   .imgContainer iframe {
     position: absolute;
