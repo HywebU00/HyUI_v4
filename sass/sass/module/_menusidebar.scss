@@ -220,7 +220,8 @@
       position: relative;
       width: 100%;
       @include gutter;
-      a {
+      a,
+      button {
         padding: 0.6em 1em;
         background: rgba(0, 0, 0, 0.4);
         &:after {
@@ -229,6 +230,10 @@
         &:before {
           top: 0.8em;
         }
+      }
+      button {
+        width: 100%;
+        border: 0em;
       }
       ul {
         width: 100%;

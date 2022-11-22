@@ -221,7 +221,19 @@ function menu() {
     const cloneSearch = search.cloneNode(true);
     cloneSearch.removeAttribute('style');
     cloneSearch.classList.add('mobileSearch');
-    cloneSearch.classList.remove('search');
+    cloneSearch.classList.remove('webSearch');
+    // 取消手機版的focus行為
+    function addTabIndex(i) {
+      i.setAttribute('tabindex', '-1');
+    }
+    cloneSearch.querySelector('input[type="text"]').setAttribute('tabindex', '-1');
+    cloneSearch.querySelectorAll('a').forEach((i) => {
+      addTabIndex(i);
+    });
+    cloneSearch.querySelectorAll('button').forEach((i) => {
+      addTabIndex(i);
+    });
+
     body.prepend(cloneSearch);
   }
 }
@@ -238,6 +250,15 @@ function topNav() {
   mobileArea.append(cloneNav);
   const sideLanguage = document.querySelector('.mobileArea .fontSize');
   sideLanguage !== null ? sideLanguage.remove() : '';
+  const languageSelect = document.querySelectorAll('.language');
+  function languageSelectInit() {
+    const languageSelect = new SelectSlider({
+      name: document.querySelectorAll('.language'), // --- 控制的對象
+      control: document.querySelectorAll('.language button'), // --- 監聽的對象
+    });
+    languageSelect.initial();
+  }
+  languageSelect !== null ? languageSelectInit() : '';
 }
 // topNav();
 
@@ -909,6 +930,7 @@ function scrollToTop(obj) {
   }
   el.addEventListener('click', (e) => {
     e.preventDefault();
+    ƒ;
     scrollTop();
   });
 
@@ -1155,7 +1177,7 @@ gotoCenter();
 // -----------------------------------------------------------------------
 
 function a11yKeyCode() {
-  let search = document.querySelector('.search input[type="text"]');
+  let search = document.querySelector('.webSearch input[type="text"]');
   let header = document.querySelector('.header .accessKey');
   let main = document.querySelector('.main .accessKey');
   let footer = document.querySelector('footer .accessKey');
