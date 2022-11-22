@@ -1072,6 +1072,7 @@ function shareBtnFunction() {
   if (shareUl) {
     btn.setAttribute('class', 'shareButton');
     btn.setAttribute('role', 'button');
+    btn.setAttribute('tabindex', '0');
     btn.textContent = 'share分享按鈕';
     shareUl.insertBefore(btn, shareUl.childNodes[0]);
   }
