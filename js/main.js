@@ -157,8 +157,10 @@ function jsRemoveClass(element, className) {
 }
 
 // jsParents 可使用tag或是class，單筆可以直接使用，多筆需要用forEach去調用每一個parents
+// element 需要帶入參數，dom需要先用變數指定，如： let a = document.querySelector()
+// elementCheck 目前只能使用抓class和tag，tag請用小寫
 function jsParents(element, elementCheck) {
-  const elementParentsCheck = elementCheck || null;
+  const elementParentsCheck = elementCheck.toLowerCase() || null;
   const matched = [];
   const elementArr = [];
   !element.item ? elementArr.push(element) : (elementArr = element);
