@@ -7134,6 +7134,7 @@ div.function ul li a:focus-visible {
     line-height: 1.45em;
     transition: height 0.3s linear;
     overflow: hidden;
+    display: none;
   }
   .accordion .accordionContent .content {
     padding: 10px;

@@ -14,7 +14,8 @@ tableAddDataAttributes({
 accordionSlider({
   list: '.accordionList', // 問題區塊
   content: '.accordionContent', // 回答區塊
-  autoSlider: true, // true 點選其他項目時會關閉已開啟的內容，false 需要再點一次才會關閉
+  autoSlider: false, // true 點選其他項目時會關閉已開啟的內容，false 需要再點一次才會關閉
+  duration: 300, // 展開縮起的時間
   info: {
     open: '展開', // 收合時顯示
     close: '收合', // 展開時顯示
