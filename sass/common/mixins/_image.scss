@@ -12,7 +12,7 @@ img {
 //https://css-tricks.com/snippets/sass/maintain-aspectRatio-mixin/
 @mixin aspectRatio($width, $height) {
   overflow: hidden;
-  aspect-ratio: calc($width/$height);
+  aspect-ratio: $width/$height;
   position: relative;
   img {
     display: block;

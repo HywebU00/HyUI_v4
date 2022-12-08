@@ -36,9 +36,9 @@
             </div>
             <!-- fontSize -->
             <div class="fontSize">
-              <span>字型大小：</span>
+              <span id="font-size-label">字型大小：</span>
               <!-- 英文用<span>font-size：</span> -->
-              <ul>
+              <ul aria-labelledby="font-size-label">
                 <li><a role="button" href="#" class="small">小</a></li>
                 <li><a role="button" href="#" class="medium">中</a></li>
                 <li><a role="button" href="#" class="large">大</a></li>
@@ -155,13 +155,13 @@
       </header>
       <!-- header End -->
       <!-- main Start -->
-      <div id="center" class="main innerPage">
+      <main id="center" class="main innerPage">
         <!-- 內頁新增一個classname-->
         <a class="accessKey" href="#aC" id="aC" accesskey="C" title="主要內容區">:::</a>
         <div class="container">
           <!-- 左側 -->
           <!-- 如果不要sticky效果，就移除stickySidebar classname -->
-          <div class="leftBlock stickySidebar">
+          <aside class="leftBlock stickySidebar">
             <div class="listBlock">
               <div class="title">標題文字</div>
               <ul>
@@ -206,24 +206,24 @@
                 <a href="#"><img src="https://source.unsplash.com/random/4" alt="圖說" /></a>
               </div>
             </div>
-          </div>
+          </aside>
           <!-- 主要內容區 -->
           <div class="centerBlock">
             <!-- breadcrumb路徑 -->
-            <div class="breadcrumb">
+            <nav aria-label="Breadcrumb" class="breadcrumb">
               <ul>
                 <li><a href="#">首頁</a></li>
                 <li><a href="#">節點</a></li>
-                <li>節點</li>
+                <li aria-current="page">節點</li>
               </ul>
-            </div>
+            </nav>
             <h2 class="title">要套文章標題</h2>
             <!-- functionPanel -->
             <div class="functionPanel">
               <div class="publishTime"><span>發布日期：</span><time>2019-01-01</time></div>
               <!-- 文字大小 -->
               <div class="fontSize">
-                <span>字型大小：</span>
+                <span id="font-size-label">字型大小：</span>
                 <!-- 英文用<span>font-size：</span> -->
                 <ul>
                   <li><a role="button" href="#" class="small">小</a></li>
@@ -396,9 +396,9 @@
                     </div>
                     <!--操控物件可以隨意放，但注意設定要對應到-->
                     <!--前一筆-->
-                    <div class="prevSlider swiperArrow"></div>
+                    <button class="prevSlider swiperArrow"></button>
                     <!--下一筆-->
-                    <div class="nextSlider swiperArrow"></div>
+                    <button class="nextSlider swiperArrow"></button>
                   </div>
                 </div>
                 <!-- slider-nav end-->
@@ -454,7 +454,7 @@
             <!-- CP End -->
           </div>
         </div>
-      </div>
+      </main>
       <!-- fatFooter Start -->
       <section class="fatFooter">
         <div class="container">

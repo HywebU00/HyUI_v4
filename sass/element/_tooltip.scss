@@ -48,7 +48,7 @@ em {
 
 [tooltip='']:before,
 [tooltip='']:after {
-  display: none !important;
+  display: none;
 }
 
 [tooltip]:not([flow]):before,

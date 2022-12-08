@@ -43,12 +43,12 @@
       text-decoration: none;
       cursor: pointer;
       border: none;
-      box-shadow: none !important;
+      box-shadow: none;
       outline: none;
     }
     &.close {
       &:before {
-        transform: rotate(135deg) !important;
+        transform: rotate(135deg);
         top: 5px;
       }
     }

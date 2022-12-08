@@ -35,9 +35,9 @@
             </div>
             <!-- fontSize -->
             <div class="fontSize">
-              <span>字型大小：</span>
+              <span id="font-size-label">字型大小：</span>
               <!-- 英文用<span>font-size：</span> -->
-              <ul>
+              <ul aria-labelledby="font-size-label">
                 <li><a role="button" href="#" class="small">小</a></li>
                 <li><a role="button" href="#" class="medium">中</a></li>
                 <li><a role="button" href="#" class="large">大</a></li>
@@ -156,12 +156,12 @@
       </header>
       <!-- header End -->
       <!-- main Start -->
-      <div id="center" class="main innerPage">
+      <main id="center" class="main innerPage">
         <!-- 內頁新增一個classname-->
         <a class="accessKey" href="#aC" id="aC" accessKey="C" title="主要內容區">:::</a>
         <div class="container">
           <!-- 如果不要sticky效果，就移除stickySidebar classname -->
-          <div class="leftBlock stickySidebar">
+          <aside class="leftBlock stickySidebar">
             <div class="listBlock">
               <div class="title">標題文字</div>
               <ul>
@@ -206,16 +206,16 @@
                 <a href="#"><img src="https://source.unsplash.com/random/4" alt="圖說4" /></a>
               </div>
             </div>
-          </div>
+          </aside>
           <!-- 主要內容區 -->
           <div class="centerBlock">
-            <div class="breadcrumb">
+            <nav aria-label="Breadcrumb" class="breadcrumb">
               <ul>
                 <li><a href="#">首頁</a></li>
                 <li><a href="#">節點</a></li>
-                <li>節點</li>
+                <li aria-current="page">節點</li>
               </ul>
-            </div>
+            </nav>
             <!-- h2節點 -->
             <h2 class="title">節點標題</h2>
             <!-- functionPanel -->
@@ -223,7 +223,7 @@
               <div class="publishTime"><span>發布日期：</span><time>2019-01-01</time></div>
               <!-- 文字大小 -->
               <div class="fontSize">
-                <span>字型大小：</span>
+                <span id="font-size-label">字型大小：</span>
                 <!-- 英文用<span>font-size：</span> -->
                 <ul>
                   <li><a role="button" href="#" class="small">小</a></li>
@@ -437,15 +437,14 @@
               <form action="">
                 <div class="formInline">
                   <div class="total">
-                    共<span>308</span>筆資料，第<span>1/18</span>頁，每頁顯示
-                    <select name="" id="" aria-label="每頁顯示">
+                    共<span>308</span>筆資料，第<span>1/18</span>頁，<label for="pet-select">每頁顯示</label>
+                    <select name="" id="pet-select" aria-label="每頁顯示">
                       <option value="">10</option>
                       <option value="">20</option>
                       <option value="">30</option>
                       <option value="">40</option>
                     </select>
-                    筆，
-                    <input type="button" value="確定" class="btn btnSubmit" />
+                    筆 <input type="button" value="確定" class="btn btnSubmit" title="確定" />
                   </div>
                 </div>
               </form>

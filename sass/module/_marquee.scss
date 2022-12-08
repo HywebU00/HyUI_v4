@@ -26,6 +26,9 @@
       left: 5px;
       z-index: 9;
       transform: rotate(90deg);
+      padding: 0;
+      margin: 0;
+      border: none;
       &::before {
         content: '';
         width: 10px;

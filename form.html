@@ -36,9 +36,9 @@
             </div>
             <!-- fontSize -->
             <div class="fontSize">
-              <span>字型大小：</span>
+              <span id="font-size-label">字型大小：</span>
               <!-- 英文用<span>font-size：</span> -->
-              <ul>
+              <ul aria-labelledby="font-size-label">
                 <li><a role="button" href="#" class="small">小</a></li>
                 <li><a role="button" href="#" class="medium">中</a></li>
                 <li><a role="button" href="#" class="large">大</a></li>
@@ -46,7 +46,7 @@
             </div>
             <!-- language -->
             <div class="language">
-              <button>語言選擇</button>
+              <button type="button">語言選擇</button>
               <ul>
                 <li><a href="#">繁體中文</a></li>
                 <li><a href="#">简体中文</a></li>
@@ -157,20 +157,20 @@
       </header>
       <!-- header End -->
       <!-- main Start -->
-      <div id="center" class="main innerPage">
+      <main id="center" class="main innerPage">
         <!-- 內頁新增一個classname-->
         <a class="accessKey" href="#aC" id="aC" accesskey="C" title="主要內容區">:::</a>
         <div class="container">
           <!-- 主要內容區 -->
           <div class="centerBlock">
             <!-- breadcrumb路徑 -->
-            <div class="breadcrumb">
+            <nav aria-label="Breadcrumb" class="breadcrumb">
               <ul>
                 <li><a href="#">首頁</a></li>
                 <li><a href="#">節點</a></li>
-                <li>節點</li>
+                <li aria-current="page">節點</li>
               </ul>
-            </div>
+            </nav>
             <!-- h2節點 -->
             <h2 class="title">意見信箱</h2>
             <!-- function功能區塊 -->
@@ -184,26 +184,26 @@
             <section>
               <form action="">
                 <label for="username">帳號:</label>
-                <input type="text" id="username" placeholder="請輸入文字" />
+                <input type="text" id="username" placeholder="請輸入文字" title="請輸入文字" />
                 <h3>一列式表單</h3>
                 <div class="flexForm formInline">
                   <div class="formGrp">
                     <label for="username">帳號:</label>
-                    <input name="username" type="text" placeholder="請輸入文字" />
+                    <input name="username" type="text" placeholder="請輸入文字" title="請輸入文字" />
                   </div>
                   <div class="formGrp">
                     <label for="password">密碼:</label>
                     <div class="input_i">
-                      <i class="i_lock"></i>
-                      <input name="password" type="password" placeholder="請輸入密碼" />
+                      <i class="i_lock_deep"></i>
+                      <input name="password" type="password" placeholder="請輸入密碼" title="請輸入密碼" />
                     </div>
                   </div>
                   <div class="checkGrp">
                     <label><input type="checkbox" />記住我</label>
                   </div>
                   <div class="btnGrp">
-                    <input name="" type="reset" value="清除" class="btn btnReset" />
-                    <input name="" type="submit" value="送出" class="btn btnSubmit" />
+                    <input name="" type="reset" value="清除" class="btn btnReset" title="清除" />
+                    <input name="" type="submit" value="送出" class="btn btnSubmit" title="送出" />
                   </div>
                 </div>
                 <h3>格線式表單</h3>
@@ -213,8 +213,8 @@
                     <label for="username" class="formTitle" aria-required="true">帳號<abbr class="necessary" title="為必填(選)欄位,不能為空白。">*</abbr></label>
                     <div class="formContent">
                       <div class="input_i">
-                        <i class="i_man"></i>
-                        <input type="text" id="username" value="readonly or disable" readonly="" />
+                        <i class="i_man_deep"></i>
+                        <input type="text" id="username" value="readonly or disable" readonly="" title="請輸入帳號" />
                       </div>
                       <div class="help">說明文字</div>
                     </div>
@@ -223,8 +223,8 @@
                     <label for="password" class="formTitle" aria-required="true">密碼<abbr class="necessary" title="為必填(選)欄位,不能為空白。">*</abbr></label>
                     <div class="formContent">
                       <div class="input_i">
-                        <i class="i_lock"></i>
-                        <input name="password" type="password" placeholder="請輸入密碼" />
+                        <i class="i_lock_deep"></i>
+                        <input name="password" type="password" placeholder="請輸入密碼" title="請輸入密碼" />
                       </div>
                       <div class="noticeError">您輸入的帳號密碼有誤！</div>
                     </div>
@@ -233,8 +233,8 @@
                     <label for="email" class="formTitle" aria-required="true">E-mail<abbr class="necessary" title="為必填(選)欄位,不能為空白。">*</abbr></label>
                     <div class="formContent">
                       <div class="input_i">
-                        <input name="email" type="email" id="email" />
-                        <i class="i_mail"></i>
+                        <input name="email" type="email" id="email" title="請輸入E-mail" />
+                        <i class="i_mail_deep"></i>
                       </div>
                       <div class="notice">這是一般提醒訊息區塊</div>
                       <div class="noticeWarning">
@@ -246,24 +246,24 @@
                   <div class="formGrp">
                     <label for="phone" class="formTitle" aria-required="true">手機號碼<abbr class="necessary" title="為必填(選)欄位,不能為空白。">*</abbr></label>
                     <div class="formContent">
-                      <input name="phone" id="phone" type="tel" />
+                      <input name="phone" id="phone" type="tel" title="請輸入電話" />
                     </div>
                   </div>
                   <div class="formGrp">
                     <div class="formTitle">起始日期(type="date")</div>
                     <div class="formContent">
                       <div class="datePick">
-                        <input name="" type="date" value="" class="calendar" placeholder="開始日期" />
+                        <input name="" type="date" value="" class="calendar" placeholder="開始日期" title="開始日期" />
                       </div>
                       <div class="datePick">
-                        <input name="" type="date" value="" class="calendar" placeholder="結束日期" />
+                        <input name="" type="date" value="" class="calendar" placeholder="結束日期" title="結束日期" />
                       </div>
                     </div>
                   </div>
                   <div class="formGrp">
                     <label for="address" class="formTitle">活動名稱</label>
                     <div class="formContent">
-                      <input name="password" type="password" />
+                      <input name="password" type="password" title="請輸入活動名稱" />
                     </div>
                   </div>
                   <div class="formGrp" role="group" aria-labelledby="fake-legend">
@@ -271,12 +271,12 @@
                     <div class="formContent" id="fake-legend">
                       <div class="radioGrp formInline">
                         <label> <input type="radio" name="sampleRadio5" value="" checked="" />新北市</label>
-                        <label> <input type="radio" name="sampleRadio5" value="" />臺北市</label>
-                        <label> <input type="radio" name="sampleRadio5" value="" />臺中市</label>
-                        <label> <input type="radio" name="sampleRadio5" value="" />臺南市</label>
-                        <label> <input type="radio" name="sampleRadio5" value="" />高雄市</label>
-                        <label> <input type="radio" name="sampleRadio5" value="" />宜蘭縣</label>
-                        <label> <input type="radio" name="sampleRadio5" value="" />新竹縣</label>
+                        <label> <input type="radio" name="sampleRadio5" title="臺北市" value="" />臺北市</label>
+                        <label> <input type="radio" name="sampleRadio5" title="臺中市" value="" />臺中市</label>
+                        <label> <input type="radio" name="sampleRadio5" title="臺南市" value="" />臺南市</label>
+                        <label> <input type="radio" name="sampleRadio5" title="高雄市" value="" />高雄市</label>
+                        <label> <input type="radio" name="sampleRadio5" title="宜蘭縣" value="" />宜蘭縣</label>
+                        <label> <input type="radio" name="sampleRadio5" title="新竹縣" value="" />新竹縣</label>
                       </div>
                     </div>
                   </div>
@@ -290,11 +290,11 @@
                     <label class="formTitle">活動地點</label>
                     <div class="formContent" id="fake-legend">
                       <div class="checkGrp formInline">
-                        <label> <input type="checkbox" name="" value="" checked="" />全部</label>
-                        <label> <input type="checkbox" name="" value="" />展覽</label>
-                        <label> <input type="checkbox" name="" value="" />表演與節慶</label>
-                        <label> <input type="checkbox" name="" value="" />演講／講座／研討會</label>
-                        <label> <input type="checkbox" name="" value="" />綜合</label>
+                        <label> <input type="checkbox" name="" value="" title="全部" checked="" />全部</label>
+                        <label> <input type="checkbox" name="" value="" title="展覽" />展覽</label>
+                        <label> <input type="checkbox" name="" value="" title="表演與節慶" />表演與節慶</label>
+                        <label> <input type="checkbox" name="" value="" title="演講／講座／研討會" />演講／講座／研討會</label>
+                        <label> <input type="checkbox" name="" value="" title="綜合" />綜合</label>
                       </div>
                     </div>
                   </div>
@@ -332,9 +332,9 @@
                     <label class="formTitle">是否售票</label>
                     <div class="formContent" id="fake-legend">
                       <div class="radioGrp formInline">
-                        <label> <input type="radio" name="sampleRadio6" value="" checked="" />售票</label>
-                        <label> <input type="radio" name="sampleRadio6" value="" />免費索票</label>
-                        <label> <input type="radio" name="sampleRadio6" value="" />自由入場</label>
+                        <label> <input type="radio" name="sampleRadio6" value="" title="售票" checked />售票</label>
+                        <label> <input type="radio" name="sampleRadio6" value="" title="免費索票" />免費索票</label>
+                        <label> <input type="radio" name="sampleRadio6" value="" title="自由入場" />自由入場</label>
                       </div>
                     </div>
                   </div>
@@ -342,19 +342,19 @@
                     <label for="" class="formTitle">有條件式表單</label>
                     <div class="formContent additional">
                       <div class="checkbox">
-                        <label><input name="checkSample" type="checkbox" value="" /><span>同會員資訊</span></label>
+                        <label><input name="checkSample" type="checkbox" value="" title="同會員資訊" /><span>同會員資訊</span></label>
                       </div>
-                      <input type="text" name="" />
+                      <input type="text" name="" title="請輸入條件" />
                     </div>
                   </div>
                   <div class="formGrp">
                     <label for="" class="formTitle">單檔上傳</label>
                     <div class="formContent">
                       <div class="uploadGrp">
-                        <input class="upload_file" type="text" readonly />
+                        <input class="upload_file" type="text" title="檔案名稱" readonly />
                         <div class="uploadBtn">
                           <span>上傳檔案</span>
-                          <input type="file" class="check_file" />
+                          <input type="file" class="check_file" title="請選擇檔案" />
                         </div>
                       </div>
                     </div>
@@ -363,17 +363,17 @@
                     <label for="" class="formTitle">多檔上傳</label>
                     <div class="formContent">
                       <div class="uploadGrp">
-                        <input class="upload_file" type="text" readonly />
+                        <input class="upload_file" type="text" title="檔案名稱" readonly />
                         <div class="uploadBtn">
                           <span>上傳多個檔案</span>
-                          <input type="file" class="check_file" multiple />
+                          <input type="file" class="check_file" title="請選擇檔案" multiple />
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="btnGrp formInline">
-                    <button class="btn btnReset">清除</button>
-                    <button class="btn btnSubmit">送出</button>
+                    <button type="button" class="btn btnReset">清除</button>
+                    <button type="button" class="btn btnSubmit">送出</button>
                   </div>
                 </div>
                 <!--  -->
@@ -384,11 +384,11 @@
                     <div class="formContent formCol_6_6">
                       <div class="formGrp">
                         <label for="inputSample" class="labelHidden">雙欄1</label>
-                        <input name="username" id="inputSample" type="text" />
+                        <input name="username" id="inputSample" type="text" title="請輸入" />
                       </div>
                       <div class="formGrp">
                         <label for="inputSample2" class="labelHidden">雙欄2</label>
-                        <input name="username" id="inputSample2" type="text" />
+                        <input name="username" id="inputSample2" type="text" title="請輸入" />
                       </div>
                       <div class="notice">加上className "labelHidden" 隱藏label文字</div>
                     </div>
@@ -396,8 +396,8 @@
                   <div class="formGrp">
                     <div class="formTitle">formCol_4_4_4</div>
                     <div class="formContent formCol_4_4_4">
-                      <input name="username" type="text" />
-                      <input name="username" type="text" />
+                      <input name="username" type="text" title="請輸入" />
+                      <input name="username" type="text" title="請輸入" />
                       <select id="selectSample" name="">
                         <option value="">全部</option>
                         <option value="">視覺藝術（藝術品與美術）</option>
@@ -413,28 +413,28 @@
                   <div class="formGrp">
                     <div class="formTitle">formCol_3_3_3_3</div>
                     <div class="formContent formCol_3_3_3_3">
-                      <input name="username" type="text" />
-                      <input name="username" type="text" />
-                      <input name="username" type="text" />
+                      <input name="username" type="text" title="請輸入" />
+                      <input name="username" type="text" title="請輸入" />
+                      <input name="username" type="text" title="請輸入" />
                       <label><input name="radioSample" type="radio" value="" /><span>選項</span></label>
                     </div>
                   </div>
                   <div class="formGrp">
                     <div class="formTitle">formCol_2_2_2_2_2_2</div>
                     <div class="formContent formCol_2_2_2_2_2_2">
-                      <input name="username" type="text" />
-                      <input name="username" type="text" />
-                      <input name="username" type="text" />
-                      <input name="username" type="text" />
-                      <input name="username" type="text" />
-                      <label><input name="radioSample" type="radio" value="" /><span>選項</span></label>
+                      <input name="username" type="text" title="請輸入" />
+                      <input name="username" type="text" title="請輸入" />
+                      <input name="username" type="text" title="請輸入" />
+                      <input name="username" type="text" title="請輸入" />
+                      <input name="username" type="text" title="請輸入" />
+                      <label><input name="radioSample" type="radio" value="" title="請選擇" /><span>選項</span></label>
                     </div>
                   </div>
                   <div class="formGrp">
                     <div class="formTitle">formCol_3_9</div>
                     <div class="formContent formCol_3_9">
-                      <input name="username" type="text" />
-                      <input name="username" type="text" />
+                      <input name="username" type="text" title="請輸入" />
+                      <input name="username" type="text" title="請輸入" />
                     </div>
                   </div>
                   <div class="formGrp">
@@ -460,22 +460,22 @@
                   <div class="formGrp">
                     <div class="formTitle">formCol_9_3</div>
                     <div class="formContent formCol_9_3">
-                      <input name="username" type="text" />
-                      <input name="username" type="text" />
+                      <input name="username" type="text" title="請輸入" />
+                      <input name="username" type="text" title="請輸入" />
                     </div>
                   </div>
                   <div class="formGrp">
                     <div class="formTitle">formCol_4_8</div>
                     <div class="formContent formCol_4_8">
-                      <input name="username" type="text" />
-                      <input name="username" type="text" />
+                      <input name="username" type="text" title="請輸入" />
+                      <input name="username" type="text" title="請輸入" />
                     </div>
                   </div>
                   <div class="formGrp">
                     <div class="formTitle">formCol_2_10</div>
                     <div class="formContent formCol_2_10">
-                      <input name="username" type="text" />
-                      <input name="username" type="text" />
+                      <input name="username" type="text" title="請輸入" />
+                      <input name="username" type="text" title="請輸入" />
                     </div>
                   </div>
                   <div class="formGrp">
@@ -495,7 +495,7 @@
                         <option value="">北投區</option>
                         <option value="">...</option>
                       </select>
-                      <input name="username" type="text" />
+                      <input name="username" type="text" title="請輸入" />
                     </div>
                   </div>
                   <div class="formGrp">
@@ -507,13 +507,13 @@
                           <div class="formGrp">
                             <label for="username" class="formTitle">雙欄 欄目Ａ：</label>
                             <div class="input_i">
-                              <input name="username" type="text" />
-                              <i class="i_lock"></i>
+                              <input name="username" type="text" title="請輸入" />
+                              <i class="i_lock_deep"></i>
                             </div>
                           </div>
                           <div class="formGrp">
                             <label for="username" class="formTitle">雙欄 欄目B：</label>
-                            <input name="username" type="text" />
+                            <input name="username" type="text" title="請輸入" />
                           </div>
                           <div class="formGrp">
                             <label for="username" class="formTitle">雙欄 欄目C：</label>
@@ -542,7 +542,7 @@
                         <div class="formContent formCol_4_4_4">
                           <div class="formGrp">
                             <label for="username" class="formTitle">三欄 欄目A：</label>
-                            <input name="username" type="text" />
+                            <input name="username" type="text" title="請輸入" />
                           </div>
                           <div class="formGrp">
                             <label for="username" class="formTitle">三欄 欄目B：</label>
@@ -571,7 +571,7 @@
                         <div class="formContent formCol_3_3_3_3">
                           <div class="formGrp">
                             <label for="username" class="formTitle">四欄 欄目A：</label>
-                            <input name="username" type="text" placeholder="請輸入人數" />
+                            <input name="username" type="text" placeholder="請輸入人數" title="請輸入人數" />
                           </div>
                           <div class="formGrp">
                             <label for="username" class="formTitle">四欄 欄目B：</label>
@@ -595,7 +595,7 @@
                           </div>
                           <div class="formGrp">
                             <label for="username" class="formTitle">四欄 欄目D：</label>
-                            <input name="username" type="text" value="0" placeholder="" readonly="" />
+                            <input name="username" type="text" value="0" placeholder="" title="請輸入" readonly />
                           </div>
                         </div>
                       </div>
@@ -610,15 +610,15 @@
                       <div class="formGrp">
                         <label for="" class="formTitle" aria-required="true">姓名<abbr class="necessary" title="為必填(選)欄位,不能為空白。">*</abbr></label>
                         <div class="formContent">
-                          <input name="" type="text" value="" />
+                          <input name="" type="text" value="" title="請輸入姓名" />
                         </div>
                       </div>
                       <div class="formGrp" role="group" aria-labelledby="fake-legend">
                         <label aria-required="true" class="formTitle">性別<abbr class="necessary" title="為必填(選)欄位,不能為空白。">*</abbr></label>
                         <div class="formContent" id="fake-legend">
                           <div class="radioGrp formInline">
-                            <label> <input type="radio" name="sampleRadio5" value="" checked="" />男</label>
-                            <label> <input type="radio" name="sampleRadio5" value="" />女</label>
+                            <label> <input type="radio" name="sampleRadio5" value="" title="男" />男</label>
+                            <label> <input type="radio" name="sampleRadio5" value="" title="女" />女</label>
                           </div>
                         </div>
                       </div>
@@ -669,21 +669,21 @@
                       <div class="formGrp">
                         <label for="" class="formTitle">手機號碼</label>
                         <div class="formContent formInline">
-                          <input name="" type="tel" value="" placeholder="0912345678" />
+                          <input name="" type="tel" value="" placeholder="0912345678" title="請輸入手機號碼" />
                         </div>
                       </div>
                       <div class="formGrp">
                         <label for="" class="formTitle">電話號碼</label>
                         <div class="formContent formInline tel">
-                          <input name="" type="tel" value="" placeholder="886" />
-                          <input name="" type="tel" value="" placeholder="12345678" />
+                          <input name="" type="tel" value="" placeholder="886" title="請輸入國碼" />
+                          <input name="" type="tel" value="" placeholder="12345678" title="請輸入電話" />
                         </div>
                       </div>
                       <div class="formGrp">
                         <label for="" class="formTitle">傳真號碼</label>
                         <div class="formContent formInline tel">
-                          <input name="" type="tel" value="" placeholder="886" />
-                          <input name="" type="tel" value="" placeholder="12345678" />
+                          <input name="" type="tel" value="" placeholder="886" title="請輸入國碼" />
+                          <input name="" type="tel" value="" placeholder="12345678" title="請輸入電話" />
                         </div>
                       </div>
                       <div class="formGrp">
@@ -703,7 +703,7 @@
                             <option value="">北投區</option>
                             <option value="">...</option>
                           </select>
-                          <input name="" type="text" value="" />
+                          <input name="" type="text" value="" title="請輸入詳細地址" />
                         </div>
                       </div>
                       <div class="formGrp">
@@ -726,16 +726,16 @@
                             <option value="">...</option>
                           </select>
                           <label for="" class="labelHidden">詳細地址</label>
-                          <input name="" type="text" value="" />
+                          <input name="" type="text" value="" title="請輸入詳細地址" />
                           <div class="checkbox">
-                            <label><input type="checkbox" />同上聯絡地址</label>
+                            <label><input type="checkbox" title="同上聯絡地址" />同上聯絡地址</label>
                           </div>
                         </div>
                       </div>
                       <div class="formGrp">
                         <label for="" class="formTitle">公司網站</label>
                         <div class="formContent">
-                          <input name="" type="text" value="" />
+                          <input name="" type="text" value="" title="請輸入網站名稱" />
                         </div>
                       </div>
                       <div class="formGrp">
@@ -745,7 +745,7 @@
                             <option value="">http</option>
                             <option value="">https</option>
                           </select>
-                          <input type="text" value="" placeholder="www.hyweb.com.tw" />
+                          <input type="text" value="" placeholder="www.hyweb.com.tw" title="請輸入網址" />
                         </div>
                       </div>
                     </div>
@@ -757,12 +757,10 @@
                         <div class="formTitle">起始日期</div>
                         <div class="formContent">
                           <div class="datePick">
-                            <input name="" type="text" value="" class="calendar" placeholder="開始日期" />
-                            <i class="i_calendar"></i>
+                            <input name="" type="date" value="" class="calendar" placeholder="開始日期" title="請選擇開始日期" />
                           </div>
                           <div class="datePick">
-                            <input name="" type="text" value="" class="calendar" placeholder="結束日期" />
-                            <i class="i_calendar"></i>
+                            <input name="" type="date" value="" class="calendar" placeholder="結束日期" title="請選擇結束日期" />
                           </div>
                         </div>
                       </div>
@@ -770,11 +768,11 @@
                         <label class="formTitle">參加場次</label>
                         <div class="formContent" id="fake-legend">
                           <div class="checkGrp formInline">
-                            <label> <input type="checkbox" name="" value="" checked="" />全部</label>
-                            <label> <input type="checkbox" name="" value="" />展覽</label>
-                            <label> <input type="checkbox" name="" value="" />表演與節慶</label>
-                            <label> <input type="checkbox" name="" value="" />演講／講座／研討會</label>
-                            <label> <input type="checkbox" name="" value="" />綜合</label>
+                            <label> <input type="checkbox" name="" value="" title="全部" checked="" />全部</label>
+                            <label> <input type="checkbox" name="" value="" title="展覽" />展覽</label>
+                            <label> <input type="checkbox" name="" value="" title="表演與節慶" />表演與節慶</label>
+                            <label> <input type="checkbox" name="" value="" title="演講／講座／研討會" />演講／講座／研討會</label>
+                            <label> <input type="checkbox" name="" value="" title="綜合" />綜合</label>
                           </div>
                         </div>
                       </div>
@@ -782,9 +780,9 @@
                         <div class="formTitle">有微動態</div>
                         <div class="formContent">
                           <div class="radioGrp formInline">
-                            <label><input name="radioSample" type="radio" value="" /><span>選項一</span></label>
-                            <label><input name="radioSample" type="radio" value="" /><span>選項二</span></label>
-                            <label><input name="radioSample" type="radio" value="" /><span>其他</span><input type="text" /></label>
+                            <label><input name="radioSample" type="radio" value="" title="選項一" /><span>選項一</span></label>
+                            <label><input name="radioSample" type="radio" value="" title="選項二" /><span>選項二</span></label>
+                            <label><input name="radioSample" type="radio" value="" title="其他" /><span>其他</span><input type="text" title="請輸入" /></label>
                           </div>
                         </div>
                       </div>
@@ -792,9 +790,9 @@
                         <div class="formTitle">有微動態</div>
                         <div class="formContent">
                           <div class="checkGrp formInline">
-                            <label><input name="" type="checkbox" value="" /><span>選項一</span></label>
-                            <label><input name="" type="checkbox" value="" /><span>選項二</span></label>
-                            <label><input name="" type="checkbox" value="" /><span>選項三</span></label>
+                            <label><input name="radioSample" type="radio" value="" title="選項一" /><span>選項一</span></label>
+                            <label><input name="radioSample" type="radio" value="" title="選項二" /><span>選項二</span></label>
+                            <label><input name="" type="checkbox" value="" title="選項三" /><span>選項三</span></label>
                           </div>
                         </div>
                       </div>
@@ -802,11 +800,11 @@
                         <label class="formTitle">參加場次</label>
                         <div class="formContent" id="fake-legend">
                           <div class="checkGrp">
-                            <label> <input type="checkbox" name="" value="" checked="" />全部</label>
-                            <label> <input type="checkbox" name="" value="" />展覽</label>
-                            <label> <input type="checkbox" name="" value="" />表演與節慶</label>
-                            <label> <input type="checkbox" name="" value="" />演講／講座／研討會</label>
-                            <label> <input type="checkbox" name="" value="" />綜合</label>
+                            <label> <input type="checkbox" name="" value="" title="全部" checked="" />全部</label>
+                            <label> <input type="checkbox" name="" value="" title="展覽" />展覽</label>
+                            <label> <input type="checkbox" name="" value="" title="表演與節慶" />表演與節慶</label>
+                            <label> <input type="checkbox" name="" value="" title="演講／講座／研討會" />演講／講座／研討會</label>
+                            <label> <input type="checkbox" name="" value="" title="綜合" />綜合</label>
                           </div>
                         </div>
                       </div>
@@ -814,9 +812,9 @@
                         <legend class="formTitle">是否售票</legend>
                         <div class="formContent" id="fake-legend">
                           <div class="radioGrp formInline">
-                            <label> <input type="radio" name="sampleRadio6" value="" checked="" />售票</label>
-                            <label> <input type="radio" name="sampleRadio6" value="" />免費索票</label>
-                            <label> <input type="radio" name="sampleRadio6" value="" />自由入場</label>
+                            <label> <input type="radio" name="sampleRadio6" value="" title="售票" checked />售票</label>
+                            <label> <input type="radio" name="sampleRadio6" value="" title="免費索票" />免費索票</label>
+                            <label> <input type="radio" name="sampleRadio6" value="" title="自由入場" />自由入場</label>
                           </div>
                         </div>
                       </div>
@@ -824,9 +822,9 @@
                         <label class="formTitle">是否售票</label>
                         <div class="formContent" id="fake-legend">
                           <div class="radioGrp">
-                            <label> <input type="radio" name="sampleRadio6" value="" checked="" />售票</label>
-                            <label> <input type="radio" name="sampleRadio6" value="" />免費索票</label>
-                            <label> <input type="radio" name="sampleRadio6" value="" />自由入場</label>
+                            <label> <input type="radio" name="sampleRadio6" value="" title="售票" checked />售票</label>
+                            <label> <input type="radio" name="sampleRadio6" value="" title="免費索票" />免費索票</label>
+                            <label> <input type="radio" name="sampleRadio6" value="" title="自由入場" />自由入場</label>
                           </div>
                         </div>
                       </div>
@@ -841,16 +839,16 @@
                           <div class="formGrp">
                             <div class="formTitle">第三層title</div>
                             <div class="formContent formInline">
-                              <input name="" type="text" value="" />
+                              <input name="" type="text" value="" title="請輸入" />
                             </div>
                           </div>
                           <div class="formGrp">
                             <div class="formTitle">第三層title</div>
                             <div class="formContent" id="fake-legend">
                               <div class="radioGrp formInline">
-                                <label> <input type="radio" name="sampleRadio6" value="" checked="" />A</label>
-                                <label> <input type="radio" name="sampleRadio6" value="" />B</label>
-                                <label> <input type="radio" name="sampleRadio6" value="" />C</label>
+                                <label> <input type="radio" name="sampleRadio6" value="" title="A" checked />A</label>
+                                <label> <input type="radio" name="sampleRadio6" value="" title="B" />B</label>
+                                <label> <input type="radio" name="sampleRadio6" value="" title="C" />C</label>
                               </div>
                             </div>
                           </div>
@@ -858,9 +856,9 @@
                             <div class="formTitle">第三層title</div>
                             <div class="formContent" id="fake-legend">
                               <div class="radioGrp formInline">
-                                <label> <input type="checkbox" name="sampleRadio6" value="" checked="" />A</label>
-                                <label> <input type="checkbox" name="sampleRadio6" value="" />B</label>
-                                <label> <input type="checkbox" name="sampleRadio6" value="" />C</label>
+                                <label> <input type="radio" name="sampleRadio6" value="" title="A" checked />A</label>
+                                <label> <input type="radio" name="sampleRadio6" value="" title="B" />B</label>
+                                <label> <input type="radio" name="sampleRadio6" value="" title="C" />C</label>
                               </div>
                             </div>
                           </div>
@@ -881,7 +879,7 @@
                                 <option value="">北投區</option>
                                 <option value="">...</option>
                               </select>
-                              <input name="" type="text" value="" />
+                              <input name="" type="text" value="" title="請輸入詳細地址" />
                             </div>
                           </div>
                         </div>
@@ -898,22 +896,22 @@
                     <div class="formTitle">驗證碼</div>
                     <div class="formContent formInline">
                       <img src="images/basic/captcha.gif" alt="" class="captcha" />
-                      <input name="" type="text" value="" />
-                      <button class="btn"><i class="i_reflash"></i>重新整理</button>
-                      <button class="btn"><i class="i_play"></i>語音播放</button>
+                      <input name="" type="text" value="" title="請輸入驗證碼" />
+                      <button type="button" class="btn"><i class="i_reflash_deep" aria-hidden="true" focusable="false"></i>重新整理</button>
+                      <button type="button" class="btn"><i class="i_play_deep" aria-hidden="true" focusable="false"></i>語音播放</button>
                     </div>
                   </div>
                   <div class="formGrp agree">
                     <div class="formTitle"></div>
                     <div class="formContent formInline">
                       <div class="checkGrp">
-                        <label><input name="checkSample" type="checkbox" value="" />我已經詳讀以上表單內容</label>
+                        <label><input name="checkSample" type="checkbox" value="" title="請勾選確認詳讀以上表單內容" />我已經詳讀以上表單內容</label>
                       </div>
                     </div>
                   </div>
                   <div class="btnGrp formInline">
-                    <button class="btn btnReset">清除</button>
-                    <button class="btn btnSubmit">送出</button>
+                    <button type="button" class="btn btnReset">清除</button>
+                    <button type="button" class="btn btnSubmit">送出</button>
                   </div>
                 </div>
                 <h3>多層次表單-多欄</h3>
@@ -926,7 +924,7 @@
                         <label for="" class="formTitle">第二層 Title</label>
                         <div class="formContent">
                           <div class="formGrp">
-                            <input name="" type="text" value="" />
+                            <input name="" type="text" value="" title="請輸入" />
                           </div>
                         </div>
                       </div>
@@ -938,11 +936,11 @@
                             <div class="formContent formCol_6_6">
                               <div class="formGrp">
                                 <label for="username">雙欄 欄目Ａ：</label>
-                                <input name="username" type="text" placeholder="請輸入人數" />
+                                <input name="username" type="text" placeholder="請輸入人數" title="請輸入人數" />
                               </div>
                               <div class="formGrp">
                                 <label for="username">雙欄 欄目B：</label>
-                                <input name="username" type="text" placeholder="請輸入人數" readonly="" />
+                                <input name="username" type="text" placeholder="請輸入人數" title="請輸入人數" readonly />
                               </div>
                               <div class="formGrp">
                                 <label for="username">雙欄 欄目C：</label>
@@ -976,7 +974,7 @@
                             <div class="formContent formCol_4_4_4">
                               <div class="formGrp">
                                 <label for="username">三欄 欄目A：</label>
-                                <input name="username" type="text" placeholder="請輸入人數" />
+                                <input name="username" type="text" placeholder="請輸入人數" title="請輸入人數" />
                               </div>
                               <div class="formGrp">
                                 <label for="username">三欄 欄目B：</label>
@@ -1007,12 +1005,12 @@
                         <div class="formContent">
                           <div class="formGrp">
                             <div class="formContent formCol_4_4_4">
-                              <input name="" type="text" value="" placeholder="單位" />
-                              <input name="" type="text" value="" placeholder="職稱" />
+                              <input name="" type="text" value="" placeholder="單位" title="請輸入單位" />
+                              <input name="" type="text" value="" placeholder="職稱" title="請輸入職稱" />
                               <br />
-                              <input name="" type="text" value="" placeholder="姓名" />
-                              <input name="" type="text" value="" placeholder="電話/手機號碼" />
-                              <input name="" type="text" value="" placeholder="email" />
+                              <input name="" type="text" value="" placeholder="姓名" title="請輸入姓名" />
+                              <input name="" type="text" value="" placeholder="電話/手機號碼" title="請輸入電話/手機號碼" />
+                              <input name="" type="text" value="" placeholder="email" title="請輸入E-mail" />
                               <div class="noticeInfo">這是一般提醒訊息區塊</div>
                             </div>
                           </div>
@@ -1025,7 +1023,7 @@
                           <div class="formContent formCol_3_3_3_3">
                             <div class="formGrp">
                               <label for="username">四欄 欄目A：</label>
-                              <input name="username" type="text" placeholder="請輸入人數" />
+                              <input name="username" type="text" placeholder="請輸入人數" title="請輸入人數" />
                             </div>
                             <div class="formGrp">
                               <label for="username">四欄 欄目B：</label>
@@ -1049,7 +1047,7 @@
                             </div>
                             <div class="formGrp">
                               <label for="username">四欄 欄目D：</label>
-                              <input name="username" type="text" value="0" placeholder="" readonly="" />
+                              <input name="username" type="text" value="0" placeholder="" title="請輸入" readonly />
                             </div>
                           </div>
                         </div>
@@ -1083,7 +1081,7 @@
                                                 </div>
                                             </div>
                                             <div class="btnGrp">
-                                                <button class="btn btnSubmit">送出</button>
+                                                <button type="button" class="btn btnSubmit">送出</button>
                                             </div>
                                         </div>
                                     </div>
@@ -1093,7 +1091,7 @@
             </section>
           </div>
         </div>
-      </div>
+      </main>
       <!-- fatFooter Start -->
       <section class="fatFooter">
         <div class="container">

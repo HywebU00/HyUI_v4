@@ -2,17 +2,14 @@
 // 參數可再自行新增
 // $colorStyleConfig: (
 //   colorA: (
-//     class: 'colorStyleA',
 //     // class 名稱
 //     color: blue,
 //     // 顏色
 //   ),
 //   colorB: (
-//     class: 'colorStyleA',
 //     color: red,
 //   ),
 //   colorC: (
-//     class: 'colorStyleC',
 //     color: green,
 //   ),
 // );
@@ -23,24 +20,22 @@
 // ----------------------------------------------------------------------
 // 迴圈跑出所有css
 // @each $item, $value in $colorStyleConfig {
-//   $class: map-get($value, class);
 //   $color: map-get($value, color);
 
-//   .#{$class} {
+//   .#{$item} {
 //     .txt {
 //       color: #{$color};
 //     }
 //   }
 // }
-
-//以上語法會產生出
-// .colorStyleA .txt {
+// 以上語法會產生出
+// .colorA .txt {
 //   color: blue;
 // }
-// .colorStyleB .txt {
+// .colorB .txt {
 //   color: red;
 // }
-// .colorStyleC .txt {
+// .colorC .txt {
 //   color: green;
 // }
 
@@ -51,35 +46,33 @@
 // // 指定對應顏色
 // :root {
 //   @each $item, $value in $colorStyleConfig {
-//     $class: map-get($value, class);
 //     $color: map-get($value, color);
-//     --#{$class}: #{$color};
+//     --#{$item}: #{$color};
 //   }
 // }
 
 // 迴圈跑出所有css
 // @each $item, $value in $colorStyleConfig {
-//   $class: map-get($value, class);
-//   .#{$class} {
+//   .#{$item} {
 //     .txt {
-//       color: var(--#{$class});
+//       color: var(--#{$item});
 //     }
 //   }
 // }
 
 //以上語法會產生出
 // :root {
-//   --colorStyleA: blue;
-//   --colorStyleA: red;
-//   --colorStyleC: green;
+//   --colorA: blue;
+//   --colorA: red;
+//   --colorC: green;
 // }
 
-// .colorStyleA .txt {
-//   color: var(--colorStyleA); //color: blue;
+// .colorA .txt {
+//   color: var(--colorA); //color: blue;
 // }
-// .colorStyleB .txt {
-//   color: var(--colorStyleB); //color: red;
+// .colorB .txt {
+//   color: var(--colorB); //color: red;
 // }
-// .colorStyleC .txt {
-//   color: var(--colorStyleC); //color: green;
+// .colorC .txt {
+//   color: var(--colorC); //color: green;
 // }

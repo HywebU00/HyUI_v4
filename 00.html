@@ -36,9 +36,9 @@
             </div>
             <!-- fontSize -->
             <div class="fontSize">
-              <span>字型大小：</span>
+              <span id="font-size-label">字型大小：</span>
               <!-- 英文用<span>font-size：</span> -->
-              <ul>
+              <ul aria-labelledby="font-size-label">
                 <li><a href="#" role="button" class="small">小</a></li>
                 <li><a href="#" role="button" class="medium">中</a></li>
                 <li><a href="#" role="button" class="large">大</a></li>
@@ -46,7 +46,7 @@
             </div>
             <!-- language -->
             <div class="language">
-              <button>語言選擇</button>
+              <button type="button">語言選擇</button>
               <ul>
                 <li><a href="#">繁體中文</a></li>
                 <li><a href="#">简体中文</a></li>
@@ -63,10 +63,10 @@
             <div class="formGrp">
               <label for="mustSameAsId">搜尋</label>
               <input name="username" id="mustSameAsId" type="text" placeholder="請輸入文字" accesskey="S" title="請輸入文字" aria-label="搜尋網站內容" />
-              <input name="" type="submit" value="查詢" class="btn btnSearch" />
+              <input name="" type="submit" value="查詢" class="btn btnSearch" title="查詢" />
             </div>
             <div class="btnGrp">
-              <input name="" type="submit" value="進階搜尋" class="btn" />
+              <input name="" type="submit" value="進階搜尋" class="btn" title="進階搜尋" />
             </div>
             <div class="keywordHot">
               <ul>
@@ -155,7 +155,7 @@
       </header>
       <!-- header End -->
       <!-- main Start -->
-      <div id="center" class="main">
+      <main id="center" class="main">
         <a class="accessKey" href="#aC" id="aC" accesskey="C" title="主要內容區">:::</a>
         <!-- 任何一個section下一層都要包下一層都要包div container作對齊 -->
         <!-- //// class 都可以隨意命名 !!! ///// -->
@@ -1528,7 +1528,7 @@
           </div>
         </section>
         <!-- flex end -->
-      </div>
+      </main>
       <!-- fatFooter Start -->
       <section class="fatFooter">
         <div class="container">

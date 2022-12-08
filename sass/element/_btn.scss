@@ -26,7 +26,7 @@
     cursor: pointer;
     color: #fff;
     outline: none;
-    box-shadow: 0 0px 0px 2px $aFocus !important;
+    box-shadow: 0 0px 0px 2px $aFocus;
     // @include gradient(lighten($btnBg, 10), darken($btnBg, 18), vertical);
   }
   &.active {
@@ -107,65 +107,65 @@
 }
 // 主要按鈕
 .btnPrimary {
-  background: $colorPrimary !important;
-  color: #fff !important;
-  border: solid 1px $colorPrimary !important;
+  background: $colorPrimary;
+  color: #fff;
+  border: solid 1px $colorPrimary;
 
   &:hover,
   &:focus-visible {
-    background: darken($colorPrimary, 10) !important;
-    border: solid 1px $colorPrimary !important;
+    background: darken($colorPrimary, 10);
+    border: solid 1px $colorPrimary;
   }
 }
 // 次要按鈕
 .btnSecondary {
-  background: #fff !important;
-  color: darken($colorPrimary, 15) !important;
-  border: solid 1px $colorPrimary !important;
-  text-shadow: none !important;
+  background: #fff;
+  color: darken($colorPrimary, 15);
+  border: solid 1px $colorPrimary;
+  text-shadow: none;
   &:hover,
   &:focus-visible {
-    color: darken($colorPrimary, 30) !important;
-    background: #b5deff !important;
-    border: solid 1px #b5deff !important;
+    color: darken($colorPrimary, 30);
+    background: #b5deff;
+    border: solid 1px #b5deff;
   }
 }
 // 一般按鈕
 .btnNormal {
-  background: #f1f1f1 !important;
-  color: #65656e !important;
-  border: solid 1px #c3c3c3 !important;
-  text-shadow: none !important;
+  background: #f1f1f1;
+  color: #65656e;
+  border: solid 1px #c3c3c3;
+  text-shadow: none;
   &:hover,
   &:focus-visible {
-    color: darken(#65656e, 15) !important;
-    background: #c3c3c3 !important;
-    border: solid 1px #c3c3c3 !important;
+    color: darken(#65656e, 15);
+    background: #c3c3c3;
+    border: solid 1px #c3c3c3;
   }
 }
 
 // 返回
 .btnBack {
-  background: #555 !important;
-  color: #fff !important;
-  border: 1px solid #ddd !important;
+  background: #555;
+  color: #fff;
+  border: 1px solid #ddd;
   &:hover,
   &:focus-visible {
-    background: darken($colorPrimary, 10) !important;
-    border: 1px solid #ddd !important;
+    background: darken($colorPrimary, 10);
+    border: 1px solid #ddd;
   }
 }
 
 .disabled,
 [disabled] {
   opacity: 0.5;
-  cursor: not-allowed !important;
+  cursor: not-allowed;
   text-shadow: none;
 }
 .readonly,
 [readonly] {
   opacity: 0.5;
-  cursor: not-allowed !important;
+  cursor: not-allowed;
   text-shadow: none;
 }
 

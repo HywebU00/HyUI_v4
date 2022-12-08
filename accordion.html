@@ -38,9 +38,9 @@
             </div>
             <!-- fontSize -->
             <div class="fontSize">
-              <span>字型大小：</span>
+              <span id="font-size-label">字型大小：</span>
               <!-- 英文用<span>font-size：</span> -->
-              <ul>
+              <ul aria-labelledby="font-size-label">
                 <li><a href="#" role="button" class="small">小</a></li>
                 <li><a href="#" role="button" class="medium">中</a></li>
                 <li><a href="#" role="button" class="large">大</a></li>
@@ -48,7 +48,7 @@
             </div>
             <!-- language -->
             <div class="language">
-              <button>語言選擇</button>
+              <button type="button">語言選擇</button>
               <ul>
                 <li><a href="#">繁體中文</a></li>
                 <li><a href="#">简体中文</a></li>
@@ -159,20 +159,20 @@
       </header>
       <!-- header End -->
       <!-- main Start -->
-      <div id="center" class="main innerPage">
+      <main id="center" class="main innerPage">
         <!-- 內頁新增一個classname-->
         <a class="accessKey" href="#aC" id="aC" accesskey="C" title="主要內容區">:::</a>
         <div class="container">
           <!-- 主要內容區 -->
           <div class="centerBlock">
             <!-- breadcrumb路徑 -->
-            <div class="breadcrumb">
+            <nav aria-label="Breadcrumb" class="breadcrumb">
               <ul>
                 <li><a href="#">首頁</a></li>
                 <li><a href="#">節點</a></li>
-                <li>節點</li>
+                <li aria-current="page">節點</li>
               </ul>
-            </div>
+            </nav>
             <!-- h2節點 -->
             <h2 class="title">手風琴元件</h2>
             <div class="accordion">
@@ -219,7 +219,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </main>
       <!-- fatFooter Start -->
       <section class="fatFooter">
         <div class="container">

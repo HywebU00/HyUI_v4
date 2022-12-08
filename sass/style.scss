@@ -1,5 +1,4 @@
 @charset "utf-8";
-
 @import '_variable'; //變數
 @import 'common/_mixin'; //客製MIXIN
 
@@ -15,23 +14,21 @@
   @import 'common/_gridflex'; //格線 - flex
   @import 'common/_typegraphy'; //CP文字排版
   @import 'common/_accessibility'; //無障礙關閉js設定
-  @import 'common/_hack'; //瀏覽器修正
   // 元件 element
   @import 'element/_font'; //文字設定
   @import 'element/_language'; //語言選單
   @import 'element/_btn'; //按鈕設定
   @import 'element/_breadcrumb'; //麵包屑
   @import 'element/_divider'; //分隔線
-  @import 'element/_image'; //圖片
   @import 'element/_icon'; //圖示
   @import 'element/_category'; //資料大類
   @import 'element/_tag'; //文章標籤
   @import 'element/_element'; //小元素
+  @import 'element/_tooltip'; //cp頁說明功能
   // 模組 module
   @import 'module/_header'; //header
   @import 'module/_menu'; //menu
   @import 'module/_megamenu'; //megaMenu
-  @import 'module/_menusidebar'; //menuSidebar
   @import 'module/_fixedsidebar'; //固定側邊欄
   @import 'module/_footer'; //footer
   @import 'module/_fatfooter'; //fatFooter
@@ -49,10 +46,13 @@
   @import 'page/_sitemap'; //Sitemap
   @import 'page/_leftblock'; //左欄leftBlock
   @import 'page/_template'; //版型初始設定
+  @import 'module/_menusidebar'; //menuSidebar
 }
 // 下方scss權重較高
-@import 'common/_print'; //列印樣式
-@import 'module/_swiper'; //swiper
+@import 'element/_image'; //圖片
+@import 'common/_hack'; //瀏覽器修正
 @import 'page/_mp'; //首頁
 @import 'page/_cp'; //CP
+@import 'module/_swiper'; //swiper
+@import 'common/_print'; //列印樣式
 @import 'page/_color';

@@ -54,7 +54,12 @@ accordionSlider({
   });
 
   //大圖輪播
-  const sliderSwiper = new Swiper('.mpSlider .swiper', {
+  let mpSliderItem = document.querySelectorAll('.mpSlider .swiper-slide');
+  let mpSliderPagination = [];
+  mpSliderItem.forEach((item, index) => {
+    mpSliderPagination.push(item.dataset.title);
+  });
+  const mpSlider = new Swiper('.mpSlider .swiper', {
     slidesPerView: 1,
     loop: false,
     // 切換點
@@ -62,6 +67,9 @@ accordionSlider({
       el: '.mpSlider .swiperDots',
       bulletElement: 'button',
       clickable: true,
+      renderBullet: function (index, className) {
+        return `<button class="${className} noFonts" aria-label="${mpSliderPagination[index]}">${mpSliderPagination[index]}</button>`;
+      },
     },
     // 切換箭頭
     navigation: {

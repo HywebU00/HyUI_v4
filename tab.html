@@ -36,9 +36,9 @@
             </div>
             <!-- fontSize -->
             <div class="fontSize">
-              <span>字型大小：</span>
+              <span id="font-size-label">字型大小：</span>
               <!-- 英文用<span>font-size：</span> -->
-              <ul>
+              <ul aria-labelledby="font-size-label">
                 <li><a role="button" href="#" class="small">小</a></li>
                 <li><a role="button" href="#" class="medium">中</a></li>
                 <li><a role="button" href="#" class="large">大</a></li>
@@ -46,7 +46,7 @@
             </div>
             <!-- language -->
             <div class="language">
-              <button>語言選擇</button>
+              <button type="button">語言選擇</button>
               <ul>
                 <li><a href="#">繁體中文</a></li>
                 <li><a href="#">简体中文</a></li>
@@ -157,20 +157,20 @@
       </header>
       <!-- header End -->
       <!-- main Start -->
-      <div id="center" class="main innerPage">
+      <main id="center" class="main innerPage">
         <!-- 內頁新增一個classname-->
         <a class="accessKey" href="#aC" id="aC" accesskey="C" title="主要內容區">:::</a>
         <div class="container">
           <!-- 主要內容區 -->
           <div class="centerBlock">
             <!-- breadcrumb路徑 -->
-            <div class="breadcrumb">
+            <nav aria-label="Breadcrumb" class="breadcrumb">
               <ul>
                 <li><a href="#">首頁</a></li>
                 <li><a href="#">節點</a></li>
-                <li>節點</li>
+                <li aria-current="page">節點</li>
               </ul>
-            </div>
+            </nav>
             <!-- h2節點 -->
             <h2 class="title">頁籤</h2>
             <!-- function功能區塊 -->
@@ -183,79 +183,110 @@
             </div>
             <section>
               <div class="tabSet">
+                <!-- 頁籤的上一層父物件要加 role="tablist" -->
                 <div class="tabItems">
-                  <button type="button" class="item">頁籤A</button>
-                  <button type="button" class="item">頁籤B</button>
-                  <button type="button" class="item">頁籤C</button>
-                  <button type="button" class="item">頁籤D</button>
+                  <button type="button" class="active">頁籤項ㄧ</button>
+                  <button type="button">頁籤項二</button>
+                  <button type="button">頁籤項三</button>
+                  <button type="button">頁籤項四</button>
                 </div>
                 <div class="tabContentGroup">
-                  <div class="tabContent" title="頁籤A內容">
-                    <div>頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容</div>
-                    <p><a href="#">頁籤項目一的內容1-1</a></p>
-                    <p><a href="#">頁籤項目一的內容1-2</a></p>
-                    <p><a href="#">頁籤項目一的內容1-3</a></p>
+                  <!-- 頁籤內容要加 role="tabpanel" -->
+                  <div class="tabContent" role="tabpanel">
+                    <div class="newsList">
+                      <ul>
+                        <li>
+                          <a href="">使用到的ARIA:</a><br />
+                          <code>role="tablist"</code>, <code>role="tab"</code>, <code>role="tabpanel"</code>, <code>aria-selected="<i>true/false</i>"</code>, <code>aria-label="<i>TEXT</i>"</code>, <code>aria-controls="<i>ID</i>"</code>
+                        </li>
+                        <li>
+                          <a href="#">處理頁籤項</a>
+                          <ol>
+                            <li>為每個作為頁籤項的<code>&lt;button&gt;</code>加上<code>role="tab"</code>，其上一層父元件加<code>role="tablist"</code></li>
+                            <li>選到的頁籤項加<code>aria-selected="true"</code>，未選到的頁籤項加<code>aria-selected="false"</code></li>
+                          </ol>
+                        </li>
+                        <li>
+                          <a href="#">處理頁籤內容區塊</a>
+                          <ol>
+                            <li>為每個作為頁籤內容的容器元件，通常是<code>&lt;div&gt;</code>，加上<code>role="tabpanel"</code></li>
+                            <li>頁籤內容區塊加<code>aria-label="<i>TEXT</i>"</code>，<i>TEXT</i> 帶入對應的頁籤項的文字</li>
+                          </ol>
+                        </li>
+                        <li>
+                          <a href="#">讓頁籤項與頁籤內容產生關連</a>
+                          <ol>
+                            <li>頁籤內容區塊加<code>id="<i>ID</i>"</code>，對應的頁籤項加<code>aria-controls="<i>ID</i>"</code></li>
+                            <li>例如，第一個頁籤項<code>aria-controls="tabpanel-1"</code>，其控制的內容<code>id="tabpanel-1"</code></li>
+                          </ol>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                  <div class="tabContent" title="頁籤B內容">
-                    <div>頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容</div>
-                    <p><a href="#">頁籤項目二的內容2-1</a></p>
-                    <p><a href="#">頁籤項目二的內容2-2</a></p>
-                    <p><a href="#">頁籤項目二的內容2-3</a></p>
-                    <div><a href="#">more</a></div>
+                  <div class="tabContent" role="tabpanel">
+                    <div class="newsList">
+                      <ul>
+                        <li>
+                          <a href="#">頁籤二內容</a>
+                        </li>
+                        <li>
+                          <a href="#">人運部界政那我金後北製？差藥當兩；面下推的從不票她走子文內另來一得</a>
+                        </li>
+                        <li>
+                          <a href="#">機子年安才生家更前陽象望土福開人道高投了初幾的我辦量部念地中是基</a>
+                        </li>
+                        <li>
+                          <a href="#">只利她遊是態遠他大久呢來皮研，來三了裡後半物國檢。</a>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                  <div class="tabContent" title="頁籤C內容">
-                    <div>頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容</div>
-                    <p>＊＊＊這個頁籤內容沒有 a 或其他 focusable 元件</p>
+                  <div class="tabContent" role="tabpanel">
+                    <div class="newsList">
+                      <ul>
+                        <li></li>
+                        <li>
+                          <a href="#">頁籤三內容</a>
+                        </li>
+                        <li>
+                          <a href="#">林人還是答以學領進保後錢愛而營，母石時以是養人年！</a>
+                        </li>
+                        <li>
+                          <a href="#">獲親應歌治前方相分之被參大治打地國許聲引會賣試萬只只業臺做不什北反照人機止了造人企！</a>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                  <div class="tabContent" title="頁籤D內容">
-                    <div>頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容</div>
-                    <p><a href="#">頁籤項目四的內容4-1</a></p>
-                    <p><a href="#">頁籤項目四的內容4-2</a></p>
+                  <div class="tabContent" role="tabpanel">
+                    <div class="newsList">
+                      <ul>
+                        <li>
+                          <a href="#">頁籤四內容</a>
+                        </li>
+                        <li>
+                          <a href="#">天一己有門起下模大且只身民家三歌先媽斯率高觀我張高看經。</a>
+                        </li>
+                        <li>
+                          <a href="#">上總簡能主意無百過可們的不來。</a>
+                        </li>
+                        <li>
+                          <a href="#">早進立研最題，滿微升我以我麗什綠是手時國聽感他球明定</a>
+                        </li>
+                        <li>
+                          <a href="#">步第完出著興就年題樣程用是著則分除到手人件些策不制爭人。 </a>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="tabSet">
-                <div class="tabItems">
-                  <button class="item">頁籤A</button>
-                  <button class="item">頁籤B</button>
-                  <button class="item">頁籤C</button>
-                  <button class="item">頁籤D</button>
-                  <button class="item">頁籤E</button>
-                </div>
-                <div class="tabContentGroup">
-                  <div class="tabContent" title="頁籤A內容">
-                    <div>頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容</div>
-                    <p><a href="#">頁籤項目一的內容1-1</a></p>
-                    <p><a href="#">頁籤項目一的內容1-2</a></p>
-                    <p><a href="#">頁籤項目一的內容1-3</a></p>
-                  </div>
-                  <div class="tabContent" title="頁籤B內容">
-                    <div>頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容</div>
-                    <p><a href="#">頁籤項目二的內容2-1</a></p>
-                    <p><a href="#">頁籤項目二的內容2-2</a></p>
-                    <p><a href="#">頁籤項目二的內容2-3</a></p>
-                    <div><a href="#">more</a></div>
-                  </div>
-                  <div class="tabContent" title="頁籤C內容">
-                    <div>頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容</div>
-                    <p>＊＊＊這個頁籤內容沒有 a 或其他 focusable 元件</p>
-                  </div>
-                  <div class="tabContent" title="頁籤D內容">
-                    <div>頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容</div>
-                    <p><a href="#">頁籤項目四的內容4-1</a></p>
-                    <p><a href="#">頁籤項目四的內容4-2</a></p>
-                  </div>
-                  <div class="tabContent" title="頁籤E內容">
-                    <div>頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容頁籤內容</div>
-                    <p><a href="#">頁籤項目五的內容5-1</a></p>
-                    <p><a href="#">頁籤項目五的內容5-2</a></p>
-                  </div>
-                </div>
-              </div>
+
+              <p>＊此範例沒有處理一個頁面多組頁籤的情況，如有多組頁籤，要注意頁籤內容元件的<code>id</code>值不可重複</p>
+              <p>＊ARIA 屬性設定參考 <a href="https://www.w3.org/WAI/ARIA/apg/example-index/tabs/tabs-manual.html" target="_blank">https://www.w3.org/WAI/ARIA/apg/example-index/tabs/tabs-manual.html</a></p>
             </section>
           </div>
         </div>
-      </div>
+      </main>
       <!-- fatFooter Start -->
       <section class="fatFooter">
         <div class="container">

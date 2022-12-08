@@ -36,9 +36,9 @@
             </div>
             <!-- fontSize -->
             <div class="fontSize">
-              <span>字型大小：</span>
+              <span id="font-size-label">字型大小：</span>
               <!-- 英文用<span>font-size：</span> -->
-              <ul>
+              <ul aria-labelledby="font-size-label">
                 <li><a role="button" href="#" class="small">小</a></li>
                 <li><a role="button" href="#" class="medium">中</a></li>
                 <li><a role="button" href="#" class="large">大</a></li>
@@ -46,7 +46,7 @@
             </div>
             <!-- language -->
             <div class="language">
-              <button>語言選擇</button>
+              <button type="button">語言選擇</button>
               <ul>
                 <li><a href="#">繁體中文</a></li>
                 <li><a href="#">简体中文</a></li>
@@ -224,7 +224,7 @@
       </header>
       <!-- header End -->
       <!-- main Start -->
-      <div id="center" class="main">
+      <main id="center" class="main">
         <a class="accessKey" href="#aC" id="aC" accesskey="C" title="主要內容區">:::</a>
         <!-- 任何一個section下一層都要包下一層都要包div container作對齊 -->
         <!-- //// class 都可以隨意命名 !!! ///// -->
@@ -325,7 +325,7 @@
             <div class="col">5欄</div>
           </div>
         </section>
-      </div>
+      </main>
       <!-- fatFooter Start -->
       <section class="fatFooter">
         <div class="container">

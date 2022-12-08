@@ -52,7 +52,7 @@ table {
 }
 .tableList {
   @include screen('xsMobile') {
-    background-color: transparent !important; //Force table to not be like tables anymore
+    background-color: transparent; //Force table to not be like tables anymore
     thead,
     tbody,
     th,
@@ -71,10 +71,10 @@ table {
     }
     td {
       // Behave  like a "row"
-      border: none !important;
-      border-bottom: 1px solid #eee !important;
+      border: none;
+      border-bottom: 1px solid #eee;
       position: relative;
-      padding-left: 0.5em !important;
+      padding-left: 0.5em;
       padding-top: 2em;
 
       white-space: normal;
@@ -101,7 +101,7 @@ table {
   @include screen('mobile') {
     position: relative;
     width: 100%;
-    overflow: hidden !important;
+    overflow: hidden;
   }
   table {
     @include screen('mobile') {
@@ -132,7 +132,7 @@ table {
       width: 8em;
       white-space: normal;
       @include screen('mobile') {
-        position: absolute !important;
+        position: absolute;
         left: 0;
         top: auto;
       }
@@ -172,7 +172,7 @@ table {
   }
 }
 .scrollTable {
-  min-width: 600px !important;
+  min-width: 600px;
   caption {
     @include srOnly;
   }

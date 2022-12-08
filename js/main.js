@@ -2,6 +2,7 @@
 // -----  nojs 先移除  ----------------------------------------------------
 // -----------------------------------------------------------------------
 
+const windowWidthSmall = 768;
 const _webHtml = document.documentElement;
 _webHtml.classList.remove('no-js');
 
@@ -108,13 +109,13 @@ const slider = (function () {
   return Slider;
 })();
 
-function jsFadeIn(element, speed) {
+function jsFadeIn(element) {
   let val = 0;
   let request;
   element.style.display = 'block';
   requestAnimationFrame(fade);
   function fade() {
-    val += speed || 10;
+    val += 100;
     if (val <= 100) {
       element.style.opacity = val / 100;
       request = requestAnimationFrame(fade);
@@ -124,12 +125,12 @@ function jsFadeIn(element, speed) {
   }
 }
 
-function jsFadeOut(element, speed) {
+function jsFadeOut(element) {
   let val = 100;
   let request;
   requestAnimationFrame(fade);
   function fade() {
-    val -= speed || 5;
+    val -= 5;
     if (val >= 1) {
       element.style.opacity = val / 100;
       request = requestAnimationFrame(fade);
@@ -177,17 +178,31 @@ function jsParents(element, elementCheck) {
   return check.length === 1 ? check[0] : check;
 }
 
+// 亂數數字
+function randomFloor(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+// 亂數英文字
+function randomLetter(max) {
+  var text = '';
+  var letter = 'abcdefghijklmnopqrstuvwxyz';
+
+  for (let i = 0; i < max; i++) text += letter.charAt(Math.floor(Math.random() * letter.length));
+  return text;
+}
 // -----------------------------------------------------------------------
 // -----  MENU初始化 ------------------------------------------------------
 // -----------------------------------------------------------------------
-
 function menu() {
   // --- menu初始化 新增側欄選單
   const body = document.querySelector('body');
   const sidebar = document.createElement('aside');
   sidebar.className = 'sidebar';
-  sidebar.style = ';opacity:0';
-  sidebar.innerHTML = '<div class="mobileArea"><button type="button" class="sidebarClose">關閉</button></div><div class="menuOverlay"></div>';
+  sidebar.style = 'opacity:0';
+
+  body.innerHTML += `<div class="menuOverlay"></div>`;
+  sidebar.innerHTML = '<div class="mobileArea"><button type="button" class="sidebarClose">關閉</button></div>';
   body.prepend(sidebar);
 
   const mainMenu = document.querySelector('.mainMenu');
@@ -270,27 +285,28 @@ function topNav() {
 
 function mobileSearch(obj) {
   let searchOpen = false;
-  const body = document.querySelector('body');
   const searchCtrlBtn = obj.searchCtrlBtn;
   const mobileSearch = document.querySelector('.mobileSearch');
-
-  const searchBg = document.createElement('div');
-  searchBg.className = 'searchBg';
-  body.prepend(searchBg);
+  const menuOverlay = document.querySelector('.menuOverlay');
 
   searchCtrlBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    mobileSearch.classList.toggle('active');
-    searchBg.classList.toggle('active');
-    searchOpen = true;
     // --- 點擊搜尋區以外的區塊
     // --- 如果點在外面 則 searchMode 狀態改為false
-  });
-  searchBg.addEventListener('click', (e) => {
-    if (searchOpen) {
+    if (!searchOpen) {
+      mobileSearch.classList.add('active');
+      jsFadeIn(menuOverlay);
+      menuOverlay.style.zIndex = `90`;
+      searchOpen = true;
+    } else {
       mobileSearch.classList.remove('active');
-      searchBg.classList.remove('active');
+      jsFadeOut(menuOverlay);
+      menuOverlay.style.zIndex = `99`;
+      searchOpen = false;
     }
+  });
+  menuOverlay.addEventListener('click', (e) => {
+    mobileSearch.classList.remove('active');
   });
 
   window.addEventListener('resize', (e) => {
@@ -298,6 +314,10 @@ function mobileSearch(obj) {
       searchOpen = false;
       mobileSearch !== null ? mobileSearch.classList.remove('active') : '';
     }, 50);
+  });
+
+  menuOverlay.addEventListener('click', (e) => {
+    jsFadeOut(menuOverlay);
   });
 }
 mobileSearch({
@@ -310,14 +330,13 @@ mobileSearch({
 
 function mainMenuSetup() {
   const body = document.querySelector('body');
-  const windowSmall = 768;
   const sidebar = document.querySelector('.sidebar');
   const mobileSearch = document.querySelector('.mobileSearch');
   const sidebarClose = document.querySelector('.sidebarClose');
   const sidebarCtrlBtn = document.querySelector('.sidebarCtrlBtn');
   const menuOverlay = document.querySelector('.menuOverlay');
   const mobileArea = document.querySelector('.mobileArea');
-  const mobileAreaOut = mobileArea.offsetWidth;
+  const sidebarOut = sidebar.offsetWidth;
   let windowWidth = window.outerWidth;
   let searchMode = false;
 
@@ -329,109 +348,95 @@ function mainMenuSetup() {
   const asideMenuLi = asideMenu.querySelectorAll('li');
   const asideMenuUl = asideMenu.querySelector('ul');
   const asideMenuNextUl = asideMenuUl.querySelectorAll('ul');
-  const asideMenuNextUl1 = [];
-  const asideMenuNextUl2 = [];
-  const asideMenuNextUl3 = [];
 
   // ---  判斷PC版選單超過畫面時左邊增加.leftSlider
   function checkUlWidth() {
     // --- 計算
     let menuLeft = document.querySelector('.header .container').offsetLeft;
     menuLi.forEach((v, i) => {
-      // let menuLeft = v.getBoundingClientRect().left;
-      // console.log(menuLeft);
       let menuLiLeft = v.offsetLeft;
       let leftWidth = v.offsetWidth * v.querySelectorAll('ul').length;
       menuLiLeft + leftWidth + menuLeft > windowWidth ? v.classList.add('leftSlider') : v.classList.remove('leftSlider');
     });
   }
 
-  // --- 手機版抓取ul設定各層的class
-  [...asideMenuUl.children]
-    .filter((child) => {
-      return child.classList.contains('hasChild');
-    })
-    .forEach((i) => {
-      asideMenuNextUl1.push(i.querySelector('ul'));
-    });
-
-  asideMenuNextUl1.forEach((s) => {
-    [...s.children]
-      .filter((child) => {
-        return child.classList.contains('hasChild');
-      })
-      .forEach((i) => {
-        asideMenuNextUl2.push(i.querySelector('ul'));
-      });
-  });
-
-  asideMenuNextUl2.forEach((s) => {
-    [...s.children]
-      .filter((child) => {
-        return child.classList.contains('hasChild');
-      })
-      .forEach((i) => {
-        asideMenuNextUl3.push(i.querySelector('ul'));
-      });
-  });
-
-  // --- 設定所有UL的高度，有高度才會有縮起來得效果，最多四層
-  sidebar.style = 'display:block;opacity:0';
-  mobileArea.style = `transform: translateX(${mobileAreaOut * -1}px)`;
-  asideMenuUl.classList.add('firstLv');
-  asideMenuNextUl.forEach((i) => {
-    i.style.position = 'absolute';
-  });
-  asideMenuNextUl1.forEach((i) => {
-    i.classList.add('secondLv');
-    i.dataset.secondHeight = i.offsetHeight;
-    i.style = 'height:0';
-  });
-  asideMenuNextUl2.forEach((i) => {
-    i.classList.add('thirdLv');
-    i.dataset.thirdHeight = i.offsetHeight;
-    i.style = 'height:0';
-  });
-  asideMenuNextUl3.forEach((i) => {
-    i.classList.add('fourthLv');
-    i.dataset.fourthHeight = i.offsetHeight;
-    i.style = 'height:0';
-  });
-  sidebar.style = 'display:none;opacity:1;';
+  sidebar.style = `transform: translateX(${sidebarOut * -1}px)`;
 
   // --- 手機版選單開合功能
-  asideMenu.querySelectorAll('.hasChild').forEach((i) => {
-    i.addEventListener('click', (e) => {
+  asideMenu.querySelectorAll('.hasChild > a').forEach((item, index) => {
+    let content = item.parentElement.querySelector('ul');
+    item.addEventListener('click', (e) => {
       e.preventDefault();
-      const siblings = [...i.parentNode.children].filter((child) => {
-        return child !== i;
-      });
-      const content = i.querySelector('ul');
-      const secondHeight = content.dataset.secondHeight || 0;
-      const thirdHeight = content.dataset.thirdHeight || 0;
-      const fourthHeight = content.dataset.fourthHeight || 0;
-      if (!i.classList.contains('active')) {
-        i.classList.add('active');
-        if (i.parentNode.classList.contains('firstLv')) {
-          content.style.height = `${secondHeight}px`;
-        } else if (i.parentNode.classList.contains('secondLv')) {
-          i.parentNode.style.height = `${Number(i.parentNode.dataset.secondHeight) + Number(thirdHeight)}px`;
-          content.style.height = `${thirdHeight}px`;
-        } else if (i.parentNode.classList.contains('thirdLv')) {
-          jsParents(i, 'secondLv').style.height = `${Number(jsParents(i, 'secondLv').dataset.secondHeight) + Number(i.parentNode.dataset.thirdHeight) + Number(fourthHeight)}px`;
-          jsParents(i, 'secondLv').style.height = `${Number(jsParents(i, 'secondLv').dataset.secondHeight) + Number(i.parentNode.dataset.thirdHeight) + Number(fourthHeight)}px`;
-          i.parentNode.style.height = `${Number(i.parentNode.dataset.thirdHeight) + Number(fourthHeight)}px`;
-          content.style.height = `${fourthHeight}px`;
-        }
-      }
-      siblings.forEach((x) => {
-        x.classList.remove('active');
-        x.querySelectorAll('ul').forEach((s) => {
-          s.style.height = '0';
-          s.parentNode.classList.remove('active');
-        });
-      });
+      e.stopPropagation();
+      toggleAccordion(item, index, content);
+      return;
     });
+
+    item.addEventListener('keydown', (e) => {
+      // --- 頁籤第幾個按鈕觸發時
+      e.stopPropagation();
+      if (e.which === 9 && !e.shiftKey) {
+        toggleAccordion(item, index, content);
+      } else if (e.which === 9 && e.shiftKey) {
+        toggleAccordion(item, index, content);
+      }
+    });
+
+    function toggleAccordion(item, index, content) {
+      let display = window.getComputedStyle(content).display;
+      content.style.display = display;
+
+      if (display === 'none') {
+        display = 'block';
+        content.style.display = display;
+        let height = content.offsetHeight;
+        content.style.height = 0;
+        content.offsetHeight;
+        content.style.transitionProperty = 'height';
+        content.style.transitionDuration = `300ms`;
+        content.style.height = height + 'px';
+
+        setTimeout(() => {
+          content.style.removeProperty('height');
+          content.style.removeProperty('transition-duration');
+          content.style.removeProperty('transition-property');
+        }, 300);
+      } else {
+        content.style.height = `${content.offsetHeight}px`;
+        content.style.transitionProperty = 'height';
+        content.style.transitionDuration = `300ms`;
+        content.offsetHeight;
+        content.style.height = 0;
+        setTimeout(() => {
+          content.style.display = 'none';
+          content.style.removeProperty('height');
+          content.style.removeProperty('transition-duration');
+          content.style.removeProperty('transition-property');
+        }, 300);
+      }
+
+      const siblings = Array.prototype.filter.call(item.parentElement.parentElement.children, (child) => {
+        return child !== item.parentElement;
+      });
+      siblings.forEach((v) => {
+        if (v.querySelector('ul') !== null) {
+          let con = v.querySelector('ul');
+          if (display !== 'none') {
+            con.style.height = `${con.offsetHeight}px`;
+            con.style.transitionProperty = 'height';
+            con.style.transitionDuration = `300ms`;
+            con.offsetHeight;
+            con.style.height = 0;
+            setTimeout(() => {
+              con.style.display = 'none';
+              con.style.removeProperty('height');
+              con.style.removeProperty('transition-duration');
+              con.style.removeProperty('transition-property');
+            }, 300);
+          }
+        }
+      });
+    }
   });
 
   // --- 點擊選單按鈕 執行 展開側邊選單函式
@@ -479,7 +484,7 @@ function mainMenuSetup() {
 
   // --- 切換 PC/Mobile 選單
   function switchMenu() {
-    if (windowWidth > windowSmall) {
+    if (windowWidth > windowWidthSmall) {
       pcSet();
       fontSize();
     } else {
@@ -504,17 +509,17 @@ function mainMenuSetup() {
   // --- 展開側邊選單函式
   function showSidebar() {
     sidebar.style = 'display:block;opacity:1';
-    mobileArea.style.display = 'block';
+    sidebar.style.display = 'block';
 
     requestAnimationFrame(() => {
-      mobileArea.style = `transform: translateX(0px);`;
+      sidebar.style = `transform: translateX(0px);`;
     });
     setTimeout(() => {
       mobileArea.classList.add('open');
     }, 50);
 
     body.classList.add('noscroll');
-    menuOverlay.classList.add('active');
+    // menuOverlay.classList.add('active');
     // mobileSearch !== null ? (mobileSearch.style.display = 'none') : '';
     searchMode = false;
     jsFadeIn(menuOverlay);
@@ -523,7 +528,7 @@ function mainMenuSetup() {
   // --- 隱藏側邊選單函式
   function hideSidebar() {
     window.requestAnimationFrame(() => {
-      mobileArea.style = `transform: translateX(${mobileAreaOut * -1}px);`;
+      sidebar.style = `transform: translateX(${sidebarOut * -1}px);`;
     });
     setTimeout(() => {
       sidebar.style.display = 'none';
@@ -531,9 +536,8 @@ function mainMenuSetup() {
 
     mobileArea.classList.remove('open');
     body.classList.remove('noscroll');
-    menuOverlay.classList.remove('active');
     asideMenuNextUl.forEach((i) => {
-      i.style.height = '0px';
+      i.style.display = 'none';
     });
 
     asideMenuLi.forEach((i) => {
@@ -548,7 +552,6 @@ mainMenuSetup();
 // -----------------------------------------------------------------------
 
 function navSticky() {
-  const windowWidthSmall = 768;
   const mainMenu = document.querySelector('.mainMenu');
   const main = document.querySelector('.main');
   let windowWidth = window.outerWidth;
@@ -733,7 +736,8 @@ function tabFunction(elem) {
   const tabSet = document.querySelectorAll(elem); // --- tab名稱
 
   tabSet.forEach((a) => {
-    const tabBtn = a.querySelectorAll('.tabItems button'); // --- 頁籤按鈕
+    a.setAttribute('role', 'tablist');
+    const tabBtn = a.querySelectorAll('.tabItems button') || null; // --- 頁籤按鈕
     const tabBtnLength = tabBtn.length; // --- 頁籤按鈕數量
     const tabContent = a.querySelectorAll('.tabContentGroup .tabContent'); // --- 頁籤內容
     tabBtn[0].classList.add('active');
@@ -756,6 +760,14 @@ function tabFunction(elem) {
       if (thisPrevItem !== undefined) {
         prevItemLastA = prevItemAllA[prevItemAllA.length - 1]; // --- 前一個頁籤的最後一個a或是input
       }
+      const random = `tab_${randomLetter(4)}${randomFloor(0, 9999)}`;
+      v.setAttribute('aria-controls', random);
+      v.setAttribute('role', 'tab');
+      tabContent[i].setAttribute('id', random);
+      const text = v.innerHTML;
+      tabContent[i].setAttribute('aria-label', text);
+      v.setAttribute('aria-selected', 'false');
+      tabBtn[0].setAttribute('aria-selected', 'true');
 
       // --- thisBtn頁籤觸發focus內容裡的第一個a
       thisBtn.addEventListener('keydown', (e) => {
@@ -818,8 +830,10 @@ function tabFunction(elem) {
     if (tabBtn !== undefined) {
       tabBtn.forEach((i) => {
         i.classList.remove(activeClass);
+        i.setAttribute('aria-selected', 'false');
       });
       tabBtn[now].classList.add(activeClass);
+      tabBtn[now].setAttribute('aria-selected', 'true');
       // --- 頁籤按鈕增加指定class(active)，其他頁籤移除指定class
 
       tabContent.forEach((i) => {
@@ -1468,30 +1482,35 @@ function accordionSlider(obj) {
   const { open, close } = obj.info;
   const duration = obj.duration || 300;
   list.forEach((item, index) => {
+    let random = `accordion_${randomLetter(4)}${randomFloor(0, 9999)}`;
     let contentA = item.nextElementSibling.querySelectorAll('[href],input,button');
+    let content = item.parentElement.querySelector('.accordionContent');
     let contentFirstA = contentA[0];
     item.innerHTML += `<span class="accordionBtn">${open}</span>`;
     item.innerHTML += `<span class="accordionArrow"></span>`;
+    item.setAttribute('aria-expanded', 'false');
+    item.setAttribute('aria-controls', random);
+    content.setAttribute('id', random);
     item.addEventListener('click', function () {
-      toggleAccordion(item);
+      toggleAccordion(item, index, content);
     });
     //無障礙
     item.addEventListener('keydown', (e) => {
       if (e.which === 9 && !e.shiftKey) {
         if (!item.parentElement.classList.contains('active')) {
-          toggleAccordion(item);
+          toggleAccordion(item, index, content);
         }
       } else if (e.which === 9 && e.shiftKey) {
         if (autoSlider) {
           e.preventDefault();
-          toggleAccordion(item);
+          toggleAccordion(item, index, content);
           if (contentA.length) {
             contentA[contentA.length - 1].focus();
           } else {
             list[index - 1].focus();
           }
         } else {
-          toggleAccordion(item);
+          toggleAccordion(item, index, content);
         }
       }
     });
@@ -1504,14 +1523,15 @@ function accordionSlider(obj) {
     }
   });
 
-  function toggleAccordion(item) {
-    let content = item.parentElement.querySelector('.accordionContent');
+  function toggleAccordion(item, index, content) {
     let display = window.getComputedStyle(content).display;
     item.parentElement.classList.add('active');
     content.style.display = display;
+
     if (display === 'none') {
       display = 'block';
       content.style.display = display;
+      item.setAttribute('aria-expanded', 'true');
       let height = content.offsetHeight;
       content.style.height = 0;
       content.offsetHeight;
@@ -1525,6 +1545,7 @@ function accordionSlider(obj) {
         });
         siblings.forEach((v) => {
           v.classList.remove('active');
+          item.setAttribute('aria-expanded', 'false');
           let siblingsContent = v.querySelector('.accordionContent');
           siblingsContent.style.height = `${siblingsContent.offsetHeight}px`;
           siblingsContent.style.transitionProperty = 'height';
@@ -1546,6 +1567,7 @@ function accordionSlider(obj) {
         content.style.removeProperty('transition-property');
       }, duration);
     } else {
+      item.setAttribute('aria-expanded', 'false');
       content.style.height = `${content.offsetHeight}px`;
       content.style.transitionProperty = 'height';
       content.style.transitionDuration = `${duration}ms`;
@@ -1603,7 +1625,9 @@ swiperArrows({
       nextText: '下一筆',
       prevText: '上一筆',
     },
+    //...由此新增其他語系
   ],
+  //預設語系
   default: {
     nextText: 'next',
     prevText: 'previous',

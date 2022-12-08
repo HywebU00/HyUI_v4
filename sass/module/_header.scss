@@ -1,10 +1,12 @@
 // mobile btn for extend
-%mobileCtrlBtn {
-  width: 60px !important;
-  height: 60px !important;
+// menu
+
+@mixin mobileCtrlBtn {
+  width: 60px;
+  height: 60px;
   position: absolute;
   top: 0px;
-  display: block;
+  display: none;
   font-size: 0em;
   padding: 15px;
   margin: 0;
@@ -15,14 +17,14 @@
   box-shadow: none;
   box-sizing: border-box;
   @include screen('mobile') {
-    display: block !important;
+    display: block;
   }
 }
-// menu
+
 .sidebarCtrlBtn {
   display: none;
   left: 0px;
-  @extend %mobileCtrlBtn;
+  @include mobileCtrlBtn;
   span {
     position: absolute;
     background: $colorPrimary;
@@ -46,7 +48,7 @@
   display: none;
   right: 0px;
   font-size: 0em;
-  @extend %mobileCtrlBtn;
+  @include mobileCtrlBtn;
   &:before {
     width: 40px;
     height: 40px;
@@ -205,7 +207,7 @@
       margin: 0;
       &:hover,
       &:focus-visible {
-        box-shadow: none !important;
+        box-shadow: none;
       }
     }
   }
@@ -221,7 +223,7 @@
       margin: 0;
       &:hover,
       &:focus-visible {
-        box-shadow: none !important;
+        box-shadow: none;
       }
     }
   }
@@ -261,8 +263,8 @@
   }
 }
 .mobileSearch {
-  width: 100% !important;
-  max-width: 100% !important;
+  width: 100%;
+  max-width: 100%;
   min-width: auto;
   padding: 0.8em 0.3em;
   display: block;
@@ -310,7 +312,7 @@
       max-width: 25%;
       &:hover,
       &:focus-visible {
-        box-shadow: none !important;
+        box-shadow: none;
       }
     }
   }
@@ -321,8 +323,8 @@
     box-sizing: border-box;
     text-align: right;
     .btn {
-      width: auto !important;
-      padding: 0.2em 0.5em !important;
+      width: auto;
+      padding: 0.2em 0.5em;
       margin: 0;
       background: transparent;
       font-size: 0.875rem;
@@ -359,38 +361,3 @@
     }
   }
 }
-
-// header fix
-// .header.fixed {
-//     position: fixed;
-//     width: 100%;
-//     right: 0;
-//     top: 0;
-//     box-shadow: rgba(0, 0, 0, 0.5) 0 0 25px;
-//     background: rgba(0, 0, 0, 0.75);
-//     z-index: 999;
-//     &:before {
-//         background: rgba(0, 0, 0, 0.35);
-//     }
-//     @include screen('mobile') {
-//         background: #fff;
-//     }
-//     .menu {
-//         > ul {
-//             > li {
-//                 > a {
-//                     color: #fff;
-//                 }
-//             }
-//         }
-//     }
-//     .megamenu {
-//         > ul {
-//             > li {
-//                 > a {
-//                     color: #fff;
-//                 }
-//             }
-//         }
-//     }
-// }

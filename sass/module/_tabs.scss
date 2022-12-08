@@ -4,13 +4,14 @@
     display: flex;
     flex-flow: row nowrap;
     margin: 0 auto;
-    .item {
+    button {
       flex: 1 1 auto;
       font-size: 1em;
       height: 2.8em;
       text-align: center;
       border: none;
       margin: 1px;
+      border-radius: 0;
       box-shadow: none;
       background: #ddd;
       cursor: pointer;
@@ -26,7 +27,7 @@
       }
       &.active {
         cursor: default;
-        background: #379;
+        background: $colorPrimary;
         color: #fff;
       }
     }

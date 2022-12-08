@@ -36,9 +36,9 @@
             </div>
             <!-- fontSize -->
             <div class="fontSize">
-              <span>字型大小：</span>
+              <span id="font-size-label">字型大小：</span>
               <!-- 英文用<span>font-size：</span> -->
-              <ul>
+              <ul aria-labelledby="font-size-label">
                 <li><a role="button" href="#" class="small">小</a></li>
                 <li><a role="button" href="#" class="medium">中</a></li>
                 <li><a role="button" href="#" class="large">大</a></li>
@@ -46,7 +46,7 @@
             </div>
             <!-- language -->
             <div class="language">
-              <button>語言選擇</button>
+              <button type="button">語言選擇</button>
               <ul>
                 <li><a href="#">繁體中文</a></li>
                 <li><a href="#">简体中文</a></li>
@@ -155,7 +155,7 @@
       </header>
       <!-- header End -->
       <!-- main Start -->
-      <div id="center" class="main innerPage">
+      <main id="center" class="main innerPage">
         <!-- 內頁新增一個classname-->
         <a class="accessKey" href="#aC" id="aC" accesskey="C" title="主要內容區">:::</a>
         <div class="container">
@@ -196,20 +196,20 @@
           <!-- 主要內容區 -->
           <div class="centerBlock">
             <!-- breadcrumb路徑 -->
-            <div class="breadcrumb">
+            <nav aria-label="Breadcrumb" class="breadcrumb">
               <ul>
                 <li><a href="#">首頁</a></li>
                 <li><a href="#">節點</a></li>
-                <li>節點</li>
+                <li aria-current="page">節點</li>
               </ul>
-            </div>
+            </nav>
             <h2 class="title">要套文章標題</h2>
             <!-- functionPanel -->
             <div class="functionPanel">
               <div class="publishTime"><span>發布日期：</span><time>2019-01-01</time></div>
               <!-- 文字大小 -->
               <div class="fontSize">
-                <span>字型大小：</span>
+                <span id="font-size-label">字型大小：</span>
                 <!-- 英文用<span>font-size：</span> -->
                 <ul>
                   <li><a role="button" href="#" class="small">小</a></li>
@@ -380,88 +380,52 @@
                 <li>處來在山工國生即工球一，易心個長什去實用當們公有也候</li>
               </ol>
               <h3>表格樣式</h3>
-              <table>
-                <!-- 無障礙 caption 標題預設隱藏 -->
-                <caption>
-                  無障礙表格標題
-                  <!-- 若表格內容複雜，可以補充摘要(summary)來加強說明表格內容，但 內容不要與標題重複 -->
-                  <!-- <span class="summary">表格摘要</span> -->
-                </caption>
-                <tr>
-                  <th scope="col">th 1</th>
-                  <th scope="col">th 2</th>
-                  <th scope="col">th 3</th>
-                  <th scope="col">th 4</th>
-                  <th scope="col">th 5</th>
-                  <th scope="col">th 6</th>
-                </tr>
-                <tr>
-                  <th scope="row">th A</th>
-                  <td>td 資料</td>
-                  <td>td 資料</td>
-                  <td>td 資料</td>
-                  <td>td 資料</td>
-                  <td>td 資料</td>
-                </tr>
-                <tr>
-                  <th scope="row">th B</th>
-                  <td>td 資料</td>
-                  <td>td 資料</td>
-                  <td>td 資料</td>
-                  <td>td 資料</td>
-                  <td>td 資料</td>
-                </tr>
-                <tr>
-                  <th scope="row">th C</th>
-                  <td>td 資料</td>
-                  <td>td 資料</td>
-                  <td>td 資料</td>
-                  <td>td 資料</td>
-                  <td>td 資料</td>
-                </tr>
-              </table>
-              <!-- cpSlider+slick_lightBox -->
-              <!-- <div class="lightBoxSlider">
-                            <h3>燈箱照片</h3>
-                            <div class="cpSlider">
-                                <div class="imgContainer">
-                                    <a href="images/demo/06.jpg" data-caption="第1張圖說">
-                                        <img data-lazy="images/demo/06.jpg" alt="">
-                                        <noscript><img src="images/demo/06.jpg" alt=""></noscript>
-                                        <span class="caption">第1張圖說</span>
-                                    </a>
-                                </div>
-                                <div class="imgContainer">
-                                    <a href="images/demo/07.jpg" data-caption="第2張圖說">
-                                        <img data-lazy="images/demo/07.jpg" alt="">
-                                        <noscript><img src="images/demo/07.jpg" alt=""></noscript>
-                                        <span class="caption">第2張圖說</span>
-                                    </a>
-                                </div>
-                                <div class="imgContainer">
-                                    <a href="images/demo/08.jpg" data-caption="第3張圖說">
-                                        <img data-lazy="images/demo/08.jpg" alt="">
-                                        <noscript><img src="images/demo/08.jpg" alt=""></noscript>
-                                        <span class="caption">第3張圖說</span>
-                                    </a>
-                                </div>
-                                <div class="imgContainer">
-                                    <a href="images/demo/10.jpg" data-caption="第4張圖說">
-                                        <img data-lazy="images/demo/10.jpg" alt="">
-                                        <noscript><img src="images/demo/10.jpg" alt=""></noscript>
-                                        <span class="caption">第4張圖說</span>
-                                    </a>
-                                </div>
-                                <div class="imgContainer">
-                                    <a href="images/demo/12.jpg" data-caption="第5張圖說">
-                                        <img data-lazy="images/demo/12.jpg" alt="">
-                                        <noscript><img src="images/demo/12.jpg" alt=""></noscript>
-                                        <span class="caption">第5張圖說</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div> -->
-              <!-- fanybox cpSlider-->
+              <div class="tableWrapper">
+                <table>
+                  <!-- 無障礙 caption 標題預設隱藏 -->
+                  <caption>
+                    無障礙表格標題
+                    <!-- 若表格內容複雜，可以補充摘要(summary)來加強說明表格內容，但 內容不要與標題重複 -->
+                    <!-- <span class="summary">表格摘要</span> -->
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">th 1</th>
+                      <th scope="col">th 2</th>
+                      <th scope="col">th 3</th>
+                      <th scope="col">th 4</th>
+                      <th scope="col">th 5</th>
+                      <th scope="col">th 6</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">th A</th>
+                      <td>td 資料</td>
+                      <td>td 資料</td>
+                      <td>td 資料</td>
+                      <td>td 資料</td>
+                      <td>td 資料</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">th B</th>
+                      <td>td 資料</td>
+                      <td>td 資料</td>
+                      <td>td 資料</td>
+                      <td>td 資料</td>
+                      <td>td 資料</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">th C</th>
+                      <td>td 資料</td>
+                      <td>td 資料</td>
+                      <td>td 資料</td>
+                      <td>td 資料</td>
+                      <td>td 資料</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
               <div class="cpSlider">
                 <h3>燈箱照片</h3>
                 <div class="swiperBox">
@@ -506,9 +470,9 @@
                     </div>
                   </div>
                   <!-- swiper 左邊箭頭-->
-                  <div class="prevSlider swiperArrow"></div>
+                  <button class="prevSlider swiperArrow"></button>
                   <!-- swiper 右邊箭頭-->
-                  <div class="nextSlider swiperArrow"></div>
+                  <button class="nextSlider swiperArrow"></button>
                   <!-- swiper 點切換-->
                   <div class="swiperDots"></div>
                 </div>
@@ -535,9 +499,9 @@
                     </div>
                   </div>
                   <!-- swiper 往上-->
-                  <div class="marquee-arrow marquee-prev"></div>
+                  <button class="marquee-arrow marquee-prev"></button>
                   <!-- swiper 往下-->
-                  <div class="marquee-arrow marquee-next"></div>
+                  <button class="marquee-arrow marquee-next"></button>
                 </div>
               </div>
               <!-- weblink 外部連結 -->
@@ -627,7 +591,7 @@
             <!-- CP End -->
           </div>
         </div>
-      </div>
+      </main>
       <!-- fatFooter Start -->
       <section class="fatFooter">
         <div class="container">
