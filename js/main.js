@@ -142,6 +142,47 @@ function jsFadeOut(element) {
   }
 }
 
+function jsSlideToggle(elem) {
+  let display = window.getComputedStyle(elem).display;
+  elem.style.display = display;
+
+  if (display === 'none') {
+    display = 'block';
+    elem.style.overflow = 'hidden';
+    elem.style.display = display;
+    let height = elem.offsetHeight;
+    elem.style.height = 0;
+    elem.offsetHeight;
+    elem.style.transitionProperty = 'height';
+    elem.style.transitionDuration = `300ms`;
+    elem.style.height = height + 'px';
+
+    clearTimeout(time2);
+    let time = setTimeout(() => {
+      elem.style.removeProperty('overflow');
+      elem.style.removeProperty('height');
+      elem.style.removeProperty('transition-duration');
+      elem.style.removeProperty('transition-property');
+    }, 300);
+  } else {
+    elem.style.overflow = 'hidden';
+    elem.style.height = `${elem.offsetHeight}px`;
+    elem.style.transitionProperty = 'height';
+    elem.style.transitionDuration = `300ms`;
+    elem.offsetHeight;
+    elem.style.height = 0;
+
+    clearTimeout(time);
+    let time2 = setTimeout(() => {
+      elem.style.display = 'none';
+      elem.style.removeProperty('overflow');
+      elem.style.removeProperty('height');
+      elem.style.removeProperty('transition-duration');
+      elem.style.removeProperty('transition-property');
+    }, 300);
+  }
+}
+
 function jsAddClass(element, className) {
   if (element.classList) element.classList.add(className);
   else if (!hasClass(element, className)) {
@@ -243,14 +284,7 @@ function menu() {
     function addTabIndex(i) {
       i.setAttribute('tabindex', '-1');
     }
-    cloneSearch.querySelector('input[type="text"]').setAttribute('tabindex', '-1');
-    cloneSearch.querySelectorAll('a').forEach((i) => {
-      addTabIndex(i);
-    });
-    cloneSearch.querySelectorAll('button').forEach((i) => {
-      addTabIndex(i);
-    });
-
+    cloneSearch.querySelector('a, button, input[type="text"]').setAttribute('tabindex', '-1');
     body.prepend(cloneSearch);
   }
 }
@@ -312,6 +346,7 @@ function mobileSearch(obj) {
   window.addEventListener('resize', (e) => {
     setTimeout(() => {
       searchOpen = false;
+      menuOverlay.style.display = 'none';
       mobileSearch !== null ? mobileSearch.classList.remove('active') : '';
     }, 50);
   });
@@ -388,6 +423,7 @@ function mainMenuSetup() {
 
       if (display === 'none') {
         display = 'block';
+        content.style.overflow = 'hidden';
         content.style.display = display;
         let height = content.offsetHeight;
         content.style.height = 0;
@@ -397,11 +433,13 @@ function mainMenuSetup() {
         content.style.height = height + 'px';
 
         setTimeout(() => {
+          content.style.removeProperty('overflow');
           content.style.removeProperty('height');
           content.style.removeProperty('transition-duration');
           content.style.removeProperty('transition-property');
         }, 300);
       } else {
+        content.style.overflow = 'hidden';
         content.style.height = `${content.offsetHeight}px`;
         content.style.transitionProperty = 'height';
         content.style.transitionDuration = `300ms`;
@@ -409,6 +447,7 @@ function mainMenuSetup() {
         content.style.height = 0;
         setTimeout(() => {
           content.style.display = 'none';
+          content.style.removeProperty('overflow');
           content.style.removeProperty('height');
           content.style.removeProperty('transition-duration');
           content.style.removeProperty('transition-property');
@@ -444,10 +483,10 @@ function mainMenuSetup() {
     showSidebar();
     e.preventDefault();
     mobileSearch !== null ? mobileSearch.classList.remove('active') : '';
+    menuOverlay.style.zIndex = '99';
   });
 
   menuOverlay.addEventListener('click', (e) => {
-    jsFadeOut(menuOverlay);
     hideSidebar();
   });
   sidebarClose.addEventListener('click', (e) => {
@@ -527,6 +566,7 @@ function mainMenuSetup() {
 
   // --- 隱藏側邊選單函式
   function hideSidebar() {
+    jsFadeOut(menuOverlay);
     window.requestAnimationFrame(() => {
       sidebar.style = `transform: translateX(${sidebarOut * -1}px);`;
     });
@@ -1530,6 +1570,7 @@ function accordionSlider(obj) {
 
     if (display === 'none') {
       display = 'block';
+      content.style.overflow = 'hidden';
       content.style.display = display;
       item.setAttribute('aria-expanded', 'true');
       let height = content.offsetHeight;
@@ -1544,6 +1585,7 @@ function accordionSlider(obj) {
           return child !== item.parentNode;
         });
         siblings.forEach((v) => {
+          siblingsContent.style.overflow = 'hidden';
           v.classList.remove('active');
           item.setAttribute('aria-expanded', 'false');
           let siblingsContent = v.querySelector('.accordionContent');
@@ -1553,8 +1595,9 @@ function accordionSlider(obj) {
           siblingsContent.offsetHeight;
           siblingsContent.style.height = 0;
           v.querySelector('.accordionBtn').innerHTML = `${open}`;
-          window.setTimeout(() => {
+          setTimeout(() => {
             siblingsContent.style.display = 'none';
+            siblingsContent.style.removeProperty('overflow');
             siblingsContent.style.removeProperty('height');
             siblingsContent.style.removeProperty('transition-duration');
             siblingsContent.style.removeProperty('transition-property');
@@ -1562,11 +1605,13 @@ function accordionSlider(obj) {
         });
       }
       setTimeout(() => {
+        content.style.removeProperty('overflow');
         content.style.removeProperty('height');
         content.style.removeProperty('transition-duration');
         content.style.removeProperty('transition-property');
       }, duration);
     } else {
+      content.style.overflow = 'hidden';
       item.setAttribute('aria-expanded', 'false');
       content.style.height = `${content.offsetHeight}px`;
       content.style.transitionProperty = 'height';
@@ -1577,6 +1622,7 @@ function accordionSlider(obj) {
       item.parentElement.classList.remove('active');
       setTimeout(() => {
         content.style.display = 'none';
+        content.style.removeProperty('overflow');
         content.style.removeProperty('height');
         content.style.removeProperty('transition-duration');
         content.style.removeProperty('transition-property');
