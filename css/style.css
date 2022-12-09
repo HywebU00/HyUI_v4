@@ -7132,7 +7132,7 @@ div.function ul li a:focus-visible {
   .hidden {
     display: none;
   }
-  .sidebar {
+  .mobileSidebar {
     position: fixed;
     top: 0;
     left: 0;
@@ -7145,7 +7145,7 @@ div.function ul li a:focus-visible {
     transition: 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
     transform: translateX(-300px);
   }
-  .sidebar .mobileArea {
+  .mobileSidebar .mobileArea {
     width: 300px;
     padding: 3em 0;
     height: 100%;
@@ -7157,60 +7157,60 @@ div.function ul li a:focus-visible {
     box-sizing: border-box;
     transition: 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
   }
-  .sidebar .mobileArea.open .sideMainMenu > ul > li {
+  .mobileSidebar .mobileArea.open .sideMainMenu > ul > li {
     transform: scale(1) translateX(0px);
     opacity: 1;
   }
-  .sidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(1) {
+  .mobileSidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(1) {
     transition-delay: 0.27s;
   }
-  .sidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(2) {
+  .mobileSidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(2) {
     transition-delay: 0.34s;
   }
-  .sidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(3) {
+  .mobileSidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(3) {
     transition-delay: 0.41s;
   }
-  .sidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(4) {
+  .mobileSidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(4) {
     transition-delay: 0.48s;
   }
-  .sidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(5) {
+  .mobileSidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(5) {
     transition-delay: 0.55s;
   }
-  .sidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(6) {
+  .mobileSidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(6) {
     transition-delay: 0.62s;
   }
-  .sidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(7) {
+  .mobileSidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(7) {
     transition-delay: 0.69s;
   }
-  .sidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(8) {
+  .mobileSidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(8) {
     transition-delay: 0.76s;
   }
-  .sidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(9) {
+  .mobileSidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(9) {
     transition-delay: 0.83s;
   }
-  .sidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(10) {
+  .mobileSidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(10) {
     transition-delay: 0.9s;
   }
-  .sidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(11) {
+  .mobileSidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(11) {
     transition-delay: 0.97s;
   }
-  .sidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(12) {
+  .mobileSidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(12) {
     transition-delay: 1.04s;
   }
-  .sidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(13) {
+  .mobileSidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(13) {
     transition-delay: 1.11s;
   }
-  .sidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(14) {
+  .mobileSidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(14) {
     transition-delay: 1.18s;
   }
-  .sidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(15) {
+  .mobileSidebar .mobileArea.open .sideMainMenu > ul > li:nth-child(15) {
     transition-delay: 1.25s;
   }
-  .sidebar .mobileArea .sideMainMenu {
+  .mobileSidebar .mobileArea .sideMainMenu {
     width: 90%;
     margin: 0 auto 1em;
   }
-  .sidebar .mobileArea .sideMainMenu a {
+  .mobileSidebar .mobileArea .sideMainMenu a {
     display: block;
     color: #fff;
     font-size: 0.938em;
@@ -7218,79 +7218,79 @@ div.function ul li a:focus-visible {
     transition: 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
     text-align: left;
   }
-  .sidebar .mobileArea .sideMainMenu > ul > li {
+  .mobileSidebar .mobileArea .sideMainMenu > ul > li {
     transform: scale(1.15) translateX(-30px);
     opacity: 0;
     transition: transform 0.5s cubic-bezier(0.4, 0.01, 0.165, 0.99), opacity 0.6s cubic-bezier(0.4, 0.01, 0.165, 0.99);
   }
-  .sidebar .mobileArea .sideMainMenu > ul > li:nth-child(1) {
+  .mobileSidebar .mobileArea .sideMainMenu > ul > li:nth-child(1) {
     transition-delay: 0.49s;
   }
-  .sidebar .mobileArea .sideMainMenu > ul > li:nth-child(2) {
+  .mobileSidebar .mobileArea .sideMainMenu > ul > li:nth-child(2) {
     transition-delay: 0.42s;
   }
-  .sidebar .mobileArea .sideMainMenu > ul > li:nth-child(3) {
+  .mobileSidebar .mobileArea .sideMainMenu > ul > li:nth-child(3) {
     transition-delay: 0.35s;
   }
-  .sidebar .mobileArea .sideMainMenu > ul > li:nth-child(4) {
+  .mobileSidebar .mobileArea .sideMainMenu > ul > li:nth-child(4) {
     transition-delay: 0.28s;
   }
-  .sidebar .mobileArea .sideMainMenu > ul > li:nth-child(5) {
+  .mobileSidebar .mobileArea .sideMainMenu > ul > li:nth-child(5) {
     transition-delay: 0.21s;
   }
-  .sidebar .mobileArea .sideMainMenu > ul > li:nth-child(6) {
+  .mobileSidebar .mobileArea .sideMainMenu > ul > li:nth-child(6) {
     transition-delay: 0.14s;
   }
-  .sidebar .mobileArea .sideMainMenu > ul > li:nth-child(7) {
+  .mobileSidebar .mobileArea .sideMainMenu > ul > li:nth-child(7) {
     transition-delay: 0.07s;
   }
-  .sidebar .mobileArea .sideMainMenu > ul > li:nth-child(8) {
+  .mobileSidebar .mobileArea .sideMainMenu > ul > li:nth-child(8) {
     transition-delay: 0s;
   }
-  .sidebar .mobileArea .sideMainMenu > ul > li:nth-child(9) {
+  .mobileSidebar .mobileArea .sideMainMenu > ul > li:nth-child(9) {
     transition-delay: -0.07s;
   }
-  .sidebar .mobileArea .sideMainMenu > ul > li:nth-child(10) {
+  .mobileSidebar .mobileArea .sideMainMenu > ul > li:nth-child(10) {
     transition-delay: -0.14s;
   }
-  .sidebar .mobileArea .sideMainMenu > ul > li:nth-child(11) {
+  .mobileSidebar .mobileArea .sideMainMenu > ul > li:nth-child(11) {
     transition-delay: -0.21s;
   }
-  .sidebar .mobileArea .sideMainMenu > ul > li:nth-child(12) {
+  .mobileSidebar .mobileArea .sideMainMenu > ul > li:nth-child(12) {
     transition-delay: -0.28s;
   }
-  .sidebar .mobileArea .sideMainMenu > ul > li:nth-child(13) {
+  .mobileSidebar .mobileArea .sideMainMenu > ul > li:nth-child(13) {
     transition-delay: -0.35s;
   }
-  .sidebar .mobileArea .sideMainMenu > ul > li:nth-child(14) {
+  .mobileSidebar .mobileArea .sideMainMenu > ul > li:nth-child(14) {
     transition-delay: -0.42s;
   }
-  .sidebar .mobileArea .sideMainMenu > ul > li:nth-child(15) {
+  .mobileSidebar .mobileArea .sideMainMenu > ul > li:nth-child(15) {
     transition-delay: -0.49s;
   }
-  .sidebar .mobileArea .sideMainMenu ul {
+  .mobileSidebar .mobileArea .sideMainMenu ul {
     -webkit-animation: showMenu 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
             animation: showMenu 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
     padding: 0;
     left: 0;
   }
-  .sidebar .mobileArea .sideMainMenu ul li {
+  .mobileSidebar .mobileArea .sideMainMenu ul li {
     flex: 1 1 100%;
     flex-direction: row;
     list-style: none;
   }
-  .sidebar .mobileArea .sideMainMenu ul li > a {
+  .mobileSidebar .mobileArea .sideMainMenu ul li > a {
     padding: 0.5em 1em;
     min-height: 2em;
     line-height: 2em;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   }
-  .sidebar .mobileArea .sideMainMenu ul li.hasChild > a {
+  .mobileSidebar .mobileArea .sideMainMenu ul li.hasChild > a {
     position: relative;
     padding: 0.5em 2em 0.5em 1em;
     color: #fff;
   }
-  .sidebar .mobileArea .sideMainMenu ul li.hasChild > a:after {
+  .mobileSidebar .mobileArea .sideMainMenu ul li.hasChild > a:after {
     content: "";
     position: absolute;
     right: 1em;
@@ -7304,7 +7304,7 @@ div.function ul li a:focus-visible {
     border-left: none;
     transition: 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
   }
-  .sidebar .mobileArea .sideMainMenu ul li ul {
+  .mobileSidebar .mobileArea .sideMainMenu ul li ul {
     position: relative;
     visibility: visible;
     display: none;
@@ -7316,7 +7316,7 @@ div.function ul li a:focus-visible {
     box-sizing: border-box;
     transition: 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
   }
-  .sidebar .mobileArea .sideMainMenu ul li ul li a {
+  .mobileSidebar .mobileArea .sideMainMenu ul li ul li a {
     display: block;
     min-height: 1.5em;
     line-height: 1.5em;
@@ -7324,22 +7324,22 @@ div.function ul li a:focus-visible {
     padding: 0.5em 1em 0.5em 2em;
     border: none;
   }
-  .sidebar .mobileArea .sideMainMenu ul li ul li.hasChild > a {
+  .mobileSidebar .mobileArea .sideMainMenu ul li ul li.hasChild > a {
     padding: 0.5em 1em 0.5em 2em;
   }
-  .sidebar .mobileArea .sideMainMenu ul li ul li.hasChild > a:after {
+  .mobileSidebar .mobileArea .sideMainMenu ul li ul li.hasChild > a:after {
     top: 0.85em;
   }
-  .sidebar .mobileArea .sideMainMenu ul li.active ul {
+  .mobileSidebar .mobileArea .sideMainMenu ul li.active ul {
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   }
-  .sidebar .navigation {
+  .mobileSidebar .navigation {
     position: relative;
     margin: 1em auto;
     text-align: left;
     width: 90%;
   }
-  .sidebar .navigation ul {
+  .mobileSidebar .navigation ul {
     float: none;
     overflow: hidden;
     padding: 0;
@@ -7347,17 +7347,17 @@ div.function ul li a:focus-visible {
     display: flex;
     flex-flow: row wrap;
   }
-  .sidebar .navigation ul li {
+  .mobileSidebar .navigation ul li {
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 100%;
     margin: 0;
     padding: 0;
   }
-  .sidebar .navigation ul li:nth-child(odd):last-child {
+  .mobileSidebar .navigation ul li:nth-child(odd):last-child {
     width: 100%;
   }
-  .sidebar .navigation ul li a {
+  .mobileSidebar .navigation ul li a {
     display: block;
     line-height: 1.5em;
     padding: 0.25em 0.5em 0.25em 1.1em;
@@ -7367,7 +7367,7 @@ div.function ul li a:focus-visible {
     text-decoration: none;
     position: relative;
   }
-  .sidebar .navigation ul li a:before {
+  .mobileSidebar .navigation ul li a:before {
     position: absolute;
     top: 0.75em;
     left: 0;
@@ -7380,11 +7380,11 @@ div.function ul li a:focus-visible {
     transition: 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
     opacity: 0;
   }
-  .sidebar .navigation ul li a:hover:before, .sidebar .navigation ul li a:focus-visible:before {
+  .mobileSidebar .navigation ul li a:hover:before, .mobileSidebar .navigation ul li a:focus-visible:before {
     left: 0.5em;
     opacity: 1;
   }
-  .sidebar .navigation .language {
+  .mobileSidebar .navigation .language {
     position: relative;
     width: 100%;
     position: relative;
@@ -7393,24 +7393,24 @@ div.function ul li a:focus-visible {
     padding-right: 15px;
     box-sizing: border-box;
   }
-  .sidebar .navigation .language a,
-.sidebar .navigation .language button {
+  .mobileSidebar .navigation .language a,
+.mobileSidebar .navigation .language button {
     padding: 0.6em 1em;
     background: rgba(0, 0, 0, 0.4);
   }
-  .sidebar .navigation .language a:after,
-.sidebar .navigation .language button:after {
+  .mobileSidebar .navigation .language a:after,
+.mobileSidebar .navigation .language button:after {
     top: 1.3em;
   }
-  .sidebar .navigation .language a:before,
-.sidebar .navigation .language button:before {
+  .mobileSidebar .navigation .language a:before,
+.mobileSidebar .navigation .language button:before {
     top: 0.8em;
   }
-  .sidebar .navigation .language button {
+  .mobileSidebar .navigation .language button {
     width: 100%;
     border: 0em;
   }
-  .sidebar .navigation .language ul {
+  .mobileSidebar .navigation .language ul {
     width: 100%;
     margin: 0;
     position: relative;
@@ -7419,17 +7419,17 @@ div.function ul li a:focus-visible {
     border: none;
     background: none;
   }
-  .sidebar .navigation .language ul li {
+  .mobileSidebar .navigation .language ul li {
     width: 100%;
   }
-  .sidebar .navigation .language ul li a {
+  .mobileSidebar .navigation .language ul li a {
     border: none;
     background: rgba(0, 0, 0, 0.4);
   }
-  .sidebar .navigation .fontSize {
+  .mobileSidebar .navigation .fontSize {
     display: none;
   }
-  .sidebar button.sidebarClose {
+  .mobileSidebar button.sidebarClose {
     position: absolute;
     display: block;
     width: 3em;
@@ -7444,10 +7444,10 @@ div.function ul li a:focus-visible {
     background: none;
     border: none;
   }
-  .sidebar button.sidebarClose:hover, .sidebar button.sidebarClose:focus-visible {
+  .mobileSidebar button.sidebarClose:hover, .mobileSidebar button.sidebarClose:focus-visible {
     box-shadow: none;
   }
-  .sidebar button.sidebarClose:before {
+  .mobileSidebar button.sidebarClose:before {
     position: absolute;
     width: 15px;
     height: 15px;

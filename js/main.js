@@ -239,8 +239,8 @@ function menu() {
   // --- menu初始化 新增側欄選單
   const body = document.querySelector('body');
   const sidebar = document.createElement('aside');
-  sidebar.className = 'sidebar';
-  sidebar.style = 'opacity:0';
+  sidebar.className = 'mobileSidebar';
+  sidebar.style = 'opacity:0;';
 
   body.innerHTML += `<div class="menuOverlay"></div>`;
   sidebar.innerHTML = '<div class="mobileArea"><button type="button" class="sidebarClose">關閉</button></div>';
@@ -365,7 +365,7 @@ mobileSearch({
 
 function mainMenuSetup() {
   const body = document.querySelector('body');
-  const sidebar = document.querySelector('.sidebar');
+  const sidebar = document.querySelector('.mobileSidebar');
   const mobileSearch = document.querySelector('.mobileSearch');
   const sidebarClose = document.querySelector('.sidebarClose');
   const sidebarCtrlBtn = document.querySelector('.sidebarCtrlBtn');
