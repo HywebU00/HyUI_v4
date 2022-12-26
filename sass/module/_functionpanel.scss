@@ -44,6 +44,7 @@
       width: 12px;
       height: 12px;
       top: 0.3em;
+      margin-right: 5px;
       background: url(../images/basic/icon_time.svg) no-repeat center center;
       background-size: 12px;
     }
@@ -164,14 +165,14 @@ div.function {
         }
         &.back {
           a:before {
-            background: url(../images/basic/icon_back_deep.svg) no-repeat center center;
+            background: url(../images/basic/icon_back_dark.svg) no-repeat center center;
             background-size: 100%;
           }
         }
 
         &.print {
           a:before {
-            background: url(../images/basic/icon_print_deep.svg) no-repeat center center;
+            background: url(../images/basic/icon_print_dark.svg) no-repeat center center;
             background-size: 100%;
           }
           @include screen('mobile') {
@@ -180,7 +181,7 @@ div.function {
         }
         &.forward {
           a:before {
-            background: url(../images/basic/icon_forward_deep.svg) no-repeat center center;
+            background: url(../images/basic/icon_forward_dark.svg) no-repeat center center;
             background-size: 100%;
           }
         }

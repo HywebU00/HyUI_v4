@@ -48,11 +48,13 @@
   @import 'page/_template'; //版型初始設定
   @import 'module/_menusidebar'; //menuSidebar
 }
+@layer secScss {
+  @import 'element/_image'; //圖片
+  @import 'common/_hack'; //瀏覽器修正
+}
 // 下方scss權重較高
-@import 'element/_image'; //圖片
-@import 'common/_hack'; //瀏覽器修正
+@import 'module/_swiper'; //swiper
+@import 'page/_color';
 @import 'page/_mp'; //首頁
 @import 'page/_cp'; //CP
-@import 'module/_swiper'; //swiper
 @import 'common/_print'; //列印樣式
-@import 'page/_color';

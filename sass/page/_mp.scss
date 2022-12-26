@@ -14,13 +14,10 @@ a.more {
   text-align: center;
   overflow: hidden;
   vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px transparent;
   position: relative;
-  -webkit-transition-property: color;
   transition-property: color;
-  -webkit-transition-duration: 0.2s;
   transition-duration: 0.2s;
   &:after {
     content: '';

@@ -9,8 +9,12 @@
         background-color: #21baff;
         color: #fff;
         text-decoration: none;
-        padding: 5px;
+        padding: 5px 50px 5px 20px;
         position: relative;
+      }
+      &.active .accordionArrow {
+        top: calc(50% - 2px);
+        transform: rotate(225deg);
       }
     }
   }
@@ -28,19 +32,18 @@
   }
   .accordionArrow {
     position: absolute;
-    right: 40px;
+    top: calc(50% - 7px);
+    right: 30px;
+    transform: rotate(45deg);
+    transform-origin: center center;
     &:after {
       content: '';
       border: 2px solid #fff;
       border-top: none;
       border-left: none;
-      position: absolute;
-      top: 7px;
-      right: -20px;
+      display: block;
       width: 8px;
       height: 8px;
-      transform: rotate(45deg);
-      transition: transform 0.5s;
     }
     &.open {
       &:after {

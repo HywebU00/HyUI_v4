@@ -25,21 +25,38 @@
   display: none;
   left: 0px;
   @include mobileCtrlBtn;
-  span {
+  &::before {
     position: absolute;
-    background: $colorPrimary;
-    width: 50%;
-    height: 3px;
-    top: 20px;
+    content: '';
     left: 50%;
-    margin-left: -25%;
-    display: block;
-    border-radius: 2px;
-    &:nth-child(2) {
-      top: 28px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 2px;
+    background: $colorPrimary;
+    box-shadow: $colorPrimary 0 6px 0 0, $colorPrimary 0 -6px 0 0;
+    transition: 0.2s linear;
+  }
+  &::after {
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 2px;
+    background: $colorPrimary;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: 0.2s linear;
+  }
+  &:hover {
+    &::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+      box-shadow: none;
     }
-    &:nth-child(3) {
-      top: 36px;
+    &::after {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(-45deg);
     }
   }
 }

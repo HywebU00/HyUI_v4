@@ -47,15 +47,15 @@ const slider = (function () {
       let totalHeight = element.offsetHeight;
       let currentHeight = totalHeight;
       let reduceValue = totalHeight / (time / 10);
-      element.style.transition = 'height ' + time + ' ms';
+      element.style.transition = `height ${time} ms`;
       element.style.overflow = 'hidden';
       let timer = setInterval(function () {
         currentHeight -= reduceValue;
-        element.style.height = currentHeight + 'px';
+        element.style.height = `${currentHeight}px`;
         if (currentHeight <= 0) {
           clearInterval(timer);
           element.style.display = 'none';
-          element.style.height = totalHeight + 'px';
+          element.style.height = `${totalHeight}px`;
           if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
             element.TimerManage.next();
           }
@@ -71,7 +71,7 @@ const slider = (function () {
   function jsSlideDown(element, time) {
     if (element.offsetHeight <= 0) {
       element.style.display = 'block';
-      element.style.transition = 'height' + time + ' ms';
+      element.style.transition = `height ${time} ms`;
       element.style.overflow = 'hidden';
       let totalHeight = element.offsetHeight;
       let currentHeight = 0;
@@ -79,10 +79,10 @@ const slider = (function () {
       let addValue = totalHeight / (time / 10);
       let timer = setInterval(function () {
         currentHeight += addValue;
-        element.style.height = currentHeight + 'px';
+        element.style.height = `${currentHeight}px`;
         if (currentHeight >= totalHeight) {
           clearInterval(timer);
-          element.style.height = totalHeight + 'px';
+          element.style.height = `${totalHeight}px`;
           if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
             element.TimerManage.next();
           }
@@ -108,6 +108,8 @@ const slider = (function () {
   };
   return Slider;
 })();
+
+console.log(slider.TimerManager);
 
 function jsFadeIn(element) {
   let val = 0;
@@ -255,14 +257,12 @@ function menu() {
   // --- menu初始化 新增側欄選單按鈕
   const sidebarCtrlBtn = document.createElement('button');
   sidebarCtrlBtn.className = 'sidebarCtrlBtn';
-  sidebarCtrlBtn.innerHTML = '側欄選單<span></span><span></span><span></span>';
   sidebarCtrlBtn.setAttribute('type', 'button');
 
   // --- menu初始化 新增搜尋按鈕
   const searchCtrlBtn = document.createElement('button');
   const siteHeader = document.querySelector('.header .container');
   searchCtrlBtn.className = 'searchCtrlBtn';
-  searchCtrlBtn.innerHTML = '查詢';
   searchCtrlBtn.setAttribute('type', 'button');
   siteHeader.prepend(searchCtrlBtn, sidebarCtrlBtn);
 
@@ -281,9 +281,6 @@ function menu() {
     cloneSearch.classList.add('mobileSearch');
     cloneSearch.classList.remove('webSearch');
     // 取消手機版的focus行為
-    function addTabIndex(i) {
-      i.setAttribute('tabindex', '-1');
-    }
     cloneSearch.querySelector('a, button, input[type="text"]').setAttribute('tabindex', '-1');
     body.prepend(cloneSearch);
   }
@@ -300,6 +297,7 @@ function topNav() {
   let cloneNav = nav.cloneNode(true);
   mobileArea.append(cloneNav);
   const sideLanguage = document.querySelector('.mobileArea .fontSize');
+  // 三元運算子
   sideLanguage !== null ? sideLanguage.remove() : '';
   const languageSelect = document.querySelectorAll('.language');
   function languageSelectInit() {
@@ -371,7 +369,7 @@ function mainMenuSetup() {
   const sidebarCtrlBtn = document.querySelector('.sidebarCtrlBtn');
   const menuOverlay = document.querySelector('.menuOverlay');
   const mobileArea = document.querySelector('.mobileArea');
-  const sidebarOut = sidebar.offsetWidth;
+  let sidebarOut = sidebar.offsetWidth;
   let windowWidth = window.outerWidth;
   let searchMode = false;
 
@@ -411,8 +409,10 @@ function mainMenuSetup() {
       // --- 頁籤第幾個按鈕觸發時
       e.stopPropagation();
       if (e.which === 9 && !e.shiftKey) {
+        //tab
         toggleAccordion(item, index, content);
       } else if (e.which === 9 && e.shiftKey) {
+        //shift+tab
         toggleAccordion(item, index, content);
       }
     });
@@ -500,7 +500,7 @@ function mainMenuSetup() {
     let language = document.querySelector('.language ul');
     hideSidebar();
     body.classList.remove('noscroll');
-    // mobileSearch !== null ? (mobileSearch.style.display = 'none') : '';
+    mobileSearch !== null ? (mobileSearch.style.display = 'none') : '';
     language !== null ? (language.style.display = 'none') : '';
     // --- 副選單滑出
 
@@ -537,7 +537,7 @@ function mainMenuSetup() {
 
   function switchResizeFunction() {
     setTimeout(() => {
-      // mobileSearch !== null ? (mobileSearch.style.display = 'none') : '';
+      mobileSearch !== null ? (mobileSearch.style.display = 'none') : '';
       windowWidth = window.outerWidth;
       switchMenu();
       checkUlWidth();
@@ -558,8 +558,7 @@ function mainMenuSetup() {
     }, 50);
 
     body.classList.add('noscroll');
-    // menuOverlay.classList.add('active');
-    // mobileSearch !== null ? (mobileSearch.style.display = 'none') : '';
+    mobileSearch !== null ? (mobileSearch.style.display = 'none') : '';
     searchMode = false;
     jsFadeIn(menuOverlay);
   }
@@ -1642,40 +1641,82 @@ function accordionSlider(obj) {
 // });
 
 // -----------------------------------------------------------------------
-// -----   swiper 箭頭設定   ------------------------------------------------
+// -----   swiper 箭頭設定 / 手機版主選單語系設定   ------------------------------------------------
 // -----------------------------------------------------------------------
-function swiperArrows(obj) {
-  let nextClass = document.querySelectorAll(obj.next);
-  let prevClass = document.querySelectorAll(obj.prev);
-  let documentHtml = document.querySelector('html');
-  if (documentHtml.getAttribute('lang')) {
-    let webLang = documentHtml.getAttribute('lang');
-    obj.data.forEach((s) => {
+function langFunction(obj) {
+  const nextClass = document.querySelectorAll(obj.swiper.next);
+  const prevClass = document.querySelectorAll(obj.swiper.prev);
+  const documentHtml = document.querySelector('html');
+  const sidebarCtrlBtn = document.querySelector('.sidebarCtrlBtn');
+  const searchCtrlBtn = document.querySelector('.searchCtrlBtn');
+  const webLang = documentHtml.getAttribute('lang');
+  if (webLang) {
+    obj.swiper.data.forEach((s) => {
       if (webLang.slice(0, 2) == s.lang) {
         nextClass.forEach((v) => v.setAttribute('title', s.nextText));
         prevClass.forEach((v) => v.setAttribute('title', s.prevText));
       } else {
-        nextClass.forEach((v) => v.setAttribute('title', obj.default.nextText));
-        prevClass.forEach((v) => v.setAttribute('title', obj.default.prevText));
+        nextClass.forEach((v) => v.setAttribute('title', obj.swiper.default.nextText));
+        prevClass.forEach((v) => v.setAttribute('title', obj.swiper.default.prevText));
+      }
+    });
+
+    obj.mobileBtn.data.forEach((s) => {
+      if (webLang.slice(0, 2) == s.lang) {
+        sidebarCtrlBtn.innerHTML = s.text;
+      } else {
+        sidebarCtrlBtn.innerHTML = obj.mobileBtn.default;
+      }
+    });
+
+    obj.searchBtn.data.forEach((s) => {
+      if (webLang.slice(0, 2) == s.lang) {
+        searchCtrlBtn.innerHTML = s.text;
+      } else {
+        searchCtrlBtn.innerHTML = obj.searchBtn.default;
       }
     });
   }
 }
-swiperArrows({
-  next: '.nextSlider',
-  prev: '.prevSlider',
-  data: [
-    //增加語系請寫在這邊
-    {
-      lang: 'zh',
-      nextText: '下一筆',
-      prevText: '上一筆',
+
+langFunction({
+  swiper: {
+    next: '.nextSlider',
+    prev: '.prevSlider',
+    data: [
+      {
+        lang: 'zh',
+        nextText: '下一筆',
+        prevText: '上一筆',
+      },
+      //...由此新增其他語系
+    ],
+    //預設語系
+    default: {
+      nextText: 'next',
+      prevText: 'previous',
     },
-    //...由此新增其他語系
-  ],
-  //預設語系
-  default: {
-    nextText: 'next',
-    prevText: 'previous',
+  },
+  mobileBtn: {
+    data: [
+      {
+        lang: 'zh',
+        text: '側欄選單',
+      },
+      //...由此新增其他語系
+    ],
+    //預設語系
+    default: 'SideButton',
+  },
+  searchBtn: {
+    data: [
+      {
+        lang: 'zh',
+        text: '查詢',
+      },
+      //...由此新增其他語系
+    ],
+    //預設語系
+    default: 'Search',
   },
 });

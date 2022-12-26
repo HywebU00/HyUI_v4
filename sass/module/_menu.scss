@@ -79,17 +79,8 @@
           }
         }
       }
+      &.active,
       &:hover {
-        & > a {
-          color: $aHover;
-          &:after {
-            border: 2px solid $aHover;
-            border-bottom: none;
-            border-left: none;
-          }
-        }
-      }
-      &.active {
         & > a {
           color: $aHover;
           &:after {

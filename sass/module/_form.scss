@@ -1327,10 +1327,6 @@ input[type='checkbox']:checked {
   border-radius: 2px;
 }
 
-input[type='radio']:checked {
-  box-shadow: #fff 0 0 0 3px inset, $formFocus 0 0 0 2px;
-}
-
 input[type='radio']:focus {
   border-color: $formFocus;
   background-color: $formFocus;
