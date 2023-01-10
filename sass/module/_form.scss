@@ -73,6 +73,7 @@ select::-ms-expand {
     display: flex;
     //overflow: hidden;
     flex-wrap: wrap;
+    position: relative;
 
     // 閱讀條文
     &.agree {
@@ -1466,5 +1467,31 @@ abbr[title] {
       right: 0.5em;
       left: auto;
     }
+  }
+}
+
+.password {
+  padding: 0.5em 3em 0.5em 3em !important;
+}
+.passwordEye {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  border: none;
+  color: transparent;
+  width: 20px !important;
+  height: 20px;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  &::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    display: block;
+    background: url('../images/icon/icon_eye_c_dark.svg') center no-repeat;
+  }
+  &.hide::before {
+    background: url('../images/icon/icon_eye_dark.svg') center no-repeat;
   }
 }
