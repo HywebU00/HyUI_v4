@@ -127,3 +127,47 @@
     }
   }
 }
+
+.fatFooter.typeB {
+  background: linear-gradient(175deg, rgba(75, 146, 160, 1) 0%, rgba(0, 93, 157, 1) 80%);
+  .btnFatFooter {
+    right: 0;
+    left: auto;
+    width: 64px;
+    aspect-ratio: 1/1;
+    background: #e2e2e2;
+    &::before {
+      border-color: #000;
+      top: 45%;
+    }
+    &:hover,
+    &:focus {
+      background: #fff;
+    }
+    &.close:before {
+      top: 35%;
+    }
+  }
+  a {
+    color: #fff;
+  }
+  nav {
+    padding: 70px 0 20px;
+    ul li ul {
+      overflow: hidden;
+      li a {
+        color: #dddddd;
+        padding: 5px 0 5px 15px;
+        position: relative;
+        font-size: rem(14);
+        &::before {
+          content: '-';
+          position: absolute;
+          left: 0;
+          top: 4px;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

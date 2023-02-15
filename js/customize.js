@@ -4,18 +4,21 @@ navSticky(); // 捲動時固定主選單
 fatFooter(); // fatFooter是否要展開
 tabFunction('.tabSet'); // tab功能
 scrollTables('table'); // table捲動功能
-fontSize();
+
 tableAddDataAttributes({
   elemClass: '.tableList', // 目標table
   dataName: 'title', // tableList樣式 加上 data-title
 });
 
+// 全站字體
+fontSize();
+
 // 手風琴功能
-accordionSlider({
-  list: '.accordionList', // 問題區塊
-  content: '.accordionContent', // 回答區塊
-  autoSlider: false, // true 點選其他項目時會關閉已開啟的內容，false 需要再點一次才會關閉
-  duration: 300, // 展開縮起的時間
+accordionFunction({
+  accordion: '.accordion',
+  openFirst: false, // 預設先展開所有內容，使用無障礙遊走不再有手風琴效果，永遠展開內容(滑鼠點擊正常開合)
+  autoClose: true, // 點擊時自動關閉已展開的項目，若需要此功能需要關閉openFirst
+  duration: 200,
   info: {
     open: '展開', // 收合時顯示
     close: '收合', // 展開時顯示
@@ -92,8 +95,8 @@ accordionSlider({
     },
     // 切換箭頭
     navigation: {
-      nextEl: '.adSlider .swiperArrow.next', //自行設定樣式
-      prevEl: '.adSlider .swiperArrow.prev', //自行設定樣式
+      nextEl: '.adSlider .nextSlider', //自行設定樣式
+      prevEl: '.adSlider .prevSlider', //自行設定樣式
       disabledClass: '.adSlider swiperArrow-disabled', //不可點選樣式
     },
     breakpoints: {
@@ -115,8 +118,8 @@ accordionSlider({
     // 切換點
     // 切換箭頭
     navigation: {
-      nextEl: '.marquee .marquee-next', //自行設定樣式
-      prevEl: '.marquee .marquee-prev', //自行設定樣式
+      nextEl: '.marquee .nextSlider', //自行設定樣式
+      prevEl: '.marquee .prevSlider', //自行設定樣式
       disabledClass: '.marquee marquee-arrow-disabled', //不可點選樣式
     },
   });

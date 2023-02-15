@@ -109,15 +109,13 @@ const slider = (function () {
   return Slider;
 })();
 
-console.log(slider.TimerManager);
-
 function jsFadeIn(element) {
   let val = 0;
   let request;
   element.style.display = 'block';
   requestAnimationFrame(fade);
   function fade() {
-    val += 100;
+    val += 5;
     if (val <= 100) {
       element.style.opacity = val / 100;
       request = requestAnimationFrame(fade);
@@ -133,13 +131,14 @@ function jsFadeOut(element) {
   requestAnimationFrame(fade);
   function fade() {
     val -= 5;
-    if (val >= 1) {
+    if (val >= 0) {
       element.style.opacity = val / 100;
       request = requestAnimationFrame(fade);
-    } else if (val <= 0) {
+    } else if (val < 0) {
+      setTimeout(() => {
+        element.style = '';
+      }, 300);
       cancelAnimationFrame(request);
-      element.style.opacity = '0';
-      element.style.display = 'none';
     }
   }
 }
@@ -273,16 +272,21 @@ function menu() {
   cloneMenu.classList.remove('mainMenu', 'megaMenu', 'menu');
   mobileArea.append(cloneMenu);
 
-  // --- 複製搜尋到手機版側欄
-  const search = document.querySelector('.webSearch');
-  if (search !== null) {
-    const cloneSearch = search.cloneNode(true);
-    cloneSearch.removeAttribute('style');
-    cloneSearch.classList.add('mobileSearch');
-    cloneSearch.classList.remove('webSearch');
-    // 取消手機版的focus行為
-    cloneSearch.querySelector('a, button, input[type="text"]').setAttribute('tabindex', '-1');
-    body.prepend(cloneSearch);
+  // --- 搜尋判斷
+  window.addEventListener('resize', mobileSearchFunction);
+  window.addEventListener('load', mobileSearchFunction);
+  function mobileSearchFunction() {
+    let windowWidth = window.outerWidth;
+    const search = document.querySelector('.webSearch');
+    if (search !== null && windowWidth < windowWidthSmall) {
+      search.removeAttribute('style');
+      search.classList.add('mobileSearch');
+      search.classList.remove('desktopSearch');
+    } else if (search !== null && windowWidth > windowWidthSmall) {
+      search.removeAttribute('style');
+      search.classList.remove('mobileSearch');
+      search.classList.add('desktopSearch');
+    }
   }
 }
 menu();
@@ -292,14 +296,21 @@ menu();
 // -----------------------------------------------------------------------
 
 function topNav() {
-  let mobileArea = document.querySelector('.mobileArea');
-  let nav = document.querySelector('.navigation');
-  let cloneNav = nav.cloneNode(true);
+  const body = document.querySelector('body');
+  const mobileArea = document.querySelector('.mobileArea');
+  const nav = document.querySelector('.navigation');
+  const cloneNav = nav.cloneNode(true);
   mobileArea.append(cloneNav);
   const sideLanguage = document.querySelector('.mobileArea .fontSize');
-  // 三元運算子
-  sideLanguage !== null ? sideLanguage.remove() : '';
+  // 移除手機版字體大小按鈕
+  if (sideLanguage !== null) {
+    sideLanguage.remove();
+    body.classList.remove('smallSize', 'largeSize');
+    body.classList.add('mediumSize');
+  }
+
   const languageSelect = document.querySelectorAll('.language');
+
   function languageSelectInit() {
     const languageSelect = new SelectSlider({
       name: document.querySelectorAll('.language'), // --- 控制的對象
@@ -307,6 +318,7 @@ function topNav() {
     });
     languageSelect.initial();
   }
+
   languageSelect !== null ? languageSelectInit() : '';
 }
 // topNav();
@@ -316,16 +328,17 @@ function topNav() {
 // -----------------------------------------------------------------------
 
 function mobileSearch(obj) {
-  let searchOpen = false;
   const searchCtrlBtn = obj.searchCtrlBtn;
-  const mobileSearch = document.querySelector('.mobileSearch');
+  const mobileSearch = document.querySelector('.webSearch');
   const menuOverlay = document.querySelector('.menuOverlay');
 
   searchCtrlBtn.addEventListener('click', (e) => {
+    let searchOpen = mobileSearch.classList.contains('active');
     e.stopPropagation();
     // --- 點擊搜尋區以外的區塊
     // --- 如果點在外面 則 searchMode 狀態改為false
     if (!searchOpen) {
+      mobileSearch.removeAttribute('style');
       mobileSearch.classList.add('active');
       jsFadeIn(menuOverlay);
       menuOverlay.style.zIndex = `90`;
@@ -333,7 +346,6 @@ function mobileSearch(obj) {
     } else {
       mobileSearch.classList.remove('active');
       jsFadeOut(menuOverlay);
-      menuOverlay.style.zIndex = `99`;
       searchOpen = false;
     }
   });
@@ -500,7 +512,7 @@ function mainMenuSetup() {
     let language = document.querySelector('.language ul');
     hideSidebar();
     body.classList.remove('noscroll');
-    mobileSearch !== null ? (mobileSearch.style.display = 'none') : '';
+    // mobileSearch !== null ? (mobileSearch.style.display = 'none') : '';
     language !== null ? (language.style.display = 'none') : '';
     // --- 副選單滑出
 
@@ -525,7 +537,7 @@ function mainMenuSetup() {
   function switchMenu() {
     if (windowWidth > windowWidthSmall) {
       pcSet();
-      fontSize();
+      // fontSize();
     } else {
       body.classList.remove('largeSize', 'medium_size');
     }
@@ -537,7 +549,7 @@ function mainMenuSetup() {
 
   function switchResizeFunction() {
     setTimeout(() => {
-      mobileSearch !== null ? (mobileSearch.style.display = 'none') : '';
+      // mobileSearch !== null ? (mobileSearch.style.display = 'none') : '';
       windowWidth = window.outerWidth;
       switchMenu();
       checkUlWidth();
@@ -558,7 +570,7 @@ function mainMenuSetup() {
     }, 50);
 
     body.classList.add('noscroll');
-    mobileSearch !== null ? (mobileSearch.style.display = 'none') : '';
+    // mobileSearch !== null ? (mobileSearch.style.display = 'none') : '';
     searchMode = false;
     jsFadeIn(menuOverlay);
   }
@@ -650,8 +662,8 @@ function navSticky() {
 // -----  menu的無障礙tab設定 a11yKeyMenu  ---------------------------------
 // -----------------------------------------------------------------------
 
-function a11yKeyMenu() {
-  const mainMenu = document.querySelector('.mainMenu') || null;
+function a11yKeyMenu(elem) {
+  const mainMenu = document.querySelector(elem) || null;
 
   // --- keyup時
   const control = mainMenu.querySelectorAll('li');
@@ -688,7 +700,7 @@ function a11yKeyMenu() {
     });
   });
 }
-a11yKeyMenu();
+a11yKeyMenu('.mainMenu');
 
 // -----------------------------------------------------------------------
 // -----  notice訊息區塊   -------------------------------------------------
@@ -707,7 +719,7 @@ document.querySelectorAll('[class*="notice"] a.close').forEach((i) => {
 
 function fatFooter(obj) {
   const el = document.querySelector('.btnFatFooter') || null; // --- 控制的對象
-  const fontBtn = document.querySelectorAll('.fontSize ul li a');
+  const fontBtn = document.querySelectorAll('.fontSize ul li button');
 
   function fatFooterInit() {
     // --- 抓取UI高度 css樣式修改樣式重新抓取高度
@@ -885,91 +897,6 @@ function tabFunction(elem) {
 }
 
 // -----------------------------------------------------------------------
-// -----  FontSize   -----------------------------------------------------
-// -----------------------------------------------------------------------
-
-function fontSize() {
-  const el = document.querySelectorAll('.fontSize') || null; // --- 控制的對象
-  const control = document.querySelector('body') || null; // --- 控制的對象名稱
-
-  // --- 點擊文字大小按鈕
-  el.forEach((i) => {
-    i.querySelectorAll('a').forEach((v) => {
-      // --- 移除 active 的 class 名稱
-      function removeActiveClass() {
-        const _parentEle = i.parentNode.parentNode;
-        _parentEle.querySelectorAll('a').forEach((i) => {
-          i.classList.remove('active');
-        });
-      }
-      v.addEventListener('click', (e) => {
-        removeActiveClass();
-        createCookie('FontSize', `${e.target.className}`, 356);
-        addChangeClass(e.target.className);
-        jsAddClass(e.target, 'active');
-      });
-    });
-  });
-
-  function addChangeClass(targetName) {
-    if (control === null) {
-      return;
-    }
-    switch (targetName) {
-      case 'small':
-        control.classList.remove('largeSize', 'medium_size');
-        control.classList.add('smallSize');
-        break;
-      case 'medium':
-        control.classList.remove('smallSize', 'largeSize');
-        control.classList.add('medium_size');
-        break;
-      case 'large':
-        control.classList.remove('smallSize', 'medium_size');
-        control.classList.add('largeSize');
-        break;
-    }
-  }
-
-  // --- 創造新的 字體大小設定
-  function createCookie(name, value, days) {
-    let _expires;
-    const _date = new Date();
-    if (days) {
-      _date.setTime(_date.getTime() + days * 24 * 60 * 60 * 1000);
-      _expires = '; expires=' + _date.toGMTString();
-    } else {
-      _expires = '';
-    }
-    document.cookie = name + '=' + value + _expires + '; path=/';
-  }
-
-  // --- 讀取瀏覽器上 字體大小設定
-  function readCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-  }
-
-  // --- 初始化 字體大小設定
-  window.onload = (e) => {
-    const _cookie = readCookie('FontSize');
-    // --- 如果沒有_cookie 則預設值為'medium'
-    if (_cookie == null) {
-      _cookie = 'medium';
-    }
-    document.querySelectorAll(`.${_cookie}`).forEach((i) => {
-      i.click();
-      e.preventDefault();
-    });
-  };
-}
-// fontSize({
-//   name: document.querySelectorAll('.fontSize'), // 按鈕列表名稱
-//   control: document.querySelector('body'), // 控制的對象名稱
-// });
-
-// -----------------------------------------------------------------------
 // -----  置頂go to top   -------------------------------------------------
 // -----------------------------------------------------------------------
 
@@ -985,7 +912,6 @@ function scrollToTop(obj) {
   }
   el.addEventListener('click', (e) => {
     e.preventDefault();
-    ƒ;
     scrollTop();
   });
 
@@ -1030,6 +956,7 @@ function scrollToTop(obj) {
     }
   });
 }
+
 scrollToTop({
   name: document.querySelector('.scrollToTop'), // --- 監聽的對象
 });
@@ -1060,7 +987,7 @@ class SelectSlider {
       });
     });
   }
-  // --- Keydown 語言模組
+  // --- Keydown
   sliderKeydown() {
     this.control.forEach((i) => {
       i.addEventListener('keydown', (e) => {
@@ -1071,10 +998,10 @@ class SelectSlider {
       });
     });
   }
-  // --- Focusout 語言模組
+  // --- Focusout
   sliderFocusout() {
     this.name.forEach((i) => {
-      const nodes = i.querySelectorAll('ul li a');
+      const nodes = i.querySelectorAll('ul li a,ul li button');
       const lastNodes = nodes[nodes.length - 1];
       const sliderItem = i.querySelector('ul');
       lastNodes.addEventListener('focusout', (e) => {
@@ -1083,14 +1010,14 @@ class SelectSlider {
       });
     });
   }
-  // --- 關閉語言模組
+  // --- 關閉
   sliderClose(item) {
     const sliderItem = item.nextElementSibling;
     const that = this;
 
     function clickOtherPlace(e) {
       const chooseClassName = that.name[0].className;
-      if (e.target.closest(`.${chooseClassName}`) === null) {
+      if ((e.target.closest(`.${chooseClassName}`) === null) & (e.target !== item)) {
         slider.jsSlideUp(sliderItem, 300);
       } else {
         return;
@@ -1100,7 +1027,9 @@ class SelectSlider {
       e.preventDefault();
       clickOtherPlace(e);
     });
-    document.addEventListener('click', clickOtherPlace);
+    document.addEventListener('click', (e) => {
+      clickOtherPlace(e);
+    });
   }
 
   initial() {
@@ -1110,12 +1039,167 @@ class SelectSlider {
   }
 }
 
-const languageSelect = new SelectSlider({
-  name: document.querySelectorAll('.language'), // --- 控制的對象
-  control: document.querySelectorAll('.language button'), // --- 監聽的對象
-});
-languageSelect.initial();
+// const languageSelect = new SelectSlider({
+//   name: document.querySelectorAll('.language'), // --- 控制的對象
+//   control: document.querySelectorAll('.language button'), // --- 監聽的對象
+// });
+// languageSelect.initial();
 
+// -----------------------------------------------------------------------
+// -----  FontSize   -----------------------------------------------------
+// -----------------------------------------------------------------------
+
+function fontSize() {
+  const el = document.querySelector('.fontSize') || null; // --- 控制的對象
+  const control = document.querySelector('.fontSize ul') || null; // --- 控制的對象名稱
+  const body = document.querySelector('body');
+
+  el.querySelectorAll('ul button').forEach((v) => {
+    v.addEventListener('click', (e) => {
+      removeActiveClass(el);
+      createCookie('FontSize', `${e.target.className}`, 356);
+      addChangeClass(e.target.className);
+      e.target.classList.add('active');
+    });
+  });
+
+  // --- 移除 active 的 class 名稱
+  function removeActiveClass(i) {
+    const _parentEle = i.parentNode.parentNode;
+    _parentEle.querySelectorAll('button').forEach((i) => {
+      i.classList.remove('active');
+    });
+  }
+
+  function addChangeClass(targetName) {
+    // if (control === null) {
+    //   return;
+    // }
+    switch (targetName) {
+      case 'small':
+        body.classList.remove('largeSize', 'mediumSize');
+        body.classList.add('smallSize');
+        break;
+      case 'medium':
+        body.classList.remove('smallSize', 'largeSize');
+        body.classList.add('mediumSize');
+        break;
+      case 'large':
+        body.classList.remove('smallSize', 'mediumSize');
+        body.classList.add('largeSize');
+        break;
+    }
+  }
+
+  // --- 創造新的 字體大小設定
+  function createCookie(name, value, days) {
+    let _expires;
+    const _date = new Date();
+    if (days) {
+      _date.setTime(_date.getTime() + days * 24 * 60 * 60 * 1000);
+      _expires = '; expires=' + _date.toGMTString();
+    } else {
+      _expires = '';
+    }
+    document.cookie = name + '=' + value + _expires + '; path=/';
+  }
+
+  // --- 讀取瀏覽器上 字體大小設定
+  function readCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  // --- 初始化 字體大小設定
+  window.addEventListener('load', function (e) {
+    const _cookie = readCookie('FontSize');
+    // --- 如果沒有_cookie 則預設值為'medium'
+    if (_cookie == null) {
+      _cookie = 'medium';
+    }
+    document.querySelectorAll(`.${_cookie}`).forEach((i) => {
+      i.classList.add('active');
+      body.classList.add(`${_cookie}Size`);
+      e.preventDefault();
+    });
+  });
+
+  // if (el.classList.contains('typeB')) {
+  //   const fontSizeSelect = new SelectSlider({
+  //     name: document.querySelectorAll('.fontSize'), // --- 控制的對象
+  //     control: document.querySelectorAll('.fontSize > button'), // --- 監聽的對象
+  //   });
+  //   fontSizeSelect.initial();
+  // }
+}
+
+// -----------------------------------------------------------------------
+// -----  FontSize   -----------------------------------------------------
+// -----------------------------------------------------------------------
+
+function searchTypeB() {
+  const searchBtnOut = document.querySelector('.wrapper .submenuBox') || null;
+  const searchBtn = document.querySelector('.wrapper .webSearchBtn button');
+  const webSearch = document.querySelector('.wrapper .webSearch') || null;
+
+  if (searchBtn !== null && webSearch !== null) {
+    let webSearchTop = searchBtnOut.parentElement.offsetHeight;
+    webSearch.style.top = `${webSearchTop}px`;
+    console.log(webSearch);
+
+    // --- 點擊 語言模組
+    searchBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (webSearch.offsetHeight !== 0 || webSearch.offsetHeight === null) {
+        slider.jsSlideUp(webSearch, 200);
+      } else {
+        slider.jsSlideDown(webSearch, 200);
+      }
+    });
+    // --- Keydown
+    searchBtn.addEventListener('keydown', (e) => {
+      slider.jsSlideDown(webSearch, 200);
+    });
+    // --- Focusout
+    const nodes = webSearch.querySelectorAll('a,button,input');
+    const lastNodes = nodes[nodes.length - 1];
+    lastNodes.addEventListener('focusout', (e) => {
+      e.preventDefault();
+      slider.jsSlideUp(webSearch, 200);
+    });
+    // --- 關閉
+    function clickOtherPlace(e) {
+      const chooseClassName = searchBtn.className;
+      if ((e.target.closest(`.webSearch`) === null) & (e.target !== searchBtn)) {
+        slider.jsSlideUp(webSearch, 200);
+      } else {
+        return;
+      }
+    }
+    // document.addEventListener('touchstart', (e) => {
+    //   e.preventDefault();
+    //   clickOtherPlace(e);
+    // });
+    document.addEventListener('click', clickOtherPlace);
+  }
+}
+
+function templateChange(obj) {
+  obj.searchType === 'typeB' ? searchTypeB() : '';
+  if (obj.fontSize === 'typeB') {
+    const fontSizeSelect = new SelectSlider({
+      name: document.querySelectorAll('.fontSize'), // --- 控制的對象
+      control: document.querySelectorAll('.fontSize > button'), // --- 監聽的對象
+    });
+    fontSizeSelect.initial();
+  }
+}
+
+// templateChange({
+//   searchType: 'typeB',
+//   fontSize: 'typeB',
+// });
 // -----------------------------------------------------------------------
 // -----  分享按鈕 share dropdwon   ---------------------------------------
 // -----------------------------------------------------------------------
@@ -1123,8 +1207,8 @@ languageSelect.initial();
 function shareBtnFunction() {
   // --- 創造一個a連結的按鈕
   const shareUl = document.querySelector('.share');
-  const btn = document.createElement('a');
   if (shareUl) {
+    const btn = document.createElement('a');
     btn.setAttribute('class', 'shareButton');
     btn.setAttribute('role', 'button');
     btn.setAttribute('tabindex', '0');
@@ -1329,23 +1413,26 @@ switchA11TitleName();
 // -----------------------------------------------------------------------
 
 function tableAddDataAttributes(obj) {
-  const el = document.querySelectorAll(obj.elemClass);
-  el.forEach((i) => {
-    const tableItem = i.querySelectorAll('table');
-    tableItem.forEach((i) => {
-      setTrAttr(i);
-    });
-  });
-  function setTrAttr(i) {
-    const thList = i.querySelectorAll('th');
-    const trList = i.querySelectorAll('tr');
-    trList.forEach((trItem) => {
-      const tdList = trItem.querySelectorAll('td');
-      tdList.forEach((i, idx) => {
-        tdList[idx].setAttribute(`data-${obj.dataName}`, `${thList[idx].textContent}`);
+  window.addEventListener('load', function () {
+    const el = document.querySelectorAll(obj.elemClass);
+    el.forEach((i) => {
+      const tableItem = i.querySelectorAll('table');
+      tableItem.forEach((i) => {
+        setTrAttr(i);
       });
+      i.classList.add('loaded');
     });
-  }
+    function setTrAttr(i) {
+      const thList = i.querySelectorAll('th');
+      const trList = i.querySelectorAll('tr');
+      trList.forEach((trItem) => {
+        const tdList = trItem.querySelectorAll('td');
+        tdList.forEach((i, idx) => {
+          tdList[idx].setAttribute(`data-${obj.dataName}`, `${thList[idx].textContent}`);
+        });
+      });
+    }
+  });
 }
 // tableAddDataAttributes({
 //   elemClass: '.tableList',
@@ -1514,131 +1601,166 @@ let lazyLoadInstance = new LazyLoad({
 // -----------------------------------------------------------------------
 // -----   Accordion設定   ------------------------------------------------
 // -----------------------------------------------------------------------
-
-function accordionSlider(obj) {
-  const list = document.querySelectorAll(obj.list);
-  let { autoSlider } = obj;
+function accordionFunction(obj) {
+  'use strict';
+  const accordion = document.querySelector(obj.accordion);
+  const accordionItem = accordion ? accordion.querySelectorAll('.accordionList') : '';
+  const autoClose = obj.autoClose;
+  const duration = obj.duration;
+  const openFirst = obj.openFirst;
   const { open, close } = obj.info;
-  const duration = obj.duration || 300;
-  list.forEach((item, index) => {
-    let random = `accordion_${randomLetter(4)}${randomFloor(0, 9999)}`;
-    let contentA = item.nextElementSibling.querySelectorAll('[href],input,button');
-    let content = item.parentElement.querySelector('.accordionContent');
-    let contentFirstA = contentA[0];
-    item.innerHTML += `<span class="accordionBtn">${open}</span>`;
-    item.innerHTML += `<span class="accordionArrow"></span>`;
-    item.setAttribute('aria-expanded', 'false');
-    item.setAttribute('aria-controls', random);
-    content.setAttribute('id', random);
-    item.addEventListener('click', function () {
-      toggleAccordion(item, index, content);
-    });
-    //無障礙
-    item.addEventListener('keydown', (e) => {
-      if (e.which === 9 && !e.shiftKey) {
-        if (!item.parentElement.classList.contains('active')) {
-          toggleAccordion(item, index, content);
-        }
-      } else if (e.which === 9 && e.shiftKey) {
-        if (autoSlider) {
-          e.preventDefault();
-          toggleAccordion(item, index, content);
-          if (contentA.length) {
-            contentA[contentA.length - 1].focus();
-          } else {
-            list[index - 1].focus();
+
+  function a11y() {
+    if (Boolean(accordionItem)) {
+      accordionItem.forEach((item, index) => {
+        let content = item.nextElementSibling.querySelectorAll('a,input,select,textarea');
+        let firstItem = false;
+
+        if (!openFirst) {
+          item.addEventListener('keydown', function (e) {
+            if (e.which === 9 && !e.shiftKey) {
+              autoClose && !openFirst ? closeOther(this) : '';
+              openTarget(this);
+              firstItem = false;
+            } else if (e.which === 9 && e.shiftKey && !firstItem) {
+              e.preventDefault();
+              openTarget(this);
+              autoClose && !openFirst ? closeOther(this) : '';
+
+              if (content.length == 0) {
+                accordionItem[index - 1].focus();
+              } else if (content.length > 0) {
+                content[content.length - 1].focus();
+              }
+            }
+          });
+          if (content.length !== 0) {
+            content[0].addEventListener('keydown', function (e) {
+              if (e.which === 9 && e.shiftKey && index !== 0) {
+                e.preventDefault();
+                accordionItem[index - 1].focus();
+              } else if (e.which === 9 && e.shiftKey && index == 0) {
+                firstItem = true;
+                autoClose && !openFirst ? openTarget(accordionItem[0]) : '';
+              }
+            });
           }
-        } else {
-          toggleAccordion(item, index, content);
-        }
-      }
-    });
-    if (contentFirstA !== undefined && autoSlider) {
-      contentFirstA.addEventListener('keydown', (e) => {
-        if (e.which === 9 && e.shiftKey) {
-          list[index].focus();
         }
       });
     }
-  });
+  }
+  function info() {
+    if (Boolean(accordionItem)) {
+      accordionItem.forEach((item, index) => {
+        let random = `accordion_${randomLetter(4)}${randomFloor(0, 9999)}`;
+        item.innerHTML += `<span class="accordionState">${open}</span>`;
+        item.innerHTML += `<span class="accordionArrow"></span>`;
+        item.setAttribute('aria-expanded', 'false');
+        item.setAttribute('aria-controls', random);
+        item.parentElement.querySelector('.accordionContent').setAttribute('id', random);
+        if (openFirst) {
+          item.nextElementSibling.style.display = `block`;
+        }
+      });
+    }
+  }
+  function clickFunction() {
+    if (Boolean(accordionItem)) {
+      accordionItem.forEach((item, index) => {
+        item.addEventListener('click', function () {
+          autoClose && !openFirst ? closeOther(this) : '';
+          openTarget(this);
+        });
+      });
+    }
+  }
 
-  function toggleAccordion(item, index, content) {
+  function openTarget(item) {
+    let content = item.nextElementSibling;
     let display = window.getComputedStyle(content).display;
-    item.parentElement.classList.add('active');
     content.style.display = display;
 
     if (display === 'none') {
       display = 'block';
-      content.style.overflow = 'hidden';
-      content.style.display = display;
+      item.parentNode.classList.add('active');
       item.setAttribute('aria-expanded', 'true');
-      let height = content.offsetHeight;
-      content.style.height = 0;
-      content.offsetHeight;
+      content.style.display = 'block';
+      let contentHeight = content.scrollHeight;
+      content.style.height = '0';
       content.style.transitionProperty = 'height';
       content.style.transitionDuration = `${duration}ms`;
-      content.style.height = height + 'px';
-      item.querySelector('.accordionBtn').innerHTML = `${close}`;
-      if (autoSlider) {
-        const siblings = [...item.parentNode.parentNode.children].filter((child) => {
-          return child !== item.parentNode;
-        });
-        siblings.forEach((v) => {
-          siblingsContent.style.overflow = 'hidden';
-          v.classList.remove('active');
-          item.setAttribute('aria-expanded', 'false');
-          let siblingsContent = v.querySelector('.accordionContent');
-          siblingsContent.style.height = `${siblingsContent.offsetHeight}px`;
-          siblingsContent.style.transitionProperty = 'height';
-          siblingsContent.style.transitionDuration = `${duration}ms`;
-          siblingsContent.offsetHeight;
-          siblingsContent.style.height = 0;
-          v.querySelector('.accordionBtn').innerHTML = `${open}`;
-          setTimeout(() => {
-            siblingsContent.style.display = 'none';
-            siblingsContent.style.removeProperty('overflow');
-            siblingsContent.style.removeProperty('height');
-            siblingsContent.style.removeProperty('transition-duration');
-            siblingsContent.style.removeProperty('transition-property');
-          }, duration);
-        });
-      }
+      content.scrollHeight;
+      item.querySelector('.accordionState').innerHTML = `${close}`;
+      content.style.height = `${contentHeight}px`;
       setTimeout(() => {
-        content.style.removeProperty('overflow');
         content.style.removeProperty('height');
         content.style.removeProperty('transition-duration');
         content.style.removeProperty('transition-property');
       }, duration);
     } else {
-      content.style.overflow = 'hidden';
-      item.setAttribute('aria-expanded', 'false');
-      content.style.height = `${content.offsetHeight}px`;
+      let contentHeight = content.scrollHeight;
+      content.style.height = `${contentHeight}px`;
       content.style.transitionProperty = 'height';
       content.style.transitionDuration = `${duration}ms`;
-      content.offsetHeight;
-      content.style.height = 0;
-      item.querySelector('.accordionBtn').innerHTML = `${open}`;
-      item.parentElement.classList.remove('active');
+      content.scrollHeight;
+      content.style.height = '0';
+      item.querySelector('.accordionState').innerHTML = `${open}`;
+      item.parentNode.classList.remove('active');
+      item.setAttribute('aria-expanded', 'false');
       setTimeout(() => {
-        content.style.display = 'none';
-        content.style.removeProperty('overflow');
         content.style.removeProperty('height');
+        content.style.removeProperty('display');
         content.style.removeProperty('transition-duration');
         content.style.removeProperty('transition-property');
       }, duration);
     }
   }
+  function closeOther(item) {
+    const siblings = [...item.parentNode.parentNode.children].filter((child) => {
+      return child !== item.parentNode;
+    });
+    siblings.forEach((otherItem, index) => {
+      let content = otherItem.querySelector('.accordionContent');
+      if (content.style.Height !== 0 || content.style.Height !== null) {
+        otherItem.querySelector('.accordionState').innerHTML = `${open}`;
+        otherItem.classList.remove('active');
+        otherItem.querySelector('.accordionList').setAttribute('aria-expanded', 'false');
+        let contentHeight = content.scrollHeight;
+        content.style.height = `${contentHeight}px`;
+        content.style.transitionProperty = 'height';
+        content.style.transitionDuration = `${duration}ms`;
+        content.scrollHeight;
+        content.style.height = '0';
+        setTimeout(() => {
+          content.style.removeProperty('height');
+          content.style.removeProperty('display');
+          content.style.removeProperty('transition-duration');
+          content.style.removeProperty('transition-property');
+        }, duration);
+      }
+    });
+  }
+  (function () {
+    clickFunction();
+    a11y();
+    info();
+  })();
 }
-// accordionSlider({
-//   list: '.accordionList', // 問題區塊
-//   content: '.accordionContent', // 回答區塊
-//   autoSlider: true, // true 點選其他項目時會關閉已開啟的內容，false 需要再點一次才會關閉
-//   duration:300, // 展開/縮起時間
+
+// accordionFunction({
+//   accordion: '.accordion',
+//   openFirst: false, // 預設先展開所有內容，使用無障礙遊走不再有手風琴效果，永遠展開內容(滑鼠點擊正常開合)
+//   autoClose: true, // 若需要此功能需要關閉openFirst
+//   duration: 200,
 //   info: {
 //     open: '展開', // 收合時顯示
 //     close: '收合', // 展開時顯示
 //   },
 // });
+
+// -----------------------------------------------------------------------
+// -----   版型切換   -----------------------------------------------------
+// -----------------------------------------------------------------------
 
 // -----------------------------------------------------------------------
 // -----   swiper 箭頭設定 / 手機版主選單語系設定   ------------------------------------------------
@@ -1768,3 +1890,16 @@ langFunction({
     },
   },
 });
+
+// -----------------------------------------------------------------------
+// -----   a標籤無障礙判斷   -----------------------------------------------
+// -----------------------------------------------------------------------
+// 2022/01/10
+(function () {
+  let a = document.querySelectorAll('a');
+  a.forEach((item) => {
+    if (!item.getAttribute('href')) {
+      item.setAttribute('tabindex', 0);
+    }
+  });
+})();
