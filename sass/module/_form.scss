@@ -1252,7 +1252,7 @@ input[type='email']:focus-visible,
 input[type='password']:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  border: 1px solid lighten($formFocus, 20);
+  // border: 1px solid lighten($formFocus, 20);
   box-shadow: 0px 0px 0px 2px lighten($formFocus, 20);
   outline: none;
 }

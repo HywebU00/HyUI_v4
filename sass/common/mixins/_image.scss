@@ -10,22 +10,17 @@ img {
 }
 
 //https://css-tricks.com/snippets/sass/maintain-aspectRatio-mixin/
-@mixin aspectRatio($width, $height) {
+@mixin aspectRatio($width, $height, $objectFit: contain) {
   overflow: hidden;
-  aspect-ratio: $width / $height;
   position: relative;
   img {
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    margin: auto;
+    aspect-ratio: #{$width} / #{$height};
+    display: block;
+    object-fit: $objectFit;
+    object-position: 50% 50%;
   }
 }
 
 // 範例
-// @include aspectRatio(4,3);                   // 圖片比例，4:3
+// @include aspectRatio(4,3,contain);                   // 圖片比例，4:3 contain照片完整顯示 cover裁切

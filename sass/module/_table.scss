@@ -79,6 +79,8 @@ table {
 
       white-space: normal;
       text-align: left;
+    }
+    &.loaded td {
       &:before {
         content: attr(data-title);
         position: absolute;

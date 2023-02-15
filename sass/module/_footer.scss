@@ -3,9 +3,11 @@ footer {
   text-align: left;
   font-size: 0.813em;
   padding: 1em 0;
+
   .container {
+    justify-content: space-between;
     @include gutter;
-    > div {
+    & > div {
       padding-bottom: 1em;
     }
     display: flex;
@@ -29,9 +31,9 @@ footer {
   }
   .footerIcon {
     flex: 0 1 200px;
+    text-align: right;
     @include screen('tablet') {
       flex: 1 1 100%;
-      text-align: right;
     }
   }
   // 版權連結
@@ -39,6 +41,7 @@ footer {
     @include liReset();
     clear: both;
     display: flex;
+    margin-bottom: 10px;
     @include screen('mobile') {
       flex-flow: row wrap;
     }
@@ -97,5 +100,28 @@ footer {
     img {
       max-width: 150px;
     }
+  }
+}
+
+footer.typeB {
+  padding-top: 3%;
+  background: #014072;
+  .container {
+    justify-content: space-between;
+  }
+  .footerInfo {
+    color: #fff;
+  }
+  .footerLink {
+    li a {
+      padding: 0;
+      padding: 0 0 0 20px;
+      text-align: right;
+      background: none;
+      font-size: rem(14);
+    }
+  }
+  .footerIcon {
+    text-align: right;
   }
 }

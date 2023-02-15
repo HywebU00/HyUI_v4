@@ -5,7 +5,11 @@
     li {
       margin-bottom: 0.5em;
       .accordionList {
+        width: 100%;
+        border: none;
+        border-radius: 0;
         display: block;
+        text-align: left;
         background-color: #21baff;
         color: #fff;
         text-decoration: none;
@@ -27,7 +31,7 @@
       padding: 10px;
     }
   }
-  .accordionBtn {
+  .accordionState {
     margin-left: 10px;
   }
   .accordionArrow {

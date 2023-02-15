@@ -57,24 +57,24 @@ img {
     margin: 0;
   }
   article,
-  aside,
-  details,
-  figcaption,
-  figure,
-  footer,
-  header,
-  hgroup,
-  main,
-  menu,
-  nav,
-  section,
-  summary {
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
     display: block;
   }
   audio,
-  canvas,
-  progress,
-  video {
+canvas,
+progress,
+video {
     display: inline-block;
     vertical-align: baseline;
   }
@@ -83,7 +83,7 @@ img {
     height: 0;
   }
   [hidden],
-  template {
+template {
     display: none;
   }
   a {
@@ -96,7 +96,7 @@ img {
     border-bottom: 1px dotted;
   }
   b,
-  strong {
+strong {
     font-weight: bold;
   }
   dfn {
@@ -114,7 +114,7 @@ img {
     font-size: 80%;
   }
   sub,
-  sup {
+sup {
     font-size: 75%;
     line-height: 0;
     position: relative;
@@ -143,17 +143,17 @@ img {
     overflow: auto;
   }
   code,
-  kbd,
-  pre,
-  samp {
+kbd,
+pre,
+samp {
     font-family: monospace, monospace;
     font-size: 1em;
   }
   button,
-  input,
-  optgroup,
-  select,
-  textarea {
+input,
+optgroup,
+select,
+textarea {
     color: inherit;
     font: inherit;
     margin: 0;
@@ -162,22 +162,22 @@ img {
     overflow: visible;
   }
   button,
-  select {
+select {
     text-transform: none;
   }
   button,
-  html input[type=button],
-  input[type=reset],
-  input[type=submit] {
+html input[type=button],
+input[type=reset],
+input[type=submit] {
     -webkit-appearance: button;
     cursor: pointer;
   }
   button[disabled],
-  html input[disabled] {
+html input[disabled] {
     cursor: default;
   }
   button::-moz-focus-inner,
-  input::-moz-focus-inner {
+input::-moz-focus-inner {
     border: 0;
     padding: 0;
   }
@@ -185,12 +185,12 @@ img {
     line-height: normal;
   }
   input[type=checkbox],
-  input[type=radio] {
+input[type=radio] {
     box-sizing: border-box;
     padding: 0;
   }
   input[type=number]::-webkit-inner-spin-button,
-  input[type=number]::-webkit-outer-spin-button {
+input[type=number]::-webkit-outer-spin-button {
     height: auto;
   }
   input[type=search] {
@@ -198,7 +198,7 @@ img {
     box-sizing: content-box;
   }
   input[type=search]::-webkit-search-cancel-button,
-  input[type=search]::-webkit-search-decoration {
+input[type=search]::-webkit-search-decoration {
     -webkit-appearance: none;
   }
   fieldset {
@@ -221,7 +221,7 @@ img {
     border-spacing: 0;
   }
   td,
-  th {
+th {
     padding: 0;
   }
   .demoSection2 {
@@ -566,22 +566,20 @@ img {
     flex-flow: row wrap;
     justify-content: space-between;
   }
-  .demo .flexSet .col {
+  .flexSet .col {
     background: #485b8a;
     color: #fff;
-  }
-  .demo .flexEqual_3 .flexSet .col,
-  .demo .flexEqual-5 .flexSet .col,
-  .demo .flexEqual_7 .flexSet .col,
-  .demo .flexEqual_9 .flexSet .col,
-  .demo .flexEqual_11 .flexSet .col {
-    background: #00b0c6;
-  }
-  .flexSet .col {
     margin: 4px 0;
   }
   .flexSet .col p {
     color: rgba(255, 255, 255, 0.5);
+  }
+  .flexEqual_3 .flexSet .col,
+.flexEqual-5 .flexSet .col,
+.flexEqual_7 .flexSet .col,
+.flexEqual_9 .flexSet .col,
+.flexEqual_11 .flexSet .col {
+    background: #00b0c6;
   }
   .flexEqual_2 .flexSet .col {
     position: relative;
@@ -1893,17 +1891,17 @@ img {
     margin-top: 0;
   }
   .cp ul,
-  .cp ol {
+.cp ol {
     font-size: 1em;
     margin-bottom: 1em;
   }
   .cp ul li,
-  .cp ol li {
+.cp ol li {
     margin-bottom: 0.5em;
   }
   .cp dd,
-  .cp th,
-  .cp td figure {
+.cp th,
+.cp td figure {
     font-size: 1em;
   }
   .cp blockquote {
@@ -2158,7 +2156,7 @@ img {
     margin-right: 0.5em;
   }
   .fontSize > button, .fontSize > button.disabled,
-  .fontSize button[disabled] {
+.fontSize button[disabled] {
     font-size: 0.875em;
     color: #222;
     padding: 0;
@@ -2167,12 +2165,6 @@ img {
     background: none;
     border: none;
     text-align: left;
-  }
-  .fontSize span {
-    content: "字型大小：";
-    display: block;
-    font-size: 0.875em;
-    margin-top: 4px;
   }
   .fontSize ul {
     margin: 0;
@@ -2188,7 +2180,7 @@ img {
     align-items: center;
   }
   .fontSize ul li button,
-  .fontSize ul li a {
+.fontSize ul li a {
     display: block;
     text-align: center;
     line-height: 32px;
@@ -2201,19 +2193,19 @@ img {
     padding: 0;
   }
   .fontSize ul li button:hover, .fontSize ul li button:focus, .fontSize ul li button.active,
-  .fontSize ul li a:hover,
-  .fontSize ul li a:focus,
-  .fontSize ul li a.active {
+.fontSize ul li a:hover,
+.fontSize ul li a:focus,
+.fontSize ul li a.active {
     background: #0094e0;
     color: #fff;
     box-shadow: none;
   }
   .fontSize ul li button.small,
-  .fontSize ul li a.small {
+.fontSize ul li a.small {
     font-size: 0.938em;
   }
   .fontSize ul li button.large,
-  .fontSize ul li a.large {
+.fontSize ul li a.large {
     font-size: 1.125em;
   }
   @media screen and (max-width: 767px) {
@@ -2224,9 +2216,6 @@ img {
   .fontSize.typeB {
     margin: 0;
     position: relative;
-  }
-  .fontSize.typeB::before {
-    display: none;
   }
   .fontSize.typeB > button {
     text-indent: -9999px;
@@ -2283,6 +2272,7 @@ img {
     width: 140px;
     z-index: 9999;
     position: relative;
+    display: flex;
     align-items: center;
   }
   .language button, .language > a {
@@ -2319,6 +2309,10 @@ img {
     top: 0.4em;
     content: "";
     border-left: 1px solid #ddd;
+  }
+  .language button:focus-visible, .language > a:focus-visible {
+    box-shadow: none;
+    background: #444;
   }
   .language ul {
     background: #444;
@@ -2450,17 +2444,17 @@ img {
     box-shadow: 0 0px 0px 2px #1aadfa;
   }
   .webSearch .formGrp button,
-  .webSearch .formGrp .btn,
-  .webSearch .formGrp .btnSearch {
+.webSearch .formGrp .btn,
+.webSearch .formGrp .btnSearch {
     min-width: auto;
     padding: 0.2em 0.8em;
     margin: 0;
   }
   .webSearch .formGrp button:hover, .webSearch .formGrp button:focus-visible,
-  .webSearch .formGrp .btn:hover,
-  .webSearch .formGrp .btn:focus-visible,
-  .webSearch .formGrp .btnSearch:hover,
-  .webSearch .formGrp .btnSearch:focus-visible {
+.webSearch .formGrp .btn:hover,
+.webSearch .formGrp .btn:focus-visible,
+.webSearch .formGrp .btnSearch:hover,
+.webSearch .formGrp .btnSearch:focus-visible {
     box-shadow: none;
   }
   .webSearch .btnGrp {
@@ -2469,17 +2463,17 @@ img {
     margin: 0;
   }
   .webSearch .btnGrp button,
-  .webSearch .btnGrp .btn,
-  .webSearch .btnGrp .btnSearch {
+.webSearch .btnGrp .btn,
+.webSearch .btnGrp .btnSearch {
     min-width: auto;
     padding: 0.2em 0.8em;
     margin: 0;
   }
   .webSearch .btnGrp button:hover, .webSearch .btnGrp button:focus-visible,
-  .webSearch .btnGrp .btn:hover,
-  .webSearch .btnGrp .btn:focus-visible,
-  .webSearch .btnGrp .btnSearch:hover,
-  .webSearch .btnGrp .btnSearch:focus-visible {
+.webSearch .btnGrp .btn:hover,
+.webSearch .btnGrp .btn:focus-visible,
+.webSearch .btnGrp .btnSearch:hover,
+.webSearch .btnGrp .btnSearch:focus-visible {
     box-shadow: none;
   }
   .webSearch .keywordHot {
@@ -2567,7 +2561,7 @@ img {
     margin: 0.5em;
   }
   .mobileSearch .formGrp .btn,
-  .mobileSearch .formGrp .btnSearch {
+.mobileSearch .formGrp .btnSearch {
     min-width: auto;
     padding: 0.5em 0.8em;
     margin: 0;
@@ -2575,8 +2569,8 @@ img {
     max-width: 25%;
   }
   .mobileSearch .formGrp .btn:hover, .mobileSearch .formGrp .btn:focus-visible,
-  .mobileSearch .formGrp .btnSearch:hover,
-  .mobileSearch .formGrp .btnSearch:focus-visible {
+.mobileSearch .formGrp .btnSearch:hover,
+.mobileSearch .formGrp .btnSearch:focus-visible {
     box-shadow: none;
   }
   .mobileSearch .btnGrp {
@@ -2935,13 +2929,13 @@ img {
     border: 1px solid #ddd;
   }
   .disabled,
-  [disabled] {
+[disabled] {
     opacity: 0.5;
     cursor: not-allowed;
     text-shadow: none;
   }
   .readonly,
-  [readonly] {
+[readonly] {
     opacity: 0.5;
     cursor: not-allowed;
     text-shadow: none;
@@ -2986,11 +2980,12 @@ img {
     outline: #0094e0 2px solid;
   }
   .divider,
-  .dividerVertical {
+.dividerVertical {
     text-align: center;
     white-space: nowrap;
     -webkit-user-select: none;
     -moz-user-select: none;
+    -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
     font-size: 0.813em;
@@ -3755,10 +3750,11 @@ img {
     outline: #0094e0 2px solid;
   }
   [tooltip]:before,
-  [tooltip]:after {
+[tooltip]:after {
     text-transform: none;
     -webkit-user-select: none;
        -moz-user-select: none;
+        -ms-user-select: none;
             user-select: none;
     pointer-events: none;
     position: absolute;
@@ -3788,27 +3784,27 @@ img {
     box-sizing: border-box;
   }
   [tooltip]:hover:before,
-  [tooltip]:hover:after {
+[tooltip]:hover:after {
     display: block;
   }
   [tooltip=""]:before,
-  [tooltip=""]:after {
+[tooltip=""]:after {
     display: none;
   }
   [tooltip]:not([flow]):before,
-  [tooltip][flow^=up]:before {
+[tooltip][flow^=up]:before {
     bottom: 100%;
     border-bottom-width: 0;
     border-top-color: #333;
   }
   [tooltip]:not([flow]):after,
-  [tooltip][flow^=up]:after {
+[tooltip][flow^=up]:after {
     bottom: calc(100% + 5px);
   }
   [tooltip]:not([flow]):before,
-  [tooltip]:not([flow]):after,
-  [tooltip][flow^=up]:before,
-  [tooltip][flow^=up]:after {
+[tooltip]:not([flow]):after,
+[tooltip][flow^=up]:before,
+[tooltip][flow^=up]:after {
     left: 50%;
     transform: translate(-50%, -0.5em);
   }
@@ -3821,7 +3817,7 @@ img {
     top: calc(100% + 5px);
   }
   [tooltip][flow^=down]:before,
-  [tooltip][flow^=down]:after {
+[tooltip][flow^=down]:after {
     left: 50%;
     transform: translate(-50%, 0.5em);
   }
@@ -3849,10 +3845,22 @@ img {
     left: calc(100% + 5px);
     transform: translate(0.5em, -50%);
   }
+  @-webkit-keyframes tooltips-vert {
+    to {
+      opacity: 0.9;
+      transform: translate(-50%, 0);
+    }
+  }
   @keyframes tooltips-vert {
     to {
       opacity: 0.9;
       transform: translate(-50%, 0);
+    }
+  }
+  @-webkit-keyframes tooltips-horz {
+    to {
+      opacity: 0.9;
+      transform: translate(0, -50%);
     }
   }
   @keyframes tooltips-horz {
@@ -3863,18 +3871,20 @@ img {
   }
   /* FX All The Things */
   [tooltip]:not([flow]):hover:before,
-  [tooltip]:not([flow]):hover:after,
-  [tooltip][flow^=up]:hover:before,
-  [tooltip][flow^=up]:hover:after,
-  [tooltip][flow^=down]:hover:before,
-  [tooltip][flow^=down]:hover:after {
-    animation: tooltips-vert 300ms ease-out forwards;
+[tooltip]:not([flow]):hover:after,
+[tooltip][flow^=up]:hover:before,
+[tooltip][flow^=up]:hover:after,
+[tooltip][flow^=down]:hover:before,
+[tooltip][flow^=down]:hover:after {
+    -webkit-animation: tooltips-vert 300ms ease-out forwards;
+            animation: tooltips-vert 300ms ease-out forwards;
   }
   [tooltip][flow^=left]:hover:before,
-  [tooltip][flow^=left]:hover:after,
-  [tooltip][flow^=right]:hover:before,
-  [tooltip][flow^=right]:hover:after {
-    animation: tooltips-horz 300ms ease-out forwards;
+[tooltip][flow^=left]:hover:after,
+[tooltip][flow^=right]:hover:before,
+[tooltip][flow^=right]:hover:after {
+    -webkit-animation: tooltips-horz 300ms ease-out forwards;
+            animation: tooltips-horz 300ms ease-out forwards;
   }
   .tooltip {
     text-align: center;
@@ -3909,7 +3919,6 @@ img {
     border: none;
     box-shadow: none;
     box-sizing: border-box;
-    z-index: 100;
   }
   @media screen and (max-width: 767px) {
     .sidebarCtrlBtn {
@@ -3952,7 +3961,6 @@ img {
     display: none;
     right: 0px;
     font-size: 0em;
-    z-index: 9;
     width: 60px;
     height: 60px;
     position: absolute;
@@ -3967,7 +3975,6 @@ img {
     border: none;
     box-shadow: none;
     box-sizing: border-box;
-    z-index: 100;
   }
   @media screen and (max-width: 767px) {
     .searchCtrlBtn {
@@ -4113,19 +4120,13 @@ img {
     top: 50%;
     transform: translateY(-50%);
   }
-  .header.typeB h1 {
-    position: absolute;
-    top: 20px;
-    z-index: 99;
-  }
-  @media screen and (max-width: 767px) {
-    .header.typeB h1 {
-      position: relative;
-      top: auto;
+  @-webkit-keyframes showMenu {
+    0% {
+      transform: translateX(30px);
     }
-  }
-  .header.typeB .navigation {
-    margin-bottom: 40px;
+    100% {
+      transform: translateX(0px);
+    }
   }
   @keyframes showMenu {
     0% {
@@ -4269,7 +4270,8 @@ img {
   .mainMenu ul li ul ul {
     top: 0;
     left: 100%;
-    animation: none;
+    -webkit-animation: none;
+            animation: none;
     font-size: 1em;
   }
   .mainMenu ul li.active > ul {
@@ -4277,7 +4279,8 @@ img {
     display: block;
   }
   .mainMenu > ul > li.active > ul {
-    animation: showMenu 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    -webkit-animation: showMenu 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+            animation: showMenu 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
   }
   .mainMenu > ul > li.leftSlider ul ul {
     left: auto;
@@ -4383,7 +4386,6 @@ img {
     padding: 1em 0;
   }
   footer .container {
-    justify-content: space-between;
     position: relative;
     min-height: 1px;
     padding-left: 15px;
@@ -4414,11 +4416,11 @@ img {
   }
   footer .footerIcon {
     flex: 0 1 200px;
-    text-align: right;
   }
   @media screen and (max-width: 991px) {
     footer .footerIcon {
       flex: 1 1 100%;
+      text-align: right;
     }
   }
   footer .footerLink {
@@ -4427,7 +4429,6 @@ img {
     list-style: none;
     clear: both;
     display: flex;
-    margin-bottom: 10px;
   }
   @media screen and (max-width: 767px) {
     footer .footerLink {
@@ -4459,12 +4460,12 @@ img {
     line-height: 1.65em;
   }
   footer .update,
-  footer .counter {
+footer .counter {
     display: inline-block;
     margin-right: 5px;
   }
   footer .update em,
-  footer .counter em {
+footer .counter em {
     font-style: normal;
     color: #00a4f9;
     padding: 0 0.5em;
@@ -4486,26 +4487,6 @@ img {
   }
   footer .footerIcon img {
     max-width: 150px;
-  }
-  footer.typeB {
-    padding-top: 3%;
-    background: #014072;
-  }
-  footer.typeB .container {
-    justify-content: space-between;
-  }
-  footer.typeB .footerInfo {
-    color: #fff;
-  }
-  footer.typeB .footerLink li a {
-    padding: 0;
-    padding: 0 0 0 20px;
-    text-align: right;
-    background: none;
-    font-size: 0.875rem;
-  }
-  footer.typeB .footerIcon {
-    text-align: right;
   }
   .fatFooter {
     overflow: hidden;
@@ -4656,48 +4637,6 @@ img {
   .fatFooter nav ul li ul ul {
     display: none;
   }
-  .fatFooter.typeB {
-    background: linear-gradient(175deg, rgb(75, 146, 160) 0%, rgb(0, 93, 157) 80%);
-  }
-  .fatFooter.typeB .btnFatFooter {
-    right: 0;
-    left: auto;
-    width: 64px;
-    aspect-ratio: 1/1;
-    background: #e2e2e2;
-  }
-  .fatFooter.typeB .btnFatFooter::before {
-    border-color: #000;
-    top: 45%;
-  }
-  .fatFooter.typeB .btnFatFooter:hover, .fatFooter.typeB .btnFatFooter:focus {
-    background: #fff;
-  }
-  .fatFooter.typeB .btnFatFooter.close:before {
-    top: 35%;
-  }
-  .fatFooter.typeB a {
-    color: #fff;
-  }
-  .fatFooter.typeB nav {
-    padding: 70px 0 20px;
-  }
-  .fatFooter.typeB nav ul li ul {
-    overflow: hidden;
-  }
-  .fatFooter.typeB nav ul li ul li a {
-    color: #dddddd;
-    padding: 5px 0 5px 15px;
-    position: relative;
-    font-size: 0.875rem;
-  }
-  .fatFooter.typeB nav ul li ul li a::before {
-    content: "-";
-    position: absolute;
-    left: 0;
-    top: 4px;
-    color: #fff;
-  }
   select::-ms-expand {
     display: none;
   }
@@ -4837,18 +4776,18 @@ img {
     }
   }
   .flexForm .formContent .formGrp .formContent.formInline input[type=text],
-  .flexForm .formContent .formGrp .formContent.formInline input[type=tel],
-  .flexForm .formContent .formGrp .formContent.formInline select,
-  .flexForm .formContent .formGrp .formContent.formInline .checkbox {
+.flexForm .formContent .formGrp .formContent.formInline input[type=tel],
+.flexForm .formContent .formGrp .formContent.formInline select,
+.flexForm .formContent .formGrp .formContent.formInline .checkbox {
     width: auto;
     min-width: 100px;
     display: inline-block;
   }
   @media screen and (max-width: 575px) {
     .flexForm .formContent .formGrp .formContent.formInline input[type=text],
-    .flexForm .formContent .formGrp .formContent.formInline input[type=tel],
-    .flexForm .formContent .formGrp .formContent.formInline select,
-    .flexForm .formContent .formGrp .formContent.formInline .checkbox {
+.flexForm .formContent .formGrp .formContent.formInline input[type=tel],
+.flexForm .formContent .formGrp .formContent.formInline select,
+.flexForm .formContent .formGrp .formContent.formInline .checkbox {
       width: calc(100% - 0.6em);
       display: block;
     }
@@ -4861,25 +4800,25 @@ img {
     margin-bottom: 0;
   }
   .flexForm .formContent .tel input[type=text]:first-child,
-  .flexForm .formContent .tel input[type=tel]:first-child {
+.flexForm .formContent .tel input[type=tel]:first-child {
     background: url(../images/icon/icon_add.svg) no-repeat 0.5em center;
     background-size: 12px;
     padding-left: 1.5em;
   }
   .flexForm .formContent .tel input[type=text]:first-child,
-  .flexForm .formContent .tel select:first-child,
-  .flexForm .formContent .tel input[type=tel]:first-child {
+.flexForm .formContent .tel select:first-child,
+.flexForm .formContent .tel input[type=tel]:first-child {
     width: 100px;
   }
   .flexForm .formContent .tel input[type=text]:first-child ~ input,
-  .flexForm .formContent .tel select:first-child ~ input,
-  .flexForm .formContent .tel input[type=tel]:first-child ~ input {
+.flexForm .formContent .tel select:first-child ~ input,
+.flexForm .formContent .tel input[type=tel]:first-child ~ input {
     width: calc(100% - 200px);
   }
   @media screen and (max-width: 575px) {
     .flexForm .formContent .tel input[type=text]:first-child ~ input,
-    .flexForm .formContent .tel select:first-child ~ input,
-    .flexForm .formContent .tel input[type=tel]:first-child ~ input {
+.flexForm .formContent .tel select:first-child ~ input,
+.flexForm .formContent .tel input[type=tel]:first-child ~ input {
       width: 100%;
       display: block;
     }
@@ -5523,26 +5462,26 @@ img {
     justify-content: center;
   }
   .flexForm .btnGrp .btn,
-  .flexForm .btnGrp .btnReset,
-  .flexForm .btnGrp .btnSubmit,
-  .flexForm .btnGrp input[type=submit],
-  .flexForm .btnGrp input[type=reset],
-  .flexForm .btnGrp input[type=button],
-  .flexForm .btnGrp input[type=search] {
+.flexForm .btnGrp .btnReset,
+.flexForm .btnGrp .btnSubmit,
+.flexForm .btnGrp input[type=submit],
+.flexForm .btnGrp input[type=reset],
+.flexForm .btnGrp input[type=button],
+.flexForm .btnGrp input[type=search] {
     margin: 0.3em;
   }
   .flexForm .btn,
-  .flexForm input[type=submit],
-  .flexForm input[type=reset],
-  .flexForm input[type=button],
-  .flexForm input[type=search] {
+.flexForm input[type=submit],
+.flexForm input[type=reset],
+.flexForm input[type=button],
+.flexForm input[type=search] {
     flex: 1 1 auto;
   }
   .flexForm .formGrp,
-  .flexForm .checkGrp,
-  .flexForm .radioGrp,
-  .flexForm .btnGrp,
-  .flexForm .uploadGrp {
+.flexForm .checkGrp,
+.flexForm .radioGrp,
+.flexForm .btnGrp,
+.flexForm .uploadGrp {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -5551,15 +5490,15 @@ img {
   }
   @media screen and (max-width: 767px) {
     .flexForm .formGrp,
-    .flexForm .checkGrp,
-    .flexForm .radioGrp,
-    .flexForm .btnGrp,
-    .flexForm .uploadGrp {
+.flexForm .checkGrp,
+.flexForm .radioGrp,
+.flexForm .btnGrp,
+.flexForm .uploadGrp {
       flex-wrap: wrap;
     }
   }
   .flexForm .checkGrp label,
-  .flexForm .radioGrp label {
+.flexForm .radioGrp label {
     position: relative;
     z-index: 1;
     flex-basis: 100%;
@@ -5567,7 +5506,7 @@ img {
     align-items: center;
   }
   .flexForm .checkGrp label input:checked ~ span:after,
-  .flexForm .radioGrp label input:checked ~ span:after {
+.flexForm .radioGrp label input:checked ~ span:after {
     position: absolute;
     width: 1em;
     height: 1em;
@@ -5577,10 +5516,11 @@ img {
     left: 0.35em;
     top: 0.3em;
     z-index: -1;
-    animation: ripple 0.35s linear;
+    -webkit-animation: ripple 0.35s linear;
+            animation: ripple 0.35s linear;
   }
   .flexForm .checkGrp.formInline label,
-  .flexForm .radioGrp.formInline label {
+.flexForm .radioGrp.formInline label {
     margin: 0 0.5em 0 0;
     flex-basis: auto;
     margin-right: 1em;
@@ -5588,28 +5528,28 @@ img {
     align-items: center;
   }
   .flexForm.formInline .checkGrp label,
-  .flexForm.formInline .radioGrp label,
-  .flexForm .formInline .checkGrp label,
-  .flexForm .formInline .radioGrp label {
+.flexForm.formInline .radioGrp label,
+.flexForm .formInline .checkGrp label,
+.flexForm .formInline .radioGrp label {
     flex-basis: auto;
   }
   .flexForm .formGrp.formInline label,
-  .flexForm .uploadGrp.formInline label {
+.flexForm .uploadGrp.formInline label {
     display: inline-block;
     margin-right: 0.5em;
   }
   .flexForm .formGrp.formInline > input, .flexForm .formGrp.formInline > textarea, .flexForm .formGrp.formInline > select, .flexForm .formGrp.formInline > .input_i,
-  .flexForm .uploadGrp.formInline > input,
-  .flexForm .uploadGrp.formInline > textarea,
-  .flexForm .uploadGrp.formInline > select,
-  .flexForm .uploadGrp.formInline > .input_i {
+.flexForm .uploadGrp.formInline > input,
+.flexForm .uploadGrp.formInline > textarea,
+.flexForm .uploadGrp.formInline > select,
+.flexForm .uploadGrp.formInline > .input_i {
     width: auto;
     flex: 0 1 auto;
   }
   .flexForm .formGrp.formInline input[type=checkbox],
-  .flexForm .formGrp.formInline input[type=radio],
-  .flexForm .uploadGrp.formInline input[type=checkbox],
-  .flexForm .uploadGrp.formInline input[type=radio] {
+.flexForm .formGrp.formInline input[type=radio],
+.flexForm .uploadGrp.formInline input[type=checkbox],
+.flexForm .uploadGrp.formInline input[type=radio] {
     width: 1em;
   }
   .formInline {
@@ -5629,24 +5569,24 @@ img {
     vertical-align: middle;
   }
   .formInline input[type=text],
-  .formInline input[type=password],
-  .formInline select,
-  .formInline textarea,
-  .formInline button,
-  .formInline .btn,
-  .formInline input[type=submit],
-  .formInline input[type=reset],
-  .formInline input[type=button],
-  .formInline input[type=search],
-  .formInline .input_i {
+.formInline input[type=password],
+.formInline select,
+.formInline textarea,
+.formInline button,
+.formInline .btn,
+.formInline input[type=submit],
+.formInline input[type=reset],
+.formInline input[type=button],
+.formInline input[type=search],
+.formInline .input_i {
     width: auto;
     flex: 0 0 auto;
   }
   .formInline .formGrp,
-  .formInline .checkGrp,
-  .formInline .radioGrp,
-  .formInline .btnGrp,
-  .formInline .uploadGrp {
+.formInline .checkGrp,
+.formInline .radioGrp,
+.formInline .btnGrp,
+.formInline .uploadGrp {
     display: flex;
     margin-right: 0.5em;
     width: auto;
@@ -5656,15 +5596,15 @@ img {
     padding: 0;
   }
   .formInline .btnGrp .btn,
-  .formInline .btnGrp input[type=submit],
-  .formInline .btnGrp input[type=reset],
-  .formInline .btnGrp input[type=button],
-  .formInline .btnGrp input[type=search] {
+.formInline .btnGrp input[type=submit],
+.formInline .btnGrp input[type=reset],
+.formInline .btnGrp input[type=button],
+.formInline .btnGrp input[type=search] {
     margin: 0.3em;
     padding: 0.45em 1em;
   }
   label,
-  legend {
+legend {
     display: inline-block;
     margin: 0 0 0.5em 0;
     position: relative;
@@ -5675,20 +5615,20 @@ img {
   }
   @media screen and (max-width: 575px) {
     label,
-    legend {
+legend {
       display: block;
     }
   }
   label.inline input,
-  label.inline select,
-  label.inline textarea,
-  legend.inline input,
-  legend.inline select,
-  legend.inline textarea {
+label.inline select,
+label.inline textarea,
+legend.inline input,
+legend.inline select,
+legend.inline textarea {
     width: auto;
   }
   label.labelHidden,
-  legend.labelHidden {
+legend.labelHidden {
     font-size: 0;
     line-height: 1;
     width: 0;
@@ -5700,9 +5640,9 @@ img {
     margin: 0;
   }
   input,
-  textarea,
-  select,
-  button {
+textarea,
+select,
+button {
     color: #222;
     font-size: 1em;
     border: 1px solid #ccc;
@@ -5715,8 +5655,8 @@ img {
     transition: all 0.3s ease-out;
   }
   input,
-  select,
-  textarea {
+select,
+textarea {
     width: calc(100% - 0.6em);
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -5724,8 +5664,8 @@ img {
   }
   @media screen and (max-width: 767px) {
     input,
-    select,
-    textarea {
+select,
+textarea {
       width: 100%;
     }
   }
@@ -5733,38 +5673,38 @@ img {
     width: calc(100% - 0.6em);
   }
   input[type=text]::-webkit-input-placeholder,
-  input[type=password]::-webkit-input-placeholder,
-  input[type=file]::-webkit-input-placeholder,
-  input[type=tel]::-webkit-input-placeholder,
-  input[type=mail]::-webkit-input-placeholder,
-  input[type=number]::-webkit-input-placeholder {
+input[type=password]::-webkit-input-placeholder,
+input[type=file]::-webkit-input-placeholder,
+input[type=tel]::-webkit-input-placeholder,
+input[type=mail]::-webkit-input-placeholder,
+input[type=number]::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
     color: #999999;
   }
   input[type=text]::-moz-placeholder,
-  input[type=password]::-moz-placeholder,
-  input[type=file]::-moz-placeholder,
-  input[type=tel]::-moz-placeholder,
-  input[type=mail]::-moz-placeholder,
-  input[type=number]::-moz-placeholder {
+input[type=password]::-moz-placeholder,
+input[type=file]::-moz-placeholder,
+input[type=tel]::-moz-placeholder,
+input[type=mail]::-moz-placeholder,
+input[type=number]::-moz-placeholder {
     /* Firefox 19+ */
     color: #999999;
   }
   input[type=text]:-ms-input-placeholder,
-  input[type=password]:-ms-input-placeholder,
-  input[type=file]:-ms-input-placeholder,
-  input[type=tel]:-ms-input-placeholder,
-  input[type=mail]:-ms-input-placeholder,
-  input[type=number]:-ms-input-placeholder {
+input[type=password]:-ms-input-placeholder,
+input[type=file]:-ms-input-placeholder,
+input[type=tel]:-ms-input-placeholder,
+input[type=mail]:-ms-input-placeholder,
+input[type=number]:-ms-input-placeholder {
     /* IE 10+ */
     color: #999999;
   }
   input[type=text]:-moz-placeholder,
-  input[type=password]:-moz-placeholder,
-  input[type=file]:-moz-placeholder,
-  input[type=tel]:-moz-placeholder,
-  input[type=mail]:-moz-placeholder,
-  input[type=number]:-moz-placeholder {
+input[type=password]:-moz-placeholder,
+input[type=file]:-moz-placeholder,
+input[type=tel]:-moz-placeholder,
+input[type=mail]:-moz-placeholder,
+input[type=number]:-moz-placeholder {
     /* Firefox 18- */
     color: #999999;
   }
@@ -5788,26 +5728,27 @@ img {
     }
   }
   button:focus-visible,
-  input[type=text]:focus-visible,
-  input[type=reset]:focus-visible,
-  input[type=file]:focus-visible,
-  input[type=tel]:focus-visible,
-  input[type=email]:focus-visible,
-  input[type=password]:focus-visible,
-  textarea:focus-visible,
-  select:focus-visible {
+input[type=text]:focus-visible,
+input[type=reset]:focus-visible,
+input[type=file]:focus-visible,
+input[type=tel]:focus-visible,
+input[type=email]:focus-visible,
+input[type=password]:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    border: 1px solid #60c9ff;
     box-shadow: 0px 0px 0px 2px #60c9ff;
     outline: none;
   }
   button:focus,
-  input[type=text]:focus,
-  input[type=reset]:focus,
-  input[type=file]:focus,
-  input[type=tel]:focus,
-  input[type=email]:focus,
-  input[type=password]:focus,
-  textarea:focus,
-  select:focus {
+input[type=text]:focus,
+input[type=reset]:focus,
+input[type=file]:focus,
+input[type=tel]:focus,
+input[type=email]:focus,
+input[type=password]:focus,
+textarea:focus,
+select:focus {
     outline: none;
   }
   select {
@@ -5826,7 +5767,7 @@ img {
     text-shadow: 0 0 0 #000;
   }
   input[type=checkbox],
-  input[type=radio] {
+input[type=radio] {
     font-size: 1em;
     margin: 0.3em;
     width: 1em;
@@ -5838,9 +5779,9 @@ img {
     border-radius: 50%;
   }
   input[type=checkbox]:checked,
-  input[type=checkbox]:focus,
-  input[type=radio]:checked,
-  input[type=radio]:focus {
+input[type=checkbox]:focus,
+input[type=radio]:checked,
+input[type=radio]:focus {
     border-color: #00a4f9;
     background-color: #00a4f9;
     outline: none;
@@ -5867,7 +5808,7 @@ img {
     position: relative;
   }
   .uploadGrp input[readonly],
-  .uploadGrp input[disable] {
+.uploadGrp input[disable] {
     background: transparent;
     color: #666;
   }
@@ -6001,7 +5942,7 @@ img {
     }
   }
   table th,
-  table td {
+table td {
     padding: 0.5em;
     text-align: left;
   }
@@ -6041,10 +5982,10 @@ img {
       background-color: transparent;
     }
     .tableList thead,
-    .tableList tbody,
-    .tableList th,
-    .tableList td,
-    .tableList tr {
+.tableList tbody,
+.tableList th,
+.tableList td,
+.tableList tr {
       display: block;
     }
     .tableList thead tr {
@@ -6065,7 +6006,7 @@ img {
       white-space: normal;
       text-align: left;
     }
-    .tableList.loaded td:before {
+    .tableList td:before {
       content: attr(data-title);
       position: absolute;
       top: 0.5em;
@@ -6098,7 +6039,7 @@ img {
     }
   }
   .fixThTable th,
-  .fixThTable td {
+.fixThTable td {
     width: 10em;
     padding: 0.8em 0;
     text-align: center;
@@ -6106,7 +6047,7 @@ img {
   }
   @media screen and (max-width: 767px) {
     .fixThTable th,
-    .fixThTable td {
+.fixThTable td {
       display: inline-block;
       margin-right: -6px;
       margin-left: 0;
@@ -6196,7 +6137,7 @@ img {
     transform: rotateY(180deg);
   }
   .scrollTableNavLeft .scrollTableLeftBtn,
-  .scrollTableNavRight .scrollTableRightBtn {
+.scrollTableNavRight .scrollTableRightBtn {
     width: 35px;
     height: 100%;
     background: url(../images/basic/icon_ar.svg) no-repeat center;
@@ -6232,23 +6173,23 @@ img {
     }
   }
   .lp .list > ul,
-  .lp .list ol {
+.lp .list ol {
     list-style-type: none;
     padding: 0;
     border-top: 2px solid #00a4f9;
   }
   .lp .list > ul > li,
-  .lp .list ol > li {
+.lp .list ol > li {
     padding: 0.75em 0 0.5em;
     border-bottom: 1px solid #ddd;
     position: relative;
   }
   .lp .list > ul > li .tag,
-  .lp .list ol > li .tag {
+.lp .list ol > li .tag {
     margin-left: 2em;
   }
   .lp .list > ul > li > a,
-  .lp .list ol > li > a {
+.lp .list ol > li > a {
     display: block;
     padding-left: 2em;
     position: relative;
@@ -6257,11 +6198,11 @@ img {
     color: #222;
   }
   .lp .list > ul > li > a:hover,
-  .lp .list ol > li > a:hover {
+.lp .list ol > li > a:hover {
     color: #0094e0;
   }
   .lp .list > ul > li > a .num,
-  .lp .list ol > li > a .num {
+.lp .list ol > li > a .num {
     width: 1.5em;
     text-align: right;
     position: absolute;
@@ -6269,31 +6210,31 @@ img {
     left: 0;
   }
   .lp .list > ul > li > a .num:after,
-  .lp .list ol > li > a .num:after {
+.lp .list ol > li > a .num:after {
     content: ".";
     display: inline-block;
   }
   .lp .list > ul > li span.dept,
-  .lp .list ol > li span.dept {
+.lp .list ol > li span.dept {
     display: inline-block;
     font-size: 0.938em;
     font-weight: normal;
   }
   @media screen and (max-width: 767px) {
     .lp .list > ul > li span.dept,
-    .lp .list ol > li span.dept {
+.lp .list ol > li span.dept {
       display: block;
     }
   }
   .lp .list > ul > li time,
-  .lp .list ol > li time {
+.lp .list ol > li time {
     display: block;
     color: #aaa;
     font-size: 0.938em;
     font-weight: normal;
   }
   .submenu ul,
-  .submenu ol {
+.submenu ol {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -6459,8 +6400,8 @@ img {
        object-fit: cover;
   }
   .thumbnail h2,
-  .thumbnail h3,
-  .thumbnail h4 {
+.thumbnail h3,
+.thumbnail h4 {
     margin: 0.2em 0;
   }
   .thumbnail .caption {
@@ -6553,7 +6494,7 @@ img {
     flex: 0 0 auto;
   }
   div.function ul li button,
-  div.function ul li a {
+div.function ul li a {
     font-size: 0.813rem;
     display: block;
     padding: 0.2em 1em;
@@ -6563,8 +6504,8 @@ img {
     border-radius: 4px;
   }
   div.function ul li button:hover, div.function ul li button:focus-visible,
-  div.function ul li a:hover,
-  div.function ul li a:focus-visible {
+div.function ul li a:hover,
+div.function ul li a:focus-visible {
     background: #0094e0;
     border-color: #0094e0;
   }
@@ -7059,7 +7000,7 @@ img {
   .accordion .accordionContent .content {
     padding: 10px;
   }
-  .accordion .accordionState {
+  .accordion .accordionBtn {
     margin-left: 10px;
   }
   .accordion .accordionArrow {
@@ -7370,6 +7311,7 @@ img {
     max-width: 260px;
     margin-right: 40px;
     align-self: flex-start;
+    position: -webkit-sticky;
     position: sticky;
     top: 50px;
   }
@@ -7533,7 +7475,8 @@ img {
     transition-delay: -0.49s;
   }
   .mobileSidebar .mobileArea .sideMainMenu ul {
-    animation: showMenu 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    -webkit-animation: showMenu 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+            animation: showMenu 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
     padding: 0;
     left: 0;
   }
@@ -7657,16 +7600,16 @@ img {
     box-sizing: border-box;
   }
   .mobileSidebar .navigation .language a,
-  .mobileSidebar .navigation .language button {
+.mobileSidebar .navigation .language button {
     padding: 0.6em 1em;
     background: rgba(0, 0, 0, 0.4);
   }
   .mobileSidebar .navigation .language a:after,
-  .mobileSidebar .navigation .language button:after {
+.mobileSidebar .navigation .language button:after {
     top: 1.3em;
   }
   .mobileSidebar .navigation .language a:before,
-  .mobileSidebar .navigation .language button:before {
+.mobileSidebar .navigation .language button:before {
     top: 0.8em;
   }
   .mobileSidebar .navigation .language button {
@@ -7756,7 +7699,16 @@ img {
   }
   img.loaded {
     visibility: visible;
-    animation: lazy_animation 0.5s ease-out;
+    -webkit-animation: lazy_animation 0.5s ease-out;
+            animation: lazy_animation 0.5s ease-out;
+  }
+  @-webkit-keyframes lazy_animation {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
   @keyframes lazy_animation {
     from {
@@ -7815,7 +7767,7 @@ img {
     border-bottom: 0 !important;
   }
   .gs-result .gs-title,
-  .gs-result .gs-title * {
+.gs-result .gs-title * {
     color: #00a4f9 !important;
   }
   .gsst_a .gscb_a {
@@ -7829,8 +7781,8 @@ img {
     border: 0 !important;
   }
   .gsc-search-button-v2,
-  .gsc-search-button-v2:hover,
-  .gsc-search-button-v2:focus {
+.gsc-search-button-v2:hover,
+.gsc-search-button-v2:focus {
     background-color: #00a4f9 !important;
   }
   .gsc-tabHeader {
@@ -7840,1096 +7792,211 @@ img {
     vertical-align: middle;
   }
   .gsc-result-info-container,
-  .gsc-orderby-container {
+.gsc-orderby-container {
     border: 0 !important;
   }
   .gsc-selected-option {
     white-space: nowrap;
   }
-  :root {
-    --dotSize: 15px;
-  }
+}
+:root {
+  --dotSize: 15px;
+}
+
+.mpSlider .caption {
+  position: absolute;
+  width: 100%;
+  height: 3em;
+  line-height: 3em;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 0 1em;
+  font-size: 1.25em;
+  color: #fff;
+  margin: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 767px) {
   .mpSlider .caption {
-    position: absolute;
     width: 100%;
-    height: 3em;
-    line-height: 3em;
-    background: rgba(0, 0, 0, 0.45);
-    padding: 0 1em;
-    font-size: 1.25em;
-    color: #fff;
-    margin: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
-    text-align: center;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    box-sizing: border-box;
-  }
-  @media screen and (max-width: 767px) {
-    .mpSlider .caption {
-      width: 100%;
-      height: 2em;
-      line-height: 2em;
-      left: 0;
-      padding: 0 1em;
-    }
-  }
-  .mpSlider img {
-    width: 100%;
-    aspect-ratio: 3/2;
-    -o-object-fit: cover;
-       object-fit: cover;
-  }
-  .cpSlider {
-    padding: 1em 0;
-  }
-  .swiperBox {
-    position: relative;
-  }
-  .swiper img {
-    display: block;
-  }
-  .swiperDots {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-  }
-  .swiperDots .swiper-pagination-bullet {
-    /* 點的顏色 */
-    background: #666;
-    opacity: 0.4;
-    width: var(--dotSize);
-    height: var(--dotSize);
-    border-radius: 50%;
-  }
-  .swiperDots .swiper-pagination-bullet:hover, .swiperDots .swiper-pagination-bullet:focus-visible {
-    opacity: 1;
-    /* 點hover的顏色 */
-    background: #21baff;
-  }
-  .swiperDots .swiper-pagination-bullet:focus-visible {
-    opacity: 1;
-    /* 點focus的顏色 */
-    background: #ff3e4d;
-  }
-  .swiperDots .swiper-pagination-bullet.swiper-pagination-bullet-active {
-    opacity: 1;
-    /* 點 active 的顏色 */
-    background: #0094e0;
-  }
-  .swiperDots .swiper-pagination-bullet.swiper-pagination-bullet-active:hover {
-    /* 點 active  hover的顏色 */
-    background: #ff3e4d;
-  }
-  .swiperDots .swiper-pagination-bullet.swiper-pagination-bullet-active:focus-visible {
-    /* 點 active  focus的顏色 */
-    background: #ff3e4d;
-  }
-  .swiperDots .swiper-pagination-bullet.noFonts {
-    font-size: 0;
-  }
-  .swiperArrow {
-    position: absolute;
-    cursor: pointer;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 15px 10px;
-    margin: 0;
-    border-radius: 0;
-    background: rgba(255, 255, 255, 0.4);
-    border: none;
-    z-index: 9;
-  }
-  .swiperArrow::before {
-    content: "";
-    width: 20px;
-    height: 30px;
-    display: block;
-    background: url("../vendor/swiper/ar.svg") center no-repeat;
-  }
-  .swiperArrow.prevSlider {
-    left: 0px;
-  }
-  .swiperArrow.nextSlider {
-    right: 0px;
-  }
-  .swiperArrow.nextSlider::before {
-    transform: rotate(180deg);
-  }
-  .swiperArrow.swiperArrow-disabled {
-    opacity: 0.3;
-  }
-  .cpSlider .swiper {
-    margin: 0 40px;
-    background: #fff;
-    overflow: hidden;
-  }
-  .cpSlider .swiper h3 {
-    font-size: 1.5em;
-    padding: 12px 0px 15px 0px;
-    margin: 0.5em 0px 1.2em;
-    border-bottom: 1px solid #00a4f9;
-  }
-  .cpSlider .swiper .cpSlider {
-    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    box-sizing: border-box;
-  }
-  .cpSlider .swiper .imgContainer {
-    overflow: hidden;
-    position: relative;
-    overflow: hidden;
-  }
-  .cpSlider .swiper .imgContainer img {
-    width: 100%;
-    aspect-ratio: 4/3;
-    display: block;
-    -o-object-fit: contain;
-       object-fit: contain;
-    -o-object-position: 50% 50%;
-       object-position: 50% 50%;
-  }
-  .cpSlider .swiper .imgContainer img {
-    -o-object-fit: contain;
-       object-fit: contain;
-  }
-  .cpSlider .swiper .caption {
-    padding: 0.5em;
-    position: absolute;
-    background: rgba(0, 0, 0, 0.75);
-    color: #fff;
-    bottom: -2em;
-    left: 0;
-    font-size: 0.938em;
     height: 2em;
-    line-height: 1;
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    transition: 0.3s ease-out;
-  }
-  .cpSlider .swiper a {
-    color: #555;
-    display: block;
-  }
-  .cpSlider .swiper a:hover .caption, .cpSlider .swiper a:focus-visible .caption {
-    bottom: 0;
-  }
-  .cpSlider .swiper .swiperArrow {
-    padding: 0;
-  }
-  .navSlider {
-    position: relative;
-  }
-  .navSlider .swiper-slide {
-    max-height: 180px;
-  }
-  .navSlider .swiper-slide a {
-    position: relative;
-    display: block;
-  }
-  .navSlider .swiper-slide a img {
-    height: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
-  }
-  .adSlider img {
-    width: 100%;
-    aspect-ratio: 2/1;
-    display: block;
-    -o-object-fit: contain;
-       object-fit: contain;
-  }
-  .mpSlider .item img {
-    min-height: 350px;
-    -o-object-fit: cover;
-       object-fit: cover;
-  }
-  .mpSlider .item .titleBox {
-    position: absolute;
-    max-width: 75rem;
-    padding: 20px;
-    width: 100%;
-    margin: auto;
-    inset: 0 0 70px;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    line-height: 1;
-  }
-  @media screen and (max-width: 767px) {
-    .mpSlider .item .titleBox {
-      padding: 20px 60px;
-    }
-  }
-  .mpSlider .item .titleBox h1,
-  .mpSlider .item .titleBox h2 {
-    padding: 0;
-    margin: 0 0 10px;
-    font-size: 1.5rem;
-  }
-  @media screen and (max-width: 767px) {
-    .mpSlider .item .titleBox h1,
-    .mpSlider .item .titleBox h2 {
-      font-size: 1.125rem;
-    }
-  }
-  .mpSlider .item .titleBox h1 {
-    font-size: 2.5rem;
-  }
-  @media screen and (max-width: 991px) {
-    .mpSlider .item .titleBox h1 {
-      font-size: 1.875rem;
-    }
-  }
-  @media screen and (max-width: 767px) {
-    .mpSlider .item .titleBox h1 {
-      font-size: 1.375rem;
-    }
-  }
-  .mpSlider .item .titleBox p {
-    margin: 0;
-    font-size: 1rem;
-  }
-  .mpSlider .item .txtBox {
-    position: absolute;
-    background: rgba(8, 31, 56, 0.8);
-    bottom: 0;
+    line-height: 2em;
     left: 0;
-    width: 100%;
-  }
-  .mpSlider .item .txtBox .txt {
-    font-size: 1.125rem;
-    padding: 20px;
-    width: 100%;
-    margin: 0 auto;
-    color: #fff;
-    max-width: 75rem;
-  }
-  @media screen and (max-width: 991px) {
-    .mpSlider .item .txtBox .txt {
-      font-size: 1rem;
-    }
-  }
-  section .titleBox {
-    font-size: 1.75rem;
-    text-align: center;
-    font-weight: bold;
-    padding: 8% 0 4.8%;
-  }
-  @media screen and (max-width: 991px) {
-    section .titleBox {
-      font-size: 1.375rem;
-    }
-  }
-  section .listBox {
-    margin-bottom: 30px;
-  }
-  section .more {
-    display: block;
-    width: 170px;
-    border-radius: 2px;
-    position: relative;
-    margin: 0 0 0 auto;
-    color: #333333;
-    font-size: 0.9375rem;
-    background: #cfcfcf;
-    text-align: center;
-    padding: 10px;
-  }
-  .listTypeA .item {
-    border: #e2e2e2 1px solid;
-    border-width: 1px 0;
-  }
-  .listTypeA .item a {
-    display: flex;
-    align-items: center;
-    padding: 20px 0;
-  }
-  @media screen and (max-width: 575px) {
-    .listTypeA .item a {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-  }
-  .listTypeA .item a:hover .title, .listTypeA .item a:focus-visible .title {
-    color: #0094e0;
-    cursor: pointer;
-  }
-  .listTypeA .item + .item {
-    border-width: 0 0 1px;
-  }
-  .listTypeA .date {
-    text-align: center;
-    width: 170px;
-    color: #545454;
-  }
-  @media screen and (max-width: 575px) {
-    .listTypeA .date {
-      text-align: left;
-      margin-bottom: 10px;
-    }
-  }
-  .listTypeA .title {
-    flex: 1 0 calc(100% - 170px);
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
-    color: #1a1a1a;
-    margin: 0;
-    font-weight: normal;
-    font-size: 1rem;
-  }
-  .listTypeB .item a {
-    display: block;
-  }
-  .listTypeB .date,
-  .listTypeB .txt,
-  .listTypeB .title {
-    margin-left: 20px;
-    margin-right: 20px;
-    position: relative;
-    z-index: 1;
-  }
-  @media screen and (max-width: 767px) {
-    .listTypeB .date,
-    .listTypeB .txt,
-    .listTypeB .title {
-      margin-left: 0px;
-      margin-right: 0px;
-    }
-  }
-  .listTypeB .title {
-    margin-top: -10%;
-    margin-bottom: 20px;
-    height: 75px;
-    padding: 0;
-    letter-spacing: 2px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .listTypeB .title span {
-    background: #000;
-    padding: 5px 10px;
-    color: #fff;
-    font-size: 1.125rem;
-    display: block;
-    margin-bottom: 5px;
-  }
-  .listTypeB .date {
-    font-size: 1.125rem;
-    color: #030303;
-    display: block;
-    font-family: "Verdana";
-    margin-bottom: 30px;
-    position: relative;
-    letter-spacing: 2px;
-  }
-  @media screen and (max-width: 991px) {
-    .listTypeB .date {
-      font-size: 1rem;
-    }
-  }
-  .listTypeB .date::before {
-    content: "";
-    position: absolute;
-    width: 38px;
-    height: 3px;
-    display: block;
-    bottom: -15px;
-    left: 0;
-    background: #001827;
-  }
-  .listTypeB .txt {
-    font-size: 1rem;
-    line-height: 1.6;
-    letter-spacing: 1px;
-    color: #545454;
-  }
-  .listTypeC .flexSet {
-    align-items: flex-end;
-  }
-  .listTypeC .item {
-    margin-bottom: 30px;
-  }
-  .listTypeC .item .pic {
-    line-height: 0;
-  }
-  .listTypeC .item .col {
-    padding: 0;
-    margin: 0;
-  }
-  .listTypeC .item .col + .col {
-    padding: 20px 0 0 3%;
-  }
-  .listTypeC .title {
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-    font-size: 1.25rem;
-    color: #000;
-    font-weight: 500;
-    line-height: 1.6;
-  }
-  .listTypeC .date {
-    font-size: 0.875rem;
-    color: #666666;
-    display: block;
-    font-family: "Verdana";
-    margin-bottom: 10px;
-    position: relative;
-    letter-spacing: 2px;
-  }
-  .listTypeC .txt {
-    font-size: 1rem;
-    line-height: 1.6;
-    letter-spacing: 1px;
-    color: #545454;
-  }
-  .listTypeD .item a {
-    display: block;
-    padding-right: 20px;
-  }
-  @media screen and (max-width: 767px) {
-    .listTypeD .item a {
-      padding-right: 0px;
-    }
-  }
-  .listTypeD .pic {
-    position: relative;
-    margin-bottom: 10px;
-  }
-  .listTypeD .pic::before {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    display: block;
-    height: 30%;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 100%);
-  }
-  .listTypeD .pic img {
-    width: 100%;
-    aspect-ratio: 23/31;
-    display: block;
-    -o-object-fit: cover;
-       object-fit: cover;
-  }
-  .listTypeD .topBox {
-    position: absolute;
-    bottom: 0;
-    left: 30px;
-    right: -20px;
-    z-index: 2;
-  }
-  .listTypeD .txt {
-    margin-left: 30px;
-    margin-right: 0px;
-    position: relative;
-    z-index: 1;
-  }
-  .listTypeD .title {
-    padding: 0;
-    letter-spacing: 2px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 0 0 20px 0;
-  }
-  .listTypeD .title span {
-    background: #000;
-    padding: 5px 10px;
-    color: #fff;
-    font-size: 1.125rem;
-    display: block;
-    margin-bottom: 5px;
-  }
-  .listTypeD .date {
-    font-size: 1.125rem;
-    color: #030303;
-    display: block;
-    font-family: "Verdana";
-    margin-bottom: 30px;
-    position: relative;
-    letter-spacing: 2px;
-  }
-  .listTypeD .date::before {
-    content: "";
-    position: absolute;
-    width: 38px;
-    height: 3px;
-    display: block;
-    bottom: -15px;
-    left: 0;
-    background: #001827;
-  }
-  .listTypeD .txt {
-    font-size: 1rem;
-    line-height: 1.6;
-    letter-spacing: 1px;
-    color: #545454;
-  }
-  .listTypeE .item a {
-    display: block;
-    position: relative;
-  }
-  .listTypeE .item a::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    display: block;
-    background: rgba(0, 0, 0, 0.2) url("../images/demo/icon_play.png") center no-repeat;
-    transition: 0.3s ease-out;
-  }
-  .listTypeE .item a img {
-    display: block;
-  }
-  .listTypeE .item a:hover:before {
-    opacity: 0;
-  }
-  .listTypeF i {
-    max-width: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 100%;
-    aspect-ratio: 1/1;
-    overflow: hidden;
-    margin: 0 auto 10px;
-    background: linear-gradient(135deg, rgb(0, 93, 157) 20%, rgb(152, 209, 167) 100%);
-  }
-  .listTypeF i img {
-    width: 60%;
-  }
-  .listTypeF .txt {
-    text-align: center;
-    color: #000;
-    font-weight: 500;
-    font-size: 1rem;
-  }
-  .listTypeG {
-    padding-bottom: 3%;
-    background: url("../images/demo/listtypeg_bg.jpg") center no-repeat;
-  }
-  .listTypeG .item a {
-    display: block;
-  }
-  .listTypeG .pic {
-    position: relative;
-  }
-  .listTypeG .pic img {
-    width: 100%;
-    aspect-ratio: 1/2;
-    display: block;
-    -o-object-fit: cover;
-       object-fit: cover;
-  }
-  .listTypeG .topBox {
-    position: absolute;
-    inset: 20px;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .listTypeG .title {
-    padding: 0;
-    letter-spacing: 2px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 0;
-  }
-  .listTypeG .title span {
-    background: #000;
-    padding: 5px 10px;
-    color: #fff;
-    font-size: 1.125rem;
-    display: block;
-    margin-bottom: 5px;
-  }
-  .listTypeG .date {
-    font-size: 1.125rem;
-    color: #030303;
-    display: block;
-    font-family: "Verdana";
-    margin-bottom: 30px;
-    position: relative;
-    letter-spacing: 2px;
-  }
-  .listTypeG .date::before {
-    content: "";
-    position: absolute;
-    width: 38px;
-    height: 3px;
-    display: block;
-    bottom: -15px;
-    left: 0;
-    background: #001827;
-  }
-  .adSlider {
-    padding: 3% 0 0;
-  }
-  .adSlider .swiperBox {
-    padding: 0 50px;
-  }
-  h1.title,
-  h2.title {
-    font-size: 2em;
-    line-height: 1.25em;
-    margin: 0.5em 0;
-  }
-  .cp .pic {
-    float: left;
-    margin: 0px 1em 1em 0;
-    width: auto;
-    width: 45%;
-    max-width: 400px;
-    background: #f1f1f1;
-    overflow: hidden;
-    padding: 0.5em 0.5em 0.2em;
-  }
-  .cp .pic img {
-    float: none;
-    width: 100%;
-    margin: 0;
-    display: block;
-  }
-  .cp .pic span {
-    text-align: center;
-    display: block;
-    font-size: 0.938em;
-  }
-  @media screen and (max-width: 767px) {
-    .cp .pic {
-      float: none;
-      max-width: 100%;
-      width: auto;
-      margin: 0px auto;
-      display: block;
-      margin-bottom: 0.5em;
-    }
-  }
-  .cp table {
-    background: #fff;
-  }
-  .cp img.floatLeft {
-    float: left;
-    margin: 0px 1em 1em 0;
-    width: auto;
-    max-width: 55%;
-  }
-  @media screen and (max-width: 767px) {
-    .cp img.floatLeft {
-      float: none;
-      max-width: 100%;
-      margin: 0px auto;
-    }
-  }
-  .cp img.floatRight {
-    float: right;
-    margin: 0px 0 1em 1em;
-    width: auto;
-    max-width: 55%;
-  }
-  @media screen and (max-width: 767px) {
-    .cp img.floatRight {
-      float: none;
-      max-width: 100%;
-      margin: 0px auto;
-    }
-  }
-  .cp a {
-    text-decoration: none;
-    color: #00a4f9;
-  }
-  .cp a:hover, .cp a:focus-visible {
-    color: #0094e0;
-    cursor: pointer;
-  }
-  .cp a:focus-visible {
-    outline: #0094e0 2px solid;
-  }
-  .cp .publishInfo {
-    font-size: 0.875em;
-    line-height: 1.5em;
-    list-style: none;
-    margin: 0 0 0.7em 0;
-    border-left: solid 5px #00a4f9;
-    padding: 0.8em 1.5em 0.8em;
-    background: #f2f2f2;
-    display: flex;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-  }
-  .cp .publishInfo li {
-    flex: 1 1 33.3333333333%;
-    margin-bottom: 0.5em;
-  }
-  @media screen and (max-width: 991px) {
-    .cp .publishInfo li {
-      flex: 1 1 50%;
-    }
-  }
-  @media screen and (max-width: 767px) {
-    .cp .publishInfo li {
-      flex: 1 1 100%;
-    }
-  }
-  .fileDownload {
-    width: 100%;
-    margin: 0 auto 2em;
-    clear: both;
-    zoom: 1;
-  }
-  .fileDownload:before, .fileDownload:after {
-    content: "";
-    display: table;
-  }
-  .fileDownload:after {
-    clear: both;
-  }
-  .fileDownload h3 {
-    font-size: 1.5em;
-    padding: 12px 0px 15px 0px;
-    margin: 0.5em 0px 0.2em;
-    border-bottom: 1px solid #00a4f9;
-  }
-  .fileDownload ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  .fileDownload li {
-    display: flex;
-    flex-wrap: wrap;
-    position: relative;
-    padding: 0.5em 0 0.5em 1.5em;
-    border-bottom: solid 1px #eee;
-  }
-  .fileDownload li:before {
-    content: "·";
-    font-size: 2em;
-    font-weight: bold;
-    width: 1em;
-    height: 1em;
-    position: absolute;
-    top: 0.42em;
-    left: 0.1em;
-    color: #666;
-  }
-  .fileDownload li .fileName {
-    line-height: 1.8em;
-    margin: 0.2em 0.5em 0.2em 0;
-    color: #222;
-  }
-  .fileDownload li .fileName ~ span {
-    flex: 0 0 auto;
-    margin: 0.2em;
-    font-size: 0.875em;
-    line-height: 1.5em;
-    vertical-align: middle;
-    color: #666;
-  }
-  .fileDownload li .fileName ~ span a {
-    color: #fff;
-    display: inline-block;
-    margin-right: 8px;
-  }
-  .fileDownload li span.file_doc a {
-    color: #fff;
-    font-weight: bold;
-    padding: 0.2em 0.8em;
-    border-radius: 3px;
-  }
-  .fileDownload li span.file_doc a:hover, .fileDownload li span.file_doc a:focus-visible {
-    color: #fff;
-  }
-  .fileDownload li span.file_docx a {
-    color: #fff;
-    font-weight: bold;
-    padding: 0.2em 0.8em;
-    border-radius: 3px;
-  }
-  .fileDownload li span.file_docx a:hover, .fileDownload li span.file_docx a:focus-visible {
-    color: #fff;
-  }
-  .fileDownload li span.file_odt a {
-    color: #fff;
-    font-weight: bold;
-    padding: 0.2em 0.8em;
-    border-radius: 3px;
-  }
-  .fileDownload li span.file_odt a:hover, .fileDownload li span.file_odt a:focus-visible {
-    color: #fff;
-  }
-  .fileDownload li span.file_xls a {
-    color: #fff;
-    font-weight: bold;
-    padding: 0.2em 0.8em;
-    border-radius: 3px;
-  }
-  .fileDownload li span.file_xls a:hover, .fileDownload li span.file_xls a:focus-visible {
-    color: #fff;
-  }
-  .fileDownload li span.file_xlsx a {
-    color: #fff;
-    font-weight: bold;
-    padding: 0.2em 0.8em;
-    border-radius: 3px;
-  }
-  .fileDownload li span.file_xlsx a:hover, .fileDownload li span.file_xlsx a:focus-visible {
-    color: #fff;
-  }
-  .fileDownload li span.file_csv a {
-    color: #fff;
-    font-weight: bold;
-    padding: 0.2em 0.8em;
-    border-radius: 3px;
-  }
-  .fileDownload li span.file_csv a:hover, .fileDownload li span.file_csv a:focus-visible {
-    color: #fff;
-  }
-  .fileDownload li span.file_ods a {
-    color: #fff;
-    font-weight: bold;
-    padding: 0.2em 0.8em;
-    border-radius: 3px;
-  }
-  .fileDownload li span.file_ods a:hover, .fileDownload li span.file_ods a:focus-visible {
-    color: #fff;
-  }
-  .fileDownload li span.file_ppt a {
-    color: #fff;
-    font-weight: bold;
-    padding: 0.2em 0.8em;
-    border-radius: 3px;
-  }
-  .fileDownload li span.file_ppt a:hover, .fileDownload li span.file_ppt a:focus-visible {
-    color: #fff;
-  }
-  .fileDownload li span.file_pptx a {
-    color: #fff;
-    font-weight: bold;
-    padding: 0.2em 0.8em;
-    border-radius: 3px;
-  }
-  .fileDownload li span.file_pptx a:hover, .fileDownload li span.file_pptx a:focus-visible {
-    color: #fff;
-  }
-  .fileDownload li span.file_odp a {
-    color: #fff;
-    font-weight: bold;
-    padding: 0.2em 0.8em;
-    border-radius: 3px;
-  }
-  .fileDownload li span.file_odp a:hover, .fileDownload li span.file_odp a:focus-visible {
-    color: #fff;
-  }
-  .fileDownload li span.file_zip a {
-    color: #fff;
-    font-weight: bold;
-    padding: 0.2em 0.8em;
-    border-radius: 3px;
-  }
-  .fileDownload li span.file_zip a:hover, .fileDownload li span.file_zip a:focus-visible {
-    color: #fff;
-  }
-  .fileDownload li span.file_txt a {
-    color: #fff;
-    font-weight: bold;
-    padding: 0.2em 0.8em;
-    border-radius: 3px;
-  }
-  .fileDownload li span.file_txt a:hover, .fileDownload li span.file_txt a:focus-visible {
-    color: #fff;
-  }
-  .fileDownload li span.file_mov a {
-    color: #fff;
-    font-weight: bold;
-    padding: 0.2em 0.8em;
-    border-radius: 3px;
-  }
-  .fileDownload li span.file_mov a:hover, .fileDownload li span.file_mov a:focus-visible {
-    color: #fff;
-  }
-  .fileDownload li span.file_mp3 a {
-    color: #fff;
-    font-weight: bold;
-    padding: 0.2em 0.8em;
-    border-radius: 3px;
-  }
-  .fileDownload li span.file_mp3 a:hover, .fileDownload li span.file_mp3 a:focus-visible {
-    color: #fff;
-  }
-  .fileDownload li span.file_jpg a {
-    color: #fff;
-    font-weight: bold;
-    padding: 0.2em 0.8em;
-    border-radius: 3px;
-  }
-  .fileDownload li span.file_jpg a:hover, .fileDownload li span.file_jpg a:focus-visible {
-    color: #fff;
-  }
-  .fileDownload li span.file_wmv a {
-    color: #fff;
-    font-weight: bold;
-    padding: 0.2em 0.8em;
-    border-radius: 3px;
-  }
-  .fileDownload li span.file_wmv a:hover, .fileDownload li span.file_wmv a:focus-visible {
-    color: #fff;
-  }
-  .fileDownload li span.file_mp4 a {
-    color: #fff;
-    font-weight: bold;
-    padding: 0.2em 0.8em;
-    border-radius: 3px;
-  }
-  .fileDownload li span.file_mp4 a:hover, .fileDownload li span.file_mp4 a:focus-visible {
-    color: #fff;
-  }
-  .fileDownload li span.file_pdf a {
-    color: #fff;
-    font-weight: bold;
-    padding: 0.2em 0.8em;
-    border-radius: 3px;
-  }
-  .fileDownload li span.file_pdf a:hover, .fileDownload li span.file_pdf a:focus-visible {
-    color: #fff;
-  }
-  .fileDownload li span.file_other a {
-    color: #fff;
-    font-weight: bold;
-    padding: 0.2em 0.8em;
-    border-radius: 3px;
-  }
-  .fileDownload li span.file_other a:hover, .fileDownload li span.file_other a:focus-visible {
-    color: #fff;
-  }
-  .fileDownload li span {
-    display: flex;
-    align-items: center;
-  }
-  .fileDownload li span.file_doc a, .fileDownload li span.file_docx a, .fileDownload li span.file_odt a {
-    background: #275cb7;
-  }
-  .fileDownload li span.file_doc a:hover, .fileDownload li span.file_doc a:focus-visible, .fileDownload li span.file_docx a:hover, .fileDownload li span.file_docx a:focus-visible, .fileDownload li span.file_odt a:hover, .fileDownload li span.file_odt a:focus-visible {
-    background: #2351a2;
-  }
-  .fileDownload li span.file_xls a, .fileDownload li span.file_xlsx a, .fileDownload li span.file_csv a, .fileDownload li span.file_ods a {
-    background: #387947;
-  }
-  .fileDownload li span.file_xls a:hover, .fileDownload li span.file_xls a:focus-visible, .fileDownload li span.file_xlsx a:hover, .fileDownload li span.file_xlsx a:focus-visible, .fileDownload li span.file_csv a:hover, .fileDownload li span.file_csv a:focus-visible, .fileDownload li span.file_ods a:hover, .fileDownload li span.file_ods a:focus-visible {
-    background: #30683d;
-  }
-  .fileDownload li span.file_ppt a, .fileDownload li span.file_pptx a, .fileDownload li span.file_odp a, .fileDownload li span.file_pdf a {
-    background: #c55a3b;
-  }
-  .fileDownload li span.file_ppt a:hover, .fileDownload li span.file_ppt a:focus-visible, .fileDownload li span.file_pptx a:hover, .fileDownload li span.file_pptx a:focus-visible, .fileDownload li span.file_odp a:hover, .fileDownload li span.file_odp a:focus-visible, .fileDownload li span.file_pdf a:hover, .fileDownload li span.file_pdf a:focus-visible {
-    background: #b25135;
-  }
-  .fileDownload li span.file_pdf a {
-    background: #c00;
-  }
-  .fileDownload li span.file_pdf a:hover, .fileDownload li span.file_pdf a:focus-visible {
-    background: #b30000;
-  }
-  .fileDownload li span.file_zip a {
-    background: #eb712e;
-  }
-  .fileDownload li span.file_zip a:hover, .fileDownload li span.file_zip a:focus-visible {
-    background: #e96117;
-  }
-  .fileDownload li span.file_txt a, .fileDownload li span.file_other a {
-    background: #555;
-  }
-  .fileDownload li span.file_txt a:hover, .fileDownload li span.file_txt a:focus-visible, .fileDownload li span.file_other a:hover, .fileDownload li span.file_other a:focus-visible {
-    background: #484848;
-  }
-  .fileDownload li span.file_mov a {
-    background: #009999;
-  }
-  .fileDownload li span.file_mov a:hover, .fileDownload li span.file_mov a:focus-visible {
-    background: teal;
-  }
-  .fileDownload li span.file_mp3 a, .fileDownload li span.file_mp4 a {
-    background: #088ecc;
-  }
-  .fileDownload li span.file_mp3 a:hover, .fileDownload li span.file_mp3 a:focus-visible, .fileDownload li span.file_mp4 a:hover, .fileDownload li span.file_mp4 a:focus-visible {
-    background: #077db3;
-  }
-  .fileDownload li span.file_jpg a {
-    background: #6c29a4;
-  }
-  .fileDownload li span.file_jpg a:hover, .fileDownload li span.file_jpg a:focus-visible {
-    background: #5f2490;
-  }
-  .fileDownload li span.file_wmv a {
-    background: #430a1f;
-  }
-  .fileDownload li span.file_wmv a:hover, .fileDownload li span.file_wmv a:focus-visible {
-    background: #2d0715;
-  }
-  .webLink {
-    margin: 1em 0;
-  }
-  .webLink h3 {
-    font-size: 1.5em;
-    padding: 12px 0px 15px 0px;
-    margin: 0.5em 0px 0.2em;
-    border-bottom: 1px solid #00a4f9;
-  }
-  .webLink ol,
-  .webLink ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  .webLink li {
-    position: relative;
-    padding: 0.25em 0;
-    border-bottom: solid 1px #eee;
-    padding-left: 1.5em;
-  }
-  .webLink li:before {
-    content: "·";
-    font-size: 2em;
-    font-weight: bold;
-    width: 1em;
-    height: 1em;
-    position: absolute;
-    top: 0.25em;
-    left: 0.1em;
-    color: #666;
-  }
-  .webLink li a {
-    padding: 0.2em 0px;
-    display: block;
-    text-decoration: none;
-    color: #222;
-  }
-  .webLink li a:hover, .webLink li a:focus-visible {
-    color: #0094e0;
-    cursor: pointer;
-  }
-  .webLink li a:focus-visible {
-    outline: #0094e0 2px solid;
+    padding: 0 1em;
   }
 }
+
+.cpSlider {
+  padding: 1em 0;
+}
+
+.swiperBox {
+  position: relative;
+}
+
+.swiper img {
+  display: block;
+}
+
+.swiperDots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+.swiperDots .swiper-pagination-bullet {
+  /* 點的顏色 */
+  background: #666;
+  opacity: 0.4;
+  width: var(--dotSize);
+  height: var(--dotSize);
+  border-radius: 50%;
+}
+.swiperDots .swiper-pagination-bullet:hover, .swiperDots .swiper-pagination-bullet:focus-visible {
+  opacity: 1;
+  /* 點hover的顏色 */
+  background: #21baff;
+}
+.swiperDots .swiper-pagination-bullet:focus-visible {
+  opacity: 1;
+  /* 點focus的顏色 */
+  background: #ff3e4d;
+}
+.swiperDots .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  opacity: 1;
+  /* 點 active 的顏色 */
+  background: #0094e0;
+}
+.swiperDots .swiper-pagination-bullet.swiper-pagination-bullet-active:hover {
+  /* 點 active  hover的顏色 */
+  background: #ff3e4d;
+}
+.swiperDots .swiper-pagination-bullet.swiper-pagination-bullet-active:focus-visible {
+  /* 點 active  focus的顏色 */
+  background: #ff3e4d;
+}
+.swiperDots .swiper-pagination-bullet.noFonts {
+  font-size: 0;
+}
+
+.swiperArrow {
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 15px 10px;
+  margin: 0;
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  z-index: 9;
+}
+.swiperArrow::before {
+  content: "";
+  width: 20px;
+  height: 30px;
+  display: block;
+  background: url("../vendor/swiper/ar.svg") center no-repeat;
+}
+.swiperArrow.prevSlider {
+  left: 0px;
+}
+.swiperArrow.nextSlider {
+  right: 0px;
+}
+.swiperArrow.nextSlider::before {
+  transform: rotate(180deg);
+}
+.swiperArrow.swiperArrow-disabled {
+  opacity: 0.3;
+}
+
+.cpSlider .swiper {
+  margin: 0 40px;
+  background: #fff;
+  overflow: hidden;
+}
+.cpSlider .swiper h3 {
+  font-size: 1.5em;
+  padding: 12px 0px 15px 0px;
+  margin: 0.5em 0px 1.2em;
+  border-bottom: 1px solid #00a4f9;
+}
+.cpSlider .swiper .cpSlider {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: border-box;
+}
+.cpSlider .swiper .imgContainer {
+  overflow: hidden;
+  position: relative;
+  overflow: hidden;
+}
+.cpSlider .swiper .imgContainer img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  display: block;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: 50% 50%;
+     object-position: 50% 50%;
+}
+.cpSlider .swiper .imgContainer img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.cpSlider .swiper .caption {
+  padding: 0.5em;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  bottom: -2em;
+  left: 0;
+  font-size: 0.938em;
+  height: 2em;
+  line-height: 1;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: 0.3s ease-out;
+}
+.cpSlider .swiper a {
+  color: #555;
+  display: block;
+}
+.cpSlider .swiper a:hover .caption, .cpSlider .swiper a:focus-visible .caption {
+  bottom: 0;
+}
+.cpSlider .swiper .swiperArrow {
+  padding: 0;
+}
+
+.navSlider {
+  position: relative;
+}
+.navSlider .swiper-slide {
+  max-height: 180px;
+}
+.navSlider .swiper-slide a {
+  position: relative;
+  display: block;
+}
+.navSlider .swiper-slide a img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .colorA a:hover {
   color: #298729;
 }
@@ -9494,17 +8561,494 @@ img {
   color: #6e1616;
 }
 
+.flex_12 .item img {
+  aspect-ratio: 16/3;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.flex_12 .item .titleBox {
+  position: absolute;
+  max-width: 75rem;
+  padding: 20px;
+  width: 100%;
+  margin: auto;
+  inset: 0 0 70px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1;
+}
+.flex_12 .item .titleBox h1,
+.flex_12 .item .titleBox h2 {
+  padding: 0;
+  margin: 0 0 10px;
+}
+.flex_12 .item .titleBox h1 {
+  font-size: 2.5rem;
+}
+.flex_12 .item .titleBox p {
+  margin: 0;
+}
+
+h1.title,
+h2.title {
+  font-size: 2em;
+  line-height: 1.25em;
+  margin: 0.5em 0;
+}
+
+.cp .pic {
+  float: left;
+  margin: 0px 1em 1em 0;
+  width: auto;
+  width: 45%;
+  max-width: 400px;
+  background: #f1f1f1;
+  overflow: hidden;
+  padding: 0.5em 0.5em 0.2em;
+}
+.cp .pic img {
+  float: none;
+  width: 100%;
+  margin: 0;
+  display: block;
+}
+.cp .pic span {
+  text-align: center;
+  display: block;
+  font-size: 0.938em;
+}
+@media screen and (max-width: 767px) {
+  .cp .pic {
+    float: none;
+    max-width: 100%;
+    width: auto;
+    margin: 0px auto;
+    display: block;
+    margin-bottom: 0.5em;
+  }
+}
+.cp table {
+  background: #fff;
+}
+.cp img.floatLeft {
+  float: left;
+  margin: 0px 1em 1em 0;
+  width: auto;
+  max-width: 55%;
+}
+@media screen and (max-width: 767px) {
+  .cp img.floatLeft {
+    float: none;
+    max-width: 100%;
+    margin: 0px auto;
+  }
+}
+.cp img.floatRight {
+  float: right;
+  margin: 0px 0 1em 1em;
+  width: auto;
+  max-width: 55%;
+}
+@media screen and (max-width: 767px) {
+  .cp img.floatRight {
+    float: none;
+    max-width: 100%;
+    margin: 0px auto;
+  }
+}
+.cp a {
+  text-decoration: none;
+  color: #00a4f9;
+}
+.cp a:hover, .cp a:focus-visible {
+  color: #0094e0;
+  cursor: pointer;
+}
+.cp a:focus-visible {
+  outline: #0094e0 2px solid;
+}
+.cp .publishInfo {
+  font-size: 0.875em;
+  line-height: 1.5em;
+  list-style: none;
+  margin: 0 0 0.7em 0;
+  border-left: solid 5px #00a4f9;
+  padding: 0.8em 1.5em 0.8em;
+  background: #f2f2f2;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+.cp .publishInfo li {
+  flex: 1 1 33.3333333333%;
+  margin-bottom: 0.5em;
+}
+@media screen and (max-width: 991px) {
+  .cp .publishInfo li {
+    flex: 1 1 50%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .cp .publishInfo li {
+    flex: 1 1 100%;
+  }
+}
+
+.fileDownload {
+  width: 100%;
+  margin: 0 auto 2em;
+  clear: both;
+  zoom: 1;
+}
+.fileDownload:before, .fileDownload:after {
+  content: "";
+  display: table;
+}
+.fileDownload:after {
+  clear: both;
+}
+.fileDownload h3 {
+  font-size: 1.5em;
+  padding: 12px 0px 15px 0px;
+  margin: 0.5em 0px 0.2em;
+  border-bottom: 1px solid #00a4f9;
+}
+.fileDownload ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.fileDownload li {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 0.5em 0 0.5em 1.5em;
+  border-bottom: solid 1px #eee;
+}
+.fileDownload li:before {
+  content: "·";
+  font-size: 2em;
+  font-weight: bold;
+  width: 1em;
+  height: 1em;
+  position: absolute;
+  top: 0.42em;
+  left: 0.1em;
+  color: #666;
+}
+.fileDownload li .fileName {
+  line-height: 1.8em;
+  margin: 0.2em 0.5em 0.2em 0;
+  color: #222;
+}
+.fileDownload li .fileName ~ span {
+  flex: 0 0 auto;
+  margin: 0.2em;
+  font-size: 0.875em;
+  line-height: 1.5em;
+  vertical-align: middle;
+  color: #666;
+}
+.fileDownload li .fileName ~ span a {
+  color: #fff;
+  display: inline-block;
+  margin-right: 8px;
+}
+.fileDownload li span.file_doc a {
+  color: #fff;
+  font-weight: bold;
+  padding: 0.2em 0.8em;
+  border-radius: 3px;
+}
+.fileDownload li span.file_doc a:hover, .fileDownload li span.file_doc a:focus-visible {
+  color: #fff;
+}
+.fileDownload li span.file_docx a {
+  color: #fff;
+  font-weight: bold;
+  padding: 0.2em 0.8em;
+  border-radius: 3px;
+}
+.fileDownload li span.file_docx a:hover, .fileDownload li span.file_docx a:focus-visible {
+  color: #fff;
+}
+.fileDownload li span.file_odt a {
+  color: #fff;
+  font-weight: bold;
+  padding: 0.2em 0.8em;
+  border-radius: 3px;
+}
+.fileDownload li span.file_odt a:hover, .fileDownload li span.file_odt a:focus-visible {
+  color: #fff;
+}
+.fileDownload li span.file_xls a {
+  color: #fff;
+  font-weight: bold;
+  padding: 0.2em 0.8em;
+  border-radius: 3px;
+}
+.fileDownload li span.file_xls a:hover, .fileDownload li span.file_xls a:focus-visible {
+  color: #fff;
+}
+.fileDownload li span.file_xlsx a {
+  color: #fff;
+  font-weight: bold;
+  padding: 0.2em 0.8em;
+  border-radius: 3px;
+}
+.fileDownload li span.file_xlsx a:hover, .fileDownload li span.file_xlsx a:focus-visible {
+  color: #fff;
+}
+.fileDownload li span.file_csv a {
+  color: #fff;
+  font-weight: bold;
+  padding: 0.2em 0.8em;
+  border-radius: 3px;
+}
+.fileDownload li span.file_csv a:hover, .fileDownload li span.file_csv a:focus-visible {
+  color: #fff;
+}
+.fileDownload li span.file_ods a {
+  color: #fff;
+  font-weight: bold;
+  padding: 0.2em 0.8em;
+  border-radius: 3px;
+}
+.fileDownload li span.file_ods a:hover, .fileDownload li span.file_ods a:focus-visible {
+  color: #fff;
+}
+.fileDownload li span.file_ppt a {
+  color: #fff;
+  font-weight: bold;
+  padding: 0.2em 0.8em;
+  border-radius: 3px;
+}
+.fileDownload li span.file_ppt a:hover, .fileDownload li span.file_ppt a:focus-visible {
+  color: #fff;
+}
+.fileDownload li span.file_pptx a {
+  color: #fff;
+  font-weight: bold;
+  padding: 0.2em 0.8em;
+  border-radius: 3px;
+}
+.fileDownload li span.file_pptx a:hover, .fileDownload li span.file_pptx a:focus-visible {
+  color: #fff;
+}
+.fileDownload li span.file_odp a {
+  color: #fff;
+  font-weight: bold;
+  padding: 0.2em 0.8em;
+  border-radius: 3px;
+}
+.fileDownload li span.file_odp a:hover, .fileDownload li span.file_odp a:focus-visible {
+  color: #fff;
+}
+.fileDownload li span.file_zip a {
+  color: #fff;
+  font-weight: bold;
+  padding: 0.2em 0.8em;
+  border-radius: 3px;
+}
+.fileDownload li span.file_zip a:hover, .fileDownload li span.file_zip a:focus-visible {
+  color: #fff;
+}
+.fileDownload li span.file_txt a {
+  color: #fff;
+  font-weight: bold;
+  padding: 0.2em 0.8em;
+  border-radius: 3px;
+}
+.fileDownload li span.file_txt a:hover, .fileDownload li span.file_txt a:focus-visible {
+  color: #fff;
+}
+.fileDownload li span.file_mov a {
+  color: #fff;
+  font-weight: bold;
+  padding: 0.2em 0.8em;
+  border-radius: 3px;
+}
+.fileDownload li span.file_mov a:hover, .fileDownload li span.file_mov a:focus-visible {
+  color: #fff;
+}
+.fileDownload li span.file_mp3 a {
+  color: #fff;
+  font-weight: bold;
+  padding: 0.2em 0.8em;
+  border-radius: 3px;
+}
+.fileDownload li span.file_mp3 a:hover, .fileDownload li span.file_mp3 a:focus-visible {
+  color: #fff;
+}
+.fileDownload li span.file_jpg a {
+  color: #fff;
+  font-weight: bold;
+  padding: 0.2em 0.8em;
+  border-radius: 3px;
+}
+.fileDownload li span.file_jpg a:hover, .fileDownload li span.file_jpg a:focus-visible {
+  color: #fff;
+}
+.fileDownload li span.file_wmv a {
+  color: #fff;
+  font-weight: bold;
+  padding: 0.2em 0.8em;
+  border-radius: 3px;
+}
+.fileDownload li span.file_wmv a:hover, .fileDownload li span.file_wmv a:focus-visible {
+  color: #fff;
+}
+.fileDownload li span.file_mp4 a {
+  color: #fff;
+  font-weight: bold;
+  padding: 0.2em 0.8em;
+  border-radius: 3px;
+}
+.fileDownload li span.file_mp4 a:hover, .fileDownload li span.file_mp4 a:focus-visible {
+  color: #fff;
+}
+.fileDownload li span.file_pdf a {
+  color: #fff;
+  font-weight: bold;
+  padding: 0.2em 0.8em;
+  border-radius: 3px;
+}
+.fileDownload li span.file_pdf a:hover, .fileDownload li span.file_pdf a:focus-visible {
+  color: #fff;
+}
+.fileDownload li span.file_other a {
+  color: #fff;
+  font-weight: bold;
+  padding: 0.2em 0.8em;
+  border-radius: 3px;
+}
+.fileDownload li span.file_other a:hover, .fileDownload li span.file_other a:focus-visible {
+  color: #fff;
+}
+.fileDownload li span {
+  display: flex;
+  align-items: center;
+}
+.fileDownload li span.file_doc a, .fileDownload li span.file_docx a, .fileDownload li span.file_odt a {
+  background: #275cb7;
+}
+.fileDownload li span.file_doc a:hover, .fileDownload li span.file_doc a:focus-visible, .fileDownload li span.file_docx a:hover, .fileDownload li span.file_docx a:focus-visible, .fileDownload li span.file_odt a:hover, .fileDownload li span.file_odt a:focus-visible {
+  background: #2351a2;
+}
+.fileDownload li span.file_xls a, .fileDownload li span.file_xlsx a, .fileDownload li span.file_csv a, .fileDownload li span.file_ods a {
+  background: #387947;
+}
+.fileDownload li span.file_xls a:hover, .fileDownload li span.file_xls a:focus-visible, .fileDownload li span.file_xlsx a:hover, .fileDownload li span.file_xlsx a:focus-visible, .fileDownload li span.file_csv a:hover, .fileDownload li span.file_csv a:focus-visible, .fileDownload li span.file_ods a:hover, .fileDownload li span.file_ods a:focus-visible {
+  background: #30683d;
+}
+.fileDownload li span.file_ppt a, .fileDownload li span.file_pptx a, .fileDownload li span.file_odp a, .fileDownload li span.file_pdf a {
+  background: #c55a3b;
+}
+.fileDownload li span.file_ppt a:hover, .fileDownload li span.file_ppt a:focus-visible, .fileDownload li span.file_pptx a:hover, .fileDownload li span.file_pptx a:focus-visible, .fileDownload li span.file_odp a:hover, .fileDownload li span.file_odp a:focus-visible, .fileDownload li span.file_pdf a:hover, .fileDownload li span.file_pdf a:focus-visible {
+  background: #b25135;
+}
+.fileDownload li span.file_pdf a {
+  background: #c00;
+}
+.fileDownload li span.file_pdf a:hover, .fileDownload li span.file_pdf a:focus-visible {
+  background: #b30000;
+}
+.fileDownload li span.file_zip a {
+  background: #eb712e;
+}
+.fileDownload li span.file_zip a:hover, .fileDownload li span.file_zip a:focus-visible {
+  background: #e96117;
+}
+.fileDownload li span.file_txt a, .fileDownload li span.file_other a {
+  background: #555;
+}
+.fileDownload li span.file_txt a:hover, .fileDownload li span.file_txt a:focus-visible, .fileDownload li span.file_other a:hover, .fileDownload li span.file_other a:focus-visible {
+  background: #484848;
+}
+.fileDownload li span.file_mov a {
+  background: #009999;
+}
+.fileDownload li span.file_mov a:hover, .fileDownload li span.file_mov a:focus-visible {
+  background: teal;
+}
+.fileDownload li span.file_mp3 a, .fileDownload li span.file_mp4 a {
+  background: #088ecc;
+}
+.fileDownload li span.file_mp3 a:hover, .fileDownload li span.file_mp3 a:focus-visible, .fileDownload li span.file_mp4 a:hover, .fileDownload li span.file_mp4 a:focus-visible {
+  background: #077db3;
+}
+.fileDownload li span.file_jpg a {
+  background: #6c29a4;
+}
+.fileDownload li span.file_jpg a:hover, .fileDownload li span.file_jpg a:focus-visible {
+  background: #5f2490;
+}
+.fileDownload li span.file_wmv a {
+  background: #430a1f;
+}
+.fileDownload li span.file_wmv a:hover, .fileDownload li span.file_wmv a:focus-visible {
+  background: #2d0715;
+}
+
+.webLink {
+  margin: 1em 0;
+}
+.webLink h3 {
+  font-size: 1.5em;
+  padding: 12px 0px 15px 0px;
+  margin: 0.5em 0px 0.2em;
+  border-bottom: 1px solid #00a4f9;
+}
+.webLink ol,
+.webLink ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.webLink li {
+  position: relative;
+  padding: 0.25em 0;
+  border-bottom: solid 1px #eee;
+  padding-left: 1.5em;
+}
+.webLink li:before {
+  content: "·";
+  font-size: 2em;
+  font-weight: bold;
+  width: 1em;
+  height: 1em;
+  position: absolute;
+  top: 0.25em;
+  left: 0.1em;
+  color: #666;
+}
+.webLink li a {
+  padding: 0.2em 0px;
+  display: block;
+  text-decoration: none;
+  color: #222;
+}
+.webLink li a:hover, .webLink li a:focus-visible {
+  color: #0094e0;
+  cursor: pointer;
+}
+.webLink li a:focus-visible {
+  outline: #0094e0 2px solid;
+}
+
 @media print {
   .main,
-  .content, body {
+.content, body {
     background: none;
   }
   /* -------------------------------不需要列印的區塊，請放置於這----//*/
   header,
-  .fatFooter,
-  footer,
-  .accessKey,
-  .submenu {
+.fatFooter,
+footer,
+.accessKey,
+.submenu {
     display: none;
   }
   /* -------------------------------各別顯示設定----//*/
@@ -9545,7 +9089,7 @@ img {
     width: 260px !important;
   }
   .main,
-  .content {
+.content {
     position: relative;
     min-height: 1px;
     padding-left: 0;
@@ -9560,33 +9104,33 @@ img {
     padding-top: 0px !important;
   }
   .main:before, .main:after,
-  .content:before,
-  .content:after {
+.content:before,
+.content:after {
     content: "";
     display: table;
   }
   .main:after,
-  .content:after {
+.content:after {
     clear: both;
   }
   .main img.floatLeft,
-  .content img.floatLeft {
+.content img.floatLeft {
     float: right;
     max-width: 50%;
     margin: 0px 1em 1em 0;
   }
   .main img.floatRight,
-  .content img.floatRight {
+.content img.floatRight {
     float: right;
     max-width: 50%;
     margin: 0px 0 1em 1em;
   }
   .main a:link,
-  .main a:visited,
-  .main a,
-  .content a:link,
-  .content a:visited,
-  .content a {
+.main a:visited,
+.main a,
+.content a:link,
+.content a:visited,
+.content a {
     background: transparent;
     color: #222;
     font-weight: bold;
@@ -9595,28 +9139,28 @@ img {
     word-wrap: break-word;
   }
   .main p a,
-  .content p a {
+.content p a {
     word-wrap: break-word;
   }
   .main p a[href^=http]:after,
-  .content p a[href^=http]:after {
+.content p a[href^=http]:after {
     content: " (" attr(href) ")";
     font-size: 90%;
   }
   .main p a[href^="#"]:after,
-  .content p a[href^="#"]:after {
+.content p a[href^="#"]:after {
     display: none;
   }
   .main abbr[title]:after,
-  .content abbr[title]:after {
+.content abbr[title]:after {
     content: " (" attr(title) ")";
   }
   .main table,
-  .content table {
+.content table {
     background: #fff;
   }
   .main li,
-  .content li {
+.content li {
     content: "» ";
   }
   /* 檔案下載*/
@@ -9626,20 +9170,20 @@ img {
     width: 100% !important;
   }
   .fileDownload .update,
-  .fileDownload .fileView {
+.fileDownload .fileView {
     float: none !important;
     width: 30% !important;
     display: inline-block !important;
     margin-left: 3em;
   }
   *,
-  *:before,
-  *:after,
-  *:first-letter,
-  p:first-line,
-  div:first-line,
-  blockquote:first-line,
-  li:first-line {
+*:before,
+*:after,
+*:first-letter,
+p:first-line,
+div:first-line,
+blockquote:first-line,
+li:first-line {
     background: transparent !important;
     color: #000 !important;
     box-shadow: none !important;
@@ -9649,4 +9193,4 @@ img {
     display: table-header-group;
     /* 表格即使分頁也會顯示表頭 */
   }
-}/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style2.css.map */

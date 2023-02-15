@@ -11,7 +11,7 @@
 .mainMenu {
   box-sizing: border-box;
   position: relative;
-  z-index: 99;
+  z-index: 50;
   clear: both;
   &.sticky {
     position: fixed;

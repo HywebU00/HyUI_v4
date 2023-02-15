@@ -17,6 +17,7 @@
   // 元件 element
   @import 'element/_font'; //文字設定
   @import 'element/_language'; //語言選單
+  @import 'element/_search'; //搜尋選單
   @import 'element/_btn'; //按鈕設定
   @import 'element/_breadcrumb'; //麵包屑
   @import 'element/_divider'; //分隔線
@@ -51,10 +52,10 @@
 @layer secScss {
   @import 'element/_image'; //圖片
   @import 'common/_hack'; //瀏覽器修正
+  // 下方scss權重較高
+  @import 'module/_swiper'; //swiper
+  @import 'page/_mp'; //首頁
+  @import 'page/_cp'; //CP
 }
-// 下方scss權重較高
-@import 'module/_swiper'; //swiper
 @import 'page/_color';
-@import 'page/_mp'; //首頁
-@import 'page/_cp'; //CP
 @import 'common/_print'; //列印樣式
