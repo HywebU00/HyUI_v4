@@ -276,7 +276,7 @@ function menu() {
   window.addEventListener('resize', mobileSearchFunction);
   window.addEventListener('load', mobileSearchFunction);
   function mobileSearchFunction() {
-    let windowWidth = window.outerWidth;
+    let windowWidth = body.outerWidth;
     const search = document.querySelector('.webSearch');
     if (search !== null && windowWidth < windowWidthSmall) {
       search.removeAttribute('style');
