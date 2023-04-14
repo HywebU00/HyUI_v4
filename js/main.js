@@ -298,9 +298,13 @@ menu();
 function topNav() {
   const body = document.querySelector('body');
   const mobileArea = document.querySelector('.mobileArea');
-  const nav = document.querySelector('.navigation');
-  const cloneNav = nav.cloneNode(true);
-  mobileArea.append(cloneNav);
+  const nav = document.querySelector('.navigation') || null;
+
+  if (nav !== null) {
+    const cloneNav = nav.cloneNode(true);
+    mobileArea.append(cloneNav);
+  }
+
   const sideLanguage = document.querySelector('.mobileArea .fontSize');
   // 移除手機版字體大小按鈕
   if (sideLanguage !== null) {
@@ -721,60 +725,62 @@ function fatFooter(obj) {
   const el = document.querySelector('.btnFatFooter') || null; // --- 控制的對象
   const fontBtn = document.querySelectorAll('.fontSize ul li button');
 
-  function fatFooterInit() {
-    // --- 抓取UI高度 css樣式修改樣式重新抓取高度
-    const _navUl = el.parentNode.querySelectorAll('nav ul li ul');
-    setTimeout(() => {
+  if (el !== null) {
+    function fatFooterInit() {
+      // --- 抓取UI高度 css樣式修改樣式重新抓取高度
+      const _navUl = el.parentNode.querySelectorAll('nav ul li ul');
+      setTimeout(() => {
+        _navUl.forEach((i) => {
+          i.setAttribute('style', '');
+          let _itemHeight = i.offsetHeight;
+          i.dataset.itemHeight = _itemHeight;
+          if (Number(_itemHeight) !== 0) {
+            i.style.height = `${Number(i.dataset.itemHeight)}px`;
+          } else {
+            i.style.height = '0px';
+          }
+        });
+      }, 20);
+    }
+
+    function toggleFatFooter() {
+      const _navUl = el.parentNode.querySelectorAll('nav ul li ul');
       _navUl.forEach((i) => {
-        i.setAttribute('style', '');
-        let _itemHeight = i.offsetHeight;
-        i.dataset.itemHeight = _itemHeight;
-        if (Number(_itemHeight) !== 0) {
-          i.style.height = `${Number(i.dataset.itemHeight)}px`;
-        } else {
+        if (i.offsetHeight !== 0) {
           i.style.height = '0px';
+          el.innerHTML = '收合/CLOSE';
+          el.setAttribute('name', '收合選單/CLOSE');
+        } else {
+          i.style.height = `${i.dataset.itemHeight}px`;
+          el.innerHTML = '展開/OPEN';
+          el.setAttribute('name', '展開選單/OPEN');
         }
       });
-    }, 20);
-  }
+      el.classList.toggle('close');
+    }
+    fatFooterInit();
+    // --- 點擊時
+    el.addEventListener('click', toggleFatFooterEle);
+    function toggleFatFooterEle() {
+      setTimeout(() => {
+        el.addEventListener('click', toggleFatFooterEle);
+      }, 500);
+      el.removeEventListener('click', toggleFatFooterEle);
+      toggleFatFooter();
+    }
 
-  function toggleFatFooter() {
-    const _navUl = el.parentNode.querySelectorAll('nav ul li ul');
-    _navUl.forEach((i) => {
-      if (i.offsetHeight !== 0) {
-        i.style.height = '0px';
-        el.innerHTML = '收合/CLOSE';
-        el.setAttribute('name', '收合選單/CLOSE');
-      } else {
-        i.style.height = `${i.dataset.itemHeight}px`;
+    window.addEventListener('resize', () => {
+      fatFooterInit();
+    });
+    fontBtn.forEach((i) => {
+      i.addEventListener('click', function () {
+        fatFooterInit();
         el.innerHTML = '展開/OPEN';
         el.setAttribute('name', '展開選單/OPEN');
-      }
+        el.classList.remove('close');
+      });
     });
-    el.classList.toggle('close');
   }
-  fatFooterInit();
-  // --- 點擊時
-  el.addEventListener('click', toggleFatFooterEle);
-  function toggleFatFooterEle() {
-    setTimeout(() => {
-      el.addEventListener('click', toggleFatFooterEle);
-    }, 500);
-    el.removeEventListener('click', toggleFatFooterEle);
-    toggleFatFooter();
-  }
-
-  window.addEventListener('resize', () => {
-    fatFooterInit();
-  });
-  fontBtn.forEach((i) => {
-    i.addEventListener('click', function () {
-      fatFooterInit();
-      el.innerHTML = '展開/OPEN';
-      el.setAttribute('name', '展開選單/OPEN');
-      el.classList.remove('close');
-    });
-  });
 }
 // fatFooter();
 
@@ -1148,7 +1154,6 @@ function searchTypeB() {
   if (searchBtn !== null && webSearch !== null) {
     let webSearchTop = searchBtnOut.parentElement.offsetHeight;
     webSearch.style.top = `${webSearchTop}px`;
-    console.log(webSearch);
 
     // --- 點擊 語言模組
     searchBtn.addEventListener('click', (e) => {
