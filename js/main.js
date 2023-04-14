@@ -1054,14 +1054,16 @@ function fontSize() {
   const control = document.querySelector('.fontSize ul') || null; // --- 控制的對象名稱
   const body = document.querySelector('body');
 
-  el.querySelectorAll('ul button').forEach((v) => {
-    v.addEventListener('click', (e) => {
-      removeActiveClass(el);
-      createCookie('FontSize', `${e.target.className}`, 356);
-      addChangeClass(e.target.className);
-      e.target.classList.add('active');
+  if (el !== null) {
+    el.querySelectorAll('ul button').forEach((v) => {
+      v.addEventListener('click', (e) => {
+        removeActiveClass(el);
+        createCookie('FontSize', `${e.target.className}`, 356);
+        addChangeClass(e.target.className);
+        e.target.classList.add('active');
+      });
     });
-  });
+  }
 
   // --- 移除 active 的 class 名稱
   function removeActiveClass(i) {
