@@ -135,9 +135,6 @@
   .imgContainer {
     @include aspectRatio(4, 3);
     overflow: hidden;
-    img {
-      object-fit: contain;
-    }
   }
   .caption {
     padding: 0.5em;

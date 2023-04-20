@@ -2647,6 +2647,14 @@ img {
   .webSearch.typeB .keywordHot ul a {
     color: #fff;
   }
+  @media screen and (max-width: 991px) {
+    .webSearch.typeB.active {
+      display: block;
+      left: 0;
+      width: 100%;
+      top: 50px;
+    }
+  }
   .btnGrp {
     text-align: center;
     padding: 1em 0;
@@ -6449,14 +6457,10 @@ img {
     width: 100%;
     aspect-ratio: 4/3;
     display: block;
-    -o-object-fit: contain;
-       object-fit: contain;
-    -o-object-position: 50% 50%;
-       object-position: 50% 50%;
-  }
-  .thumbnail .imgContainer img {
     -o-object-fit: cover;
        object-fit: cover;
+    -o-object-position: 50% 50%;
+       object-position: 50% 50%;
   }
   .thumbnail h2,
   .thumbnail h3,
@@ -7190,8 +7194,8 @@ img {
     width: 100%;
     aspect-ratio: 3/1;
     display: block;
-    -o-object-fit: contain;
-       object-fit: contain;
+    -o-object-fit: cover;
+       object-fit: cover;
     -o-object-position: 50% 50%;
        object-position: 50% 50%;
   }
@@ -7204,10 +7208,6 @@ img {
     z-index: 9;
     top: 0;
     left: 0;
-  }
-  .leftBlock .banner .item a img {
-    -o-object-fit: cover;
-       object-fit: cover;
   }
   .leftBlock .listBlock {
     padding: 0 0 0.5em 0;
@@ -7995,10 +7995,6 @@ img {
        object-fit: contain;
     -o-object-position: 50% 50%;
        object-position: 50% 50%;
-  }
-  .cpSlider .swiper .imgContainer img {
-    -o-object-fit: contain;
-       object-fit: contain;
   }
   .cpSlider .swiper .caption {
     padding: 0.5em;

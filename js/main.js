@@ -259,11 +259,12 @@ function menu() {
   sidebarCtrlBtn.setAttribute('type', 'button');
 
   // --- menu初始化 新增搜尋按鈕
-  const searchCtrlBtn = document.createElement('button');
+  // const searchCtrlBtn = document.createElement('button');
   const siteHeader = document.querySelector('.header .container');
-  searchCtrlBtn.className = 'searchCtrlBtn';
-  searchCtrlBtn.setAttribute('type', 'button');
-  siteHeader.prepend(searchCtrlBtn, sidebarCtrlBtn);
+  // searchCtrlBtn.className = 'searchCtrlBtn';
+  // searchCtrlBtn.setAttribute('type', 'button');
+  // siteHeader.prepend(searchCtrlBtn, sidebarCtrlBtn);
+  siteHeader.prepend(sidebarCtrlBtn);
 
   // --- menu初始化 複製手機版側欄選單
   const mobileArea = document.querySelector('.mobileArea');
@@ -332,7 +333,12 @@ function topNav() {
 // -----------------------------------------------------------------------
 
 function mobileSearch(obj) {
-  const searchCtrlBtn = obj.searchCtrlBtn;
+  const searchCtrlBtn = document.createElement('button');
+  const siteHeader = document.querySelector('.header .container');
+  searchCtrlBtn.className = 'searchCtrlBtn';
+  searchCtrlBtn.setAttribute('type', 'button');
+  siteHeader.prepend(searchCtrlBtn);
+  // const searchCtrlBtn = obj.searchCtrlBtn;
   const mobileSearch = document.querySelector('.webSearch');
   const menuOverlay = document.querySelector('.menuOverlay');
 
@@ -369,9 +375,9 @@ function mobileSearch(obj) {
     jsFadeOut(menuOverlay);
   });
 }
-mobileSearch({
-  searchCtrlBtn: document.querySelector('.searchCtrlBtn'),
-});
+// mobileSearch({
+//   searchCtrlBtn: document.querySelector('.searchCtrlBtn'),
+// });
 
 // -----------------------------------------------------------------------
 // ----- 手機桌機版本切換及手機版menu設定 -------------------------------------
@@ -1777,7 +1783,7 @@ function langFunction(obj) {
   const prevClass = document.querySelectorAll(obj.swiper.prev);
   const documentHtml = document.querySelector('html');
   const sidebarCtrlBtn = document.querySelector('.sidebarCtrlBtn');
-  const searchCtrlBtn = document.querySelector('.searchCtrlBtn');
+  const searchCtrlBtn = document.querySelector('.searchCtrlBtn') || null;
   const webLang = documentHtml.getAttribute('lang');
   if (webLang) {
     obj.swiper.data.forEach((s) => {
@@ -1799,7 +1805,7 @@ function langFunction(obj) {
     });
 
     obj.searchBtn.data.forEach((s) => {
-      if (webLang.slice(0, 2) == s.lang) {
+      if (webLang.slice(0, 2) == s.lang && searchCtrlBtn !== null) {
         searchCtrlBtn.innerHTML = s.text;
       } else {
         searchCtrlBtn.innerHTML = obj.searchBtn.default;

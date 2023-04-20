@@ -28,11 +28,8 @@
     }
   }
   .imgContainer {
-    @include aspectRatio(4, 3);
+    @include aspectRatio(4, 3, cover);
     margin-bottom: 0.5em;
-    img {
-      object-fit: cover;
-    }
   }
   h2,
   h3,

@@ -5,6 +5,8 @@ fatFooter(); // fatFooter是否要展開
 tabFunction('.tabSet'); // tab功能
 scrollTables('table'); // table捲動功能
 
+mobileSearch();
+
 tableAddDataAttributes({
   elemClass: '.tableList', // 目標table
   dataName: 'title', // tableList樣式 加上 data-title

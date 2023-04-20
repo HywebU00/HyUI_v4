@@ -245,4 +245,12 @@
   .keywordHot ul a {
     color: #fff;
   }
+  @include screen('tablet') {
+    &.active {
+      display: block;
+      left: 0;
+      width: 100%;
+      top: 50px;
+    }
+  }
 }
