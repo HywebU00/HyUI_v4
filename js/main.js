@@ -795,117 +795,268 @@ function fatFooter(obj) {
 // -----------------------------------------------------------------------
 
 function tabFunction(elem) {
-  const activeClass = 'active'; // --- 啟動的 class
-  const tabSet = document.querySelectorAll(elem); // --- tab名稱
+  'use strict';
+  let openIndex = 1 - 1;
+  const tab = document.querySelector(elem);
+  let desktopTabItems;
 
-  tabSet.forEach((a) => {
-    a.setAttribute('role', 'tablist');
-    const tabBtn = a.querySelectorAll('.tabItems button') || null; // --- 頁籤按鈕
-    const tabBtnLength = tabBtn.length; // --- 頁籤按鈕數量
-    const tabContent = a.querySelectorAll('.tabContentGroup .tabContent'); // --- 頁籤內容
-    tabBtn[0].classList.add('active');
-    tabContent[0].classList.add('active');
+  function init() {
+    const tabItem = tab.querySelectorAll('.tabItems .tabBtn');
+    const contentItem = tab.querySelectorAll('.tabContent');
 
-    tabBtn.forEach((v, i) => {
-      const thisBtn = tabBtn[i]; // --- 綁定這一個頁籤按鈕
-      const thisContent = tabContent[i]; // --- 綁定這一個頁籤內容
-      const thisPrevItem = tabContent[i - 1]; // --- 綁定前一個頁籤按鈕
-      const itemAllA = thisContent.querySelectorAll('[href], input'); // --- 這一個頁籤內容所有a和input項目
-      let prevItemAllA;
-      if (thisPrevItem !== undefined) {
-        prevItemAllA = thisPrevItem.querySelectorAll('[href], input'); // --- 前一個頁籤內容所有a和input項目
-      }
-      const isFirstTab = i === 0; // --- 如果是第一個頁籤
-      const isLastTab = i === tabBtnLength - 1; // --- 如果是最後一個頁籤
-      const itemFirstA = itemAllA[0]; // --- 頁籤內容第一個a或是input
-      const itemLastA = itemAllA[itemAllA.length - 1]; // --- 頁籤內容最後一個a或是input
-      let prevItemLastA;
-      if (thisPrevItem !== undefined) {
-        prevItemLastA = prevItemAllA[prevItemAllA.length - 1]; // --- 前一個頁籤的最後一個a或是input
-      }
+    tabItem.forEach((item, index) => {
       const random = `tab_${randomLetter(4)}${randomFloor(0, 9999)}`;
-      v.setAttribute('aria-controls', random);
-      v.setAttribute('role', 'tab');
-      tabContent[i].setAttribute('id', random);
-      const text = v.innerHTML;
-      tabContent[i].setAttribute('aria-label', text);
-      v.setAttribute('aria-selected', 'false');
-      tabBtn[0].setAttribute('aria-selected', 'true');
+      const text = item.innerHTML;
+      item.setAttribute('aria-selected', 'false');
+      item.setAttribute('role', 'tab');
+      item.setAttribute('aria-controls', random);
+      contentItem[index].setAttribute('aria-labelledby', random);
+      contentItem[index].setAttribute('aria-label', text);
+    });
+    desktopTabItems = tab.querySelector('.tabItems').cloneNode(true);
+  }
 
-      // --- thisBtn頁籤觸發focus內容裡的第一個a
-      thisBtn.addEventListener('keydown', (e) => {
-        // --- 頁籤第幾個按鈕觸發時
-        if (e.which === 9 && !e.shiftKey) {
-          // --- e.which偵測按下哪個案件，9代表tab，shiftKey代表shift
-          e.preventDefault();
-          startTab(i, tabBtn, tabContent); // --- 啟動頁籤切換功能
-          if (itemAllA.length) {
-            // --- type number = true，0是false
-            itemFirstA.focus(); // --- 第一個a或是input focus
-          } else {
-            tabBtn[i + 1].focus(); // --- 當內容沒有a或是input跳轉下一個tab
-          }
-        } else if (e.which === 9 && e.shiftKey && !isFirstTab) {
-          e.preventDefault();
+  function a11yControlMobile() {
+    const tabItem = tab.querySelectorAll('.tabContent .tabBtn');
+    const contentItem = tab.querySelectorAll('.tabContent .content');
+    const firstFocus = [...tab.querySelectorAll('a,input,select,textarea')].shift();
+    tabItem.forEach((item, index) => {
+      let content = contentItem[index].querySelectorAll('a,input,select,textarea');
+      let prevItem = contentItem[index - 1] !== undefined ? contentItem[index - 1].querySelectorAll('a,input,select,textarea') : '';
+      let prevItemLastA;
+      prevItem !== undefined ? (prevItemLastA = prevItem[prevItem.length - 1]) : '';
 
-          startTab(i - 1, tabBtn, tabContent); // --- 啟動頁籤切換功能
-          if (prevItemAllA.length) {
-            prevItemLastA.focus(); // --- 前一個頁籤內容的最後一個a或是input focus
-          } else {
-            tabBtn[i - 1].focus(); // --- 當內容沒有a或是input跳轉上一個tab
+      function handleKeydown(e) {
+        if (e.which === 9 && !e.shiftKey && !this.classList.contains('active')) {
+          toggleAccordion(this, this.nextElementSibling);
+        } else if (e.which === 9 && e.shiftKey) {
+          toggleAccordion(this, this.nextElementSibling);
+        }
+      }
+
+      item.removeEventListener('keydown', handleKeydown);
+      item.addEventListener('keydown', handleKeydown);
+
+      if (content.length !== 0) {
+        function contentFirstCheck(e) {
+          if (e.which === 9 && e.shiftKey && index !== 0) {
+            e.preventDefault();
+            tabItem[index].focus();
+          } else if (e.which === 9 && e.shiftKey && e.target == firstFocus) {
+            e.preventDefault();
+            tabItem[0].focus();
           }
         }
-      });
-
-      // --- 當按下shift+tab且為該內容的第一個a或是input
-      // --- 將focus目標轉回tab頁籤上，呼叫上方功能startTab(i - 1);往前一個頁籤
-      if (itemFirstA !== undefined) {
-        itemFirstA.addEventListener('keydown', (e) => {
-          if (e.which === 9 && e.shiftKey) {
-            e.preventDefault();
-            tabBtn[i].focus();
-          }
-        });
+        content[0].removeEventListener('keydown', contentFirstCheck);
+        content[0].addEventListener('keydown', contentFirstCheck);
       }
-      // --- 當按下tab且為該內容的最後一個a或是input
-      // --- focus到下一個頁籤
-      if (itemLastA !== undefined) {
-        itemLastA.addEventListener('keydown', (e) => {
-          if (e.which === 9 && !e.shiftKey && !isLastTab) {
-            e.preventDefault();
-            tabBtn[i + 1].focus();
-          }
-        });
-      }
-
-      // --- 滑鼠點擊事件
-      tabBtn[i].addEventListener(
-        'click',
-        (e) => {
-          startTab(i, tabBtn, tabContent);
-        },
-        false
-      );
     });
-  });
-
-  function startTab(now, tabBtn, tabContent) {
-    if (tabBtn !== undefined) {
-      tabBtn.forEach((i) => {
-        i.classList.remove(activeClass);
-        i.setAttribute('aria-selected', 'false');
-      });
-      tabBtn[now].classList.add(activeClass);
-      tabBtn[now].setAttribute('aria-selected', 'true');
-      // --- 頁籤按鈕增加指定class(active)，其他頁籤移除指定class
-
-      tabContent.forEach((i) => {
-        i.classList.remove(activeClass);
-      });
-      tabContent[now].classList.add(activeClass);
-      // --- 顯示當下頁籤內，隱藏其他內容
-    }
   }
+
+  function clickFunctionMobile() {
+    const tabItem = tab.querySelectorAll('.tabContent .tabBtn');
+
+    tabItem.forEach((item, index) => {
+      function clickCheck() {
+        toggleAccordion(this, this.nextElementSibling);
+      }
+
+      item.removeEventListener('click', clickCheck);
+      item.addEventListener('click', clickCheck);
+    });
+  }
+
+  function toggleAccordion(item, content) {
+    let display = window.getComputedStyle(content).display;
+    content.style.display = display;
+
+    if (display === 'none') {
+      item.classList.add('active');
+
+      display = 'block';
+      content.style.overflow = 'hidden';
+      content.style.display = display;
+      // content.classList.add('active');
+      let height = content.offsetHeight;
+      content.style.height = 0;
+      content.offsetHeight;
+      content.style.transitionProperty = 'height';
+      content.style.transitionDuration = `300ms`;
+      content.style.height = height + 'px';
+
+      setTimeout(() => {
+        content.style.removeProperty('overflow');
+        content.style.removeProperty('height');
+        content.style.removeProperty('transition-duration');
+        content.style.removeProperty('transition-property');
+      }, 300);
+    } else {
+      item.classList.remove('active');
+      content.style.overflow = 'hidden';
+      content.style.height = `${content.offsetHeight}px`;
+      content.style.transitionProperty = 'height';
+      content.style.transitionDuration = `300ms`;
+      content.offsetHeight;
+      content.style.height = 0;
+      setTimeout(() => {
+        content.style.display = 'none';
+        content.style.removeProperty('overflow');
+        content.style.removeProperty('height');
+        content.style.removeProperty('display');
+        content.style.removeProperty('transition-duration');
+        content.style.removeProperty('transition-property');
+      }, 300);
+    }
+
+    const siblings = Array.prototype.filter.call(item.parentElement.parentElement.children, (child) => {
+      return child !== item.parentElement;
+    });
+  }
+
+  function a11yControl() {
+    const tabItem = tab.querySelectorAll('.tabItems .tabBtn');
+    const contentItem = tab.querySelectorAll('.tabContent');
+    const lastFocus = [...tab.querySelectorAll('a,input,select,textarea')].pop();
+    const firstFocus = [...tab.querySelectorAll('a,input,select,textarea')].shift();
+    const firstItem = [...tab.querySelectorAll('.tabBtn')].shift();
+    tabItem.forEach((item, index) => {
+      let content = contentItem[index].querySelectorAll('a,input,select,textarea');
+      let prevItem = contentItem[index - 1] !== undefined ? contentItem[index - 1].querySelectorAll('a,input,select,textarea') : '';
+      let prevItemLastA;
+      prevItem !== undefined ? (prevItemLastA = prevItem[prevItem.length - 1]) : '';
+
+      function handleKeydown(e) {
+        if (e.which === 9 && !e.shiftKey) {
+          e.preventDefault();
+          openTarget(tabItem, contentItem, index);
+          content[0].focus();
+        } else if (e.which === 9 && e.shiftKey && e.target !== firstItem) {
+          e.preventDefault();
+          openTarget(tabItem, contentItem, index - 1);
+          if (prevItemLastA !== undefined) {
+            prevItemLastA.focus();
+          } else {
+            tabItem[index - 1].focus();
+          }
+        }
+      }
+      item.removeEventListener('keydown', handleKeydown);
+      item.addEventListener('keydown', handleKeydown);
+
+      if (content.length !== 0) {
+        function contentFirstCheck(e) {
+          if (e.which === 9 && e.shiftKey && index !== 0) {
+            e.preventDefault();
+            tabItem[index].focus();
+          } else if (e.which === 9 && e.shiftKey && e.target == firstFocus) {
+            e.preventDefault();
+            tabItem[0].focus();
+          }
+        }
+        content[0].removeEventListener('keydown', contentFirstCheck);
+        content[0].addEventListener('keydown', contentFirstCheck);
+        function contentLastCheck(e) {
+          if (e.which === 9 && !e.shiftKey && e.target !== lastFocus) {
+            tabItem[index].focus();
+          }
+        }
+        content[content.length - 1].removeEventListener('keydown', contentLastCheck);
+        content[content.length - 1].addEventListener('keydown', contentLastCheck);
+      }
+    });
+  }
+
+  function clickFunction() {
+    const tabItem = tab.querySelectorAll('.tabItems .tabBtn');
+    const contentItem = tab.querySelectorAll('.tabContent');
+    tabItem.forEach((item, index) => {
+      function clickCheck(e) {
+        openTarget(tabItem, contentItem, index);
+      }
+      item.removeEventListener('click', clickCheck);
+      item.addEventListener('click', clickCheck);
+      // }
+    });
+  }
+
+  function openTarget(tabItem, contentItem, index) {
+    let siblingContentItem = [...contentItem].filter((item, index) => item !== this);
+    tabItem.forEach((item, index) => item.classList.remove('active'));
+    siblingContentItem.forEach((item, index) => item.classList.remove('active'));
+    contentItem[index].classList.add('active');
+    tabItem[index].classList.add('active');
+  }
+
+  function desktopType() {
+    tab.classList.remove('onMobile');
+    tab.querySelector('.tabItems') ? '' : tab.prepend(desktopTabItems);
+    const contentItem = tab.querySelectorAll('.tabContent');
+    contentItem.forEach((item, index) => {
+      if (item.querySelector('.tabBtn') !== null) {
+        item.querySelector('.tabBtn').remove();
+      }
+    });
+  }
+
+  function mobileType() {
+    tab.classList.add('onMobile');
+    tab.querySelector('.tabItems') ? (desktopTabItems = tab.querySelector('.tabItems').cloneNode(true)) : '';
+    tab.classList.add('onMobile');
+    const tabItem = tab.querySelectorAll('.tabItems .tabBtn');
+    const contentItem = tab.querySelectorAll('.tabContent');
+
+    tabItem.forEach((item, i) => {
+      let btnContent = item.innerHTML;
+      let newBtn = item.cloneNode();
+      newBtn.innerHTML = btnContent;
+      contentItem[i].prepend(newBtn);
+      contentItem[i].querySelector('.content').setAttribute('role', 'tabpanel');
+      contentItem[i].querySelector('.content').setAttribute('aria-labelledby', item.attributes['aria-controls'].value);
+      contentItem[i].querySelector('.content').setAttribute('aria-label', item.innerHTML);
+
+      contentItem[i].removeAttribute('role');
+      contentItem[i].removeAttribute('aria-label');
+      contentItem[i].removeAttribute('aria-labelledby');
+    });
+
+    tab.querySelector('.tabItems') ? tab.querySelector('.tabItems').remove() : '';
+  }
+
+  init();
+  checkType();
+
+  function checkType() {
+    const tabItem = tab.querySelectorAll('.tabItems .tabBtn');
+    const contentItem = tab.querySelectorAll('.tabContent');
+    tabItem.forEach((item, index) => {
+      item.classList.remove('active');
+      contentItem[index].classList.remove('active');
+      contentItem[index].querySelector('.content').style.display = 'none';
+      item.setAttribute('aria-selected', false);
+    });
+    tabItem[openIndex] ? tabItem[openIndex].setAttribute('aria-selected', 'true') : '';
+    tabItem[openIndex] ? tabItem[openIndex].classList.add('active') : '';
+
+    let tabWidth = tab.offsetWidth;
+    window.setTimeout(function () {
+      if (tabWidth > 700) {
+        contentItem[openIndex].classList.add('active');
+        tabItem.forEach((item, index) => {
+          contentItem[index].querySelector('.content').removeAttribute('style');
+        });
+        desktopType();
+        a11yControl();
+        clickFunction();
+      } else {
+        contentItem[openIndex].querySelector('.content').style.display = 'block';
+        mobileType();
+        clickFunctionMobile();
+        a11yControlMobile();
+      }
+    }, 100);
+  }
+
+  window.addEventListener('resize', checkType);
 }
 
 // -----------------------------------------------------------------------
@@ -1804,13 +1955,13 @@ function langFunction(obj) {
       }
     });
 
-    obj.searchBtn.data.forEach((s) => {
-      if (webLang.slice(0, 2) == s.lang && searchCtrlBtn !== null) {
-        searchCtrlBtn.innerHTML = s.text;
-      } else {
-        searchCtrlBtn.innerHTML = obj.searchBtn.default;
-      }
-    });
+    // obj.searchBtn.data.forEach((s) => {
+    //   if (webLang.slice(0, 2) == s.lang && searchCtrlBtn !== null) {
+    //     searchCtrlBtn.innerHTML = s.text;
+    //   } else {
+    //     searchCtrlBtn.innerHTML = obj.searchBtn.default;
+    //   }
+    // });
   }
 
   // form password eyes

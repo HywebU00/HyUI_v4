@@ -49,4 +49,31 @@
       }
     }
   }
+
+  &.onMobile {
+    .tabContent {
+      display: block;
+      box-shadow: none;
+      padding: 0;
+      .tabBtn {
+        width: 100%;
+        margin: 0 0 5px 0;
+        &.active {
+          background: $colorPrimary;
+          color: #fff;
+          border-color: $colorPrimary;
+        }
+      }
+      a:focus {
+        outline: none;
+        box-shadow: 0 0px 0px 2px #1aadfa inset;
+      }
+    }
+    .content {
+      display: none;
+      &.active {
+        display: block;
+      }
+    }
+  }
 }

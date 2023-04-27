@@ -185,15 +185,15 @@
               <div class="tabSet">
                 <!-- 頁籤的上一層父物件要加 role="tablist" -->
                 <div class="tabItems">
-                  <button type="button" class="active">頁籤項ㄧ</button>
-                  <button type="button">頁籤項二</button>
-                  <button type="button">頁籤項三</button>
-                  <button type="button">頁籤項四</button>
+                  <button type="button" class="tabBtn">頁籤項ㄧ</button>
+                  <button type="button" class="tabBtn">頁籤項二</button>
+                  <button type="button" class="tabBtn">頁籤項三</button>
+                  <button type="button" class="tabBtn">頁籤項四</button>
                 </div>
                 <div class="tabContentGroup">
                   <!-- 頁籤內容要加 role="tabpanel" -->
                   <div class="tabContent" role="tabpanel">
-                    <div class="newsList">
+                    <div class="content">
                       <ul>
                         <li>
                           <a href="">使用到的ARIA:</a><br />
@@ -224,7 +224,7 @@
                     </div>
                   </div>
                   <div class="tabContent" role="tabpanel">
-                    <div class="newsList">
+                    <div class="content">
                       <ul>
                         <li>
                           <a href="#">頁籤二內容</a>
@@ -242,9 +242,11 @@
                     </div>
                   </div>
                   <div class="tabContent" role="tabpanel">
-                    <div class="newsList">
+                    <div class="content">
                       <ul>
-                        <li></li>
+                        <li>
+                          <a href="#">頁籤三內容</a>
+                        </li>
                         <li>
                           <a href="#">頁籤三內容</a>
                         </li>
@@ -258,7 +260,7 @@
                     </div>
                   </div>
                   <div class="tabContent" role="tabpanel">
-                    <div class="newsList">
+                    <div class="content">
                       <ul>
                         <li>
                           <a href="#">頁籤四內容</a>
@@ -397,7 +399,7 @@
       </footer>
       <!-- footer End -->
     </div>
-    <a href="javascript:;" class="scrollToTop">回頁首</a>
+    <a href="javascript:;" class="scrollToTop" role="button">回頁首</a>
 
     <!-- lazyload -->
     <script src="vendor/lazyload/lazyload.js"></script>

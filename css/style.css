@@ -6413,6 +6413,30 @@ img {
       box-shadow: none;
     }
   }
+  .tabSet.onMobile .tabContent {
+    display: block;
+    box-shadow: none;
+    padding: 0;
+  }
+  .tabSet.onMobile .tabContent .tabBtn {
+    width: 100%;
+    margin: 0 0 5px 0;
+  }
+  .tabSet.onMobile .tabContent .tabBtn.active {
+    background: #00a4f9;
+    color: #fff;
+    border-color: #00a4f9;
+  }
+  .tabSet.onMobile .tabContent a:focus {
+    outline: none;
+    box-shadow: 0 0px 0px 2px #1aadfa inset;
+  }
+  .tabSet.onMobile .content {
+    display: none;
+  }
+  .tabSet.onMobile .content.active {
+    display: block;
+  }
   .thumbnail {
     box-shadow: 0 0 3em -1.5em rgba(0, 0, 0, 0.5);
     background: #fff;
