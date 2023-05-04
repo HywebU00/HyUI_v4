@@ -797,7 +797,7 @@ function fatFooter(obj) {
 function tabFunction(elem) {
   'use strict';
   let openIndex = 1 - 1;
-  const tab = document.querySelector(elem);
+  const tab = document.querySelector(elem) || null;
   let desktopTabItems;
 
   function init() {
@@ -1022,8 +1022,10 @@ function tabFunction(elem) {
     tab.querySelector('.tabItems') ? tab.querySelector('.tabItems').remove() : '';
   }
 
-  init();
-  checkType();
+  if (tab !== null) {
+    init();
+    checkType();
+  }
 
   function checkType() {
     const tabItem = tab.querySelectorAll('.tabItems .tabBtn');
