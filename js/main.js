@@ -1075,51 +1075,54 @@ function scrollToTop(obj) {
       behavior: 'smooth',
     });
   }
-  el.addEventListener('click', (e) => {
-    e.preventDefault();
-    scrollTop();
-  });
 
-  // --- 鍵盤點擊置頂按鈕
-  el.addEventListener('keydown', (e) => {
-    e.preventDefault();
-    scrollTop();
-    // --- window.scrollY 等於零的時候 執行 focus
-    window.addEventListener('scroll', focusTopBtn);
+  if (el !== null) {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      scrollTop();
+    });
 
-    function focusTopBtn() {
-      if (window.scrollY === 0) {
-        setTimeout(() => {
-          document.querySelector('a.goCenter').focus();
-          window.removeEventListener('scroll', focusTopBtn);
-        }, 500);
-      }
-    }
-  });
+    // --- 鍵盤點擊置頂按鈕
+    el.addEventListener('keydown', (e) => {
+      e.preventDefault();
+      scrollTop();
+      // --- window.scrollY 等於零的時候 執行 focus
+      window.addEventListener('scroll', focusTopBtn);
 
-  // --- 按鈕出現的函式
-  window.addEventListener('scroll', () => {
-    const top = window.scrollY;
-    if (top > 200) {
-      el.style.display = 'block';
-      el.style['opacity'] = '1';
-      el.style['transition'] = 'all 0.5s';
-    } else {
-      el.style['opacity'] = '0';
-      el.style['transition'] = 'all 0.5s';
-      BtnStyleNone();
-    }
-    // --- 如果 opacity為 0 則 display none
-    function BtnStyleNone() {
-      setTimeout(() => {
-        const btn = document.querySelector('.scrollToTop');
-        const btnOpacity = parseInt(btn.style.opacity);
-        if (btnOpacity === 0) {
-          btn.style.display = 'none';
+      function focusTopBtn() {
+        if (window.scrollY === 0) {
+          setTimeout(() => {
+            document.querySelector('a.goCenter').focus();
+            window.removeEventListener('scroll', focusTopBtn);
+          }, 500);
         }
-      }, 200);
-    }
-  });
+      }
+    });
+
+    // --- 按鈕出現的函式
+    window.addEventListener('scroll', () => {
+      const top = window.scrollY;
+      if (top > 200) {
+        el.style.display = 'block';
+        el.style['opacity'] = '1';
+        el.style['transition'] = 'all 0.5s';
+      } else {
+        el.style['opacity'] = '0';
+        el.style['transition'] = 'all 0.5s';
+        BtnStyleNone();
+      }
+      // --- 如果 opacity為 0 則 display none
+      function BtnStyleNone() {
+        setTimeout(() => {
+          const btn = document.querySelector('.scrollToTop');
+          const btnOpacity = parseInt(btn.style.opacity);
+          if (btnOpacity === 0) {
+            btn.style.display = 'none';
+          }
+        }, 200);
+      }
+    });
+  }
 }
 
 scrollToTop({
