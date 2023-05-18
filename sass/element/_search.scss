@@ -37,6 +37,29 @@
 
   @include screen('mobile') {
     display: none;
+    &.active {
+      display: flex;
+      margin: 0;
+      width: 100%;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      padding: 10px;
+      background: #444;
+      label {
+        display: none;
+      }
+      .formGrp {
+        display: flex;
+        flex-grow: 1;
+        input {
+          flex-grow: 1;
+        }
+      }
+      .keywordHot ul a {
+        color: #fff;
+      }
+    }
   }
   label {
     font-size: 0em;
@@ -45,7 +68,7 @@
     flex: 0 0 auto;
     margin: 0;
     input {
-      margin: 0 0 0 0.5em;
+      margin: 0 0.5em 0 0;
       padding: 0.25em 0.5em;
       box-shadow: none;
       width: auto;
@@ -248,9 +271,8 @@
   @include screen('tablet') {
     &.active {
       display: block;
-      left: 0;
       width: 100%;
-      top: 50px;
+      padding: 0;
     }
   }
 }

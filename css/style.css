@@ -2428,6 +2428,29 @@ img {
     .webSearch {
       display: none;
     }
+    .webSearch.active {
+      display: flex;
+      margin: 0;
+      width: 100%;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      padding: 10px;
+      background: #444;
+    }
+    .webSearch.active label {
+      display: none;
+    }
+    .webSearch.active .formGrp {
+      display: flex;
+      flex-grow: 1;
+    }
+    .webSearch.active .formGrp input {
+      flex-grow: 1;
+    }
+    .webSearch.active .keywordHot ul a {
+      color: #fff;
+    }
   }
   .webSearch label {
     font-size: 0em;
@@ -2437,7 +2460,7 @@ img {
     margin: 0;
   }
   .webSearch .formGrp input {
-    margin: 0 0 0 0.5em;
+    margin: 0 0.5em 0 0;
     padding: 0.25em 0.5em;
     box-shadow: none;
     width: auto;
@@ -2650,9 +2673,8 @@ img {
   @media screen and (max-width: 991px) {
     .webSearch.typeB.active {
       display: block;
-      left: 0;
       width: 100%;
-      top: 50px;
+      padding: 0;
     }
   }
   .btnGrp {
@@ -7353,7 +7375,6 @@ img {
     }
   }
   .container {
-    padding: 0;
     margin: 0 auto;
     max-width: 1200px;
     position: relative;

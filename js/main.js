@@ -386,7 +386,7 @@ function mobileSearch(obj) {
 function mainMenuSetup() {
   const body = document.querySelector('body');
   const sidebar = document.querySelector('.mobileSidebar');
-  const mobileSearch = document.querySelector('.mobileSearch');
+  // const mobileSearch = document.querySelector('.mobileSearch');
   const sidebarClose = document.querySelector('.sidebarClose');
   const sidebarCtrlBtn = document.querySelector('.sidebarCtrlBtn');
   const menuOverlay = document.querySelector('.menuOverlay');
@@ -504,7 +504,7 @@ function mainMenuSetup() {
   sidebarCtrlBtn.addEventListener('click', (e) => {
     showSidebar();
     e.preventDefault();
-    mobileSearch !== null ? mobileSearch.classList.remove('active') : '';
+    // mobileSearch !== null ? mobileSearch.classList.remove('active') : '';
     menuOverlay.style.zIndex = '99';
   });
 
@@ -514,7 +514,7 @@ function mainMenuSetup() {
   sidebarClose.addEventListener('click', (e) => {
     jsFadeOut(menuOverlay);
     hideSidebar();
-    mobileSearch !== null ? mobileSearch.classList.remove('active') : '';
+    // mobileSearch !== null ? mobileSearch.classList.remove('active') : '';
   });
 
   // --- PC版設定
@@ -1021,12 +1021,6 @@ function tabFunction(elem) {
 
     tab.querySelector('.tabItems') ? tab.querySelector('.tabItems').remove() : '';
   }
-
-  if (tab !== null) {
-    init();
-    checkType();
-  }
-
   function checkType() {
     const tabItem = tab.querySelectorAll('.tabItems .tabBtn');
     const contentItem = tab.querySelectorAll('.tabContent');
@@ -1058,7 +1052,11 @@ function tabFunction(elem) {
     }, 100);
   }
 
-  window.addEventListener('resize', checkType);
+  if (tab !== null) {
+    init();
+    checkType();
+    window.addEventListener('resize', checkType);
+  }
 }
 
 // -----------------------------------------------------------------------
