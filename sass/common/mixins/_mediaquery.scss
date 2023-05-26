@@ -17,6 +17,10 @@
     @media screen and #{$notebook} {
       @content;
     }
+  } @else if $size==tabletMin {
+    @media screen and #{$tabletMin} {
+      @content;
+    }
   } @else if $size==tablet {
     @media screen and #{$tablet} {
       @content;

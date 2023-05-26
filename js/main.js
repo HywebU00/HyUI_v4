@@ -18,8 +18,8 @@ const slider = (function () {
     this.isTimerRun = false;
   }
   TimerManager.makeTimerManage = function (element) {
+    element.TimerManage = new TimerManager();
     if (!element.TimerManage || element.TimerManage.constructor !== TimerManager) {
-      element.TimerManage = new TimerManager();
     }
   };
   TimerManager.prototype.add = function (timer, args) {
@@ -94,6 +94,47 @@ const slider = (function () {
       }
     }
   }
+
+  function jsSlideToggle(element, time) {
+    if (element.offsetHeight <= 0) {
+      element.style.display = 'block';
+      element.style.transition = `height ${time} ms`;
+      element.style.overflow = 'hidden';
+      let totalHeight = element.offsetHeight;
+      let currentHeight = 0;
+      element.style.height = '0px';
+      let addValue = totalHeight / (time / 10);
+      let timer = setInterval(function () {
+        currentHeight += addValue;
+        element.style.height = `${currentHeight}px`;
+        if (currentHeight >= totalHeight) {
+          clearInterval(timer);
+          element.style.height = `${totalHeight}px`;
+          if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
+            element.TimerManage.next();
+          }
+        }
+      }, 10);
+    } else {
+      let totalHeight2 = element.offsetHeight;
+      let currentHeight2 = totalHeight2;
+      let reduceValue2 = totalHeight2 / (time / 10);
+      element.style.transition = `height ${time} ms`;
+      element.style.overflow = 'hidden';
+      let timer2 = setInterval(function () {
+        currentHeight2 -= reduceValue2;
+        element.style.height = `${currentHeight2}px`;
+        if (currentHeight2 <= 0) {
+          clearInterval(timer2);
+          element.style.display = 'none';
+          element.style.height = `${totalHeight2}px`;
+          if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
+            element.TimerManage.next();
+          }
+        }
+      }, 10);
+    }
+  }
   // the interface about slideUp method
   Slider.jsSlideUp = function (element) {
     TimerManager.makeTimerManage(element);
@@ -104,6 +145,11 @@ const slider = (function () {
   Slider.jsSlideDown = function (element) {
     TimerManager.makeTimerManage(element);
     element.TimerManage.add(jsSlideDown, arguments);
+    return this;
+  };
+  Slider.jsSlideToggle = function (element) {
+    TimerManager.makeTimerManage(element);
+    element.TimerManage.add(jsSlideToggle, arguments);
     return this;
   };
   return Slider;
@@ -143,43 +189,30 @@ function jsFadeOut(element) {
   }
 }
 
-function jsSlideToggle(elem) {
-  let display = window.getComputedStyle(elem).display;
-  elem.style.display = display;
-
+function jsFadeToggle(element) {
+  let display = window.getComputedStyle(element).display;
+  console.dir(element);
   if (display === 'none') {
+    console.log('a');
     display = 'block';
-    elem.style.overflow = 'hidden';
-    elem.style.display = display;
-    let height = elem.offsetHeight;
-    elem.style.height = 0;
-    elem.offsetHeight;
-    elem.style.transitionProperty = 'height';
-    elem.style.transitionDuration = `300ms`;
-    elem.style.height = height + 'px';
-
-    clearTimeout(time2);
-    let time = setTimeout(() => {
-      elem.style.removeProperty('overflow');
-      elem.style.removeProperty('height');
-      elem.style.removeProperty('transition-duration');
-      elem.style.removeProperty('transition-property');
+    element.style.display = display;
+    element.style.opacity = 0;
+    element.style.transitionProperty = 'opacity';
+    element.style.transitionDuration = `300ms`;
+    element.style.opacity = 1;
+    setTimeout(() => {
+      element.style.removeProperty('transition-property');
+      element.style.removeProperty('transition-duration');
     }, 300);
   } else {
-    elem.style.overflow = 'hidden';
-    elem.style.height = `${elem.offsetHeight}px`;
-    elem.style.transitionProperty = 'height';
-    elem.style.transitionDuration = `300ms`;
-    elem.offsetHeight;
-    elem.style.height = 0;
-
-    clearTimeout(time);
-    let time2 = setTimeout(() => {
-      elem.style.display = 'none';
-      elem.style.removeProperty('overflow');
-      elem.style.removeProperty('height');
-      elem.style.removeProperty('transition-duration');
-      elem.style.removeProperty('transition-property');
+    element.style.opacity = 1;
+    element.style.transitionProperty = 'opacity';
+    element.style.transitionDuration = `300ms`;
+    element.style.opacity = 0;
+    setTimeout(() => {
+      element.style.display = 'none';
+      element.style.removeProperty('transition-property');
+      element.style.removeProperty('transition-duration');
     }, 300);
   }
 }
@@ -258,12 +291,7 @@ function menu() {
   sidebarCtrlBtn.className = 'sidebarCtrlBtn';
   sidebarCtrlBtn.setAttribute('type', 'button');
 
-  // --- menu初始化 新增搜尋按鈕
-  // const searchCtrlBtn = document.createElement('button');
   const siteHeader = document.querySelector('.header .container');
-  // searchCtrlBtn.className = 'searchCtrlBtn';
-  // searchCtrlBtn.setAttribute('type', 'button');
-  // siteHeader.prepend(searchCtrlBtn, sidebarCtrlBtn);
   siteHeader.prepend(sidebarCtrlBtn);
 
   // --- menu初始化 複製手機版側欄選單
@@ -329,51 +357,91 @@ function topNav() {
 // topNav();
 
 // -----------------------------------------------------------------------
-// ----- 手機版本search設定 ------------------------------------------------
+// ----- websearch設定 ------------------------------------------------
 // -----------------------------------------------------------------------
 
-function mobileSearch(obj) {
-  const searchCtrlBtn = document.createElement('button');
+function searchTypeB() {
   const siteHeader = document.querySelector('.header .container');
-  searchCtrlBtn.className = 'searchCtrlBtn';
-  searchCtrlBtn.setAttribute('type', 'button');
-  siteHeader.prepend(searchCtrlBtn);
-  // const searchCtrlBtn = obj.searchCtrlBtn;
-  const mobileSearch = document.querySelector('.webSearch');
+  const searchBtnOut = document.querySelector('.wrapper .submenuBox') || null;
+  const webSearch = document.querySelector('.wrapper .webSearch') || null;
+  const searchBtn = document.querySelector('.wrapper .webSearchBtn button') || null;
   const menuOverlay = document.querySelector('.menuOverlay');
+  let windowWidth = window.outerWidth;
 
-  searchCtrlBtn.addEventListener('click', (e) => {
-    let searchOpen = mobileSearch.classList.contains('active');
-    e.stopPropagation();
-    // --- 點擊搜尋區以外的區塊
-    // --- 如果點在外面 則 searchMode 狀態改為false
-    if (!searchOpen) {
-      mobileSearch.removeAttribute('style');
-      mobileSearch.classList.add('active');
-      jsFadeIn(menuOverlay);
-      menuOverlay.style.zIndex = `90`;
-      searchOpen = true;
-    } else {
-      mobileSearch.classList.remove('active');
-      jsFadeOut(menuOverlay);
-      searchOpen = false;
+  let clickFn = (item) => {
+    // --- 點擊 模組
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      slider.jsSlideToggle(webSearch, 200);
+      jsFadeToggle(menuOverlay);
+    });
+    // --- Keydown
+    item.addEventListener('keydown', (e) => {
+      slider.jsSlideToggle(webSearch, 200);
+      jsFadeToggle(menuOverlay);
+    });
+  };
+
+  if (webSearch !== null) {
+    const webSearchBtn = document.createElement('button');
+    webSearchBtn.className = 'mobileSearchBtn';
+    webSearchBtn.setAttribute('type', 'button');
+    siteHeader.prepend(webSearchBtn);
+
+    const remove = document.querySelector('aside .submenuBox .webSearchBtn');
+    remove.remove();
+
+    let checkMobile = () => {
+      windowWidth = window.outerWidth;
+      webSearch.removeAttribute('style');
+      if (windowWidth <= 767) {
+        !webSearchBtn.classList.contains('active') && webSearchBtn.classList.add('active');
+        !webSearch.classList.contains('mobile') && webSearch.classList.add('mobile');
+        let webSearchTop = document.querySelector('header').offsetHeight;
+        webSearch.style.top = `${webSearchTop}px`;
+      } else {
+        webSearchBtn.classList.contains('active') && webSearchBtn.classList.remove('active');
+        webSearch.classList.contains('mobile') && webSearch.classList.remove('mobile');
+        let webSearchTop = searchBtnOut?.parentElement.offsetHeight;
+        webSearch.style.top = `${webSearchTop}px`;
+      }
+    };
+
+    window.addEventListener('load', checkMobile);
+    window.addEventListener('resize', checkMobile);
+
+    searchBtn !== null ? clickFn(searchBtn) : '';
+
+    clickFn(webSearchBtn);
+
+    // --- Focusout
+    const nodes = webSearch.querySelectorAll('a,button,input');
+    const lastNodes = nodes[nodes.length - 1];
+    lastNodes.addEventListener('focusout', (e) => {
+      e.preventDefault();
+      slider.jsSlideUp(webSearch, 200);
+      jsFadeToggle(menuOverlay);
+    });
+    // --- 關閉
+    function clickOtherPlace(e) {
+      const chooseClassName = webSearchBtn.className;
+      if ((e.target.closest(`.webSearch`) === null) & (e.target !== searchBtn)) {
+        slider.jsSlideUp(webSearch, 200);
+        jsFadeToggle(menuOverlay);
+      } else {
+        return;
+      }
     }
-  });
-  menuOverlay.addEventListener('click', (e) => {
-    mobileSearch.classList.remove('active');
-  });
+    // document.addEventListener('touchstart', (e) => {
+    //   e.preventDefault();
+    //   clickOtherPlace(e);
+    // });
+    document.addEventListener('click', clickOtherPlace);
+  }
+}
 
-  window.addEventListener('resize', (e) => {
-    setTimeout(() => {
-      searchOpen = false;
-      menuOverlay.style.display = 'none';
-      mobileSearch !== null ? mobileSearch.classList.remove('active') : '';
-    }, 50);
-  });
-
-  menuOverlay.addEventListener('click', (e) => {
-    jsFadeOut(menuOverlay);
-  });
+function mobileSearch(obj) {
+  searchTypeB();
 }
 // mobileSearch({
 //   searchCtrlBtn: document.querySelector('.searchCtrlBtn'),
@@ -1305,55 +1373,8 @@ function fontSize() {
 // -----------------------------------------------------------------------
 // -----  FontSize   -----------------------------------------------------
 // -----------------------------------------------------------------------
-
-function searchTypeB() {
-  const searchBtnOut = document.querySelector('.wrapper .submenuBox') || null;
-  const searchBtn = document.querySelector('.wrapper .webSearchBtn button');
-  const webSearch = document.querySelector('.wrapper .webSearch') || null;
-
-  if (searchBtn !== null && webSearch !== null) {
-    let webSearchTop = searchBtnOut.parentElement.offsetHeight;
-    webSearch.style.top = `${webSearchTop}px`;
-
-    // --- 點擊 語言模組
-    searchBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (webSearch.offsetHeight !== 0 || webSearch.offsetHeight === null) {
-        slider.jsSlideUp(webSearch, 200);
-      } else {
-        slider.jsSlideDown(webSearch, 200);
-      }
-    });
-    // --- Keydown
-    searchBtn.addEventListener('keydown', (e) => {
-      slider.jsSlideDown(webSearch, 200);
-    });
-    // --- Focusout
-    const nodes = webSearch.querySelectorAll('a,button,input');
-    const lastNodes = nodes[nodes.length - 1];
-    lastNodes.addEventListener('focusout', (e) => {
-      e.preventDefault();
-      slider.jsSlideUp(webSearch, 200);
-    });
-    // --- 關閉
-    function clickOtherPlace(e) {
-      const chooseClassName = searchBtn.className;
-      if ((e.target.closest(`.webSearch`) === null) & (e.target !== searchBtn)) {
-        slider.jsSlideUp(webSearch, 200);
-      } else {
-        return;
-      }
-    }
-    // document.addEventListener('touchstart', (e) => {
-    //   e.preventDefault();
-    //   clickOtherPlace(e);
-    // });
-    document.addEventListener('click', clickOtherPlace);
-  }
-}
-
 function templateChange(obj) {
-  obj.searchType === 'typeB' ? searchTypeB() : '';
+  // obj.searchType === 'typeB' ? searchTypeB() : '';
   if (obj.fontSize === 'typeB') {
     const fontSizeSelect = new SelectSlider({
       name: document.querySelectorAll('.fontSize'), // --- 控制的對象
