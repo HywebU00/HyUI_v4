@@ -389,7 +389,7 @@ function searchTypeB() {
     siteHeader.prepend(webSearchBtn);
 
     const remove = document.querySelector('aside .submenuBox .webSearchBtn');
-    remove.remove();
+    remove?.remove();
 
     let checkMobile = () => {
       windowWidth = window.outerWidth;
@@ -425,9 +425,9 @@ function searchTypeB() {
     // --- 關閉
     function clickOtherPlace(e) {
       const chooseClassName = webSearchBtn.className;
-      if ((e.target.closest(`.webSearch`) === null) & (e.target !== searchBtn)) {
+      if (e.target.closest(`.webSearch`) === null && e.target !== searchBtn) {
         slider.jsSlideUp(webSearch, 200);
-        jsFadeToggle(menuOverlay);
+        jsFadeOut(menuOverlay);
       } else {
         return;
       }
@@ -436,7 +436,7 @@ function searchTypeB() {
     //   e.preventDefault();
     //   clickOtherPlace(e);
     // });
-    document.addEventListener('click', clickOtherPlace);
+    // document.addEventListener('click', clickOtherPlace);
   }
 }
 
