@@ -4026,14 +4026,6 @@ img {
     opacity: 0;
     transition: 0.2s linear;
   }
-  .sidebarCtrlBtn:hover::before {
-    transform: translate(-50%, -50%) rotate(45deg);
-    box-shadow: none;
-  }
-  .sidebarCtrlBtn:hover::after {
-    opacity: 1;
-    transform: translate(-50%, -50%) rotate(-45deg);
-  }
   .searchCtrlBtn {
     display: none;
     right: 0px;

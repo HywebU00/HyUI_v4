@@ -50,16 +50,16 @@
     opacity: 0;
     transition: 0.2s linear;
   }
-  &:hover {
-    &::before {
-      transform: translate(-50%, -50%) rotate(45deg);
-      box-shadow: none;
-    }
-    &::after {
-      opacity: 1;
-      transform: translate(-50%, -50%) rotate(-45deg);
-    }
-  }
+  // &:hover {
+  //   &::before {
+  //     transform: translate(-50%, -50%) rotate(45deg);
+  //     box-shadow: none;
+  //   }
+  //   &::after {
+  //     opacity: 1;
+  //     transform: translate(-50%, -50%) rotate(-45deg);
+  //   }
+  // }
 }
 // search
 .searchCtrlBtn {
