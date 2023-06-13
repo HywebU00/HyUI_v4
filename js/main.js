@@ -797,7 +797,6 @@ document.querySelectorAll('[class*="notice"] a.close').forEach((i) => {
 
 function fatFooter(obj) {
   const el = document.querySelector('.btnFatFooter') || null; // --- 控制的對象
-  const fontBtn = document.querySelectorAll('.fontSize ul li button');
 
   if (el !== null) {
     function fatFooterInit() {
@@ -845,14 +844,6 @@ function fatFooter(obj) {
 
     window.addEventListener('resize', () => {
       fatFooterInit();
-    });
-    fontBtn.forEach((i) => {
-      i.addEventListener('click', function () {
-        fatFooterInit();
-        el.innerHTML = '展開/OPEN';
-        el.setAttribute('name', '展開選單/OPEN');
-        el.classList.remove('close');
-      });
     });
   }
 }
