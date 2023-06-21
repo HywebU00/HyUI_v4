@@ -2513,7 +2513,7 @@ img {
   }
   .webSearch .formGrp {
     flex: 0 0 auto;
-    margin: 0;
+    margin: 0 0 0.5em;
   }
   .webSearch .formGrp input {
     margin: 0 0.5em 0 0;
@@ -2544,8 +2544,8 @@ img {
   }
   .webSearch .btnGrp {
     flex: 0 0 auto;
-    padding: 0 0.5em 0;
-    margin: 0;
+    padding: 0 0 0 0.5em;
+    margin: 0 0 0.5em;
   }
   .webSearch .btnGrp button,
   .webSearch .btnGrp .btn,
@@ -2575,7 +2575,7 @@ img {
   }
   .webSearch .keywordHot ul li {
     margin: 0;
-    padding: 0.5em;
+    padding: 0 0.5em;
     flex: 0 0 auto;
   }
   .webSearch .keywordHot ul a {

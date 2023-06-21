@@ -394,17 +394,21 @@ function searchTypeB() {
     let checkMobile = () => {
       windowWidth = window.outerWidth;
       webSearch.removeAttribute('style');
-      if (windowWidth <= 767) {
-        !webSearchBtn.classList.contains('active') && webSearchBtn.classList.add('active');
-        !webSearch.classList.contains('mobile') && webSearch.classList.add('mobile');
-        let webSearchTop = document.querySelector('header').offsetHeight;
-        webSearch.style.top = `${webSearchTop}px`;
-      } else {
-        webSearchBtn.classList.contains('active') && webSearchBtn.classList.remove('active');
-        webSearch.classList.contains('mobile') && webSearch.classList.remove('mobile');
-        let webSearchTop = searchBtnOut?.parentElement.offsetHeight;
-        webSearch.style.top = `${webSearchTop}px`;
-      }
+      const observer = new ResizeObserver(function (entries) {
+        console.log(entries[0].contentRect.width);
+        if (entries[0].contentRect.width <= 767) {
+          !webSearchBtn.classList.contains('active') && webSearchBtn.classList.add('active');
+          !webSearch.classList.contains('mobile') && webSearch.classList.add('mobile');
+          let webSearchTop = document.querySelector('header').offsetHeight;
+          webSearch.style.top = `${webSearchTop}px`;
+        } else {
+          webSearchBtn.classList.contains('active') && webSearchBtn.classList.remove('active');
+          webSearch.classList.contains('mobile') && webSearch.classList.remove('mobile');
+          let webSearchTop = searchBtnOut?.parentElement.offsetHeight;
+          webSearch.style.top = `${webSearchTop}px`;
+        }
+      });
+      observer.observe(siteHeader);
     };
 
     window.addEventListener('load', checkMobile);
