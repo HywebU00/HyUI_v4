@@ -1344,7 +1344,7 @@ function fontSize() {
 
   // --- 初始化 字體大小設定
   window.addEventListener('load', function (e) {
-    const _cookie = readCookie('FontSize');
+    const _cookie = readCookie('FontSize') || null;
     // --- 如果沒有_cookie 則預設值為'medium'
     if (_cookie == null) {
       _cookie = 'medium';
@@ -1479,7 +1479,7 @@ function gotoCenter() {
   const mainaccessKey = document.querySelector('.main .accessKey');
   const headerHeight = document.querySelector('.header').offsetHeight;
   // --- .accessKey 到top 的距離等於 header + .accessKey到父層上方的距離
-  let _distance = headerHeight + mainaccessKey.offsetTop;
+  let _distance = headerHeight + mainaccessKey?.offsetTop;
   if (goCenterTag) {
     goCenterTag.addEventListener('keydown', (e) => {
       if (e.which === 13) {
@@ -1570,9 +1570,9 @@ function switchA11TitleName() {
   const searchTitle = document.querySelector('.search');
   let _lang = webLang.substring(0, 2);
   if (_lang === 'zh') {
-    headerTitle.setAttribute('title', '上方功能區塊');
-    mainTitle.setAttribute('title', '中央內容區塊');
-    footerTitle.setAttribute('title', '下方功能區塊');
+    headerTitle?.setAttribute('title', '上方功能區塊');
+    mainTitle?.setAttribute('title', '中央內容區塊');
+    footerTitle?.setAttribute('title', '下方功能區塊');
   } else {
     headerTitle.setAttribute('title', 'header');
     mainTitle.setAttribute('title', 'content');

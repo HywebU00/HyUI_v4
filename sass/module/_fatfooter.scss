@@ -64,6 +64,7 @@
     }
     ul {
       display: flex;
+      overflow: hidden;
       @include liReset;
       @include screen('mobile') {
         flex-flow: wrap row;
