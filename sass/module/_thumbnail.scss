@@ -33,8 +33,10 @@
   }
   h2,
   h3,
-  h4 {
+  h4,
+  .title {
     margin: 0.2em 0;
+    font-weight: bold;
   }
   .caption {
     width: 90%;

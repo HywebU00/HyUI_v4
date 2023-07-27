@@ -193,7 +193,6 @@ function jsFadeToggle(element) {
   let display = window.getComputedStyle(element).display;
   console.dir(element);
   if (display === 'none') {
-    console.log('a');
     display = 'block';
     element.style.display = display;
     element.style.opacity = 0;
@@ -395,7 +394,6 @@ function searchTypeB() {
       windowWidth = window.outerWidth;
       webSearch.removeAttribute('style');
       const observer = new ResizeObserver(function (entries) {
-        console.log(entries[0].contentRect.width);
         if (entries[0].contentRect.width <= 767) {
           !webSearchBtn.classList.contains('active') && webSearchBtn.classList.add('active');
           !webSearch.classList.contains('mobile') && webSearch.classList.add('mobile');
@@ -590,38 +588,45 @@ function mainMenuSetup() {
   });
 
   // --- PC版設定
-  function pcSet() {
-    let language = document.querySelector('.language ul');
-    hideSidebar();
-    body.classList.remove('noscroll');
-    // mobileSearch !== null ? (mobileSearch.style.display = 'none') : '';
-    language !== null ? (language.style.display = 'none') : '';
-    // --- 副選單滑出
+  const handleMouseenter = (e) => {
+    e.currentTarget.classList.add('active');
+  };
+  const handleMouseleave = (e) => {
+    e.currentTarget.classList.remove('active');
+  };
+  const handleClick = (e) => {
+    e.currentTarget.stopPropagation();
+    e.currentTarget.preventDefault();
+  };
 
-    menuLiHasChild.forEach((i) => {
-      i.addEventListener('mouseenter', (e) => {
-        i.classList.add('active');
-      });
-      i.addEventListener('mouseleave', (e) => {
-        i.classList.remove('active');
-      });
-    });
-
-    menuLiHasChild.forEach((i) => {
-      i.addEventListener('click', (e) => {
-        e.stopPropagation();
-      });
-    });
-  }
-  pcSet();
-
+  let checkWindow = false;
+  let resizeTimeout;
   // --- 切換 PC/Mobile 選單
   function switchMenu() {
-    if (windowWidth > windowWidthSmall) {
-      pcSet();
-      // fontSize();
-    } else {
+    if (windowWidth > windowWidthSmall && !checkWindow) {
+      let language = document.querySelector('.language ul');
+      hideSidebar();
+      body.classList.remove('noscroll');
+      // mobileSearch !== null ? (mobileSearch.style.display = 'none') : '';
+      language !== null ? (language.style.display = 'none') : '';
+      // --- 副選單滑出
+
+      menuLiHasChild.forEach((i) => {
+        i.addEventListener('mouseenter', handleMouseenter);
+        i.addEventListener('mouseleave', handleMouseleave);
+        i.addEventListener('click', handleClick);
+      });
+
+      checkWindow = true;
+    } else if (windowWidth <= windowWidthSmall && checkWindow) {
       body.classList.remove('largeSize', 'medium_size');
+
+      menuLiHasChild.forEach((i) => {
+        i.removeEventListener('mouseenter', handleMouseenter);
+        i.removeEventListener('mouseleave', handleMouseleave);
+        i.removeEventListener('click', handleClick);
+      });
+      checkWindow = false;
     }
   }
 
@@ -749,6 +754,7 @@ function a11yKeyMenu(elem) {
 
   // --- keyup時
   const control = mainMenu.querySelectorAll('li');
+
   control.forEach((i) => {
     i.addEventListener('keyup', (e) => {
       const siblings = Array.prototype.filter.call(i.parentNode.children, (child) => {
@@ -835,16 +841,10 @@ function fatFooter(obj) {
       });
       el.classList.toggle('close');
     }
+
     fatFooterInit();
     // --- 點擊時
-    el.addEventListener('click', toggleFatFooterEle);
-    function toggleFatFooterEle() {
-      setTimeout(() => {
-        el.addEventListener('click', toggleFatFooterEle);
-      }, 500);
-      el.removeEventListener('click', toggleFatFooterEle);
-      toggleFatFooter();
-    }
+    el.addEventListener('click', toggleFatFooter);
 
     window.addEventListener('resize', () => {
       fatFooterInit();
@@ -1116,8 +1116,8 @@ function tabFunction(elem) {
   }
 
   if (tab !== null) {
-    init();
-    checkType();
+    window.addEventListener('load', init);
+    window.addEventListener('load', checkType);
     window.addEventListener('resize', checkType);
   }
 }

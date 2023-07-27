@@ -6564,8 +6564,10 @@ img {
   }
   .thumbnail h2,
   .thumbnail h3,
-  .thumbnail h4 {
+  .thumbnail h4,
+  .thumbnail .title {
     margin: 0.2em 0;
+    font-weight: bold;
   }
   .thumbnail .caption {
     width: 90%;
