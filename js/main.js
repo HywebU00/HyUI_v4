@@ -191,7 +191,6 @@ function jsFadeOut(element) {
 
 function jsFadeToggle(element) {
   let display = window.getComputedStyle(element).display;
-  console.dir(element);
   if (display === 'none') {
     display = 'block';
     element.style.display = display;
@@ -409,7 +408,7 @@ function searchTypeB() {
       observer.observe(siteHeader);
     };
 
-    window.addEventListener('load', checkMobile);
+    checkMobile();
     window.addEventListener('resize', checkMobile);
 
     searchBtn !== null ? clickFn(searchBtn) : '';
@@ -1628,87 +1627,86 @@ function tableAddDataAttributes(obj) {
 
 function scrollTables(obj) {
   let el = document.querySelectorAll(obj) || null; // --- 按鈕列表名稱
+  let realTable = [];
 
-  // --- 檢查父層有沒有 tableList
+  // --- scrollTables 初始化
   function appendEle() {
     el.forEach((i) => {
+      i.style.position = 'relative';
+      const table = i.querySelector('table');
+      const wrapElement = document.createElement('div');
+      wrapElement.className = 'tableScroll';
+
+      table.replaceWith(wrapElement);
+      wrapElement.appendChild(table);
+
+      // --- 產生左邊按鈕
       let _appendLeftEle;
-      let _appendRightEle;
       let _leftBtn;
+      _appendLeftEle = document.createElement('div');
+      _appendLeftEle.setAttribute('class', 'scrollTableNav scrollTableNavLeft');
+      _appendLeftEle.style.height = `${i.clientHeight}px`;
+      _leftBtn = document.createElement('div');
+      _leftBtn.setAttribute('class', 'scrollTableLeftBtn');
+      _appendLeftEle.appendChild(_leftBtn);
+
+      // --- 產生右邊按鈕
+      let _appendRightEle;
       let _rightBtn;
-      let _hasItem = i.parentElement.classList.contains('tableList');
-      let _hasNavLeft = i.parentElement.querySelector('.scrollTableNavLeft');
-      if (!_hasItem && _hasNavLeft === null) {
-        _appendLeftEle = document.createElement('div');
-        _appendLeftEle.setAttribute('class', 'scrollTableNav scrollTableNavLeft');
-        _appendLeftEle.style.height = `${i.parentElement.clientHeight}px`;
-        _appendRightEle = document.createElement('div');
-        _appendRightEle.setAttribute('class', 'scrollTableNav scrollTableNavRight');
-        _appendRightEle.style.height = `${i.parentElement.clientHeight}px`;
-        i.parentElement.style.position = 'relative';
-        i.parentElement.prepend(_appendLeftEle, _appendRightEle);
-        // --- 增加左邊按鈕
-        _leftBtn = document.createElement('div');
-        _leftBtn.setAttribute('class', 'scrollTableLeftBtn');
-        _appendLeftEle.appendChild(_leftBtn);
-        // --- 增加右邊按鈕
-        _rightBtn = document.createElement('div');
-        _rightBtn.setAttribute('class', 'scrollTableRightBtn');
-        _appendRightEle.appendChild(_rightBtn);
-        displayNoneEle();
-      }
+      _appendRightEle = document.createElement('div');
+      _appendRightEle.setAttribute('class', 'scrollTableNav scrollTableNavRight');
+      _appendRightEle.style.height = `${i.clientHeight}px`;
+      _rightBtn = document.createElement('div');
+      _rightBtn.setAttribute('class', 'scrollTableRightBtn');
+      _appendRightEle.appendChild(_rightBtn);
+
+      // --- 新增按鈕
+      i.prepend(_appendLeftEle, _appendRightEle);
+
+      realTable.push(i);
+      displayNoneEle(i);
     });
   }
 
   // --- 開關遮罩功能
-  function displayNoneEle() {
-    el.forEach((i) => {
-      let _hasItem = i.parentElement.classList.contains('tableList');
-      if (!_hasItem) {
-        hiddenEle(i);
-      }
-      function hiddenEle(el) {
-        // --- 父層元素的寬;
-        let _table = el.parentElement.clientWidth;
-        // --- 子層元素的寬
-        let _tableItem = el.scrollWidth;
-        // --- 左邊遮罩
-        let _rightEle = el.parentElement.querySelector('.scrollTableNavRight');
-        // --- 右邊遮罩
-        let _leftEle = el.parentElement.querySelector('.scrollTableNavLeft');
-        // --- 如果沒有建立遮罩
-        if (_rightEle == null) {
-          return;
-        }
-        // --- 如果子層跟父層一樣寬度
-        if (_table === _tableItem) {
-          _leftEle.style.display = 'none';
-          _rightEle.style.display = 'none';
-        } else {
-          el.parentElement.scrollLeft = '0';
-          _rightEle.style.display = 'block';
-          _rightEle.style.opacity = '1';
-        }
-        eleScroll();
-      }
-    });
+  function displayNoneEle(i) {
+    // --- 父層元素的寬;
+    let _table = i.querySelector('.tableScroll').clientWidth || 200;
+    // --- 子層元素的寬
+    let _tableItem = i.querySelector('.tableScroll').scrollWidth;
+    // --- 左邊遮罩
+    let _rightEle = i.querySelector('.scrollTableNavRight');
+    // --- 右邊遮罩
+    let _leftEle = i.querySelector('.scrollTableNavLeft');
+    // --- 如果沒有建立遮罩
+    if (_rightEle == null) {
+      return;
+    }
+    // --- 如果子層跟父層一樣寬度
+    if (_table === _tableItem) {
+      _leftEle.style.display = 'none';
+      _rightEle.style.display = 'none';
+    } else {
+      i.parentElement.scrollLeft = '0';
+      _rightEle.style.display = 'block';
+      _rightEle.style.opacity = '1';
+    }
+    eleScroll();
   }
   // --- 當父層滾輪滾動
   function eleScroll() {
     el.forEach((i) => {
-      i.parentElement.addEventListener('scroll', () => {
+      i.querySelector('.tableScroll').addEventListener('scroll', () => {
         // --- 父層元素的寬
-        let _table = i.parentElement.clientWidth;
+        let _table = i.querySelector('.tableScroll').clientWidth;
         // --- 子層元素的寬
-        let _tableItem = i.scrollWidth;
+        let _tableItem = i.querySelector('.tableScroll').scrollWidth;
         // --- 左邊遮罩
-        let _rightEle = i.parentElement.querySelector('.scrollTableNavRight');
+        let _rightEle = i.querySelector('.scrollTableNavRight');
         // --- 右邊遮罩
-        let _leftEle = i.parentElement.querySelector('.scrollTableNavLeft');
+        let _leftEle = i.querySelector('.scrollTableNavLeft');
         // --- 捲軸位置
-        let _scrollPosition = i.parentElement.scrollLeft;
-        _rightEle.style.right = `-${i.parentElement.scrollLeft}px`;
-        _leftEle.style.left = `${i.parentElement.scrollLeft}px`;
+        let _scrollPosition = i.querySelector('.tableScroll').scrollLeft;
 
         if (_scrollPosition === 0) {
           _leftEle.style.opacity = 0;
@@ -1739,31 +1737,25 @@ function scrollTables(obj) {
     if (leftBtn.length !== 0) {
       leftBtn.forEach((i) => {
         i.addEventListener('click', (item) => {
-          i.parentElement.parentElement.scrollLeft -= 200;
+          i.parentElement.parentElement.querySelector('.tableScroll').scrollLeft -= 200;
         });
       });
     }
     // --- 點擊右邊按鈕
     const rightBtn = document.querySelectorAll('.scrollTableRightBtn');
-    if (rightBtn.length !== 0) {
-      rightBtn.forEach((i) => {
-        i.addEventListener('click', (item) => {
-          i.parentElement.parentElement.scrollLeft += 200;
-        });
+    rightBtn?.forEach((i) => {
+      i.addEventListener('click', (item) => {
+        i.parentElement.parentElement.querySelector('.tableScroll').scrollLeft += 200;
       });
-    }
+    });
   }
 
   appendEle();
   clickEleBtn();
   // --- resize
   window.addEventListener('resize', () => {
-    let _hasItem;
     el.forEach((i) => {
-      _hasItem = i.parentElement.classList.contains('tableList');
-      if (!_hasItem) {
-        displayNoneEle();
-      }
+      displayNoneEle(i);
     });
   });
 }

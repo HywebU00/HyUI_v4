@@ -6249,10 +6249,10 @@ img {
       min-width: 600px;
     }
   }
-  .scrollTable {
+  .tableWrapper > .tableScroll > table {
     min-width: 600px;
   }
-  .scrollTable caption {
+  .tableWrapper > .tableScroll > table caption {
     position: absolute;
     left: -10000px;
     top: auto;
@@ -6260,7 +6260,7 @@ img {
     height: 1px;
     overflow: hidden;
   }
-  .tableWrapper {
+  .tableWrapper > div {
     overflow-x: scroll;
     overflow-y: hidden;
     scroll-behavior: smooth;
@@ -6946,14 +6946,13 @@ img {
     flex-wrap: wrap;
   }
   .pagination .page li {
-    min-width: 40px;
-    height: 40px;
     margin: 2px;
     list-style: none;
-    flex: 0 0 40px;
     box-sizing: border-box;
   }
   .pagination .page li a {
+    min-width: 40px;
+    height: 40px;
     border-radius: 5px;
     padding: 6px 10px;
     font-weight: 700;

@@ -18,13 +18,12 @@
     justify-content: center;
     flex-wrap: wrap;
     li {
-      min-width: 40px;
-      height: 40px;
       margin: 2px;
       list-style: none;
-      flex: 0 0 40px;
       box-sizing: border-box;
       a {
+        min-width: 40px;
+        height: 40px;
         border-radius: 5px;
         padding: 6px 10px;
         font-weight: 700;
