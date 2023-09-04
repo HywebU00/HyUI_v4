@@ -364,6 +364,7 @@ function searchTypeB() {
   const webSearch = document.querySelector('.wrapper .webSearch') || null;
   const searchBtn = document.querySelector('.wrapper .webSearchBtn button') || null;
   const menuOverlay = document.querySelector('.menuOverlay');
+  const body = document.querySelector('body');
   let windowWidth = window.outerWidth;
 
   let clickFn = (item) => {
@@ -405,7 +406,7 @@ function searchTypeB() {
           webSearch.style.top = `${webSearchTop}px`;
         }
       });
-      observer.observe(siteHeader);
+      observer.observe(body);
     };
 
     checkMobile();
