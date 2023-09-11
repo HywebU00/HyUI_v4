@@ -361,7 +361,7 @@ function topNav() {
 function searchTypeB() {
   const siteHeader = document.querySelector('.header .container');
   const searchBtnOut = document.querySelector('.wrapper .submenuBox') || null;
-  const webSearch = document.querySelector('.wrapper .webSearch') || null;
+  const webSearch = document.querySelector('.wrapper .webSearch.typeB') || null;
   const searchBtn = document.querySelector('.wrapper .webSearchBtn button') || null;
   const menuOverlay = document.querySelector('.menuOverlay');
   const body = document.querySelector('body');
