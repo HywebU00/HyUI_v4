@@ -315,13 +315,7 @@
                 <li>點閱次數:123456</li>
               </ul>
               <figure class="pic">
-                <!-- 此範例為4:3比例 -->
-                <picture>
-                  <source media="(min-width: 768px)" srcset="images/demo/01.jpg" />
-                  <source media="(max-width: 767px)" srcset="images/demo/01.jpg" />
-                  <img data-src="images/demo/01.jpg" class="lazy" alt="圖說" />
-                  <noscript><img src="images/demo/01.jpg" alt="圖說" /></noscript>
-                </picture>
+                <img src="images/demo/01.jpg" alt="圖說" />
                 <figcaption>圖說</figcaption>
               </figure>
               <p>
@@ -445,21 +439,18 @@
                       <div class="imgContainer swiper-slide">
                         <a href="images/demo/08.jpg" data-fancybox="gallery" data-caption="第3張圖說" data-alt="第3張圖說">
                           <img src="images/demo/08.jpg" alt="第3張圖說" />
-                          <noscript><img src="images/demo/08.jpg" alt="第3張圖說" /></noscript>
                           <span class="caption">第3張圖說</span>
                         </a>
                       </div>
                       <div class="imgContainer swiper-slide">
                         <a href="images/demo/10.jpg" data-fancybox="gallery" data-caption="第4張圖說" data-alt="第4張圖說">
                           <img src="images/demo/10.jpg" alt="第4張圖說" />
-                          <noscript><img src="images/demo/10.jpg" alt="第4張圖說" /></noscript>
                           <span class="caption">第4張圖說</span>
                         </a>
                       </div>
                       <div class="imgContainer swiper-slide">
                         <a href="images/demo/12.jpg" data-fancybox="gallery" data-caption="第5張圖說" data-alt="第5張圖說">
                           <img src="images/demo/12.jpg" alt="第5張圖說" />
-                          <noscript><img src="images/demo/12.jpg" alt="第5張圖說" /></noscript>
                           <span class="caption">第5張圖說</span>
                         </a>
                       </div>
@@ -701,8 +692,6 @@
 
     <!-- lazyload -->
     <script src="vendor/lazyload/lazyload.js"></script>
-    <!-- picturefill -->
-    <script src="vendor/picturefill/picturefill.min.js" async></script>
     <!-- fancybox -->
     <script src="vendor/fancybox/fancybox.js"></script>
     <!-- swiper -->
