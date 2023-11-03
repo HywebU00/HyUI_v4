@@ -1452,26 +1452,26 @@ checkboxBlur();
 // -----  category active    ---------------------------------------------
 // -----------------------------------------------------------------------
 
-function categoryActive() {
-  const categoryList = document.querySelectorAll('.category');
-  categoryList.forEach((i) => {
-    const item = i.querySelectorAll('a');
-    item.forEach((tag) => {
-      tag.addEventListener('click', (e) => {
-        e.preventDefault();
-        removeClass(item);
-        e.target.classList.add('active');
-      });
-    });
-  });
+// function categoryActive() {
+//   const categoryList = document.querySelectorAll('.category');
+//   categoryList.forEach((i) => {
+//     const item = i.querySelectorAll('a');
+//     item.forEach((tag) => {
+//       tag.addEventListener('click', (e) => {
+//         e.preventDefault();
+//         removeClass(item);
+//         e.target.classList.add('active');
+//       });
+//     });
+//   });
 
-  function removeClass(item) {
-    item.forEach((i) => {
-      i.classList.remove('active');
-    });
-  }
-}
-categoryActive();
+//   function removeClass(item) {
+//     item.forEach((i) => {
+//       i.classList.remove('active');
+//     });
+//   }
+// }
+// categoryActive();
 
 // -----------------------------------------------------------------------
 // -----  gotoCenter on focus跳到 content   ------------------------------
