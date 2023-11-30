@@ -17,6 +17,7 @@
   box-shadow: none;
   box-sizing: border-box;
   z-index: 100;
+
   @include screen('mobile') {
     display: block;
   }
@@ -26,6 +27,7 @@
   display: none;
   left: 0px;
   @include mobileCtrlBtn;
+
   &::before {
     position: absolute;
     content: '';
@@ -38,6 +40,7 @@
     box-shadow: $colorPrimary 0 6px 0 0, $colorPrimary 0 -6px 0 0;
     transition: 0.2s linear;
   }
+
   &::after {
     position: absolute;
     content: '';
@@ -50,6 +53,7 @@
     opacity: 0;
     transition: 0.2s linear;
   }
+
   // &:hover {
   //   &::before {
   //     transform: translate(-50%, -50%) rotate(45deg);
@@ -61,6 +65,7 @@
   //   }
   // }
 }
+
 // search
 .searchCtrlBtn {
   display: none;
@@ -68,6 +73,7 @@
   font-size: 0em;
   z-index: 9;
   @include mobileCtrlBtn;
+
   &:before {
     width: 40px;
     height: 40px;
@@ -81,6 +87,7 @@
     display: block;
   }
 }
+
 //header
 .header {
   position: relative;
@@ -90,10 +97,12 @@
   z-index: 99;
   transition: 0.3s ease-out;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
   @include screen('mobile') {
     position: fixed;
     width: 100%;
   }
+
   &:before {
     position: absolute;
     content: '';
@@ -105,18 +114,22 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     pointer-events: none;
     z-index: -1;
+
     @include screen('mobile') {
       height: 60px;
     }
   }
+
   & > .container {
     max-width: $containerMax;
     overflow: visible;
     position: relative;
+
     @include screen('mobile') {
       padding: 0;
     }
   }
+
   h1 {
     float: left;
     width: 300px;
@@ -124,19 +137,27 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    @include screen('mobile') {
+      float: none;
+    }
+
     a {
       display: inline-block;
     }
+
     img {
       display: block;
       max-width: 300px;
       max-height: 75px;
     }
+
     @include screen('mobile') {
       padding: 2px 60px;
       width: 100%;
       text-align: center;
       height: 60px;
+
       img {
         width: auto;
         height: auto;
@@ -146,6 +167,7 @@
       }
     }
   }
+
   // 導覽列
   .navigation {
     box-sizing: border-box;
@@ -153,12 +175,15 @@
     position: relative;
     z-index: 55;
     align-items: center;
+
     @include screen('mobile') {
       display: none;
     }
+
     .navList {
       flex: 1 1 auto;
       margin: 0.25em 0.5em 0 0;
+
       ul {
         padding: 0;
         margin: 0;
@@ -167,6 +192,7 @@
         display: flex;
         justify-content: flex-end;
       }
+
       li {
         flex: 0 0 auto;
 
@@ -186,6 +212,7 @@
       padding: 15px;
       background: linear-gradient(135deg, #005d9d 0%, #98d1a7 100%);
       position: relative;
+
       & > div {
         + div::after {
           content: '';
@@ -208,11 +235,13 @@
     position: absolute;
     top: 20px;
     z-index: 50;
+
     @include screen('mobile') {
       position: relative;
       top: auto;
     }
   }
+
   .navigation {
     margin-bottom: 40px;
   }

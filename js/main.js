@@ -10,247 +10,411 @@ _webHtml.classList.remove('no-js');
 // -----  共用效果  -------------------------------------------------------
 // -----------------------------------------------------------------------
 
-const slider = (function () {
-  let Slider = {};
-  function TimerManager() {
-    this.timers = [];
-    this.args = [];
-    this.isTimerRun = false;
-  }
-  TimerManager.makeTimerManage = function (element) {
-    element.TimerManage = new TimerManager();
-    if (!element.TimerManage || element.TimerManage.constructor !== TimerManager) {
-    }
-  };
-  TimerManager.prototype.add = function (timer, args) {
-    this.timers.push(timer);
-    this.args.push(args);
-    this.timerRun();
-  };
-  TimerManager.prototype.timerRun = function () {
-    if (!this.isTimerRun) {
-      let timer = this.timers.shift(),
-        args = this.args.shift();
-      if (timer && args) {
-        this.isTimerRun = true;
-        timer(args[0], args[1]);
-      }
-    }
-  };
-  TimerManager.prototype.next = function () {
-    this.isTimerRun = false;
-    this.timerRun();
-  };
-
-  function jsSlideUp(element, time) {
-    if (element.offsetHeight > 0) {
-      let totalHeight = element.offsetHeight;
-      let currentHeight = totalHeight;
-      let reduceValue = totalHeight / (time / 10);
-      element.style.transition = `height ${time} ms`;
-      element.style.overflow = 'hidden';
-      let timer = setInterval(function () {
-        currentHeight -= reduceValue;
-        element.style.height = `${currentHeight}px`;
-        if (currentHeight <= 0) {
-          clearInterval(timer);
-          element.style.display = 'none';
-          element.style.height = `${totalHeight}px`;
-          if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
-            element.TimerManage.next();
-          }
-        }
-      }, 10);
-    } else {
-      if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
-        element.TimerManage.next();
-      }
-    }
-  }
-
-  function jsSlideDown(element, time) {
-    if (element.offsetHeight <= 0) {
-      element.style.display = 'block';
-      element.style.transition = `height ${time} ms`;
-      element.style.overflow = 'hidden';
-      let totalHeight = element.offsetHeight;
-      let currentHeight = 0;
-      element.style.height = '0px';
-      let addValue = totalHeight / (time / 10);
-      let timer = setInterval(function () {
-        currentHeight += addValue;
-        element.style.height = `${currentHeight}px`;
-        if (currentHeight >= totalHeight) {
-          clearInterval(timer);
-          element.style.height = `${totalHeight}px`;
-          if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
-            element.TimerManage.next();
-          }
-        }
-      }, 10);
-    } else {
-      if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
-        element.TimerManage.next();
-      }
-    }
-  }
-
-  function jsSlideToggle(element, time) {
-    if (element.offsetHeight <= 0) {
-      element.style.display = 'block';
-      element.style.transition = `height ${time} ms`;
-      element.style.overflow = 'hidden';
-      let totalHeight = element.offsetHeight;
-      let currentHeight = 0;
-      element.style.height = '0px';
-      let addValue = totalHeight / (time / 10);
-      let timer = setInterval(function () {
-        currentHeight += addValue;
-        element.style.height = `${currentHeight}px`;
-        if (currentHeight >= totalHeight) {
-          clearInterval(timer);
-          element.style.height = `${totalHeight}px`;
-          if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
-            element.TimerManage.next();
-          }
-        }
-      }, 10);
-    } else {
-      let totalHeight2 = element.offsetHeight;
-      let currentHeight2 = totalHeight2;
-      let reduceValue2 = totalHeight2 / (time / 10);
-      element.style.transition = `height ${time} ms`;
-      element.style.overflow = 'hidden';
-      let timer2 = setInterval(function () {
-        currentHeight2 -= reduceValue2;
-        element.style.height = `${currentHeight2}px`;
-        if (currentHeight2 <= 0) {
-          clearInterval(timer2);
-          element.style.display = 'none';
-          element.style.height = `${totalHeight2}px`;
-          if (element.TimerManage && element.TimerManage.constructor === TimerManager) {
-            element.TimerManage.next();
-          }
-        }
-      }, 10);
-    }
-  }
-  // the interface about slideUp method
-  Slider.jsSlideUp = function (element) {
-    TimerManager.makeTimerManage(element);
-    element.TimerManage.add(jsSlideUp, arguments);
-    return this;
-  };
-  // the interface about slideDown method
-  Slider.jsSlideDown = function (element) {
-    TimerManager.makeTimerManage(element);
-    element.TimerManage.add(jsSlideDown, arguments);
-    return this;
-  };
-  Slider.jsSlideToggle = function (element) {
-    TimerManager.makeTimerManage(element);
-    element.TimerManage.add(jsSlideToggle, arguments);
-    return this;
-  };
-  return Slider;
-})();
-
-function jsFadeIn(element) {
-  let val = 0;
+function jsSlideUp(element, time) {
+  let ele = window.getComputedStyle(element);
+  let display = ele.display;
   let request;
-  element.style.display = 'block';
-  requestAnimationFrame(fade);
-  function fade() {
-    val += 5;
-    if (val <= 100) {
-      element.style.opacity = val / 100;
-      request = requestAnimationFrame(fade);
-    } else if (val >= 100) {
-      cancelAnimationFrame(request);
+  let speed = (time || 200) / 50;
+  element.style.display = display;
+  if (display !== 'none') {
+    element.style.overflow = 'hidden';
+    let totalHeight = element.offsetHeight;
+    let currentHeight = totalHeight;
+
+    requestAnimationFrame(slider);
+    function slider() {
+      currentHeight -= speed;
+      if (currentHeight > 0) {
+        element.style.height = `${currentHeight}px`;
+        request = requestAnimationFrame(slider);
+      } else {
+        element.style.display = 'none';
+        element.style.height = '0px';
+        element.style.removeProperty('overflow');
+        element.style.removeProperty('height');
+        cancelAnimationFrame(request);
+      }
     }
   }
 }
 
-function jsFadeOut(element) {
-  let val = 100;
+function jsSlideDown(element, time) {
+  let ele = window.getComputedStyle(element);
+  let display = ele.display;
   let request;
-  requestAnimationFrame(fade);
-  function fade() {
-    val -= 5;
-    if (val >= 0) {
-      element.style.opacity = val / 100;
-      request = requestAnimationFrame(fade);
-    } else if (val < 0) {
-      setTimeout(() => {
-        element.style = '';
-      }, 300);
-      cancelAnimationFrame(request);
+  let speed = (time || 200) / 50;
+  element.style.display = display;
+  if (display === 'none') {
+    element.style.display = 'block';
+    element.style.overflow = 'hidden';
+    let totalHeight = element.offsetHeight;
+    let currentHeight = 0;
+    element.style.height = '0px';
+
+    requestAnimationFrame(slider);
+    function slider() {
+      currentHeight += speed;
+      if (currentHeight < totalHeight) {
+        element.style.height = `${currentHeight}px`;
+        request = requestAnimationFrame(slider);
+      } else {
+        element.style.display = 'block';
+        element.style.removeProperty('overflow');
+        element.style.removeProperty('height');
+        cancelAnimationFrame(request);
+      }
     }
   }
 }
 
-function jsFadeToggle(element) {
-  let display = window.getComputedStyle(element).display;
+function jsSlideToggle(element, time) {
+  let request;
+  let request2;
+  let ele = window.getComputedStyle(element);
+  let display = ele.display;
+  let speed = (time || 200) / 50;
+  element.style.display = display;
+  if (display === 'none') {
+    element.style.display = 'block';
+    element.style.overflow = 'hidden';
+    let totalHeight = element.offsetHeight;
+    let currentHeight = 0;
+    element.style.height = '0px';
+
+    requestAnimationFrame(slider);
+    function slider() {
+      currentHeight += speed;
+      if (currentHeight < totalHeight) {
+        element.style.height = `${currentHeight}px`;
+        request = requestAnimationFrame(slider);
+      } else {
+        element.style.removeProperty('overflow');
+        element.style.removeProperty('height');
+        cancelAnimationFrame(request);
+      }
+    }
+  } else {
+    let totalHeight2 = element.offsetHeight;
+    element.style.transition = `height ${time} ms`;
+    element.style.overflow = 'hidden';
+
+    requestAnimationFrame(slider2);
+    function slider2() {
+      totalHeight2 -= speed;
+      if (totalHeight2 > 0) {
+        element.style.height = `${totalHeight2}px`;
+        request2 = requestAnimationFrame(slider2);
+      } else {
+        element.style.removeProperty('overflow');
+        element.style.removeProperty('height');
+        element.style.display = 'none';
+        cancelAnimationFrame(request2);
+      }
+    }
+  }
+}
+
+function jsFadeIn(element, time) {
+  let ele = window.getComputedStyle(element);
+  let display = ele.display;
+  let speed = (time || 200) / 5000;
+  let request;
+  let opacity = 0;
+  if (display === 'none') {
+    element.style.opacity = '0';
+    element.style.display = 'block';
+    requestAnimationFrame(fade);
+    function fade() {
+      opacity += speed;
+      if (opacity < 1) {
+        element.style.opacity = `${Number(opacity).toFixed(2)}`;
+        request = requestAnimationFrame(fade);
+      } else {
+        element.style.opacity = '1';
+        element.style.display = 'block';
+        cancelAnimationFrame(request);
+      }
+    }
+  }
+}
+
+function jsFadeOut(element, time) {
+  let ele = window.getComputedStyle(element);
+  let display = ele.display;
+  let speed = (time || 200) / 5000;
+  let request;
+  let opacity = ele.opacity;
+  if (display !== 'none') {
+    requestAnimationFrame(fade);
+    function fade() {
+      opacity -= speed;
+      if (opacity > 0) {
+        element.style.opacity = `${Number(opacity).toFixed(2)}`;
+        request = requestAnimationFrame(fade);
+      } else {
+        element.style.opacity = '0';
+        element.style.display = 'none';
+        element.style.removeProperty('z-index');
+        cancelAnimationFrame(request);
+      }
+    }
+  }
+}
+
+function jsFadeToggle(element, time) {
+  let request;
+  let request2;
+  let ele = window.getComputedStyle(element);
+  let display = ele.display;
+  let speed = (time || 200) / 2000;
   if (display === 'none') {
     display = 'block';
+    let opacity = 0;
+    element.style.opacity = 0;
     element.style.display = display;
-    element.style.opacity = 0;
-    element.style.transitionProperty = 'opacity';
-    element.style.transitionDuration = `300ms`;
-    element.style.opacity = 1;
-    setTimeout(() => {
-      element.style.removeProperty('transition-property');
-      element.style.removeProperty('transition-duration');
-    }, 300);
+
+    requestAnimationFrame(fade);
+    function fade() {
+      opacity += speed;
+      if (opacity < 1) {
+        element.style.opacity = `${Number(opacity).toFixed(2)}`;
+        request = requestAnimationFrame(fade);
+      } else {
+        element.style.opacity = '1';
+        element.style.display = 'block';
+        cancelAnimationFrame(request);
+      }
+    }
   } else {
-    element.style.opacity = 1;
-    element.style.transitionProperty = 'opacity';
-    element.style.transitionDuration = `300ms`;
-    element.style.opacity = 0;
-    setTimeout(() => {
-      element.style.display = 'none';
-      element.style.removeProperty('transition-property');
-      element.style.removeProperty('transition-duration');
-    }, 300);
+    let opacity2 = ele.opacity;
+    requestAnimationFrame(fade2);
+    function fade2() {
+      opacity2 -= speed;
+      console.log(Number(opacity2).toFixed(2));
+      if (opacity2 > 0) {
+        element.style.opacity = `${Number(opacity2).toFixed(2)}`;
+        request2 = requestAnimationFrame(fade2);
+      } else {
+        element.style.opacity = '0';
+        element.style.display = 'none';
+        element.style.removeProperty('z-index');
+        cancelAnimationFrame(request2);
+      }
+    }
   }
 }
 
-function jsAddClass(element, className) {
-  if (element.classList) element.classList.add(className);
-  else if (!hasClass(element, className)) {
-    element.className += ' ' + className;
-  }
-}
-
-function jsRemoveClass(element, className) {
-  if (element.classList) element.classList.remove(className);
-  else if (hasClass(element, className)) {
-    let reg = new RegExp('(\\s|^)' + className + '(\\s|$)');
-    element.className = element.className.replace(reg, ' ');
-  }
-}
-
-// jsParents 可使用tag或是class，單筆可以直接使用，多筆需要用forEach去調用每一個parents
-// element 需要帶入參數，dom需要先用變數指定，如： let a = document.querySelector()
-// elementCheck 目前只能使用抓class和tag，tag請用小寫
 function jsParents(element, elementCheck) {
-  const elementParentsCheck = elementCheck.toLowerCase() || null;
+  //大小寫轉換
+  const elementParentsCheck = elementCheck?.toLowerCase() || null;
   const matched = [];
   const elementArr = [];
-  !element.item ? elementArr.push(element) : (elementArr = element);
+  elementArr.push(element);
   elementArr.forEach((s) => {
     let current = s;
-    while (current.parentNode != null && current.parentNode != document.documentElement) {
+    while (current.parentNode !== null && current.parentNode !== document.documentElement) {
       matched.push(current.parentNode);
       current = current.parentNode;
     }
   });
   const check = matched.filter((i) => {
-    return i.localName == elementParentsCheck ? i : i.classList.contains(elementParentsCheck) ? i : elementParentsCheck === null ? i : '';
+    return i.localName === elementParentsCheck || i.classList.contains(elementParentsCheck) || elementParentsCheck === null ? i : '';
   });
-  return check.length === 1 ? check[0] : check;
+  return check;
+  // 父層只有一個時取消陣列
+  // return check.length === 1 ? check[0] : check;
 }
 
+// function jsSlideUp(element, time) {
+//   cancelAnimationFrame(slider);
+//   let display = window.getComputedStyle(element).display;
+//   element.style.display = display;
+//   if (display === 'block') {
+//     let totalHeight = element.offsetHeight;
+//     let reduceValue = totalHeight / (time / 10);
+//     element.style.transition = `height ${time} ms`;
+//     element.style.overflow = 'hidden';
+
+//     requestAnimationFrame(slider);
+//     function slider() {
+//       totalHeight -= reduceValue;
+//       if (totalHeight > 0) {
+//         element.style.height = `${totalHeight}px`;
+//         request = requestAnimationFrame(slider);
+//       } else {
+//         element.style.display = 'none';
+//         element.style.removeProperty('overflow');
+//         element.style.removeProperty('height');
+//         element.style.removeProperty('transition-duration');
+//         element.style.removeProperty('transition-property');
+//         cancelAnimationFrame(slider);
+//       }
+//     }
+//   }
+// }
+
+// function jsSlideDown(element, time) {
+//   cancelAnimationFrame(slider);
+//   let display = window.getComputedStyle(element).display;
+//   element.style.display = display;
+//   if (display === 'none') {
+//     element.style.display = 'block';
+//     element.style.overflow = 'hidden';
+//     element.style.transition = `height ${time} ms`;
+//     let totalHeight = element.offsetHeight;
+//     let currentHeight = 0;
+//     element.style.height = '0px';
+//     let addValue = totalHeight / (time / 10);
+
+//     requestAnimationFrame(slider);
+//     function slider() {
+//       currentHeight += addValue;
+//       if (currentHeight <= totalHeight) {
+//         element.style.height = `${currentHeight}px`;
+//         request = requestAnimationFrame(slider);
+//       } else {
+//         element.style.removeProperty('overflow');
+//         element.style.removeProperty('height');
+//         element.style.removeProperty('transition-duration');
+//         element.style.removeProperty('transition-property');
+//         cancelAnimationFrame(slider);
+//       }
+//     }
+//   }
+// }
+
+// function jsSlideToggle(element, time) {
+//   cancelAnimationFrame(slider);
+//   cancelAnimationFrame(slider2);
+//   let display = window.getComputedStyle(element).display;
+//   element.style.display = display;
+//   if (display === 'none') {
+//     element.style.display = 'block';
+//     element.style.overflow = 'hidden';
+//     element.style.transition = `height ${time} ms`;
+//     let totalHeight = element.offsetHeight;
+//     let currentHeight = 0;
+//     element.style.height = '0px';
+//     let addValue = totalHeight / (time / 10);
+
+//     requestAnimationFrame(slider);
+//     function slider() {
+//       currentHeight += addValue;
+//       if (currentHeight <= totalHeight) {
+//         element.style.height = `${currentHeight}px`;
+//         request = requestAnimationFrame(slider);
+//       } else {
+//         element.style.removeProperty('overflow');
+//         element.style.removeProperty('height');
+//         element.style.removeProperty('transition-duration');
+//         element.style.removeProperty('transition-property');
+//         cancelAnimationFrame(slider);
+//       }
+//     }
+//   } else {
+//     let totalHeight2 = element.offsetHeight;
+//     let reduceValue2 = totalHeight2 / (time / 10);
+//     element.style.transition = `height ${time} ms`;
+//     element.style.overflow = 'hidden';
+
+//     requestAnimationFrame(slider2);
+//     function slider2() {
+//       totalHeight2 -= reduceValue2;
+//       if (totalHeight2 > 0) {
+//         element.style.height = `${totalHeight2}px`;
+//         request = requestAnimationFrame(slider2);
+//       } else {
+//         element.style.display = 'none';
+//         element.style.removeProperty('overflow');
+//         element.style.removeProperty('height');
+//         element.style.removeProperty('transition-duration');
+//         element.style.removeProperty('transition-property');
+//         cancelAnimationFrame(slider2);
+//       }
+//     }
+//   }
+// }
+
+// function jsFadeIn(element) {
+//   let val = 0;
+//   let request;
+//   element.style.display = 'block';
+//   requestAnimationFrame(fade);
+//   function fade() {
+//     val += 5;
+//     if (val <= 100) {
+//       element.style.opacity = val / 100;
+//       request = requestAnimationFrame(fade);
+//     } else if (val >= 100) {
+//       cancelAnimationFrame(request);
+//     }
+//   }
+// }
+
+// function jsFadeOut(element) {
+//   let val = 100;
+//   let request;
+//   requestAnimationFrame(fade);
+//   function fade() {
+//     val -= 5;
+//     if (val >= 0) {
+//       element.style.opacity = val / 100;
+//       request = requestAnimationFrame(fade);
+//     } else if (val < 0) {
+//       setTimeout(() => {
+//         element.style = '';
+//       }, 300);
+//       cancelAnimationFrame(request);
+//     }
+//   }
+// }
+
+// function jsFadeToggle(element) {
+//   let display = window.getComputedStyle(element).display;
+//   if (display === 'none') {
+//     display = 'block';
+//     element.style.display = display;
+//     element.style.opacity = 0;
+//     element.style.transitionProperty = 'opacity';
+//     element.style.transitionDuration = `300ms`;
+//     element.style.opacity = 1;
+//     setTimeout(() => {
+//       element.style.removeProperty('transition-property');
+//       element.style.removeProperty('transition-duration');
+//     }, 300);
+//   } else {
+//     element.style.opacity = 1;
+//     element.style.transitionProperty = 'opacity';
+//     element.style.transitionDuration = `300ms`;
+//     element.style.opacity = 0;
+//     setTimeout(() => {
+//       element.style.display = 'none';
+//       element.style.removeProperty('transition-property');
+//       element.style.removeProperty('transition-duration');
+//     }, 300);
+//   }
+// }
+
+// function jsParents(element, elementCheck) {
+//   //大小寫轉換
+//   const elementParentsCheck = elementCheck?.toLowerCase() || null;
+//   const matched = [];
+//   const elementArr = [];
+//   elementArr.push(element);
+//   elementArr.forEach((s) => {
+//     let current = s;
+//     while (current.parentNode != null && current.parentNode != document.documentElement) {
+//       matched.push(current.parentNode);
+//       current = current.parentNode;
+//     }
+//   });
+//   const check = matched.filter((i) => {
+//     return i.localName === elementParentsCheck || i.classList.contains(elementParentsCheck) || elementParentsCheck === null ? i : '';
+//   });
+//   return check;
+//   // 父層只有一個時取消陣列
+//   // return check.length === 1 ? check[0] : check;
+// }
 // 亂數數字
 function randomFloor(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -258,8 +422,8 @@ function randomFloor(min, max) {
 
 // 亂數英文字
 function randomLetter(max) {
-  var text = '';
-  var letter = 'abcdefghijklmnopqrstuvwxyz';
+  let text = '';
+  let letter = 'abcdefghijklmnopqrstuvwxyz';
 
   for (let i = 0; i < max; i++) text += letter.charAt(Math.floor(Math.random() * letter.length));
   return text;
@@ -298,23 +462,6 @@ function menu() {
   cloneMenu.classList.add('sideMainMenu');
   cloneMenu.classList.remove('mainMenu', 'megaMenu', 'menu');
   mobileArea.append(cloneMenu);
-
-  // --- 搜尋判斷
-  window.addEventListener('resize', mobileSearchFunction);
-  window.addEventListener('load', mobileSearchFunction);
-  function mobileSearchFunction() {
-    let windowWidth = body.outerWidth;
-    const search = document.querySelector('.webSearch');
-    if (search !== null && windowWidth < windowWidthSmall) {
-      search.removeAttribute('style');
-      search.classList.add('mobileSearch');
-      search.classList.remove('desktopSearch');
-    } else if (search !== null && windowWidth > windowWidthSmall) {
-      search.removeAttribute('style');
-      search.classList.remove('mobileSearch');
-      search.classList.add('desktopSearch');
-    }
-  }
 }
 menu();
 
@@ -371,13 +518,13 @@ function searchTypeB() {
     // --- 點擊 模組
     item.addEventListener('click', (e) => {
       e.preventDefault();
-      slider.jsSlideToggle(webSearch, 200);
+      jsSlideToggle(webSearch);
       jsFadeToggle(menuOverlay);
     });
     // --- Keydown
     item.addEventListener('keydown', (e) => {
       if (webSearch.classList.contains('typeB')) {
-        slider.jsSlideToggle(webSearch, 200);
+        jsSlideToggle(webSearch);
         jsFadeToggle(menuOverlay);
       }
     });
@@ -412,7 +559,6 @@ function searchTypeB() {
     };
 
     checkMobile();
-    window.addEventListener('resize', checkMobile);
 
     searchBtn !== null ? clickFn(searchBtn) : '';
 
@@ -424,7 +570,7 @@ function searchTypeB() {
     lastNodes.addEventListener('focusout', (e) => {
       e.preventDefault();
       if (webSearch.classList.contains('typeB')) {
-        slider.jsSlideUp(webSearch, 200);
+        jsSlideUp(webSearch, 200);
         jsFadeToggle(menuOverlay);
       }
     });
@@ -432,7 +578,7 @@ function searchTypeB() {
     function clickOtherPlace(e) {
       const chooseClassName = webSearchBtn.className;
       if (e.target.closest(`.webSearch`) === null && e.target !== searchBtn) {
-        slider.jsSlideUp(webSearch, 200);
+        jsSlideUp(webSearch, 200);
         jsFadeOut(menuOverlay);
       } else {
         return;
@@ -445,7 +591,7 @@ function searchTypeB() {
     // document.addEventListener('click', clickOtherPlace);
   }
 
-  menuOverlay.addEventListener('click', (e) => slider.jsSlideUp(webSearch, 200));
+  menuOverlay.addEventListener('click', (e) => jsSlideUp(webSearch, 200));
 }
 
 function mobileSearch(obj) {
@@ -1214,9 +1360,9 @@ class SelectSlider {
         if (sliderItem === null) {
           return;
         } else if (sliderItem.offsetHeight !== 0 || sliderItem.offsetHeight === null) {
-          slider.jsSlideUp(sliderItem, 300);
+          jsSlideUp(sliderItem, 300);
         } else {
-          slider.jsSlideDown(sliderItem, 300);
+          jsSlideDown(sliderItem, 300);
         }
         this.sliderClose(e.target);
       });
@@ -1228,7 +1374,7 @@ class SelectSlider {
       i.addEventListener('keydown', (e) => {
         const sliderItem = e.target.nextElementSibling;
         if (sliderItem) {
-          slider.jsSlideDown(sliderItem, 300);
+          jsSlideDown(sliderItem, 300);
         }
       });
     });
@@ -1241,7 +1387,7 @@ class SelectSlider {
       const sliderItem = i.querySelector('ul');
       lastNodes.addEventListener('focusout', (e) => {
         e.preventDefault();
-        slider.jsSlideUp(sliderItem, 300);
+        jsSlideUp(sliderItem, 300);
       });
     });
   }
@@ -1253,7 +1399,7 @@ class SelectSlider {
     function clickOtherPlace(e) {
       const chooseClassName = that.name[0].className;
       if ((e.target.closest(`.${chooseClassName}`) === null) & (e.target !== item)) {
-        slider.jsSlideUp(sliderItem, 300);
+        jsSlideUp(sliderItem, 300);
       } else {
         return;
       }
