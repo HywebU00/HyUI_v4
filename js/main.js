@@ -218,7 +218,7 @@ function jsParents(element, elementCheck) {
     }
   });
   const check = matched.filter((i) => {
-    return i.localName === elementParentsCheck || i.classList.contains(elementParentsCheck) || elementParentsCheck === null ? i : '';
+    return i.localName === elementParentsCheck || i.classList.contains(elementCheck) || elementParentsCheck === null ? i : '';
   });
   return check;
   // 父層只有一個時取消陣列
