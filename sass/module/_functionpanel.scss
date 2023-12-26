@@ -8,20 +8,24 @@
   justify-content: flex-end;
   align-items: center;
   font-size: 0.938rem;
+
   @include screen('mobile') {
     margin: 0.6em 0;
     padding: 0.5em 0 0.5em;
   }
+
   .share {
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: auto;
   }
+
   .function {
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: auto;
   }
+
   .publishTime {
     flex-grow: 1;
     flex-shrink: 1;
@@ -29,15 +33,18 @@
     min-width: 100px;
     display: block;
     color: #555;
+
     span {
       @include screen('mobile') {
         display: none;
       }
     }
+
     time {
       font-family: georgia;
       font-size: 1.125em;
     }
+
     &:before {
       content: '';
       display: inline-block;
@@ -61,17 +68,21 @@
   margin-right: 0.5em;
   display: inline-block;
 }
+
 div.function {
   box-sizing: border-box;
   margin: 0.5em 0;
+
   ul {
     @include liReset;
     display: flex;
     justify-content: flex-end;
     list-style-type: none;
+
     li {
       margin: 0 0px 0px 3px;
       flex: 0 0 auto;
+
       button,
       a {
         font-size: 0.813rem;
@@ -81,12 +92,14 @@ div.function {
         border-color: $colorFunction;
         color: #fff;
         border-radius: 4px;
+
         &:hover,
         &:focus-visible {
           background: darken($aHover, 0);
           border-color: darken($aHover, 0);
         }
       }
+
       // 回上一頁
       &.icon_back {
         a:before {
@@ -95,6 +108,7 @@ div.function {
           background-size: 16px;
         }
       }
+
       // 友善列印
       &.icon_print {
         a:before {
@@ -103,6 +117,7 @@ div.function {
           background-size: 20px;
         }
       }
+
       // 轉寄友人
       &.icon_forward {
         a:before {
@@ -114,11 +129,13 @@ div.function {
     }
   }
 }
+
 // 放進functionPanel樣式
 .functionPanel {
   display: flex;
   flex-flow: row wrap;
   align-content: center;
+
   .fontSize {
     padding: 0;
     flex: initial;
@@ -126,15 +143,19 @@ div.function {
     flex-shrink: 1;
     flex-basis: auto;
   }
+
   .function {
     height: 32px;
     margin: 0;
+
     ul {
       display: flex;
+
       li {
         font-size: 1em;
         margin: 0 0.2em;
         flex: 0 0 32px;
+
         a {
           display: block;
           box-sizing: border-box;
@@ -146,14 +167,17 @@ div.function {
           background: #f1f1f1;
           text-indent: -9999px;
           position: relative;
+
           &:hover,
           &:focus-visible {
             background: $aHover;
             color: #fff;
+
             &:before {
               filter: invert(100%);
             }
           }
+
           &:before {
             content: '';
             position: absolute;
@@ -163,6 +187,7 @@ div.function {
             left: 20%;
           }
         }
+
         &.back {
           a:before {
             background: url(../images/basic/icon_back_dark.svg) no-repeat center center;
@@ -175,10 +200,12 @@ div.function {
             background: url(../images/basic/icon_print_dark.svg) no-repeat center center;
             background-size: 100%;
           }
+
           @include screen('mobile') {
             display: none;
           }
         }
+
         &.forward {
           a:before {
             background: url(../images/basic/icon_forward_dark.svg) no-repeat center center;
@@ -194,21 +221,26 @@ div.function {
 .share {
   box-sizing: border-box;
   margin: 0.5em 0;
+
   ul {
     @include liReset;
     display: flex;
+
     li {
       margin: 0px 3px 3px;
       flex: 0 0 32px;
+
       a {
         display: block;
         height: 32px;
       }
+
       @include screen('tablet') {
         margin: 0px 1px 2px;
         width: 32px;
         height: 32px;
       }
+
       img {
         width: 100%;
         height: 100%;
@@ -216,6 +248,7 @@ div.function {
     }
   }
 }
+
 // 放進functionPanel樣式
 .functionPanel {
   .share {
@@ -224,7 +257,8 @@ div.function {
     height: 32px;
     margin: 0 4px;
     position: relative;
-    a.shareButton {
+
+    .shareButton {
       display: block;
       background: #f1f1f1;
       border-radius: 50%;
@@ -233,6 +267,9 @@ div.function {
       text-indent: -9999px;
       text-align: center;
       position: relative;
+      border: none;
+      margin: 0;
+
       &:before {
         content: '';
         position: absolute;
@@ -243,6 +280,7 @@ div.function {
         background: url(../images/basic/icon_share.svg) no-repeat center center;
         background-size: 24px;
       }
+
       // img {
       //   width: 60%;
       //   height: 60%;
@@ -251,6 +289,7 @@ div.function {
       &:hover,
       &:focus-visible {
         background: $aHover;
+
         // img {
         //   filter: invert(100%);
         // }
@@ -259,6 +298,7 @@ div.function {
         }
       }
     }
+
     ul {
       display: none;
       position: absolute;
@@ -271,17 +311,21 @@ div.function {
       border-radius: 8px;
       z-index: 999;
       height: auto;
+
       li {
         display: block;
         margin: 0 auto 0.5em;
+
         &:last-child {
           margin-bottom: 0;
         }
+
         img {
           width: 100%;
           height: 100%;
           margin: 0 auto;
         }
+
         a {
           background: transparent;
           display: block;
@@ -289,9 +333,11 @@ div.function {
           width: 32px;
           height: 32px;
           border-radius: 50%;
+
           &:hover,
           &:focus-visible {
             background: transparent;
+
             img {
               filter: grayscale(1);
             }

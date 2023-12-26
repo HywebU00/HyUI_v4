@@ -2,26 +2,36 @@
 window.addEventListener('load', () => {
   topNav(); // 手機版顯示nav選單
   navSticky(); // 捲動時固定主選單
+  xSlider('.language button', '.language ul'); //語系
+  fontSize(); // 全站字體
   fatFooter(); // fatFooter是否要展開
-  tabFunction('.tabSet'); // tab功能
   scrollTables('.tableWrapper'); // table捲動功能
 
-  mobileSearch();
+  webSearch();
+
+  // tab功能
+  tabFunction({
+    target: '.tabSet',
+    openFirst: false, // 預設先展開所有內容，鍵盤的自動開合功能無效
+    openSwitch: true, // 是否可開合/切換
+    autoClose: true, // 自動關閉其他開啟內容
+    modeSwitch: true, // 預設模式自動切換，尺寸以上tab功能，尺寸以下手風琴功能
+    width: 767, // 尺寸以上tab功能，尺寸以下手風琴功能
+    index: 0, // 預設開啟第幾個
+  });
 
   tableAddDataAttributes({
     elemClass: '.tableList', // 目標table
     dataName: 'title', // tableList樣式 加上 data-title
   });
 
-  // 全站字體
-  fontSize();
-
   // 手風琴功能
   accordionFunction({
-    accordion: '.accordion',
-    openFirst: false, // 預設先展開所有內容，使用無障礙遊走不再有手風琴效果，永遠展開內容(滑鼠點擊正常開合)
+    target: '.accordion',
+    openFirst: false, // 預設先展開所有內容，鍵盤的自動開合功能無效
     autoClose: true, // 點擊時自動關閉已展開的項目，若需要此功能需要關閉openFirst
-    duration: 200,
+    openSwitch: true, // 是否可開合
+    index: 0, // 預設開啟第幾個
     info: {
       open: '展開', // 收合時顯示
       close: '收合', // 展開時顯示

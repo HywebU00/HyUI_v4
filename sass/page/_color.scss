@@ -2,8 +2,7 @@
 // 同版面，多色快速調整 sass map實作
 // 參數可再自行新增
 $colorStyleConfig: (
-  colorA: (
-    // class 名稱
+  colorA: ( // class 名稱
     colorPrimary: #298729,
     colorSecondary: #22be22,
     aHover: mix(#298729, #000, 90%),
@@ -11,8 +10,7 @@ $colorStyleConfig: (
     formFocus: #298729,
     form-btn: #298729,
   ),
-  colorB: (
-    // class 名稱
+  colorB: ( // class 名稱
     colorPrimary: #c32727,
     colorSecondary: red,
     aHover: mix(#00a4f9, #000, 90%),
@@ -26,18 +24,23 @@ $colorStyleConfig: (
 
 @each $item, $value in $colorStyleConfig {
   .#{$item} {
+
     //_font
     a {
+
       // color: map-get($value, colorPrimary);
       &:hover {
         color: map-get($value, colorPrimary);
       }
     }
+
     .fontSize {
       ul {
         li {
+
           button,
           a {
+
             &:hover,
             &:focus,
             &.active {
@@ -48,20 +51,25 @@ $colorStyleConfig: (
         }
       }
     }
+
     //_accessibility
     a.goCenter {
       background: map-get($value, colorPrimary);
+
       &:hover,
       &:focus-visible {
         background: lighten(map-get($value, colorPrimary), 10);
       }
     }
+
     // no-js
     .no-js {
       noscript {
         border-color: map-get($value, colorPrimary);
+
         a {
           color: map-get($value, colorPrimary);
+
           &:hover,
           &:focus-visible {
             color: map-get($value, aHover);
@@ -69,32 +77,39 @@ $colorStyleConfig: (
         }
       }
     }
+
     //_hack
     .gs-result .gs-title,
     .gs-result .gs-title * {
       color: map-get($value, colorPrimary) !important;
     }
+
     .gs-webResult div.gs-visibleUrl {
       color: $colorSecondary !important;
     }
+
     .gsc-search-button-v2,
     .gsc-search-button-v2:hover,
     .gsc-search-button-v2:focus {
       background-color: map-get($value, colorPrimary) !important;
     }
+
     //_typegraphy
     blockquote {
       border-color: map-get($value, colorPrimary);
     }
+
     //_btn
     .btnSubmit {
       background: map-get($value, colorPrimary);
       border-color: map-get($value, colorPrimary);
     }
+
     .btnSearch {
       background: map-get($value, colorPrimary);
       border-color: map-get($value, colorPrimary);
     }
+
     .btnPrimary {
       background: map-get($value, colorPrimary);
       color: #fff;
@@ -106,9 +121,11 @@ $colorStyleConfig: (
         border-color: map-get($value, colorPrimary);
       }
     }
+
     .btnSecondary {
       color: darken(map-get($value, colorPrimary), 15);
       border-color: map-get($value, colorPrimary);
+
       &:hover,
       &:focus-visible {
         color: darken(map-get($value, colorPrimary), 30);
@@ -116,9 +133,11 @@ $colorStyleConfig: (
         border-color: lighten(map-get($value, colorPrimary), 5);
       }
     }
+
     //_category
     .category {
       a {
+
         &:hover,
         &:focus,
         &.active {
@@ -128,13 +147,16 @@ $colorStyleConfig: (
         }
       }
     }
+
     //_functionpanel
     div.function {
       ul {
         li {
+
           button,
           a {
             color: #fff;
+
             &:hover,
             &:focus-visible {
               background: darken(map-get($value, aHover), 0);
@@ -144,15 +166,17 @@ $colorStyleConfig: (
         }
       }
     }
-    .functionPanel .share a.shareButton:hover,
-    .functionPanel .share a.shareButton:focus-visible {
-    }
+
+    .functionPanel .share .shareButton:hover,
+    .functionPanel .share .shareButton:focus-visible {}
+
     //_language
     .language {
       ul {
         li {
           a {
             color: #fff;
+
             &:hover,
             &:focus-visible {
               background: map-get($value, colorPrimary);
@@ -162,33 +186,40 @@ $colorStyleConfig: (
         }
       }
     }
+
     //_fatFooter
     .fatFooter {
       .btnFatFooter {
         background: map-get($value, colorPrimary);
+
         &:hover,
         &:focus {
           background: darken(map-get($value, colorPrimary), 10);
         }
       }
+
       nav > ul > li > a {
         color: map-get($value, colorPrimary);
       }
     }
+
     //_footer
     footer {
       a {
         color: map-get($value, colorPrimary);
+
         &:hover,
         &:focus-visible {
           color: darken(map-get($value, colorPrimary), 10);
         }
       }
+
       .footerLink {
         li {
           a {
             color: #fff;
             background: map-get($value, colorPrimary);
+
             &:hover,
             &:focus-visible {
               background: darken(map-get($value, colorPrimary), 10);
@@ -196,12 +227,14 @@ $colorStyleConfig: (
           }
         }
       }
+
       .update,
       .counter {
         em {
           color: map-get($value, colorPrimary);
         }
       }
+
       .footerIcon {
         a {
           &:focus-visible {
@@ -212,21 +245,25 @@ $colorStyleConfig: (
         }
       }
     }
+
     //_header
     .sidebarCtrlBtn {
       &::before {
         background: map-get($value, colorPrimary);
         box-shadow: map-get($value, colorPrimary) 0 6px 0 0, map-get($value, colorPrimary) 0 -6px 0 0;
       }
+
       &::after {
         background: map-get($value, colorPrimary);
       }
+
       &:hover {
         &::before {
           box-shadow: none;
         }
       }
     }
+
     // .webSearch .keywordHot ul a,
     // .header .navigation .navList li a {
     //   color: $colorWord;
@@ -237,9 +274,11 @@ $colorStyleConfig: (
     //_list
     .lp {
       .list {
+
         & > ul,
         ol {
           border-top: 2px solid map-get($value, colorPrimary);
+
           & > li {
             & > a {
               &:hover {
@@ -250,22 +289,28 @@ $colorStyleConfig: (
         }
       }
     }
+
     //_menu
     .mainMenu {
+
       // 預設選單 ul
       & > ul {
+
         // 第一層選單樣式
         & > li {
           & > a {
             color: $colorWord;
+
             &:focus-visible {
               box-shadow: 0 0 0 2px inset map-get($value, aHover);
             }
           }
+
           &.active,
           &:hover {
             & > a {
               color: map-get($value, aHover);
+
               &:after {
                 border-color: map-get($value, aHover);
               }
@@ -273,13 +318,16 @@ $colorStyleConfig: (
           }
         }
       }
+
       ul {
         li {
           ul {
+
             // 第二層選單樣式
             li {
               a {
                 color: #fff;
+
                 &:hover,
                 &:focus-visible {
                   color: #fff;
@@ -287,8 +335,10 @@ $colorStyleConfig: (
                 }
               }
             }
+
             li.hasChild {
               & > a {
+
                 &:hover,
                 &:focus-visible {
                   background: map-get($value, colorPrimary);
@@ -299,20 +349,24 @@ $colorStyleConfig: (
         }
       }
     }
+
     //_modal
     .modal {
       h2 {
         border-color: map-get($value, colorPrimary);
       }
     }
+
     //_paginations
     .pagination {
       span {
         color: map-get($value, colorPrimary);
       }
+
       .page {
         li {
           a {
+
             &:hover,
             &:focus-visible {
               color: #fff;
@@ -320,6 +374,7 @@ $colorStyleConfig: (
               border-color: map-get($value, colorPrimary);
             }
           }
+
           &.active {
             a {
               background: map-get($value, formFocus);
@@ -329,64 +384,78 @@ $colorStyleConfig: (
         }
       }
     }
+
     //_swiper
     .cpSlider .swiper {
       h3 {
         border-color: map-get($value, colorPrimary);
       }
     }
+
     //_tabs
     .tabSet {
       margin: 30px auto;
+
       .tabItems {
         button {
           &:focus-visible {
             box-shadow: 0 0px 0px 2px map-get($value, aFocus) inset;
           }
+
           &.active {
             background: map-get($value, colorPrimary);
           }
         }
       }
     }
+
     .tabContent {
       a:focus {
         box-shadow: 0 0px 0px 2px map-get($value, aFocus) inset;
+
         @include screen('mobile') {
           box-shadow: none;
         }
       }
     }
+
     //_cp
     .cp {
       a {
         color: map-get($value, colorPrimary);
+
         &:hover,
         &:focus-visible {
           color: darken(map-get($value, colorPrimary), 5);
         }
       }
+
       .publishInfo {
         border-color: map-get($value, colorPrimary);
       }
     }
+
     .fileDownload {
       h3 {
         border-color: map-get($value, colorPrimary);
       }
     }
+
     .webLink {
       h3 {
         border-color: map-get($value, colorPrimary);
       }
+
       li a {
         color: #000;
       }
     }
+
     //_tooltip
     em[tooltip] {
       color: map-get($value, colorPrimary);
     }
+
     //_leftblock
     .leftBlock {
       .banner {
@@ -401,14 +470,17 @@ $colorStyleConfig: (
         }
       }
     }
+
     //_mp
     a.more {
       color: map-get($value, colorPrimary);
       border-color: map-get($value, colorPrimary);
+
       &:before {
         background: map-get($value, colorPrimary);
       }
     }
+
     .adSlider {
       .imgContainer {
         &:focus-visible {
@@ -418,11 +490,13 @@ $colorStyleConfig: (
         }
       }
     }
+
     //_sitemap
     .cascading {
       li {
         a {
           border-color: map-get($value, colorPrimary);
+
           &:hover,
           &:focus-visible {
             color: map-get($value, colorPrimary);
@@ -430,10 +504,12 @@ $colorStyleConfig: (
         }
       }
     }
+
     //_link
     .submenu {
       li {
         a {
+
           &:hover,
           &:focus-visible {
             border-color: map-get($value, aHover);
@@ -442,6 +518,7 @@ $colorStyleConfig: (
         }
       }
     }
+
     //_form
     button:focus-visible,
     input[type='text']:focus-visible,
@@ -455,6 +532,7 @@ $colorStyleConfig: (
       border-color: lighten(map-get($value, colorPrimary), 5);
       box-shadow: 0px 0px 0px 2px lighten(map-get($value, colorPrimary), 5);
     }
+
     input[type='checkbox']:checked,
     input[type='checkbox']:focus,
     input[type='radio']:checked,
@@ -463,6 +541,7 @@ $colorStyleConfig: (
       background-color: map-get($value, colorPrimary);
       outline: none;
     }
+
     input[type='radio']:checked {
       box-shadow: #fff 0 0 0 3px inset, map-get($value, colorPrimary) 0 0 0 2px;
     }
@@ -473,28 +552,34 @@ $colorStyleConfig: (
         color: #fff;
         background-color: map-get($value, colorPrimary);
       }
+
       .accordionContent {
         a {
           color: map-get($value, colorPrimary);
+
           &:hover {
             color: darken(map-get($value, colorPrimary), 20);
           }
         }
       }
     }
+
     // tab
     .tabContent {
       a {
         color: $colorWord;
+
         &:hover {
           color: darken(map-get($value, colorPrimary), 20);
         }
       }
     }
+
     //bread
     .breadcrumb {
       a {
         color: $colorWord;
+
         &:hover {
           color: darken(map-get($value, colorPrimary), 20);
         }

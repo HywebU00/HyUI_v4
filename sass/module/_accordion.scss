@@ -2,9 +2,11 @@
   ul {
     list-style: none;
     padding: 0;
-    li {
+
+    li.accordionList {
       margin-bottom: 0.5em;
-      .accordionList {
+
+      .accordionBtn {
         width: 100%;
         border: none;
         border-radius: 0;
@@ -16,30 +18,36 @@
         padding: 5px 50px 5px 20px;
         position: relative;
       }
+
       &.active .accordionArrow {
         top: calc(50% - 2px);
         transform: rotate(225deg);
       }
     }
   }
+
   .accordionContent {
     line-height: 1.45em;
     transition: height 0.3s linear;
     overflow: hidden;
     display: none;
+
     .content {
       padding: 10px;
     }
   }
+
   .accordionState {
     margin-left: 10px;
   }
+
   .accordionArrow {
     position: absolute;
     top: calc(50% - 7px);
     right: 30px;
     transform: rotate(45deg);
     transform-origin: center center;
+
     &:after {
       content: '';
       border: 2px solid #fff;
@@ -49,6 +57,7 @@
       width: 8px;
       height: 8px;
     }
+
     &.open {
       &:after {
         top: 8px;
@@ -57,4 +66,5 @@
     }
   }
 }
+
 //

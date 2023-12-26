@@ -6,6 +6,7 @@
   position: relative;
   // display: flex;
   align-items: center;
+
   button,
   & > a {
     text-align: left;
@@ -21,6 +22,7 @@
     flex-basis: 100%;
     margin: 0;
     width: 100%;
+
     &:after {
       position: absolute;
       right: 0.8em;
@@ -32,6 +34,7 @@
       border-width: 6px 3px 0 3px;
       border-color: #ffffff transparent transparent transparent;
     }
+
     &:before {
       position: absolute;
       width: 1px;
@@ -41,11 +44,13 @@
       content: '';
       border-left: 1px solid #ddd;
     }
+
     // &:focus-visible {
     //   box-shadow: none;
     //   background: #444;
     // }
   }
+
   ul {
     background: #444;
     padding: 1em 1.5em;
@@ -54,15 +59,18 @@
     width: 100%;
     top: 100%;
     @include liReset;
+
     li {
       flex: 1;
       box-sizing: border-box;
       margin: 0;
+
       a {
         display: block;
         color: #fff;
         padding: 0.5em 0.5em 0.5em 1em;
         transition: 0.3s ease-out;
+
         &:hover,
         &:focus-visible {
           background: $colorPrimary;
@@ -76,6 +84,7 @@
 @include screen('mobileMin') {
   .language.typeB {
     width: auto;
+
     & > button,
     & > a {
       text-indent: -9999px;
@@ -86,6 +95,7 @@
       background: none;
       padding: 0;
       border: none;
+
       &::before {
         content: '';
         width: 100%;
@@ -98,16 +108,20 @@
         mask: url('../images/icon/icon_global2.svg') center no-repeat;
         mask-size: 40%;
         background: #fff;
+        pointer-events: none;
       }
+
       &::after {
         display: none;
       }
     }
+
     ul {
       width: 100px;
       left: 50%;
       text-align: center;
       transform: translateX(-50%);
+
       li a {
         padding: 5px;
       }

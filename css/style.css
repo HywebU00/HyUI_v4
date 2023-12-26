@@ -2374,6 +2374,7 @@ img {
       -webkit-mask-size: 40%;
               mask-size: 40%;
       background: #fff;
+      pointer-events: none;
     }
     .language.typeB > button::after, .language.typeB > a::after {
       display: none;
@@ -2388,37 +2389,21 @@ img {
       padding: 5px;
     }
   }
-  .mobileSearchBtn {
+  .header .container > .webSearchBtn {
     display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 99;
-    text-indent: -9999px;
-    color: transparent;
-    width: 60px;
-    aspect-ratio: 1/1;
-    padding: 0;
-    margin: 0;
-    border: none;
   }
-  .mobileSearchBtn::before {
-    content: "";
-    width: 100%;
-    height: auto;
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    aspect-ratio: 1/1;
-    display: block;
-    -webkit-mask: url("../images/icon/icon_search2.svg") center no-repeat;
-            mask: url("../images/icon/icon_search2.svg") center no-repeat;
-    -webkit-mask-size: 40%;
-            mask-size: 40%;
-    background: #00a4f9;
+  @media screen and (max-width: 767px) {
+    .header .container > .webSearchBtn {
+      display: block;
+    }
   }
-  .mobileSearchBtn.active {
+  .header .container .navigation .webSearchBtn {
     display: block;
+  }
+  @media screen and (max-width: 767px) {
+    .header .container .navigation .webSearchBtn {
+      display: none;
+    }
   }
   .webSearchBtn {
     position: relative;
@@ -2426,13 +2411,14 @@ img {
   .webSearchBtn > button {
     text-indent: -9999px;
     color: transparent;
-    width: 50px;
+    width: 60px;
     aspect-ratio: 1/1;
     position: relative;
     background: none;
     padding: 0;
     margin: 0;
     border: none;
+    z-index: 90;
   }
   .webSearchBtn > button::before {
     content: "";
@@ -2454,6 +2440,19 @@ img {
     font-size: 0.938em;
     margin: 1em 0.5em;
     box-sizing: border-box;
+  }
+  @media screen and (min-width: 767px) {
+    .webSearch:not(.typeB) {
+      display: block !important;
+    }
+  }
+  .webSearch:not(.typeB) .webSearchBtn {
+    display: none;
+  }
+  @media screen and (max-width: 767px) {
+    .webSearch {
+      width: 100% !important;
+    }
   }
   .webSearch .content {
     display: flex;
@@ -2481,31 +2480,6 @@ img {
     flex-grow: 1;
   }
   .webSearch.active .keywordHot ul a {
-    color: #fff;
-  }
-  .webSearch.mobile {
-    display: none;
-    width: 100% !important;
-    left: 0;
-    right: 0;
-    margin: 0;
-  }
-  .webSearch.mobile .content {
-    padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    background: #444;
-  }
-  .webSearch.mobile .formGrp {
-    display: flex;
-    flex-grow: 1;
-  }
-  .webSearch.mobile .formGrp input {
-    flex-grow: 1;
-    margin: 0;
-    margin-right: 8px;
-  }
-  .webSearch.mobile .keywordHot ul a {
     color: #fff;
   }
   .webSearch label {
@@ -2588,6 +2562,33 @@ img {
   }
   .webSearch .keywordHot ul a:focus-visible {
     outline: #0094e0 2px solid;
+  }
+  @media screen and (max-width: 767px) {
+    .webSearch {
+      display: none;
+      width: 100% !important;
+      left: 0;
+      right: 0;
+      margin: 0;
+    }
+    .webSearch .content {
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      background: #444;
+    }
+    .webSearch .formGrp {
+      display: flex;
+      flex-grow: 1;
+    }
+    .webSearch .formGrp input {
+      flex-grow: 1;
+      margin: 0;
+      margin-right: 8px;
+    }
+    .webSearch .keywordHot ul a {
+      color: #fff;
+    }
   }
   .webSearchBg {
     position: fixed;
@@ -2702,11 +2703,18 @@ img {
   }
   .webSearch.typeB {
     position: absolute;
+    top: 90px;
     right: 15px;
     display: none;
     width: 40%;
     margin: 0;
     z-index: 100;
+  }
+  @media screen and (max-width: 767px) {
+    .webSearch.typeB {
+      top: 60px;
+      right: 0;
+    }
   }
   .webSearch.typeB .content {
     padding: 10px;
@@ -2732,6 +2740,39 @@ img {
       width: 100%;
       padding: 0;
     }
+  }
+  .mobileSearchBtn {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99;
+    color: transparent;
+    width: 60px;
+    aspect-ratio: 1/1;
+    padding: 0;
+    margin: 0;
+    border: none;
+    display: none;
+  }
+  @media screen and (max-width: 767px) {
+    .mobileSearchBtn {
+      display: block;
+    }
+  }
+  .mobileSearchBtn::before {
+    content: "";
+    width: 100%;
+    height: auto;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    aspect-ratio: 1/1;
+    display: block;
+    -webkit-mask: url("../images/icon/icon_search2.svg") center no-repeat;
+            mask: url("../images/icon/icon_search2.svg") center no-repeat;
+    -webkit-mask-size: 40%;
+            mask-size: 40%;
+    background: #00a4f9;
   }
   .btnGrp {
     text-align: center;
@@ -4226,7 +4267,7 @@ img {
   .mainMenu {
     box-sizing: border-box;
     position: relative;
-    z-index: 50;
+    z-index: 60;
     clear: both;
   }
   .mainMenu.sticky {
@@ -4315,7 +4356,7 @@ img {
     width: 99%;
     background: rgba(0, 0, 0, 0.8);
     padding: 0;
-    z-index: 999999;
+    z-index: 90;
     position: absolute;
     top: auto;
     left: 0;
@@ -4333,6 +4374,10 @@ img {
     color: #fff;
     background: #0094e0;
   }
+  .mainMenu ul li ul li.active > a {
+    color: #fff;
+    background: #0094e0;
+  }
   .mainMenu ul li ul li.hasChild > ul {
     z-index: 999;
   }
@@ -4345,14 +4390,13 @@ img {
   .mainMenu ul li ul li.hasChild > a:after {
     content: "";
     position: absolute;
-    right: 10px;
-    top: 1.3em;
+    right: 15px;
+    top: 50%;
     width: 6px;
     height: 6px;
     border: 2px solid #fff;
-    transform: rotate(45deg);
-    border-bottom: none;
-    border-left: none;
+    transform: rotate(45deg) translateY(-50%);
+    border-width: 2px 2px 0 0;
   }
   .mainMenu ul li ul ul {
     top: 0;
@@ -4370,6 +4414,57 @@ img {
   .mainMenu > ul > li.leftSlider ul ul {
     left: auto;
     right: 100%;
+  }
+  .menuArrowDown,
+  .menuArrowUp {
+    width: 20px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    position: fixed;
+    bottom: 5px;
+    z-index: 999;
+    opacity: 0;
+    transition: all 0.3s linear;
+  }
+  .menuArrowDown.active,
+  .menuArrowUp.active {
+    opacity: 1;
+  }
+  .menuArrowDown::after, .menuArrowDown::before,
+  .menuArrowUp::after,
+  .menuArrowUp::before {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 6px;
+    display: block;
+    background: #fff;
+  }
+  .menuArrowDown::before {
+    transform: rotate(45deg);
+    left: 4px;
+  }
+  .menuArrowDown::after {
+    transform: rotate(-45deg);
+    right: 4px;
+  }
+  .menuArrowUp::before {
+    transform: rotate(45deg);
+    right: 4px;
+  }
+  .menuArrowUp::after {
+    transform: rotate(-45deg);
+    left: 4px;
+  }
+  .mainMenu li.leftSlider li a {
+    padding-right: 1.2em;
+    padding-left: 2em;
+  }
+  .mainMenu li.leftSlider li.hasChild a::after {
+    right: auto;
+    left: 10px;
+    border-width: 0 0 2px 2px;
   }
   .megaMenu > ul {
     position: relative;
@@ -6444,10 +6539,9 @@ img {
   }
   .tabSet .tabItems {
     display: flex;
-    flex-flow: row nowrap;
-    margin: 0 auto;
   }
-  .tabSet .tabItems button {
+  .tabSet .modeBBtn,
+  .tabSet .tabBtn {
     flex: 1 1 auto;
     font-size: 1em;
     height: 2.8em;
@@ -6459,19 +6553,13 @@ img {
     background: #ddd;
     cursor: pointer;
   }
-  .tabSet .tabItems button:hover {
-    background: #cdd;
-  }
-  .tabSet .tabItems button:focus-visible {
+  .tabSet .modeBBtn:focus-visible,
+  .tabSet .tabBtn:focus-visible {
     outline: none;
     box-shadow: 0 0px 0px 2px #1aadfa inset;
   }
-  @media screen and (max-width: 767px) {
-    .tabSet .tabItems button:focus-visible {
-      box-shadow: none;
-    }
-  }
-  .tabSet .tabItems button.active {
+  .tabSet .modeBBtn.active,
+  .tabSet .tabBtn.active {
     cursor: default;
     background: #00a4f9;
     color: #fff;
@@ -6494,28 +6582,27 @@ img {
       box-shadow: none;
     }
   }
-  .tabSet.onMobile .tabContent {
-    display: block;
-    box-shadow: none;
-    padding: 0;
+  .tabSet .tabContent .content ul {
+    margin: 0;
   }
-  .tabSet.onMobile .tabContent .tabBtn {
+  .tabSet .modeBBtn {
     width: 100%;
-    margin: 0 0 5px 0;
-  }
-  .tabSet.onMobile .tabContent .tabBtn.active {
-    background: #00a4f9;
-    color: #fff;
-    border-color: #00a4f9;
-  }
-  .tabSet.onMobile .tabContent a:focus {
-    outline: none;
-    box-shadow: 0 0px 0px 2px #1aadfa inset;
-  }
-  .tabSet.onMobile .content {
+    margin: 0;
     display: none;
   }
-  .tabSet.onMobile .content.active {
+  .tabSet.modeB .tabItems {
+    display: none;
+  }
+  .tabSet.modeB .tabContent {
+    display: block;
+  }
+  .tabSet.modeB .tabContent .content {
+    display: none;
+  }
+  .tabSet.modeB .tabContent .content a:focus-visible {
+    outline: #1aadfa 2px solid;
+  }
+  .tabSet.modeB .modeBBtn {
     display: block;
   }
   .thumbnail {
@@ -6795,7 +6882,7 @@ img {
     margin: 0 4px;
     position: relative;
   }
-  .functionPanel .share a.shareButton {
+  .functionPanel .share .shareButton {
     display: block;
     background: #f1f1f1;
     border-radius: 50%;
@@ -6804,8 +6891,10 @@ img {
     text-indent: -9999px;
     text-align: center;
     position: relative;
+    border: none;
+    margin: 0;
   }
-  .functionPanel .share a.shareButton:before {
+  .functionPanel .share .shareButton:before {
     content: "";
     position: absolute;
     width: 60%;
@@ -6815,10 +6904,10 @@ img {
     background: url(../images/basic/icon_share.svg) no-repeat center center;
     background-size: 24px;
   }
-  .functionPanel .share a.shareButton:hover, .functionPanel .share a.shareButton:focus-visible {
+  .functionPanel .share .shareButton:hover, .functionPanel .share .shareButton:focus-visible {
     background: #0094e0;
   }
-  .functionPanel .share a.shareButton:hover:before, .functionPanel .share a.shareButton:focus-visible:before {
+  .functionPanel .share .shareButton:hover:before, .functionPanel .share .shareButton:focus-visible:before {
     filter: invert(100%);
   }
   .functionPanel .share ul {
@@ -7141,10 +7230,10 @@ img {
     list-style: none;
     padding: 0;
   }
-  .accordion ul li {
+  .accordion ul li.accordionList {
     margin-bottom: 0.5em;
   }
-  .accordion ul li .accordionList {
+  .accordion ul li.accordionList .accordionBtn {
     width: 100%;
     border: none;
     border-radius: 0;
@@ -7156,7 +7245,7 @@ img {
     padding: 5px 50px 5px 20px;
     position: relative;
   }
-  .accordion ul li.active .accordionArrow {
+  .accordion ul li.accordionList.active .accordionArrow {
     top: calc(50% - 2px);
     transform: rotate(225deg);
   }
@@ -7837,7 +7926,6 @@ img {
     width: 100%;
     height: 100%;
     display: none;
-    opacity: 0;
     overflow-x: hidden;
     overflow-y: auto;
     transition: all 0.3s ease;
