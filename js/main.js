@@ -1445,20 +1445,22 @@ function fontSize() {
     }
 
     // 初始化 字體大小設定
-    window.addEventListener('load', function (e) {
-      const cookie = readCookie('FontSize');
-      // 如果沒有cookie 則預設值為'medium'
-      if (!cookie) {
-        cookie = 'medium';
-      }
-      document.querySelectorAll(`.${cookie}`).forEach((i) => {
-        i.classList.add('active');
-        body.classList.add(`${cookie}Size`);
-      });
+    let cookie = readCookie('FontSize');
+    console.log(cookie);
+    // 如果沒有cookie 則預設值為'medium'
+    if (!cookie) {
+      cookie = 'medium';
+    }
+    document.querySelectorAll(`.${cookie}`).forEach((i) => {
+      i.classList.add('active');
+      body.classList.add(`${cookie}Size`);
     });
   }
 }
 
+// window.addEventListener('load', function (e) {
+//   console.log('a');
+// });
 // -----------------------------------------------------------------------
 // -----  分享按鈕 share dropdwon   ---------------------------------------
 // -----------------------------------------------------------------------
