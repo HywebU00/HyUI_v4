@@ -649,9 +649,9 @@ function mainMenuSetup() {
       let ele = parseFloat(window.getComputedStyle(target).top) || 0;
       if (isObjectVisibleB(lastLiA)) {
         leftHeight = lastLiA.getBoundingClientRect().bottom - windowHeight;
-        countOneForDown = true;
         if (!countOneForDown) {
           target.style.top = `${ele - leftHeight}px`;
+          countOneForDown = true;
         }
       } else {
         target.style.top = `${ele - 40}px`;
@@ -661,7 +661,6 @@ function mainMenuSetup() {
   }
 
   function clickGoUp(e) {
-    console.log(openUp);
     if (openUp && mode) {
       const target = e.target.parentNode.querySelector('.slideMode');
       let ele = parseFloat(window.getComputedStyle(target).top) || 0;
@@ -1446,7 +1445,6 @@ function fontSize() {
 
     // 初始化 字體大小設定
     let cookie = readCookie('FontSize');
-    console.log(cookie);
     // 如果沒有cookie 則預設值為'medium'
     if (!cookie) {
       cookie = 'medium';
