@@ -584,6 +584,9 @@ function mainMenuSetup() {
 
   const hasChild = document.querySelectorAll('.mainMenu .hasChild');
   const handleMouseenter = (e) => {
+    if (windowWidth < windowWidthSmall) {
+      return;
+    }
     e.target.classList.add('active');
     const nextUl = e.target.querySelectorAll('ul');
     const hasChildLi = jsParents(nextUl[nextUl.length - 1], 'li');
@@ -679,6 +682,9 @@ function mainMenuSetup() {
   }
 
   const handleMouseleave = (e) => {
+    if (windowWidth < windowWidthSmall) {
+      return;
+    }
     e.target.classList.remove('active');
     e.target.querySelector('ul').style.removeProperty('top');
     e.target.querySelectorAll('.menuArrowDown')?.forEach((i) => i?.remove());
@@ -2157,6 +2163,8 @@ formEye({
 // -----------------------------------------------------------------------
 // -----   fancyBox新增需要綁定才有效果   -----------------------------------
 // -----------------------------------------------------------------------
-Fancybox.bind('[data-fancybox="gallery"]', {
-  l10n: Fancybox.l10n.zh_TW,
-});
+if (document.querySelector('[data-fancybox="gallery"]')) {
+  Fancybox.bind('[data-fancybox="gallery"]', {
+    l10n: Fancybox.l10n.zh_TW,
+  });
+}
