@@ -983,7 +983,8 @@ function fatFooter(obj) {
 
 function tabFunction(obj) {
   'use strict';
-  const tabSet = document.querySelector(obj.target) || null;
+  // const tabSet = document.querySelector(obj.target) || null;
+  const tabSet = document.querySelectorAll(obj.target) || null;
   const autoClose = obj.autoClose;
   const openSwitch = obj.openSwitch;
   const openFirst = obj.openFirst;
@@ -991,263 +992,265 @@ function tabFunction(obj) {
   const widthCheck = obj.width;
 
   if (tabSet) {
-    let id = [];
-    let mode = '';
-    let modeBBtn;
-    const modeABtn = tabSet.querySelectorAll('.tabItems button');
-    const modeAContent = tabSet.querySelectorAll('.tabContent');
-    const modeBContent = tabSet.querySelectorAll('.content');
-    const count = modeABtn.length;
-    let nowIndex = obj.index === null ? null : obj.index <= count ? obj.index : count;
-    const lastTab = modeABtn[modeABtn.length - 1];
+    tabSet.forEach((tab) => {
+      let id = [];
+      let mode = '';
+      let modeBBtn;
+      const modeABtn = tab.querySelectorAll('.tabItems button');
+      const modeAContent = tab.querySelectorAll('.tabContent');
+      const modeBContent = tab.querySelectorAll('.content');
+      const count = modeABtn.length;
+      let nowIndex = obj.index === null ? null : obj.index <= count ? obj.index : count;
+      const lastTab = modeABtn[modeABtn.length - 1];
 
-    for (let i = 0; i < modeABtn.length; i++) {
-      id.push(`tab_${randomLetter(3)}${randomFloor(0, 999)}`);
-    }
-
-    // 內容增加標題給模式B使用
-    modeABtn.forEach((item, index) => {
-      const btn = document.createElement('button');
-      btn.classList.add('modeBBtn');
-      btn.innerText = item.innerText;
-      modeAContent.forEach((content, i) => (i === index ? content.prepend(btn) : null));
-    });
-
-    modeBBtn = tabSet.querySelectorAll('.modeBBtn');
-
-    // 判斷寬度
-    const init = () => {
-      if (window.innerWidth <= widthCheck && modeSwitch) {
-        // 模式B
-        mode = 'B';
-        if (modeSwitch) {
-          modeABtn.forEach((content) => content.classList.remove('active'));
-          modeAContent.forEach((content) => content.classList.remove('active'));
-          // 移除模式A無障礙設置
-          modeABtn.forEach((item, index) => {
-            item.removeAttribute('aria-controls');
-            item.removeAttribute('role');
-            modeAContent[index].removeAttribute('aria-labelledby');
-            modeAContent[index].removeAttribute('role');
-            modeAContent[index].removeAttribute('aria-label');
-          });
-          // 增加模式B無障礙設置
-          modeBBtn.forEach((item, index) => {
-            item.setAttribute('aria-controls', id[index]);
-            modeBContent[index].setAttribute('aria-labelledby', id[index]);
-            modeBContent[index].setAttribute('id', id[index]);
-            // item.setAttribute('role', 'tab');
-            // modeBContent[index].setAttribute('role', 'tabpanel');
-            modeBContent[index].setAttribute('aria-label', item.innerText);
-          });
-
-          tabSet.classList.add('modeB');
-
-          if (nowIndex !== null) {
-            modeBBtn[nowIndex].classList.add('active');
-            modeBBtn[nowIndex].setAttribute('aria-selected', 'true');
-            modeBContent[nowIndex].classList.add('active');
-            jsSlideDown(modeBContent[nowIndex]);
-          }
-        }
-        // 模式B
-      } else if (window.innerWidth > widthCheck || !modeSwitch) {
-        // 模式A
-        mode = 'A';
-
-        if (modeSwitch) {
-          modeBContent.forEach((item) => item.style.removeProperty('display'));
-          modeBBtn.forEach((content) => content.classList.remove('active'));
-          modeBContent.forEach((content) => content.classList.remove('active'));
-
-          // 移除模式B無障礙設置
-          modeBBtn.forEach((item, index) => {
-            item.removeAttribute('aria-controls');
-            item.removeAttribute('role');
-            modeBContent[index].removeAttribute('aria-labelledby');
-            modeBContent[index].removeAttribute('role');
-            modeBContent[index].removeAttribute('aria-label');
-            modeBContent[index].removeAttribute('id');
-          });
-        }
-        // 增加模式A無障礙設置
-        modeABtn.forEach((item, index) => {
-          item.setAttribute('aria-controls', id[index]);
-          item.setAttribute('role', 'tab');
-          item.setAttribute('aria-selected', 'false');
-          modeAContent[index].setAttribute('aria-labelledby', id[index]);
-          modeAContent[index].setAttribute('role', 'tabpanel');
-          modeAContent[index].setAttribute('aria-label', item.innerText);
-        });
-
-        tabSet.classList.remove('modeB');
-
-        nowIndex === null ? (nowIndex = 0) : nowIndex;
-        modeABtn[nowIndex].classList.add('active');
-        modeAContent[nowIndex].classList.add('active');
-        modeABtn[nowIndex].setAttribute('aria-selected', 'true');
-        // 模式A
+      for (let i = 0; i < modeABtn.length; i++) {
+        id.push(`tab_${randomLetter(3)}${randomFloor(0, 999)}`);
       }
-    };
-    init();
 
-    // 預先展開模式
-    function openCheck() {
-      // 預先展開模式
-      if (!openFirst && mode === 'B' && nowIndex !== null) {
-        const siblings = Array.prototype.filter.call(modeBContent[nowIndex].parentElement.parentElement.children, (child) => {
-          return child !== modeBContent[nowIndex].parentElement;
-        });
-        siblings.forEach((item) => jsSlideUp(item.querySelector('.content')));
-      } else if (mode === 'B' && nowIndex === null) {
-        modeBContent.forEach((item) => jsSlideUp(item));
-      } else {
-        modeBContent.forEach((item) => jsSlideDown(item));
-      }
-    }
-    openCheck();
-
-    // 模式A共用
-    function modeAFn(item, index) {
-      modeABtn.forEach((content) => content.classList.remove('active'));
-      modeAContent.forEach((content) => content.classList.remove('active'));
-      modeAContent[index].classList.add('active');
-      item.classList.add('active');
-      modeABtn.forEach((content) => content.setAttribute('aria-selected', 'false'));
-      item.setAttribute('aria-selected', 'true');
-      nowIndex = index;
-    }
-
-    modeAContent.forEach((item, index) => {
-      const itemAllTarget = modeAContent[index].querySelectorAll('a,button,input,textarea,select');
-      const firstItem = itemAllTarget[1];
-      const lastItem = itemAllTarget[itemAllTarget.length - 1];
-      const prevItemAllTarget = modeAContent[index - 1]?.querySelectorAll('a,button,input,textarea,select');
-      const siblings = Array.prototype.filter.call(modeBBtn[index].parentElement.parentElement.children, (child) => {
-        return child !== modeBBtn[index].parentElement;
+      // 內容增加標題給模式B使用
+      modeABtn.forEach((item, index) => {
+        const btn = document.createElement('button');
+        btn.classList.add('modeBBtn');
+        btn.innerText = item.innerText;
+        modeAContent.forEach((content, i) => (i === index ? content.prepend(btn) : null));
       });
 
-      // 模式A
-      if (modeSwitch || mode === 'A') {
-        // 模式A點擊
-        if (openSwitch) {
-          modeABtn[index].addEventListener('click', (e) => {
-            e.preventDefault();
-            modeAFn(e.target, index);
+      modeBBtn = tab.querySelectorAll('.modeBBtn');
+
+      // 判斷寬度
+      const init = () => {
+        if (window.innerWidth <= widthCheck && modeSwitch) {
+          // 模式B
+          mode = 'B';
+          if (modeSwitch) {
+            modeABtn.forEach((content) => content.classList.remove('active'));
+            modeAContent.forEach((content) => content.classList.remove('active'));
+            // 移除模式A無障礙設置
+            modeABtn.forEach((item, index) => {
+              item.removeAttribute('aria-controls');
+              item.removeAttribute('role');
+              modeAContent[index].removeAttribute('aria-labelledby');
+              modeAContent[index].removeAttribute('role');
+              modeAContent[index].removeAttribute('aria-label');
+            });
+            // 增加模式B無障礙設置
+            modeBBtn.forEach((item, index) => {
+              item.setAttribute('aria-controls', id[index]);
+              modeBContent[index].setAttribute('aria-labelledby', id[index]);
+              modeBContent[index].setAttribute('id', id[index]);
+              // item.setAttribute('role', 'tab');
+              // modeBContent[index].setAttribute('role', 'tabpanel');
+              modeBContent[index].setAttribute('aria-label', item.innerText);
+            });
+
+            tab.classList.add('modeB');
+
+            if (nowIndex !== null) {
+              modeBBtn[nowIndex].classList.add('active');
+              modeBBtn[nowIndex].setAttribute('aria-selected', 'true');
+              modeBContent[nowIndex].classList.add('active');
+              jsSlideDown(modeBContent[nowIndex]);
+            }
+          }
+          // 模式B
+        } else if (window.innerWidth > widthCheck || !modeSwitch) {
+          // 模式A
+          mode = 'A';
+
+          if (modeSwitch) {
+            modeBContent.forEach((item) => item.style.removeProperty('display'));
+            modeBBtn.forEach((content) => content.classList.remove('active'));
+            modeBContent.forEach((content) => content.classList.remove('active'));
+
+            // 移除模式B無障礙設置
+            modeBBtn.forEach((item, index) => {
+              item.removeAttribute('aria-controls');
+              item.removeAttribute('role');
+              modeBContent[index].removeAttribute('aria-labelledby');
+              modeBContent[index].removeAttribute('role');
+              modeBContent[index].removeAttribute('aria-label');
+              modeBContent[index].removeAttribute('id');
+            });
+          }
+          // 增加模式A無障礙設置
+          modeABtn.forEach((item, index) => {
+            item.setAttribute('aria-controls', id[index]);
+            item.setAttribute('role', 'tab');
+            item.setAttribute('aria-selected', 'false');
+            modeAContent[index].setAttribute('aria-labelledby', id[index]);
+            modeAContent[index].setAttribute('role', 'tabpanel');
+            modeAContent[index].setAttribute('aria-label', item.innerText);
           });
 
-          // 模式A鍵盤
-          modeABtn[index].addEventListener('keydown', (e) => {
-            if (e.which === 9 && !e.shiftKey) {
+          tab.classList.remove('modeB');
+
+          nowIndex === null ? (nowIndex = 0) : nowIndex;
+          modeABtn[nowIndex].classList.add('active');
+          modeAContent[nowIndex].classList.add('active');
+          modeABtn[nowIndex].setAttribute('aria-selected', 'true');
+          // 模式A
+        }
+      };
+      init();
+
+      // 預先展開模式
+      function openCheck() {
+        // 預先展開模式
+        if (!openFirst && mode === 'B' && nowIndex !== null) {
+          const siblings = Array.prototype.filter.call(modeBContent[nowIndex].parentElement.parentElement.children, (child) => {
+            return child !== modeBContent[nowIndex].parentElement;
+          });
+          siblings.forEach((item) => jsSlideUp(item.querySelector('.content')));
+        } else if (mode === 'B' && nowIndex === null) {
+          modeBContent.forEach((item) => jsSlideUp(item));
+        } else {
+          modeBContent.forEach((item) => jsSlideDown(item));
+        }
+      }
+      openCheck();
+
+      // 模式A共用
+      function modeAFn(item, index) {
+        modeABtn.forEach((content) => content.classList.remove('active'));
+        modeAContent.forEach((content) => content.classList.remove('active'));
+        modeAContent[index].classList.add('active');
+        item.classList.add('active');
+        modeABtn.forEach((content) => content.setAttribute('aria-selected', 'false'));
+        item.setAttribute('aria-selected', 'true');
+        nowIndex = index;
+      }
+
+      modeAContent.forEach((item, index) => {
+        const itemAllTarget = modeAContent[index].querySelectorAll('a,button,input,textarea,select');
+        const firstItem = itemAllTarget[1];
+        const lastItem = itemAllTarget[itemAllTarget.length - 1];
+        const prevItemAllTarget = modeAContent[index - 1]?.querySelectorAll('a,button,input,textarea,select');
+        const siblings = Array.prototype.filter.call(modeBBtn[index].parentElement.parentElement.children, (child) => {
+          return child !== modeBBtn[index].parentElement;
+        });
+
+        // 模式A
+        if (modeSwitch || mode === 'A') {
+          // 模式A點擊
+          if (openSwitch) {
+            modeABtn[index].addEventListener('click', (e) => {
+              e.preventDefault();
               modeAFn(e.target, index);
-              if (itemAllTarget.length > 1 && e.target !== lastTab) {
+            });
+
+            // 模式A鍵盤
+            modeABtn[index].addEventListener('keydown', (e) => {
+              if (e.which === 9 && !e.shiftKey) {
+                modeAFn(e.target, index);
+                if (itemAllTarget.length > 1 && e.target !== lastTab) {
+                  e.preventDefault();
+                  firstItem.focus();
+                } else if (itemAllTarget.length === 1 && e.target !== lastTab) {
+                  e.preventDefault();
+                  modeABtn[index + 1]?.focus();
+                } else if (itemAllTarget.length > 1 && e.target === lastTab) {
+                  modeABtn[index + 1]?.focus();
+                } else if (itemAllTarget.length === 1 && e.target === lastTab) {
+                  setTimeout(() => {
+                    lastTab.focus();
+                    lastTab.blur();
+                  }, 10);
+                }
+              } else if (e.which === 9 && e.shiftKey) {
                 e.preventDefault();
-                firstItem.focus();
-              } else if (itemAllTarget.length === 1 && e.target !== lastTab) {
-                e.preventDefault();
-                modeABtn[index + 1]?.focus();
-              } else if (itemAllTarget.length > 1 && e.target === lastTab) {
-                modeABtn[index + 1]?.focus();
-              } else if (itemAllTarget.length === 1 && e.target === lastTab) {
-                setTimeout(() => {
-                  lastTab.focus();
-                  lastTab.blur();
-                }, 10);
-              }
-            } else if (e.which === 9 && e.shiftKey) {
-              e.preventDefault();
-              modeAFn(modeABtn[index], index);
-              lastItem?.focus();
-              if (itemAllTarget.length === 1) {
-                modeABtn[index - 1]?.focus();
-              }
-            }
-          });
-        }
-      }
-
-      // 模式B
-      if (modeSwitch || mode === 'B') {
-        // 模式B點擊
-        if (openSwitch) {
-          modeBBtn[index].addEventListener('click', (e) => {
-            e.preventDefault();
-            siblings.forEach((content) => content.querySelector('.modeBBtn').classList.remove('active'));
-            e.target.classList.toggle('active');
-            jsSlideToggle(modeBContent[index]);
-            nowIndex = index;
-
-            if (autoClose) {
-              siblings.forEach((con) => {
-                jsSlideUp(con.querySelector('.content'));
-                con.classList.remove('active');
-                con.querySelector('.modeBBtn').setAttribute('aria-selected', 'false');
-              });
-            }
-          });
-
-          // 模式B鍵盤
-          modeBBtn[index].addEventListener('keydown', (e) => {
-            e.target.classList.add('active');
-            let firstTabStyle = window.getComputedStyle(modeBContent[index]);
-            nowIndex = index;
-
-            if (autoClose & !openFirst) {
-              siblings.forEach((content) => {
-                jsSlideUp(content.querySelector('.content'));
-                content.querySelector('.modeBBtn').classList.remove('active');
-                content.querySelector('.modeBBtn').setAttribute('aria-expanded', 'false');
-              });
-            }
-
-            if (e.which === 9 && !e.shiftKey) {
-              jsSlideDown(modeBContent[index]);
-              if (index === 0) {
-                e.target.classList.add('active');
-              }
-
-              if (itemAllTarget.length > 1) {
-                e.preventDefault();
-                firstItem?.focus();
-              } else if (itemAllTarget.length === 1) {
-                modeBBtn[index]?.focus();
-              }
-            } else if (e.which === 9 && e.shiftKey) {
-              e.preventDefault();
-              jsSlideDown(modeBContent[index]);
-              if (itemAllTarget.length > 1) {
+                modeAFn(modeABtn[index], index);
                 lastItem?.focus();
-              } else if (itemAllTarget.length === 1) {
-                modeBBtn[index - 1]?.focus();
+                if (itemAllTarget.length === 1) {
+                  modeABtn[index - 1]?.focus();
+                }
               }
-            }
-          });
+            });
+          }
         }
-      }
 
-      // 內容鍵盤遊走
-      itemAllTarget.forEach((n, i) => {
-        if (i > 0) {
-          n.addEventListener('keydown', (e) => {
-            if (mode === 'A') {
-              if ((e.which === 9 && !e.shiftKey && e.target === lastItem && modeABtn[index] !== lastTab) || (e.which === 9 && e.shiftKey && e.target === firstItem)) {
-                modeABtn[index]?.focus();
+        // 模式B
+        if (modeSwitch || mode === 'B') {
+          // 模式B點擊
+          if (openSwitch) {
+            modeBBtn[index].addEventListener('click', (e) => {
+              e.preventDefault();
+              siblings.forEach((content) => content.querySelector('.modeBBtn').classList.remove('active'));
+              e.target.classList.toggle('active');
+              jsSlideToggle(modeBContent[index]);
+              nowIndex = index;
+
+              if (autoClose) {
+                siblings.forEach((con) => {
+                  jsSlideUp(con.querySelector('.content'));
+                  con.classList.remove('active');
+                  con.querySelector('.modeBBtn').setAttribute('aria-selected', 'false');
+                });
               }
-            } else if (mode === 'B') {
-              if (e.which === 9 && e.shiftKey) {
-                if (e.target === firstItem) {
+            });
+
+            // 模式B鍵盤
+            modeBBtn[index].addEventListener('keydown', (e) => {
+              e.target.classList.add('active');
+              let firstTabStyle = window.getComputedStyle(modeBContent[index]);
+              nowIndex = index;
+
+              if (autoClose & !openFirst) {
+                siblings.forEach((content) => {
+                  jsSlideUp(content.querySelector('.content'));
+                  content.querySelector('.modeBBtn').classList.remove('active');
+                  content.querySelector('.modeBBtn').setAttribute('aria-expanded', 'false');
+                });
+              }
+
+              if (e.which === 9 && !e.shiftKey) {
+                jsSlideDown(modeBContent[index]);
+                if (index === 0) {
+                  e.target.classList.add('active');
+                }
+
+                if (itemAllTarget.length > 1) {
+                  e.preventDefault();
+                  firstItem?.focus();
+                } else if (itemAllTarget.length === 1) {
                   modeBBtn[index]?.focus();
+                }
+              } else if (e.which === 9 && e.shiftKey) {
+                e.preventDefault();
+                jsSlideDown(modeBContent[index]);
+                if (itemAllTarget.length > 1) {
+                  lastItem?.focus();
                 } else if (itemAllTarget.length === 1) {
                   modeBBtn[index - 1]?.focus();
                 }
               }
-            }
-          });
+            });
+          }
         }
-      });
-    });
 
-    window.addEventListener('resize', init);
+        // 內容鍵盤遊走
+        itemAllTarget.forEach((n, i) => {
+          if (i > 0) {
+            n.addEventListener('keydown', (e) => {
+              if (mode === 'A') {
+                if ((e.which === 9 && !e.shiftKey && e.target === lastItem && modeABtn[index] !== lastTab) || (e.which === 9 && e.shiftKey && e.target === firstItem)) {
+                  modeABtn[index]?.focus();
+                }
+              } else if (mode === 'B') {
+                if (e.which === 9 && e.shiftKey) {
+                  if (e.target === firstItem) {
+                    modeBBtn[index]?.focus();
+                  } else if (itemAllTarget.length === 1) {
+                    modeBBtn[index - 1]?.focus();
+                  }
+                }
+              }
+            });
+          }
+        });
+      });
+
+      window.addEventListener('resize', init);
+    });
   }
 }
 
