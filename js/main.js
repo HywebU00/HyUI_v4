@@ -520,9 +520,10 @@ function webSearch() {
     });
   }
 
-  menuOverlay.addEventListener('click', (e) => {
+  menuOverlay?.addEventListener('click', (e) => {
     jsSlideUp(webSearch);
-    menuOverlay.style.removeProperty('z-index');
+    menuOverlay ? menuOverlay.style.removeProperty('z-index') : null;
+    jsFadeOut(menuOverlay);
   });
 }
 
@@ -762,6 +763,7 @@ function mainMenuSetup() {
   const asideMenu = document.querySelector('.sideMainMenu');
   const asideMenuLi = asideMenu.querySelectorAll('li');
   const asideMenuLiHasChild = asideMenu.querySelectorAll('li.hasChild > a');
+  const webSearch = document.querySelector('.wrapper .webSearch');
 
   asideMenuLiHasChild.forEach((i) => {
     i.addEventListener('click', (e) => {
@@ -773,14 +775,15 @@ function mainMenuSetup() {
 
   // 點擊選單按鈕 執行 展開側邊選單函式
   sidebarCtrlBtn.addEventListener('click', (e) => {
-    showSidebar();
     e.preventDefault();
+    showSidebar();
+    jsSlideUp(webSearch);
   });
 
   function showSidebar() {
     sidebar.style = 'display:block;opacity:1';
     sidebar.style.display = 'block';
-    menuOverlay.style.zIndex = '99';
+    menuOverlay ? (menuOverlay.style.zIndex = '99') : null;
 
     sidebar.style = `transform: translateX(0px);`;
     setTimeout(() => {
@@ -794,7 +797,7 @@ function mainMenuSetup() {
   sidebarClose.addEventListener('click', (e) => {
     jsFadeOut(menuOverlay);
     hideSidebar();
-    menuOverlay.style.removeProperty('z-index');
+    menuOverlay ? menuOverlay.style.removeProperty('z-index') : null;
   });
 
   // 隱藏側邊選單函式
@@ -853,6 +856,10 @@ function mainMenuSetup() {
     let isFullyVisible = objectTop <= windowHeight;
     return isFullyVisible;
   }
+
+  menuOverlay?.addEventListener('click', (e) => {
+    hideSidebar();
+  });
 }
 mainMenuSetup();
 
@@ -1678,26 +1685,24 @@ switchA11TitleName();
 // -----------------------------------------------------------------------
 
 function tableAddDataAttributes(obj) {
-  window.addEventListener('load', function () {
-    const el = document.querySelectorAll(obj.elemClass);
-    el.forEach((i) => {
-      const tableItem = i.querySelectorAll('table');
-      tableItem.forEach((i) => {
-        setTrAttr(i);
-      });
-      i.classList.add('loaded');
+  const el = document.querySelectorAll(obj.elemClass);
+  el.forEach((i) => {
+    const tableItem = i.querySelectorAll('table');
+    tableItem.forEach((i) => {
+      setTrAttr(i);
     });
-    function setTrAttr(i) {
-      const thList = i.querySelectorAll('th');
-      const trList = i.querySelectorAll('tr');
-      trList.forEach((trItem) => {
-        const tdList = trItem.querySelectorAll('td');
-        tdList.forEach((i, idx) => {
-          tdList[idx].setAttribute(`data-${obj.dataName}`, `${thList[idx].textContent}`);
-        });
-      });
-    }
+    i.classList.add('loaded');
   });
+  function setTrAttr(i) {
+    const thList = i.querySelectorAll('th');
+    const trList = i.querySelectorAll('tr');
+    trList.forEach((trItem) => {
+      const tdList = trItem.querySelectorAll('td');
+      tdList.forEach((i, idx) => {
+        tdList[idx].setAttribute(`data-${obj.dataName}`, `${thList[idx].textContent}`);
+      });
+    });
+  }
 }
 // tableAddDataAttributes({
 //   elemClass: '.tableList',
