@@ -614,6 +614,7 @@ function mainMenuSetup() {
         menuArrowDown.className = 'menuArrowDown';
         const menuArrowUp = document.createElement('button');
         menuArrowUp.className = 'menuArrowUp';
+        menuArrowUp.style.opacity = '0';
         i.parentNode.append(menuArrowDown);
         i.parentNode.append(menuArrowUp);
 
@@ -621,20 +622,14 @@ function mainMenuSetup() {
         menuArrowUp.addEventListener('click', clickGoUp);
         setTimeout(() => {
           objectRect = i.getBoundingClientRect();
-          menuArrowDown.style.left = `${objectRect.left + i.offsetWidth - 30}px`;
+          menuArrowDown.style.left = `${objectRect.left + i.offsetWidth - 40}px`;
           menuArrowDown.setAttribute('noIndex', '-1');
           menuArrowDown.classList.add('active');
 
-          menuArrowUp.style.left = `${objectRect.left + i.offsetWidth - 55}px`;
+          menuArrowUp.style.left = `${objectRect.left + i.offsetWidth - 65}px`;
           menuArrowUp.setAttribute('noIndex', '-1');
           menuArrowUp.classList.add('active');
         }, 200);
-
-        // } else if (!isObjectFullyVisible(i)) {
-        //   if (!i.parentNode.parentNode.parentNode === document.querySelector('.mainMenu')) {
-        //     i.style.top = `${windowHeight - objectRect.top - i.offsetHeight}px`;
-        //   }
-        // }
       }
     });
   };
@@ -643,8 +638,6 @@ function mainMenuSetup() {
   let countOneForDown = false;
   // 距離li全部出現的百分比
   let leftHeight = 0;
-  // 是否開啟向上按鈕
-  let openUp = false;
 
   function clickGoDown(e) {
     const lastLiA = e.target.parentNode.querySelectorAll('a')[e.target.parentNode.querySelectorAll('a').length - 1];
@@ -659,13 +652,13 @@ function mainMenuSetup() {
         }
       } else {
         target.style.top = `${ele - 40}px`;
-        openUp = true;
+        e.target.nextSibling.style.opacity = '1';
       }
     }
   }
 
   function clickGoUp(e) {
-    if (openUp && mode) {
+    if (mode) {
       const target = e.target.parentNode.querySelector('.slideMode');
       let ele = parseFloat(window.getComputedStyle(target).top) || 0;
 
@@ -1406,7 +1399,7 @@ scrollToTop('.scrollToTop');
 function fontSize() {
   const el = document.querySelector('.fontSize'); // 控制的對象
   const elB = document.querySelector('.fontSize.typeB'); // 控制的對象
-  const list = el.querySelectorAll('.fontSize ul button');
+  const list = el.querySelectorAll('ul button');
   const body = document.querySelector('body');
   if (elB) {
     xSlider('.fontSize.typeB > button', '.fontSize ul');
