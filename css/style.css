@@ -1969,7 +1969,7 @@ img {
       display: none;
     }
   }
-  a.goCenter:hover, a.goCenter:focus-visible {
+  a.goCenter:hover, a.goCenter:focus, a.goCenter:focus-visible {
     background: #2db7ff;
     top: 0;
     opacity: 1;
@@ -7603,6 +7603,11 @@ img {
     transition: 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
     transform: translateX(-300px);
   }
+  @media screen and (min-width: 767px) {
+    .mobileSidebar {
+      display: none;
+    }
+  }
   .mobileSidebar .mobileArea {
     width: 300px;
     padding: 3em 0;
@@ -8073,7 +8078,6 @@ img {
   }
   .mpSlider img {
     width: 100%;
-    aspect-ratio: 3/2;
     -o-object-fit: cover;
        object-fit: cover;
   }
@@ -8225,6 +8229,13 @@ img {
     position: relative;
     display: block;
   }
+  .navSlider .swiper-slide a:focus::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 9;
+    border: 2px solid red;
+  }
   .navSlider .swiper-slide a img {
     height: 100%;
     -o-object-fit: cover;
@@ -8232,15 +8243,12 @@ img {
   }
   .adSlider img {
     width: 100%;
-    aspect-ratio: 2/1;
     display: block;
     -o-object-fit: contain;
        object-fit: contain;
   }
   .mpSlider .item img {
     min-height: 350px;
-    -o-object-fit: cover;
-       object-fit: cover;
   }
   .mpSlider .item .titleBox {
     position: absolute;

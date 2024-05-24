@@ -498,7 +498,7 @@ function webSearch() {
   if (searchBtn) {
     searchBtn.addEventListener('click', (e) => {
       jsSlideToggle(webSearch);
-      jsFadeToggle(menuOverlay);
+      // jsFadeToggle(menuOverlay);
 
       language ? jsSlideUp(language.querySelector('ul')) : null;
       fontSize ? jsSlideUp(fontSize.querySelector('ul')) : null;
@@ -576,6 +576,8 @@ function mainMenuSetup() {
     windowHeight = window.innerHeight;
     windowWidth = window.innerWidth;
     windowWidth < windowWidthSmall ? (mode = false) : (mode = true);
+    jsFadeOut(menuOverlay);
+    hideSidebar();
   });
   window.addEventListener('load', () => {
     windowHeight = window.innerHeight;
@@ -931,37 +933,41 @@ document.querySelectorAll('[class*="notice"] a.close')?.forEach((i) => {
 // -----  fatFooter   ----------------------------------------------------
 // -----------------------------------------------------------------------
 
-function fatFooter(obj) {
-  const el = document.querySelector('.btnFatFooter'); // 控制的對象
+function fatFooter(openCheck = true) {
+  const el = document.querySelector('.btnFatFooter') || null; // --- 控制的對象
 
-  if (el) {
-    const navUl = el.parentNode.querySelectorAll('nav ul li ul');
+  if (el !== null) {
     function fatFooterInit() {
-      // 抓取UI高度 css樣式修改樣式重新抓取高度
+      // --- 抓取UI高度 css樣式修改樣式重新抓取高度
+      const _navUl = el.parentNode.querySelectorAll('nav ul li ul');
       setTimeout(() => {
-        navUl.forEach((i) => {
+        _navUl.forEach((i) => {
           i.setAttribute('style', '');
-          let itemHeight = i.offsetHeight;
-          i.dataset.itemHeight = itemHeight;
-          if (Number(itemHeight) !== 0) {
+          let _itemHeight = i.offsetHeight;
+          i.dataset.itemHeight = _itemHeight;
+          if (Number(_itemHeight) !== 0 && openCheck) {
             i.style.height = `${Number(i.dataset.itemHeight)}px`;
           } else {
+            console.log('a');
             i.style.height = '0px';
+            el.innerHTML = '收合/CLOSE';
+            el.setAttribute('name', '收合選單/CLOSE');
+            el.classList.add('close');
           }
         });
       }, 20);
     }
 
     function toggleFatFooter() {
-      navUl.forEach((i) => {
+      const _navUl = el.parentNode.querySelectorAll('nav ul li ul');
+      _navUl.forEach((i) => {
         if (i.offsetHeight !== 0) {
           i.style.height = '0px';
-          el.textContent = '收合/CLOSE';
+          el.innerHTML = '收合/CLOSE';
           el.setAttribute('name', '收合選單/CLOSE');
         } else {
           i.style.height = `${i.dataset.itemHeight}px`;
-          el.textContent = '展開/OPEN';
-          body.insertAdjacentHTML('beforeend', '展開/OPEN');
+          el.innerHTML = '展開/OPEN';
           el.setAttribute('name', '展開選單/OPEN');
         }
       });
@@ -969,10 +975,12 @@ function fatFooter(obj) {
     }
 
     fatFooterInit();
-    // 點擊時
+    // --- 點擊時
     el.addEventListener('click', toggleFatFooter);
-    window.addEventListener('resize', fatFooterInit);
-    window.addEventListener('resize', fatFooterInit);
+
+    window.addEventListener('resize', () => {
+      fatFooterInit();
+    });
   }
 }
 // fatFooter();
@@ -1270,6 +1278,7 @@ function tabFunction(obj) {
 
 function scrollToTop(obj) {
   const el = document.querySelector(obj); // 控制的對象
+  const goCenter = document.querySelector('.goCenter');
 
   function focusTopBtn() {
     const top = window.scrollY;
@@ -1296,12 +1305,14 @@ function scrollToTop(obj) {
     el.addEventListener('click', (e) => {
       e.preventDefault();
       scrollTop();
+      goCenter.focus();
     });
 
     // 鍵盤點擊置頂按鈕
     el.addEventListener('keydown', (e) => {
       e.preventDefault();
       scrollTop();
+      goCenter.focus();
     });
   }
 }
@@ -2164,8 +2175,8 @@ formEye({
 // -----------------------------------------------------------------------
 // -----   fancyBox新增需要綁定才有效果   -----------------------------------
 // -----------------------------------------------------------------------
-if (document.querySelector('[data-fancybox="gallery"]')) {
-  Fancybox.bind('[data-fancybox="gallery"]', {
+if (document.querySelectorAll('[data-fancybox]').length > 0) {
+  Fancybox.bind('[data-fancybox]', {
     l10n: Fancybox.l10n.zh_TW,
   });
 }

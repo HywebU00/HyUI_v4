@@ -13,6 +13,10 @@
   transition: 0.3s $cubic;
   transform: translateX(-300px);
 
+  @include screen('mobileMin') {
+    display: none;
+  }
+
   .mobileArea {
     width: 300px;
     padding: 3em 0;

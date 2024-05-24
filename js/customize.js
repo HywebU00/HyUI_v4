@@ -110,7 +110,7 @@ window.addEventListener('load', () => {
     navigation: {
       nextEl: '.adSlider .nextSlider', //自行設定樣式
       prevEl: '.adSlider .prevSlider', //自行設定樣式
-      disabledClass: '.adSlider swiperArrow-disabled', //不可點選樣式
+      disabledClass: 'swiperArrow-disabled', //不可點選樣式
     },
     breakpoints: {
       100: {
@@ -140,6 +140,7 @@ window.addEventListener('load', () => {
   //cp_photo
   const navSlider = new Swiper('.navSlider .swiper', {
     lazy: true, // lazy load
+    spaceBetween: 20,
     preloadImages: false, // 多筆設定lazy時須設定
     centeredSlides: false, // 多筆設定lazy時須設定
     slidesPerView: 4,
