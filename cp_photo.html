@@ -16,15 +16,16 @@
 
   <body>
     <!-- 直接跳主內容區 -->
-    <a class="goCenter" href="#center" tabindex="1">按Enter到主內容區</a>
+    <a class="goCenter" href="#aC">按Enter到主內容區</a>
+    <button class="sidebarCtrlBtn" type="button" aria-expanded="false" aria-controls="mobileArea">側欄選單</button>
     <!-- wrapper Start -->
     <div class="wrapper">
       <!-- header Start -->
       <header class="header">
         <div class="container">
-          <a class="accessKey" href="#aU" id="aU" accesskey="U" title="網站標題" tabindex="2">:::</a>
+          <a class="accessKeyItem" href="#aU" id="aU" accesskey="U" aria-label="網站標題">:::</a>
           <!-- navigation Start -->
-          <nav class="navigation" role="navigation" aria-label="Site">
+          <nav class="navigation" role="navigation" aria-label="頁首功能列">
             <!-- 新增div navList -->
             <div class="navList">
               <ul>
@@ -39,9 +40,9 @@
               <span class="font-size-label">字型大小：</span>
               <!-- 英文用<span>font-size：</span> -->
               <ul aria-labelledby="font-size-label">
-                <li><button role="button" href="#" class="small">小</button></li>
-                <li><button role="button" href="#" class="medium">中</button></li>
-                <li><button role="button" href="#" class="large">大</button></li>
+                <li><button type="button" class="smallSize">小</button></li>
+                <li><button type="button" class="mediumSize">中</button></li>
+                <li><button type="button" class="largeSize">大</button></li>
               </ul>
             </div>
             <!-- language -->
@@ -59,11 +60,12 @@
             <a href="index.html"><img src="images/logo.png" alt="網站標題" /></a>
           </h1>
           <!-- Search Start -->
+          <button class="mobileSearchBtn" type="button" aria-label="搜尋按鈕"></button>
           <div class="webSearch" role="search">
             <div class="content">
               <div class="formGrp">
                 <label for="mustSameAsId">搜尋</label>
-                <input name="username" id="mustSameAsId" type="text" placeholder="請輸入文字" accesskey="S" title="請輸入文字" aria-label="搜尋網站內容" />
+                <input name="username" type="text" placeholder="請輸入文字" accesskey="S" aria-label="搜尋網站內容" />
                 <button type="button" class="btn btnSearch">查詢</button>
               </div>
               <div class="btnGrp">
@@ -85,7 +87,7 @@
             <a href="#">網站導覽</a>
           </noscript>
           <!-- menu Start -->
-          <nav class="menu mainMenu" role="navigation" aria-label="About page">
+          <nav class="menu mainMenu" role="navigation" aria-label="主選單">
             <ul>
               <li>
                 <a href="#">第一層選單</a>
@@ -159,60 +161,12 @@
       <!-- main Start -->
       <main id="center" class="main innerPage">
         <!-- 內頁新增一個classname-->
-        <a class="accessKey" href="#aC" id="ac" accesskey="C" title="主要內容區">:::</a>
+        <a class="accessKeyItem" href="#aC" id="ac" accesskey="C" aria-label="主要內容區">:::</a>
         <div class="container">
-          <!-- 左側 -->
-          <!-- 如果不要sticky效果，就移除stickySidebar classname -->
-          <aside class="leftBlock stickySidebar">
-            <div class="listBlock">
-              <div class="title">標題文字</div>
-              <ul>
-                <li>
-                  <time>2020/01/01</time>
-                  <div class="dept">部門</div>
-                  <a href="#">連結文字樣式連結文字樣式連結文字樣式連結文字樣式</a>
-                </li>
-                <li>
-                  <time>2020/01/01</time>
-                  <div class="dept">部門</div>
-                  <a href="#">連結文字樣式連結文字樣式連結文字樣式連結文字樣式</a>
-                </li>
-                <li>
-                  <time>2020/01/01</time>
-                  <div class="dept">部門</div>
-                  <a href="#">連結文字樣式連結文字樣式連結文字樣式連結文字樣式</a>
-                </li>
-                <li>
-                  <time>2020/01/01</time>
-                  <div class="dept">部門</div>
-                  <a href="#">連結文字樣式連結文字樣式連結文字樣式連結文字樣式</a>
-                </li>
-                <li>
-                  <time>2020/01/01</time>
-                  <div class="dept">部門</div>
-                  <a href="#">連結文字樣式連結文字樣式連結文字樣式連結文字樣式</a>
-                </li>
-              </ul>
-            </div>
-            <div class="banner">
-              <div class="item">
-                <a href="#"><img src="https://source.unsplash.com/random/1" alt="圖說" /></a>
-              </div>
-              <div class="item">
-                <a href="#"><img src="https://source.unsplash.com/random/2" alt="圖說" /></a>
-              </div>
-              <div class="item">
-                <a href="#"><img src="https://source.unsplash.com/random/3" alt="圖說" /></a>
-              </div>
-              <div class="item">
-                <a href="#"><img src="https://source.unsplash.com/random/4" alt="圖說" /></a>
-              </div>
-            </div>
-          </aside>
           <!-- 主要內容區 -->
           <div class="centerBlock">
             <!-- breadcrumb路徑 -->
-            <nav aria-label="Breadcrumb" class="breadcrumb">
+            <nav aria-label="麵包屑" class="breadcrumb">
               <ul>
                 <li><a href="#">首頁</a></li>
                 <li><a href="#">節點</a></li>
@@ -238,7 +192,7 @@
                     <a href="#"><img src="images/basic/icon_facebook.svg" alt="facebook" /></a>
                   </li>
                   <li>
-                    <a href="#"><img src="images/basic/icon_twitter.svg" alt="twitter" /></a>
+                    <a href="#"><img src="images/basic/icon_x.svg" alt="twitter" /></a>
                   </li>
                   <li>
                     <a href="#"><img src="images/basic/icon_line.svg" alt="line" /></a>
@@ -268,7 +222,7 @@
                   <a href="#"><img src="images/basic/icon_facebook.svg" alt="facebook" /></a>
                 </li>
                 <li>
-                  <a href="#"><img src="images/basic/icon_twitter.svg" alt="twitter" /></a>
+                  <a href="#"><img src="images/basic/icon_x.svg" alt="twitter" /></a>
                 </li>
                 <li>
                   <a href="#"><img src="images/basic/icon_line.svg" alt="line" /></a>
@@ -326,29 +280,19 @@
                   <div class="swiper">
                     <div class="swiper-wrapper">
                       <div class="imgContainer swiper-slide">
-                        <a href="javascript:;" title="">
-                          <img src="https://hywebu00.github.io/hyui_flex/images/demo/01.jpg" class="swiper-lazy" alt="圖說1" />
-                        </a>
+                        <img src="https://hywebu00.github.io/hyui_flex/images/demo/01.jpg" class="swiper-lazy" alt="圖說1" />
                       </div>
                       <div class="imgContainer swiper-slide">
-                        <a href="javascript:;" title="">
-                          <img src="https://hywebu00.github.io/hyui_flex/images/demo/02.jpg" class="swiper-lazy" alt="圖說2" />
-                        </a>
+                        <img src="https://hywebu00.github.io/hyui_flex/images/demo/02.jpg" class="swiper-lazy" alt="圖說2" />
                       </div>
                       <div class="imgContainer swiper-slide">
-                        <a href="javascript:;" title="">
-                          <img src="https://hywebu00.github.io/hyui_flex/images/demo/03.jpg" class="swiper-lazy" alt="圖說3" />
-                        </a>
+                        <img src="https://hywebu00.github.io/hyui_flex/images/demo/03.jpg" class="swiper-lazy" alt="圖說3" />
                       </div>
                       <div class="imgContainer swiper-slide">
-                        <a href="javascript:;" title="">
-                          <img src="https://hywebu00.github.io/hyui_flex/images/demo/04.jpg" class="swiper-lazy" alt="圖說4" />
-                        </a>
+                        <img src="https://hywebu00.github.io/hyui_flex/images/demo/04.jpg" class="swiper-lazy" alt="圖說4" />
                       </div>
                       <div class="imgContainer swiper-slide">
-                        <a href="javascript:;" title="">
-                          <img src="https://hywebu00.github.io/hyui_flex/images/demo/05.jpg" class="swiper-lazy" alt="圖說5" />
-                        </a>
+                        <img src="https://hywebu00.github.io/hyui_flex/images/demo/01.jpg" class="swiper-lazy" alt="圖說5" />
                       </div>
                     </div>
                   </div>
@@ -364,19 +308,24 @@
                     <div class="swiper">
                       <div class="swiper-wrapper">
                         <div class="imgContainer swiper-slide">
-                          <a href="#"> <img src="https://hywebu00.github.io/hyui_flex/images/demo/01.jpg" class="swiper-lazy" alt="圖說1" /></a>
+                          <img src="https://hywebu00.github.io/hyui_flex/images/demo/01.jpg" class="swiper-lazy" alt="" />
+                          <div class="caption">圖說1</div>
                         </div>
                         <div class="imgContainer swiper-slide">
-                          <a href="#"> <img src="https://hywebu00.github.io/hyui_flex/images/demo/02.jpg" class="swiper-lazy" alt="圖說1" /></a>
+                          <img src="https://hywebu00.github.io/hyui_flex/images/demo/02.jpg" class="swiper-lazy" alt="" />
+                          <div class="caption">圖說1</div>
                         </div>
                         <div class="imgContainer swiper-slide">
-                          <a href="#"> <img src="https://hywebu00.github.io/hyui_flex/images/demo/03.jpg" class="swiper-lazy" alt="圖說1" /></a>
+                          <img src="https://hywebu00.github.io/hyui_flex/images/demo/03.jpg" class="swiper-lazy" alt="" />
+                          <div class="caption">圖說1</div>
                         </div>
                         <div class="imgContainer swiper-slide">
-                          <a href="#"> <img src="https://hywebu00.github.io/hyui_flex/images/demo/04.jpg" class="swiper-lazy" alt="圖說1" /></a>
+                          <img src="https://hywebu00.github.io/hyui_flex/images/demo/04.jpg" class="swiper-lazy" alt="" />
+                          <div class="caption">圖說1</div>
                         </div>
                         <div class="imgContainer swiper-slide">
-                          <a href="#"> <img src="https://hywebu00.github.io/hyui_flex/images/demo/01.jpg" class="swiper-lazy" alt="圖說1" /></a>
+                          <img src="https://hywebu00.github.io/hyui_flex/images/demo/01.jpg" class="swiper-lazy" alt="" />
+                          <div class="caption">圖說1</div>
                         </div>
                       </div>
                     </div>
@@ -389,53 +338,6 @@
                 </div>
                 <!-- slider-nav end-->
               </div>
-              <!-- weblink 外部連結 -->
-              <div class="webLink">
-                <h3>外部連結</h3>
-                <ol>
-                  <li><a href="javscript:;">外部連結1</a></li>
-                  <li><a href="javscript:;">外部連結2</a></li>
-                  <li><a href="javscript:;">外部連結3</a></li>
-                  <li><a href="javscript:;">外部連結4</a></li>
-                  <li><a href="javscript:;">外部連結5</a></li>
-                </ol>
-              </div>
-              <!-- file download 檔案下載 -->
-              <div class="fileDownload">
-                <h3>檔案下載</h3>
-                <ul>
-                  <li>
-                    <span class="fileName">檔案名稱</span>
-                    <span class="file_doc"><a href="xxxx.doc">doc</a>823.8 KB，下載 1,489 次</span>
-                    <span class="file_docx"><a href="xxx.docx">docx</a>823.8 KB，下載 1,489 次</span>
-                    <span class="file_odt"><a href="xxxx.odt">odt</a>823.8 KB，下載 1,489 次</span>
-                  </li>
-                  <li>
-                    <span class="fileName">檔案名稱檔案名稱</span>
-                    <span class="file_xls"><a href="xxxx.xls">xls</a>823.8 KB，下載 1,489 次</span>
-                    <span class="file_xlsx"><a href="xxxx.xlsx">xlsx</a>823.8 KB，下載 1,489 次</span>
-                    <span class="file_csv"><a href="xxxx.csv">csv</a>823.8 KB，下載 1,489 次</span>
-                    <span class="file_ods"><a href="xxxx.ods">ods</a>823.8 KB，下載 1,489 次</span>
-                  </li>
-                  <li>
-                    <span class="fileName">檔案名稱</span>
-                    <span class="file_ppt"><a href="xxxx.ppt">ppt</a>823.8 KB，下載 1,489 次</span>
-                    <span class="file_pptx"><a href="xxxx.pptx">pptx</a>823.8 KB，下載 1,489 次</span>
-                    <span class="file_odp"><a href="xxxx.odp">odp</a>823.8 KB，下載 1,489 次</span>
-                  </li>
-                  <li>
-                    <span class="fileName">檔案名稱</span>
-                    <span class="file_pdf"><a href="xxxx.pdf">pdf</a>823.8 KB，下載 1,489 次</span>
-                    <span class="file_zip"><a href="xxxx.zip">zip</a>823.8 KB，下載 1,489 次</span>
-                    <span class="file_txt"><a href="xxxx.txt">txt</a>823.8 KB，下載 1,489 次</span>
-                    <span class="file_mov"><a href="xxxx.mov">mov</a>823.8 KB，下載 1,489 次</span>
-                    <span class="file_mp3"><a href="xxxx.mp3">mp3</a>823.8 KB，下載 1,489 次</span>
-                    <span class="file_jpg"><a href="xxxx.jpg">jpg</a>823.8 KB，下載 1,489 次</span>
-                    <span class="file_wmv"><a href="xxxx.wmv">wmv</a>823.8 KB，下載 1,489 次</span>
-                    <span class="file_mp4"><a href="xxxx.mp4">mp4</a>823.8 KB，下載 1,489 次</span>
-                  </li>
-                </ul>
-              </div>
             </section>
             <!-- CP End -->
           </div>
@@ -444,8 +346,8 @@
       <!-- fatFooter Start -->
       <section class="fatFooter">
         <div class="container">
-          <button type="button" name="展開選單/OPEN" aria-label="導覽選單展開/收合" class="btn btnFatFooter">收合</button>
-          <nav>
+          <button type="button" aria-expanded="true" class="btn btnFatFooter" aria-label="開關頁尾網站導覽"></button>
+          <nav aria-label="頁尾網站導覽">
             <ul>
               <li>
                 <a href="#">關於本局</a>
@@ -518,7 +420,7 @@
       <!-- footer Start-->
       <footer>
         <div class="container">
-          <a class="accessKey" href="#aZ" id="aZ" accesskey="Z" title="頁尾區">:::</a>
+          <a class="accessKeyItem" href="#aZ" id="aZ" accesskey="Z" aria-label="頁尾區">:::</a>
           <div class="footerLogo">
             <img src="images/logo.png" alt="" class="imgResponsive" />
           </div>

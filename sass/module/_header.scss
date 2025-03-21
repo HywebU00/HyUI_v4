@@ -4,7 +4,7 @@
 @mixin mobileCtrlBtn {
   width: 60px;
   height: 60px;
-  position: absolute;
+  position: fixed;
   top: 0px;
   display: none;
   font-size: 0em;
@@ -29,8 +29,8 @@
   @include mobileCtrlBtn;
 
   &::before {
-    position: absolute;
     content: '';
+    position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -173,7 +173,7 @@
     box-sizing: border-box;
     display: flex;
     position: relative;
-    z-index: 55;
+    z-index: 65;
     align-items: center;
 
     @include screen('mobile') {

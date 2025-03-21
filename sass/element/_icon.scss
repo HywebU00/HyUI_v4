@@ -7,6 +7,7 @@
     vertical-align: middle;
   }
 }
+
 @mixin hyUiIcon($iconImg) {
   &:before {
     background: url(../images/icon/#{$iconImg}.svg) center center no-repeat;
@@ -15,6 +16,7 @@
     margin-bottom: 0.1em;
   }
 }
+
 //notice 這邊想想怕i直接接會比較不清楚，是否還是要繼續保留_可以再找別人討論看看
 // 依英文字母排序
 ///////////////////////////////////////////////////////////////////////////  彩色 icon
@@ -28,18 +30,23 @@
 .i_add_dark {
   @include hyUiIcon('icon_add_dark');
 }
+
 .i_apple_dark {
   @include hyUiIcon('icon_apple_dark');
 }
+
 .i_arrowLeft_dark {
   @include hyUiIcon('icon_arrow_left_dark');
 }
+
 .i_arrowRight_dark {
   @include hyUiIcon('icon_arrow_right_dark');
 }
+
 .i_arrowUp_dark {
   @include hyUiIcon('icon_arrow_up_dark');
 }
+
 .i_arrowDown_dark {
   @include hyUiIcon('icon_arrow_down_dark');
 }
@@ -53,18 +60,23 @@
 .i_calendar_dark {
   @include hyUiIcon('icon_calendar_dark');
 }
+
 .i_chat_dark {
   @include hyUiIcon('icon_chat_dark');
 }
+
 .i_check_dark {
   @include hyUiIcon('icon_check_dark');
 }
+
 .i_clock_dark {
   @include hyUiIcon('icon_clock_dark');
 }
+
 .i_close_dark {
   @include hyUiIcon('icon_close_dark');
 }
+
 .i_copy_dark {
   @include hyUiIcon('icon_copy_dark');
 }
@@ -88,9 +100,11 @@
 .i_global_dark {
   @include hyUiIcon('icon_global_dark');
 }
+
 .i_googleplus_dark {
   @include hyUiIcon('icon_googleplus_dark');
 }
+
 .i_grid_dark {
   @include hyUiIcon('icon_grid_dark');
 }
@@ -99,6 +113,7 @@
 .i_heart_dark {
   @include hyUiIcon('icon_heart_dark');
 }
+
 .i_home_dark {
   @include hyUiIcon('icon_home_dark');
 }
@@ -115,12 +130,15 @@
 .i_layout_dark {
   @include hyUiIcon('icon_layout_dark');
 }
+
 .i_link_dark {
   @include hyUiIcon('icon_link_dark');
 }
+
 .i_linkedin_dark {
   @include hyUiIcon('icon_linkedin_dark');
 }
+
 .i_lock_dark {
   @include hyUiIcon('icon_lock_dark');
 }
@@ -129,12 +147,15 @@
 .i_mail_dark {
   @include hyUiIcon('icon_mail_dark');
 }
+
 .i_man_dark {
   @include hyUiIcon('icon_man_dark');
 }
+
 .i_minus_dark {
   @include hyUiIcon('icon_minus_dark');
 }
+
 .i_move_dark {
   @include hyUiIcon('icon_move_dark');
 }
@@ -149,9 +170,11 @@
 .i_photo_dark {
   @include hyUiIcon('icon_photo_dark');
 }
+
 .i_pick_dark {
   @include hyUiIcon('icon_pick_dark');
 }
+
 .i_play_dark {
   @include hyUiIcon('icon_play_dark');
 }
@@ -162,6 +185,7 @@
 .i_reflash_dark {
   @include hyUiIcon('icon_reflash_dark');
 }
+
 .i_rss_dark {
   @include hyUiIcon('icon_rss_dark');
 }
@@ -170,12 +194,15 @@
 .i_search_dark {
   @include hyUiIcon('icon_search_dark');
 }
+
 .i_setting_dark {
   @include hyUiIcon('icon_setting_dark');
 }
+
 .i_sort_dark {
   @include hyUiIcon('icon_sort_dark');
 }
+
 .i_star_dark {
   @include hyUiIcon('icon_star_dark');
 }
@@ -184,11 +211,13 @@
 .i_top_dark {
   @include hyUiIcon('icon_top_dark');
 }
+
 .i_trash_dark {
   @include hyUiIcon('icon_trash_dark');
 }
+
 .i_twitter_dark {
-  @include hyUiIcon('icon_twitter_dark');
+  @include hyUiIcon('icon_x_dark');
 }
 
 // ---------------- U ----------------
@@ -196,9 +225,11 @@
 .i_video_dark {
   @include hyUiIcon('icon_video_dark');
 }
+
 .i_view_dark {
   @include hyUiIcon('icon_view_dark');
 }
+
 .i_vimeo_dark {
   @include hyUiIcon('icon_vimeo_dark');
 }
@@ -217,18 +248,23 @@
 .i_add {
   @include hyUiIcon('icon_add');
 }
+
 .i_apple {
   @include hyUiIcon('icon_apple');
 }
+
 .i_arrowLeft {
   @include hyUiIcon('icon_arrow_left');
 }
+
 .i_arrowRight {
   @include hyUiIcon('icon_arrow_right');
 }
+
 .i_arrowUp {
   @include hyUiIcon('icon_arrowUp');
 }
+
 .i_arrowDown {
   @include hyUiIcon('icon_arrowDown');
 }
@@ -242,21 +278,27 @@
 .i_calendar {
   @include hyUiIcon('icon_calendar');
 }
+
 .i_calendar_color {
   @include hyUiIcon('icon_calendar_color');
 }
+
 .i_chat {
   @include hyUiIcon('icon_chat');
 }
+
 .i_check {
   @include hyUiIcon('icon_check');
 }
+
 .i_clock {
   @include hyUiIcon('icon_clock');
 }
+
 .i_close {
   @include hyUiIcon('icon_close');
 }
+
 .i_copy {
   @include hyUiIcon('icon_copy');
 }
@@ -280,9 +322,11 @@
 .i_global {
   @include hyUiIcon('icon_global');
 }
+
 .i_googleplus {
   @include hyUiIcon('icon_googleplus');
 }
+
 .i_grid {
   @include hyUiIcon('icon_grid');
 }
@@ -291,6 +335,7 @@
 .i_heart {
   @include hyUiIcon('icon_heart');
 }
+
 .i_home {
   @include hyUiIcon('icon_home');
 }
@@ -307,12 +352,15 @@
 .i_layout {
   @include hyUiIcon('icon_layout');
 }
+
 .i_link {
   @include hyUiIcon('icon_link');
 }
+
 .i_linkedin {
   @include hyUiIcon('icon_linkedin');
 }
+
 .i_lock {
   @include hyUiIcon('icon_lock');
 }
@@ -321,12 +369,15 @@
 .i_mail {
   @include hyUiIcon('icon_mail');
 }
+
 .i_man {
   @include hyUiIcon('icon_man');
 }
+
 .i_minus {
   @include hyUiIcon('icon_minus');
 }
+
 .i_move {
   @include hyUiIcon('icon_move');
 }
@@ -341,9 +392,11 @@
 .i_photo {
   @include hyUiIcon('icon_photo');
 }
+
 .i_pick {
   @include hyUiIcon('icon_pick');
 }
+
 .i_play {
   @include hyUiIcon('icon_play');
 }
@@ -354,6 +407,7 @@
 .i_reflash {
   @include hyUiIcon('icon_reflash');
 }
+
 .i_rss {
   @include hyUiIcon('icon_rss');
 }
@@ -362,12 +416,15 @@
 .i_search {
   @include hyUiIcon('icon_search');
 }
+
 .i_setting {
   @include hyUiIcon('icon_setting');
 }
+
 .i_sort {
   @include hyUiIcon('icon_sort');
 }
+
 .i_star {
   @include hyUiIcon('icon_star');
 }
@@ -376,11 +433,13 @@
 .i_top {
   @include hyUiIcon('icon_top');
 }
+
 .i_trash {
   @include hyUiIcon('icon_trash');
 }
+
 .i_twitter {
-  @include hyUiIcon('icon_twitter');
+  @include hyUiIcon('icon_x');
 }
 
 // ---------------- U ----------------
@@ -388,9 +447,11 @@
 .i_video {
   @include hyUiIcon('icon_video');
 }
+
 .i_view {
   @include hyUiIcon('icon_view');
 }
+
 .i_vimeo {
   @include hyUiIcon('icon_vimeo');
 }

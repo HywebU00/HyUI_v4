@@ -49,6 +49,7 @@
   @import 'page/_template'; //版型初始設定
   @import 'module/_menusidebar'; //menuSidebar
 }
+
 @layer secScss {
   @import 'element/_image'; //圖片
   @import 'common/_hack'; //瀏覽器修正
@@ -57,5 +58,6 @@
   @import 'page/_mp'; //首頁
   @import 'page/_cp'; //CP
 }
+
 @import 'page/_color';
 @import 'common/_print'; //列印樣式

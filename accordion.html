@@ -18,15 +18,16 @@
 
   <body>
     <!-- 直接跳主內容區 -->
-    <a class="goCenter" href="#center" tabindex="1">按Enter到主內容區</a>
+    <a class="goCenter" href="#aC">按Enter到主內容區</a>
+    <button class="sidebarCtrlBtn" type="button" aria-expanded="false" aria-controls="mobileArea">側欄選單</button>
     <!-- wrapper Start -->
     <div class="wrapper">
       <!-- header Start -->
       <header class="header">
         <div class="container">
-          <a class="accessKey" href="#aU" id="aU" accesskey="U" title="網站標題" tabindex="2">:::</a>
+          <a class="accessKeyItem" href="#aU" id="aU" accesskey="U" aria-label="網站標題">:::</a>
           <!-- navigation Start -->
-          <nav class="navigation" role="navigation" aria-label="Site">
+          <nav class="navigation" role="navigation" aria-label="頁首功能列">
             <!-- 新增div navList -->
             <div class="navList">
               <ul>
@@ -41,15 +42,15 @@
               <span class="font-size-label">字型大小：</span>
               <!-- 英文用<span>font-size：</span> -->
               <ul aria-labelledby="font-size-label">
-                <li><a href="#" role="button" class="small">小</a></li>
-                <li><a href="#" role="button" class="medium">中</a></li>
-                <li><a href="#" role="button" class="large">大</a></li>
+                <li><button type="button" class="smallSize">小</button></li>
+                <li><button type="button" class="mediumSize">中</button></li>
+                <li><button type="button" class="largeSize">大</button></li>
               </ul>
             </div>
             <!-- language -->
             <div class="language">
-              <button type="button">語言選擇</button>
-              <ul>
+              <button type="button" aria-expanded="false" aria-controls="languageList">語言選擇</button>
+              <ul id="languageList">
                 <li><a href="#">繁體中文</a></li>
                 <li><a href="#">简体中文</a></li>
                 <li><a href="#">ENGLISH</a></li>
@@ -61,11 +62,12 @@
             <a href="index.html"><img src="images/logo.png" alt="網站標題" /></a>
           </h1>
           <!-- Search Start -->
+          <button class="mobileSearchBtn" type="button" aria-label="搜尋按鈕"></button>
           <div class="webSearch" role="search">
             <div class="content">
               <div class="formGrp">
                 <label for="mustSameAsId">搜尋</label>
-                <input name="username" id="mustSameAsId" type="text" placeholder="請輸入文字" accesskey="S" title="請輸入文字" aria-label="搜尋網站內容" />
+                <input name="username" type="text" placeholder="請輸入文字" accesskey="S" aria-label="搜尋網站內容" />
                 <button type="button" class="btn btnSearch">查詢</button>
               </div>
               <div class="btnGrp">
@@ -87,7 +89,7 @@
             <a href="#">網站導覽</a>
           </noscript>
           <!-- menu Start -->
-          <nav class="menu mainMenu" role="navigation" aria-label="About page">
+          <nav class="menu mainMenu" role="navigation" aria-label="主選單">
             <ul>
               <li>
                 <a href="#">第一層選單</a>
@@ -127,9 +129,7 @@
                           <li><a href="#">第四層選單</a></li>
                         </ul>
                       </li>
-                      <li>
-                        <a href="http://www.google.com">第三層選單有連結</a>
-                      </li>
+                      <li><a href="http://www.google.com">第三層選單有連結</a></li>
                       <li><a href="#">第三層選單</a></li>
                     </ul>
                   </li>
@@ -163,12 +163,12 @@
       <!-- main Start -->
       <main id="center" class="main innerPage">
         <!-- 內頁新增一個classname-->
-        <a class="accessKey" href="#aC" id="ac" accesskey="C" title="主要內容區">:::</a>
+        <a class="accessKeyItem" href="#aC" id="ac" accesskey="C" aria-label="主要內容區">:::</a>
         <div class="container">
           <!-- 主要內容區 -->
           <div class="centerBlock">
             <!-- breadcrumb路徑 -->
-            <nav aria-label="Breadcrumb" class="breadcrumb">
+            <nav aria-label="麵包屑" class="breadcrumb">
               <ul>
                 <li><a href="#">首頁</a></li>
                 <li><a href="#">節點</a></li>
@@ -183,10 +183,46 @@
                   <button class="accordionBtn" title="">第一項說明</button>
                   <div class="accordionContent">
                     <div class="content">
-                      國影自談王不美一文實別合屋？府性元這子一知於料的親到。一用技年不得就資公，也星樣團怎英班水灣個種決以因世書發定很功行何，下飯通反代命假到一不離護麼錯絕懷旅元人。弟新過，道給仍覺裡水國、醫灣了可實界一上德字什心成但創大品隨品。難但所雜笑事禮年專阿戲經愛眾背起，間自個；獎小業美有義交安辦一則龍足，年開多！景唱而賽用出說建樣以經<br />
-                      <a href="#">連結</a>
-                      <a href="#">連結</a>
-                      <a href="#">連結</a>
+                      <code>
+                        accordionFunction({<br />
+                        target: '.accordion',<br />
+                        openContent: false, // 預設先展開所有內容，僅開啟模式切換時才可使用<br />
+                        openDefault: false, // 是否有預設開啟<br />
+                        openIndex: 0, // 預設開啟第幾個<br />
+                        autoClose: true, // 自動關閉其他開啟內容<br />
+                        openSwitch: true, // 是否可開合/切換<br />
+                        info: {<br />
+                        open: '展開', // 收合時顯示<br />
+                        close: '收合', // 展開時顯示<br />
+                        },<br />
+                        });<br />
+                        上面的option是基礎預設，如不需要更改可以直接使用accordionFunction('.target1')，如有多組tab<br />
+                        請另外設定target <br /><br />
+                      </code>
+                      無障礙相關(皆已由js設定)
+
+                      <ul>
+                        <li>
+                          <a href="#">按鈕</a>
+                          <ol>
+                            <li>展開的按鈕項加<code>aria-expanded="true"</code>，未展開的按鈕項加<code>aria-expanded="false"</code></li>
+                          </ol>
+                        </li>
+                        <li>
+                          <a href="#">內容</a>
+                          <ol>
+                            <li>內容加上<code>role="region"</code></li>
+                            <li>展開的加上<code>aria-hidden="false"</code>，未展開的加上<code>aria-hidden="true"</code></li>
+                          </ol>
+                        </li>
+                        <li>
+                          <a href="#">讓按鈕項與按鈕內容產生關連</a>
+                          <ol>
+                            <li>頁籤加<code>id="<i>ID</i>"</code>，對應的內容加<code>aria-labelledby="<i>ID</i>"</code><br />例如，第一個頁籤項<code>id="tabpanel_1"</code>，其控制的內容<code>aria-labelledby="tabpanel_1"</code></li>
+                            <li>內容區加<code>id="<i>ID</i>"</code>，對應的頁籤項加<code>aria-controls="<i>ID</i>"</code><br />例如，第一個頁籤項<code>aria-controls="tabpanel_1_con"</code>，其控制的內容<code>id="tabpanel_1_con"</code></li>
+                          </ol>
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </li>
@@ -231,8 +267,8 @@
       <!-- fatFooter Start -->
       <section class="fatFooter">
         <div class="container">
-          <button type="button" name="展開選單/OPEN" aria-label="導覽選單展開/收合" class="btn btnFatFooter">收合</button>
-          <nav>
+          <button type="button" aria-expanded="true" class="btn btnFatFooter" aria-label="開關頁尾網站導覽"></button>
+          <nav aria-label="頁尾網站導覽">
             <ul>
               <li>
                 <a href="#">關於本局</a>
@@ -305,7 +341,7 @@
       <!-- footer Start-->
       <footer>
         <div class="container">
-          <a class="accessKey" href="#aZ" id="aZ" accesskey="Z" title="頁尾區">:::</a>
+          <a class="accessKeyItem" href="#aZ" id="aZ" accesskey="Z" aria-label="頁尾區">:::</a>
           <div class="footerLogo">
             <img src="images/logo.png" alt="" class="imgResponsive" />
           </div>
@@ -319,8 +355,7 @@
             <p>
               總公司：新竹縣竹北市台元一街8號5樓之6TEL：03-5601296 <br />
               台北分公司：台北市重慶南路二段51號5樓 TEL：02-2395-6966 <br />
-              台中分公司：台中市西屯區臺灣大道三段658號6樓A1 TEL：04-2706-3968
-              <br />
+              台中分公司：台中市西屯區臺灣大道三段658號6樓A1 TEL：04-2706-3968 <br />
               高雄分公司：高雄市新興區中正三路55號26樓之5 TEL：07-2223606
             </p>
             <span class="update">更新日期:<em>2018/01/01</em></span>

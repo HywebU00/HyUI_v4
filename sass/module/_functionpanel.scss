@@ -93,8 +93,8 @@ div.function {
         color: #fff;
         border-radius: 4px;
 
-        &:hover,
-        &:focus-visible {
+        // &:focus-visible,
+        &:hover {
           background: darken($aHover, 0);
           border-color: darken($aHover, 0);
         }
@@ -168,8 +168,8 @@ div.function {
           text-indent: -9999px;
           position: relative;
 
-          &:hover,
-          &:focus-visible {
+          // &:focus-visible,
+          &:hover {
             background: $aHover;
             color: #fff;
 
@@ -286,8 +286,8 @@ div.function {
       //   height: 60%;
       //   margin: 20% auto;
       // }
-      &:hover,
-      &:focus-visible {
+      // &:focus-visible,
+      &:hover {
         background: $aHover;
 
         // img {
@@ -314,7 +314,7 @@ div.function {
 
       li {
         display: block;
-        margin: 0 auto 0.5em;
+        margin: 0 auto 5px;
 
         &:last-child {
           margin-bottom: 0;
@@ -334,13 +334,13 @@ div.function {
           height: 32px;
           border-radius: 50%;
 
-          &:hover,
-          &:focus-visible {
+          // &:focus-visible,
+          &:hover {
             background: transparent;
 
-            img {
-              filter: grayscale(1);
-            }
+            // img {
+            //   filter: grayscale(1);
+            // }
           }
         }
       }

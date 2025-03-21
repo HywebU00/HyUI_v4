@@ -40,14 +40,16 @@
 @mixin aSetting($color: $aColor, $line: none) {
   text-decoration: $line;
   color: $color;
-  &:hover,
-  &:focus-visible {
+
+  // &:focus-visible,
+  &:hover {
     color: $aHover;
     cursor: pointer;
   }
-  &:focus-visible {
-    outline: $aHover 2px solid;
-  }
+
+  // &:focus-visible {
+  //   outline: $aHover 2px solid;
+  // }
 }
 
 //px轉rem 使用方式 rem(px) px直接輸入數字即可

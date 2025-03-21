@@ -1,17 +1,49 @@
 // 以下皆是設定 測試無障礙關閉js 的純css排版
 
 // tab的外框線
-a:focus-visible {
-  outline: $aFocus 2px solid;
+:focus:not(:focus-visible) {
+  outline: none;
+}
 
-  // box-shadow: 0 0px 0px 2px $aFocus inset;
-  @include screen('mobile') {
-    box-shadow: none;
+:focus-visible {
+  outline: red 2px solid;
+  outline-offset: -2px;
+  isolation: isolate;
+  opacity: 1 !important;
+
+  .imgContainer {
+    z-index: -1;
+  }
+
+  img {
+    position: relative;
+    z-index: -1;
+  }
+}
+
+.navSlider {
+
+  .swiper-slide {
+
+    // &.swiper-slide-thumb-active {
+    //   outline: red 2px solid;
+    //   outline-offset: -2px;
+    //   isolation: isolate;
+
+    //   img {
+    //     position: relative;
+    //     z-index: -2;
+    //   }
+
+    //   .caption {
+    //     z-index: -1;
+    //   }
+    // }
   }
 }
 
 // 導盲磚
-.accessKey {
+.accessKeyItem {
   position: absolute;
   top: 5px;
   left: 5px;
@@ -27,8 +59,7 @@ a:focus-visible {
 a.goCenter {
   position: absolute;
   top: -2.2em;
-  left: 50%;
-  margin-left: -480px;
+  left: 0;
   padding: 0 0.5em;
   height: 2em;
   line-height: 2em;
@@ -41,13 +72,13 @@ a.goCenter {
   border-radius: 0px 0px 4px 4px;
   color: #fff;
 
-  @include screen('mobile') {
-    display: none;
-  }
+  // @include screen('mobile') {
+  //   display: none;
+  // }
 
+  // &:focus-visible,
   &:hover,
-  &:focus,
-  &:focus-visible {
+  &:focus {
     background: lighten($colorPrimary, 10);
     top: 0;
     opacity: 1;
@@ -74,8 +105,8 @@ a.goCenter {
     a {
       color: $colorPrimary;
 
-      &:hover,
-      &:focus-visible {
+      // &:focus-visible,
+      &:hover {
         color: $aHover;
       }
     }
@@ -119,7 +150,7 @@ a.goCenter {
     }
   }
 
-  .webSearch {
+  #webSearch {
     noscript {
       margin-left: 1%;
       margin-right: 1%;

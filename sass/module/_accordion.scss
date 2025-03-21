@@ -30,7 +30,10 @@
     line-height: 1.45em;
     transition: height 0.3s linear;
     overflow: hidden;
-    display: none;
+
+    &.hidden {
+      display: none;
+    }
 
     .content {
       padding: 10px;

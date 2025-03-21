@@ -1,4 +1,5 @@
 @charset "utf-8";
+
 // 文章標題
 h1.title,
 h2.title {
@@ -6,6 +7,7 @@ h2.title {
   line-height: 1.25em;
   margin: 0.5em 0;
 }
+
 // .tt{ color: #222; }
 .cp {
   .pic {
@@ -17,17 +19,20 @@ h2.title {
     background: #f1f1f1;
     overflow: hidden;
     padding: 0.5em 0.5em 0.2em;
+
     img {
       float: none;
       width: 100%;
       margin: 0;
       display: block;
     }
+
     span {
       text-align: center;
       display: block;
       font-size: 0.938em;
     }
+
     @include screen('mobile') {
       float: none;
       max-width: 100%;
@@ -37,26 +42,31 @@ h2.title {
       margin-bottom: 0.5em;
     }
   }
+
   table {
     background: #fff;
   }
+
   img {
     &.floatLeft {
       float: left;
       margin: 0px 1em 1em 0;
       width: auto;
       max-width: 55%;
+
       @include screen('mobile') {
         float: none;
         max-width: 100%;
         margin: 0px auto;
       }
     }
+
     &.floatRight {
       float: right;
       margin: 0px 0 1em 1em;
       width: auto;
       max-width: 55%;
+
       @include screen('mobile') {
         float: none;
         max-width: 100%;
@@ -64,9 +74,11 @@ h2.title {
       }
     }
   }
+
   a {
     @include aSetting;
   }
+
   .publishInfo {
     font-size: 0.875em;
     line-height: 1.5em;
@@ -82,9 +94,11 @@ h2.title {
     li {
       flex: 1 1 calc(100% / 3);
       margin-bottom: 0.5em;
+
       @include screen('tablet') {
         flex: 1 1 calc(100% / 2);
       }
+
       @include screen('mobile') {
         flex: 1 1 calc(100% / 1);
       }
@@ -97,23 +111,27 @@ h2.title {
   width: 100%;
   margin: 0 auto 2em;
   @include clearfix();
+
   h3 {
     font-size: 1.5em;
     padding: 12px 0px 15px 0px;
     margin: 0.5em 0px 0.2em;
     border-bottom: 1px solid $colorPrimary;
   }
+
   ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
   }
+
   li {
     display: flex;
     flex-wrap: wrap;
     position: relative;
     padding: 0.5em 0 0.5em 1.5em;
     border-bottom: solid 1px #eee;
+
     &:before {
       content: '·';
       font-size: 2em;
@@ -130,6 +148,7 @@ h2.title {
       line-height: 1.8em;
       margin: 0.2em 0.5em 0.2em 0;
       color: #222;
+
       ~ span {
         flex: 0 0 auto;
         margin: 0.2em;
@@ -137,6 +156,7 @@ h2.title {
         line-height: 1.5em;
         vertical-align: middle;
         color: #666;
+
         a {
           color: #fff;
           display: inline-block;
@@ -144,7 +164,9 @@ h2.title {
         }
       }
     }
+
     $fileType: doc, docx, odt, xls, xlsx, csv, ods, ppt, pptx, odp, zip, txt, mov, mp3, jpg, wmv, mp4, pdf, other;
+
     //notice 保留file_比較清楚知道是對應什麼
     @each $fileType in $fileType {
       span.file_#{$fileType} {
@@ -154,112 +176,133 @@ h2.title {
           padding: 0.2em 0.8em;
           border-radius: 3px;
 
-          &:hover,
-          &:focus-visible {
+          // &:focus-visible,
+          &:hover {
             color: #fff;
           }
         }
       }
     }
+
     span {
       display: flex;
       align-items: center;
+
       &.file_doc,
       &.file_docx,
       &.file_odt {
         a {
           background: #275cb7;
-          &:hover,
-          &:focus-visible {
+
+          // &:focus-visible,
+          &:hover {
             background: darken(#275cb7, 5%);
           }
         }
       }
+
       &.file_xls,
       &.file_xlsx,
       &.file_csv,
       &.file_ods {
         a {
           background: #387947;
-          &:hover,
-          &:focus-visible {
+
+          // &:focus-visible,
+          &:hover {
             background: darken(#387947, 5%);
           }
         }
       }
+
       &.file_ppt,
       &.file_pptx,
       &.file_odp,
       &.file_pdf {
         a {
           background: #c55a3b;
-          &:hover,
-          &:focus-visible {
+
+          // &:focus-visible,
+          &:hover {
             background: darken(#c55a3b, 5%);
           }
         }
       }
+
       &.file_pdf {
         a {
           background: #c00;
-          &:hover,
-          &:focus-visible {
+
+          // &:focus-visible,
+          &:hover {
             background: darken(#c00, 5%);
           }
         }
       }
+
       &.file_zip {
         a {
           background: #eb712e;
-          &:hover,
-          &:focus-visible {
+
+          // &:focus-visible,
+          &:hover {
             background: darken(#eb712e, 5%);
           }
         }
       }
+
       &.file_txt,
       &.file_other {
         a {
           background: #555;
-          &:hover,
-          &:focus-visible {
+
+          // &:focus-visible,
+          &:hover {
             background: darken(#555, 5%);
           }
         }
       }
+
       &.file_mov {
         a {
           background: #009999;
-          &:hover,
-          &:focus-visible {
+
+          // &:focus-visible,
+          &:hover {
             background: darken(#009999, 5%);
           }
         }
       }
+
       &.file_mp3,
       &.file_mp4 {
         a {
           background: #088ecc;
-          &:hover,
-          &:focus-visible {
+
+          // &:focus-visible,
+          &:hover {
             background: darken(#088ecc, 5%);
           }
         }
       }
+
       &.file_jpg {
         a {
           background: #6c29a4;
-          &:hover,
-          &:focus-visible {
+
+          // &:focus-visible,
+          &:hover {
             background: darken(#6c29a4, 5%);
           }
         }
       }
+
       &.file_wmv {
         a {
           background: #430a1f;
-          &:hover,
-          &:focus-visible {
+
+          // &:focus-visible,
+          &:hover {
             background: darken(#430a1f, 5%);
           }
         }
@@ -267,26 +310,31 @@ h2.title {
     }
   }
 }
+
 // 外部連結
 .webLink {
   margin: 1em 0;
+
   h3 {
     font-size: 1.5em;
     padding: 12px 0px 15px 0px;
     margin: 0.5em 0px 0.2em;
     border-bottom: 1px solid $colorPrimary;
   }
+
   ol,
   ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
   }
+
   li {
     position: relative;
     padding: 0.25em 0;
     border-bottom: solid 1px #eee;
     padding-left: 1.5em;
+
     &:before {
       content: '·';
       font-size: 2em;
@@ -298,6 +346,7 @@ h2.title {
       left: 0.1em;
       color: #666;
     }
+
     a {
       padding: 0.2em 0px;
       display: block;

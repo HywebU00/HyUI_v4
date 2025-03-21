@@ -21,32 +21,28 @@
 
 .webSearchBtn {
   position: relative;
+  text-indent: -9999px;
+  color: transparent;
+  width: 60px;
+  aspect-ratio: 1/1;
+  background: none;
+  padding: 0;
+  margin: 0;
+  border: none;
+  z-index: 90;
 
-  & > button {
-    text-indent: -9999px;
-    color: transparent;
-    width: 60px;
+  &::before {
+    content: '';
+    width: 100%;
+    height: auto;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
     aspect-ratio: 1/1;
-    position: relative;
-    background: none;
-    padding: 0;
-    margin: 0;
-    border: none;
-    z-index: 90;
-
-    &::before {
-      content: '';
-      width: 100%;
-      height: auto;
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      aspect-ratio: 1/1;
-      display: block;
-      mask: url('../images/icon/icon_search2.svg') center no-repeat;
-      mask-size: 40%;
-      background: #fff;
-    }
+    display: block;
+    mask: url('../images/icon/icon_search2.svg') center no-repeat;
+    mask-size: 40%;
+    background: #fff;
   }
 }
 
@@ -123,9 +119,9 @@
         padding: 0.2em 0.8em;
       }
 
-      &:focus-visible {
-        box-shadow: 0 0px 0px 2px $aFocus;
-      }
+      // &:focus-visible {
+      //   box-shadow: 0 0px 0px 2px $aFocus;
+      // }
     }
 
     button,
@@ -135,8 +131,8 @@
       padding: 0.2em 0.8em;
       margin: 0;
 
-      &:hover,
-      &:focus-visible {
+      // &:focus-visible,
+      &:hover {
         box-shadow: none;
       }
     }
@@ -154,8 +150,8 @@
       padding: 0.2em 0.8em;
       margin: 0;
 
-      &:hover,
-      &:focus-visible {
+      // &:focus-visible,
+      &:hover {
         box-shadow: none;
       }
     }
@@ -292,8 +288,8 @@
       flex: 1 1 20%;
       max-width: 25%;
 
-      &:hover,
-      &:focus-visible {
+      // &:focus-visible,
+      &:hover {
         box-shadow: none;
       }
     }
@@ -315,8 +311,8 @@
       color: #ddd;
       border: none;
 
-      &:hover,
-      &:focus-visible {
+      // &:focus-visible,
+      &:hover {
         color: lighten($aHover, 10);
       }
     }
@@ -343,8 +339,8 @@
       a {
         color: #fff;
 
-        &:hover,
-        &:focus-visible {
+        // &:focus-visible,
+        &:hover {
           color: lighten($aHover, 10);
         }
       }

@@ -2,14 +2,16 @@
   %no-bg {
     background: none;
   }
+
   /* -------------------------------不需要列印的區塊，請放置於這----//*/
   header,
   .fatFooter,
   footer,
-  .accessKey,
+  .accessKeyItem,
   .submenu {
     display: none;
   }
+
   /* -------------------------------各別顯示設定----//*/
   body {
     background: transparent;
@@ -19,28 +21,35 @@
     @extend %no-bg;
     -webkit-print-color-adjust: exact;
   }
+
   .container {
     margin: 0px auto;
     max-width: 100% !important;
     width: 100% !important;
     @include gutter(0);
   }
+
   .cp {
     @include gutter(0);
   }
+
   .innerPage {
     margin-top: 0 !important;
+
     & > .container {
       display: block !important;
+
       .centerBlock {
         overflow: hidden;
       }
+
       .leftBlock {
         float: left !important;
         width: 260px !important;
       }
     }
   }
+
   .main,
   .content {
     @include gutter(0);
@@ -52,18 +61,21 @@
     @include clearfix;
     @extend %no-bg;
     padding-top: 0px !important;
+
     img {
       &.floatLeft {
         float: right;
         max-width: 50%;
         margin: 0px 1em 1em 0;
       }
+
       &.floatRight {
         float: right;
         max-width: 50%;
         margin: 0px 0 1em 1em;
       }
     }
+
     a:link,
     a:visited,
     a {
@@ -74,28 +86,35 @@
       text-align: left;
       word-wrap: break-word;
     }
+
     p {
       a {
         word-wrap: break-word;
       }
+
       a[href^='http']:after {
         content: ' (' attr(href) ')';
         font-size: 90%;
       }
+
       a[href^='#']:after {
         display: none;
       }
     }
+
     abbr[title]:after {
       content: ' (' attr(title) ')';
     }
+
     table {
       background: #fff;
     }
+
     li {
       content: '» ';
     }
   }
+
   /* 檔案下載*/
   .fileDownload {
     a {
@@ -103,6 +122,7 @@
       clear: both !important;
       width: 100% !important;
     }
+
     .update,
     .fileView {
       float: none !important;
@@ -111,6 +131,7 @@
       margin-left: 3em;
     }
   }
+
   *,
   *:before,
   *:after,
@@ -124,6 +145,7 @@
     box-shadow: none !important;
     text-shadow: none !important;
   }
+
   thead {
     display: table-header-group;
     /* 表格即使分頁也會顯示表頭 */

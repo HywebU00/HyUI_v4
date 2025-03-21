@@ -56,8 +56,8 @@ $colorStyleConfig: (
     a.goCenter {
       background: map-get($value, colorPrimary);
 
-      &:hover,
-      &:focus-visible {
+      // &:focus-visible,
+      &:hover {
         background: lighten(map-get($value, colorPrimary), 10);
       }
     }
@@ -70,8 +70,8 @@ $colorStyleConfig: (
         a {
           color: map-get($value, colorPrimary);
 
-          &:hover,
-          &:focus-visible {
+          // &:focus-visible,
+          &:hover {
             color: map-get($value, aHover);
           }
         }
@@ -90,7 +90,7 @@ $colorStyleConfig: (
 
     .gsc-search-button-v2,
     .gsc-search-button-v2:hover,
-    .gsc-search-button-v2:focus {
+    .gsc-search-button-v2:focus-visible {
       background-color: map-get($value, colorPrimary) !important;
     }
 
@@ -115,8 +115,8 @@ $colorStyleConfig: (
       color: #fff;
       border-color: map-get($value, colorPrimary);
 
-      &:hover,
-      &:focus-visible {
+      // &:focus-visible,
+      &:hover {
         background: darken(map-get($value, colorPrimary), 10);
         border-color: map-get($value, colorPrimary);
       }
@@ -126,8 +126,8 @@ $colorStyleConfig: (
       color: darken(map-get($value, colorPrimary), 15);
       border-color: map-get($value, colorPrimary);
 
-      &:hover,
-      &:focus-visible {
+      // &:focus-visible,
+      &:hover {
         color: darken(map-get($value, colorPrimary), 30);
         background: lighten(map-get($value, colorPrimary), 5);
         border-color: lighten(map-get($value, colorPrimary), 5);
@@ -157,8 +157,8 @@ $colorStyleConfig: (
           a {
             color: #fff;
 
-            &:hover,
-            &:focus-visible {
+            // &:focus-visible,
+            &:hover {
               background: darken(map-get($value, aHover), 0);
               border-color: darken(map-get($value, aHover), 0);
             }
@@ -167,8 +167,6 @@ $colorStyleConfig: (
       }
     }
 
-    .functionPanel .share .shareButton:hover,
-    .functionPanel .share .shareButton:focus-visible {}
 
     //_language
     .language {
@@ -177,8 +175,8 @@ $colorStyleConfig: (
           a {
             color: #fff;
 
-            &:hover,
-            &:focus-visible {
+            // &:focus-visible,
+            &:hover {
               background: map-get($value, colorPrimary);
               border-inline: map-get($value, aHover) 2px solid;
             }
@@ -192,8 +190,8 @@ $colorStyleConfig: (
       .btnFatFooter {
         background: map-get($value, colorPrimary);
 
-        &:hover,
-        &:focus {
+        // &:focus-visible,
+        &:hover {
           background: darken(map-get($value, colorPrimary), 10);
         }
       }
@@ -208,8 +206,8 @@ $colorStyleConfig: (
       a {
         color: map-get($value, colorPrimary);
 
-        &:hover,
-        &:focus-visible {
+        // &:focus-visible,
+        &:hover {
           color: darken(map-get($value, colorPrimary), 10);
         }
       }
@@ -220,8 +218,8 @@ $colorStyleConfig: (
             color: #fff;
             background: map-get($value, colorPrimary);
 
-            &:hover,
-            &:focus-visible {
+            // &:focus-visible,
+            &:hover {
               background: darken(map-get($value, colorPrimary), 10);
             }
           }
@@ -235,15 +233,16 @@ $colorStyleConfig: (
         }
       }
 
-      .footerIcon {
-        a {
-          &:focus-visible {
-            &:after {
-              box-shadow: 0px 0px 0px 1px map-get($value, aHover) inset;
-            }
-          }
-        }
-      }
+      // .footerIcon {
+      //   a {
+
+      //     &:focus-visible{
+      //       &:after {
+      //         box-shadow: 0px 0px 0px 1px map-get($value, aHover) inset;
+      //       }
+      //     }
+      //   }
+      // }
     }
 
     //_header
@@ -301,9 +300,9 @@ $colorStyleConfig: (
           & > a {
             color: $colorWord;
 
-            &:focus-visible {
-              box-shadow: 0 0 0 2px inset map-get($value, aHover);
-            }
+            // &:focus-visible {
+            //   box-shadow: 0 0 0 2px inset map-get($value, aHover);
+            // }
           }
 
           &.active,
@@ -328,8 +327,8 @@ $colorStyleConfig: (
               a {
                 color: #fff;
 
-                &:hover,
-                &:focus-visible {
+                // &:focus-visible,
+                &:hover {
                   color: #fff;
                   background: map-get($value, aHover);
                 }
@@ -339,8 +338,8 @@ $colorStyleConfig: (
             li.hasChild {
               & > a {
 
-                &:hover,
-                &:focus-visible {
+                // &:focus-visible,
+                &:hover {
                   background: map-get($value, colorPrimary);
                 }
               }
@@ -367,8 +366,8 @@ $colorStyleConfig: (
         li {
           a {
 
-            &:hover,
-            &:focus-visible {
+            // &:focus-visible,
+            &:hover {
               color: #fff;
               background: map-get($value, colorPrimary);
               border-color: map-get($value, colorPrimary);
@@ -398,9 +397,9 @@ $colorStyleConfig: (
 
       .tabItems {
         button {
-          &:focus-visible {
-            box-shadow: 0 0px 0px 2px map-get($value, aFocus) inset;
-          }
+          // &:focus-visible {
+          //   box-shadow: 0 0px 0px 2px map-get($value, aFocus) inset;
+          // }
 
           &.active {
             background: map-get($value, colorPrimary);
@@ -409,23 +408,23 @@ $colorStyleConfig: (
       }
     }
 
-    .tabContent {
-      a:focus {
-        box-shadow: 0 0px 0px 2px map-get($value, aFocus) inset;
+    // .tabContent {
+    //   a:focus-visible {
+    //     box-shadow: 0 0px 0px 2px map-get($value, aFocus) inset;
 
-        @include screen('mobile') {
-          box-shadow: none;
-        }
-      }
-    }
+    //     @include screen('mobile') {
+    //       box-shadow: none;
+    //     }
+    //   }
+    // }
 
     //_cp
     .cp {
       a {
         color: map-get($value, colorPrimary);
 
-        &:hover,
-        &:focus-visible {
+        // &:focus-visible,
+        &:hover {
           color: darken(map-get($value, colorPrimary), 5);
         }
       }
@@ -457,19 +456,19 @@ $colorStyleConfig: (
     }
 
     //_leftblock
-    .leftBlock {
-      .banner {
-        .item {
-          a {
-            &:focus-visible {
-              &:after {
-                box-shadow: 0px 0px 0px 2px lighten(map-get($value, colorPrimary), 5) inset;
-              }
-            }
-          }
-        }
-      }
-    }
+    // .leftBlock {
+    //   .banner {
+    //     .item {
+    //       a {
+    //         &:focus-visible {
+    //           &:after {
+    //             box-shadow: 0px 0px 0px 2px lighten(map-get($value, colorPrimary), 5) inset;
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
 
     //_mp
     a.more {
@@ -481,15 +480,15 @@ $colorStyleConfig: (
       }
     }
 
-    .adSlider {
-      .imgContainer {
-        &:focus-visible {
-          &:before {
-            box-shadow: 0 0px 0px 3px map-get($value, colorPrimary) inset;
-          }
-        }
-      }
-    }
+    // .adSlider {
+    //   .imgContainer {
+    //     &:focus-visible {
+    //       &:before {
+    //         box-shadow: 0 0px 0px 3px map-get($value, colorPrimary) inset;
+    //       }
+    //     }
+    //   }
+    // }
 
     //_sitemap
     .cascading {
@@ -497,8 +496,8 @@ $colorStyleConfig: (
         a {
           border-color: map-get($value, colorPrimary);
 
-          &:hover,
-          &:focus-visible {
+          // &:focus-visible,
+          &:hover {
             color: map-get($value, colorPrimary);
           }
         }
@@ -510,8 +509,8 @@ $colorStyleConfig: (
       li {
         a {
 
-          &:hover,
-          &:focus-visible {
+          // &:focus-visible,
+          &:hover {
             border-color: map-get($value, aHover);
             color: map-get($value, aHover);
           }
@@ -520,26 +519,25 @@ $colorStyleConfig: (
     }
 
     //_form
-    button:focus-visible,
-    input[type='text']:focus-visible,
-    input[type='reset']:focus-visible,
-    input[type='file']:focus-visible,
-    input[type='tel']:focus-visible,
-    input[type='email']:focus-visible,
-    input[type='password']:focus-visible,
-    textarea:focus-visible,
-    select:focus-visible {
-      border-color: lighten(map-get($value, colorPrimary), 5);
-      box-shadow: 0px 0px 0px 2px lighten(map-get($value, colorPrimary), 5);
-    }
-
+    // button:focus-visible,
+    // input[type='text']:focus-visible,
+    // input[type='reset']:focus-visible,
+    // input[type='file']:focus-visible,
+    // input[type='tel']:focus-visible,
+    // input[type='email']:focus-visible,
+    // input[type='password']:focus-visible,
+    // textarea:focus-visible,
+    // select:focus-visible {
+    //   border-color: lighten(map-get($value, colorPrimary), 5);
+    //   box-shadow: 0px 0px 0px 2px lighten(map-get($value, colorPrimary), 5);
+    // }
+    // input[type='checkbox']:focus-visible,
     input[type='checkbox']:checked,
-    input[type='checkbox']:focus,
-    input[type='radio']:checked,
-    input[type='radio']:focus {
+    // input[type='radio']:focus-visible,
+    input[type='radio']:checked {
       border-color: map-get($value, colorPrimary);
       background-color: map-get($value, colorPrimary);
-      outline: none;
+      // outline: none;
     }
 
     input[type='radio']:checked {

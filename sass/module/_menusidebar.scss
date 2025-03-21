@@ -1,9 +1,12 @@
 // 行動版選單sidebar
 .mobileSidebar {
+  width: 300px;
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
+  background: $colorSidebarBg;
   z-index: 9999;
   // display: none;
   overflow-x: hidden;
@@ -17,22 +20,8 @@
     display: none;
   }
 
-  .mobileArea {
-    width: 300px;
-    padding: 3em 0;
-    // position: absolute;
-    // top: 0;
-    // left: 0;
-    height: 100%;
-    background: $colorSidebarBg;
-    overflow: hidden;
-    overflow-y: auto;
-    z-index: 9999;
-    -webkit-overflow-scrolling: touch;
-    box-sizing: border-box;
-    transition: 0.3s $cubic;
-
-    &.open {
+  &.open {
+    .menuContent {
       .sideMainMenu {
         & > ul {
           & > li {
@@ -48,10 +37,26 @@
         }
       }
     }
+  }
+
+  .menuContent {
+    width: 90%;
+    margin: 0 auto;
+    padding: 3em 0;
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    z-index: 9999;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+    transition: 0.3s $cubic;
 
     .sideMainMenu {
-      width: 90%;
-      margin: 0 auto 1em;
+      width: 100%;
+      margin: 0 0 1em;
 
       a {
         display: block;
@@ -164,56 +169,56 @@
     position: relative;
     margin: 1em auto;
     text-align: left;
-    width: 90%;
+    width: 100%;
 
-    ul {
-      float: none;
-      overflow: hidden;
-      padding: 0;
-      list-style: none;
-      display: flex;
-      flex-flow: row wrap;
-
-      li {
-        flex-grow: 1;
-        flex-shrink: 1;
-        flex-basis: 100%;
-        margin: 0;
+    .navList {
+      ul {
+        float: none;
+        overflow: hidden;
         padding: 0;
+        list-style: none;
 
-        &:nth-child(odd):last-child {
-          width: 100%;
-        }
+        li {
+          flex-grow: 1;
+          flex-shrink: 1;
+          flex-basis: 100%;
+          margin: 0;
+          padding: 0;
 
-        a {
-          display: block;
-          line-height: 1.5em;
-          padding: 0.25em 0.5em 0.25em 1.1em;
-          font-size: 0.875em;
-          color: #fff;
-          font-weight: normal;
-          text-decoration: none;
-          position: relative;
-
-          &:before {
-            position: absolute;
-            top: 0.75em;
-            left: 0;
-            content: '';
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 2px 0 2px 4px;
-            border-color: transparent transparent transparent #ffffff;
-            transition: 0.3s $cubic;
-            opacity: 0;
+          &:nth-child(odd):last-child {
+            width: 100%;
           }
 
-          &:hover,
-          &:focus-visible {
+          a {
+            display: block;
+            line-height: 1.5em;
+            padding: 0.25em 0.5em 0.25em 1.1em;
+            font-size: 0.875em;
+            color: #fff;
+            font-weight: normal;
+            text-decoration: none;
+            position: relative;
+
             &:before {
-              left: 0.5em;
-              opacity: 1;
+              position: absolute;
+              top: 0.75em;
+              left: 0;
+              content: '';
+              width: 0;
+              height: 0;
+              border-style: solid;
+              border-width: 2px 0 2px 4px;
+              border-color: transparent transparent transparent #ffffff;
+              transition: 0.3s $cubic;
+              opacity: 0;
+            }
+
+            // &:focus-visible,
+            &:hover {
+              &:before {
+                left: 0.5em;
+                opacity: 1;
+              }
             }
           }
         }
@@ -227,7 +232,7 @@
 
       a,
       button {
-        padding: 0.6em 1em;
+        padding: 0.6em;
         background: rgba(0, 0, 0, 0.4);
 
         &:after {
@@ -284,9 +289,13 @@
     background: none;
     border: none;
 
-    &:hover,
-    &:focus-visible {
+    &:hover {
       box-shadow: none;
+    }
+
+    // &:focus-visible,
+    &:hover {
+      outline: red 2px solid;
     }
 
     &:before {
@@ -319,4 +328,8 @@
   transition: all 0.3s ease;
   z-index: 90;
   cursor: pointer;
+
+  @include screen('tabletMin') {
+    display: none !important;
+  }
 }

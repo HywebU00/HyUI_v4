@@ -16,15 +16,16 @@
 
   <body>
     <!-- 直接跳主內容區 -->
-    <a class="goCenter" href="#center" tabindex="1">按Enter到主內容區</a>
+    <a class="goCenter" href="#aC">按Enter到主內容區</a>
+    <button class="sidebarCtrlBtn" type="button" aria-expanded="false" aria-controls="mobileArea">側欄選單</button>
     <!-- wrapper Start -->
     <div class="wrapper">
       <!-- header Start -->
       <header class="header">
         <div class="container">
-          <a class="accessKey" href="#aU" id="aU" accesskey="U" title="網站標題" tabindex="2">:::</a>
+          <a class="accessKeyItem" href="#aU" id="aU" accesskey="U" aria-label="網站標題">:::</a>
           <!-- navigation Start -->
-          <nav class="navigation" role="navigation" aria-label="Site">
+          <nav class="navigation" role="navigation" aria-label="頁首功能列">
             <!-- 新增div navList -->
             <div class="navList">
               <ul>
@@ -39,15 +40,15 @@
               <span class="font-size-label">字型大小：</span>
               <!-- 英文用<span>font-size：</span> -->
               <ul aria-labelledby="font-size-label">
-                <li><button role="button" href="#" class="small">小</button></li>
-                <li><button role="button" href="#" class="medium">中</button></li>
-                <li><button role="button" href="#" class="large">大</button></li>
+                <li><button type="button" class="smallSize">小</button></li>
+                <li><button type="button" class="mediumSize">中</button></li>
+                <li><button type="button" class="largeSize">大</button></li>
               </ul>
             </div>
             <!-- language -->
             <div class="language">
-              <button type="button">語言選擇</button>
-              <ul>
+              <button type="button" aria-expanded="false" aria-controls="languageList">語言選擇</button>
+              <ul id="languageList">
                 <li><a href="#">繁體中文</a></li>
                 <li><a href="#">简体中文</a></li>
                 <li><a href="#">ENGLISH</a></li>
@@ -59,11 +60,12 @@
             <a href="index.html"><img src="images/logo.png" alt="網站標題" /></a>
           </h1>
           <!-- Search Start -->
+          <button class="mobileSearchBtn" type="button" aria-label="搜尋按鈕"></button>
           <div class="webSearch" role="search">
             <div class="content">
               <div class="formGrp">
                 <label for="mustSameAsId">搜尋</label>
-                <input name="username" id="mustSameAsId" type="text" placeholder="請輸入文字" accesskey="S" title="請輸入文字" aria-label="搜尋網站內容" />
+                <input name="username" type="text" placeholder="請輸入文字" accesskey="S" aria-label="搜尋網站內容" />
                 <button type="button" class="btn btnSearch">查詢</button>
               </div>
               <div class="btnGrp">
@@ -85,7 +87,7 @@
             <a href="#">網站導覽</a>
           </noscript>
           <!-- menu Start -->
-          <nav class="menu mainMenu" role="navigation" aria-label="About page">
+          <nav class="menu mainMenu" role="navigation" aria-label="主選單">
             <ul>
               <li>
                 <a href="#">第一層選單</a>
@@ -159,7 +161,7 @@
       <!-- main Start -->
       <main id="center" class="main innerPage">
         <!-- 內頁新增一個classname-->
-        <a class="accessKey" href="#aC" id="ac" accesskey="C" title="主要內容區">:::</a>
+        <a class="accessKeyItem" href="#aC" id="ac" accesskey="C" aria-label="主要內容區">:::</a>
         <div class="container">
           <!-- 如果不要sticky效果，就移除stickySidebar classname -->
           <aside class="leftBlock stickySidebar">
@@ -210,7 +212,7 @@
           </aside>
           <!-- 主要內容區 -->
           <div class="centerBlock">
-            <nav aria-label="Breadcrumb" class="breadcrumb">
+            <nav aria-label="麵包屑" class="breadcrumb">
               <ul>
                 <li><a href="#">首頁</a></li>
                 <li><a href="#">節點</a></li>
@@ -240,7 +242,7 @@
                     <a href="#"><img src="images/basic/icon_facebook.svg" alt="facebook" /></a>
                   </li>
                   <li>
-                    <a href="#"><img src="images/basic/icon_twitter.svg" alt="twitter" /></a>
+                    <a href="#"><img src="images/basic/icon_x.svg" alt="twitter" /></a>
                   </li>
                   <li>
                     <a href="#"><img src="images/basic/icon_line.svg" alt="line" /></a>
@@ -297,9 +299,9 @@
                   </caption>
                   <thead>
                     <tr>
-                      <th>編號</th>
-                      <th>標題</th>
-                      <th>日期</th>
+                      <th scope="col">編號</th>
+                      <th scope="col">標題</th>
+                      <th scope="col">日期</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -386,11 +388,11 @@
                   </caption>
                   <thead>
                     <tr>
-                      <th>編號</th>
-                      <th>姓名</th>
-                      <th>性別</th>
-                      <th>年齡</th>
-                      <th>居住地</th>
+                      <th scope="col">編號</th>
+                      <th scope="col">姓名</th>
+                      <th scope="col">性別</th>
+                      <th scope="col">年齡</th>
+                      <th scope="col">居住地</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -467,8 +469,8 @@
       <!-- fatFooter Start -->
       <section class="fatFooter">
         <div class="container">
-          <button type="button" name="展開選單/OPEN" aria-label="導覽選單展開/收合" class="btn btnFatFooter">收合</button>
-          <nav>
+          <button type="button" aria-expanded="true" class="btn btnFatFooter" aria-label="開關頁尾網站導覽"></button>
+          <nav aria-label="頁尾網站導覽">
             <ul>
               <li>
                 <a href="#">關於本局</a>
@@ -541,7 +543,7 @@
       <!-- footer Start-->
       <footer>
         <div class="container">
-          <a class="accessKey" href="#aZ" id="aZ" accesskey="Z" title="頁尾區">:::</a>
+          <a class="accessKeyItem" href="#aZ" id="aZ" accesskey="Z" aria-label="頁尾區">:::</a>
           <div class="footerLogo">
             <img src="images/logo.png" alt="" class="imgResponsive" />
           </div>
