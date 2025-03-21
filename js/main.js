@@ -15,6 +15,7 @@ function jsSlideUp(element, time) {
   let display = ele.display;
   let speed = time || 400;
   element.style.display = display;
+
   if (display !== 'none') {
     let totalHeight = element.offsetHeight;
     element.style.overflow = 'hidden';
@@ -754,6 +755,8 @@ function webSearch() {
 
   const mobileSearchBtn = document.querySelector('.mobileSearchBtn');
 
+  let checkDisplay = window.getComputedStyle(webSearch).display;
+
   //mobile按鈕無障礙
   mobileSearchBtn.setAttribute('aria-expanded', 'false');
   mobileSearchBtn.setAttribute('id', `${id}_m`);
@@ -831,6 +834,7 @@ function webSearch() {
     }
     //Escape
     else if (e.code === 'Escape') {
+      if (checkDisplay !== 'none') return;
       mobileSearchBtn?.setAttribute('aria-expanded', 'false');
       webSearchBtn?.setAttribute('aria-expanded', 'false');
       webSearch.setAttribute('aria-hidden', 'true');
@@ -840,6 +844,7 @@ function webSearch() {
   });
 
   window.addEventListener('resize', () => {
+    checkDisplay = window.getComputedStyle(webSearch).display;
     if (window.innerWidth < windowWidthSmall) {
       webSearchBtn?.setAttribute('aria-expanded', 'false');
       mobileSearchBtn?.setAttribute('aria-expanded', 'false');
@@ -1108,7 +1113,6 @@ function tabFunction(obj) {
 
       tabSet.addEventListener('click', (e) => {
         if (!e.target.classList.contains('mobileTabBtn')) return;
-        console.log('a');
         let index = [...mobileTabBtn].indexOf(e.target) % mobileTabBtn.length;
         mobileTabFn(mobileTabBtn[index], index, mobileTabBtn);
       });
