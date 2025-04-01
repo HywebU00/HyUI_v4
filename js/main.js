@@ -277,14 +277,14 @@ function toggleSlider(elem, con) {
     let targetSelectCon = item.parentNode.querySelector(con);
     targetSelectCon.setAttribute('id', `${id}_con`);
     targetSelectCon.setAttribute('aria-labelledby', id);
-    targetSelectCon.setAttribute('aria-hidden', 'true');
+    // targetSelectCon.setAttribute('aria-hidden', 'true');
     if (item) {
       item.addEventListener('click', (e) => {
         let expanded = item.getAttribute('aria-expanded');
         item.classList.toggle('active');
         expanded === 'true' ? item.setAttribute('aria-expanded', 'false') : item.setAttribute('aria-expanded', 'true');
         jsSlideToggle(targetSelectCon);
-        expanded === 'true' ? targetSelectCon.setAttribute('aria-hidden', 'true') : targetSelectCon.setAttribute('aria-hidden', 'false');
+        // expanded === 'true' ? targetSelectCon.setAttribute('aria-hidden', 'true') : targetSelectCon.removeAttribute('aria-hidden');
       });
     }
   });
@@ -304,7 +304,7 @@ function toggleSlider(elem, con) {
         //Escape
         else if (e.code === 'Escape') {
           item.setAttribute('aria-expanded', 'false');
-          targetCon.setAttribute('aria-hidden', 'true');
+          // targetCon.setAttribute('aria-hidden', 'true');
           jsSlideUp(targetCon);
         }
       }
@@ -318,7 +318,7 @@ function toggleSlider(elem, con) {
         const targetSelectCon = item.parentNode.querySelector(con);
         if (e.target !== item) {
           item.setAttribute('aria-expanded', 'false');
-          targetCon.setAttribute('aria-hidden', 'true');
+          // targetCon.setAttribute('aria-hidden', 'true');
           jsSlideUp(targetSelectCon);
         }
       }
@@ -329,7 +329,7 @@ function toggleSlider(elem, con) {
     targetSelect.forEach((item, i) => {
       const targetCon = item.parentNode.querySelector(con);
       item.setAttribute('aria-expanded', 'false');
-      targetCon.setAttribute('aria-hidden', 'true');
+      // targetCon.setAttribute('aria-hidden', 'true');
       jsSlideUp(targetCon);
     });
   });
@@ -447,7 +447,7 @@ function mainMenuSetup() {
   const sidebar = document.createElement('nav');
   sidebar.className = 'mobileSidebar';
   sidebar.setAttribute('id', 'mobileArea');
-  sidebar.setAttribute('aria-hidden', 'true');
+  // sidebar.setAttribute('aria-hidden', 'true');
   sidebar.style = 'opacity:0;';
 
   //創建黑色遮罩
@@ -471,7 +471,7 @@ function mainMenuSetup() {
     childA.getAttribute('href') === '#' ? childA.setAttribute('role', 'button') : null;
     i.setAttribute('id', `${id}_ul`);
     i.setAttribute('aria-labelledby', `${id}`);
-    i.setAttribute('aria-hidden', 'true');
+    // i.setAttribute('aria-hidden', 'true');
   });
 
   // menu初始化 新增側欄選單按鈕
@@ -535,7 +535,7 @@ function mainMenuSetup() {
     const childA = e.target.querySelector('a');
     const childUl = e.target.querySelector('ul');
     childA.setAttribute('aria-expanded', 'true');
-    childUl.setAttribute('aria-hidden', 'false');
+    // childUl.removeAttribute('aria-hidden');
 
     const nextUl = e.target.querySelectorAll('ul');
     const hasChildLi = jsParents(nextUl[nextUl.length - 1], 'li');
@@ -554,8 +554,8 @@ function mainMenuSetup() {
     const childLi = e.target.querySelectorAll('li');
     const childA = e.target.querySelectorAll('a');
     const childUl = e.target.querySelectorAll('ul');
-    childA.forEach((i) => i.setAttribute('aria-expanded', 'false'));
-    childUl.forEach((i) => i.setAttribute('aria-hidden', 'true'));
+    // childA.forEach((i) => i.setAttribute('aria-expanded', 'false'));
+    // childUl.forEach((i) => i.setAttribute('aria-hidden', 'true'));
 
     e.target.classList.remove('active');
     childLi.forEach((i) => i.classList.remove('active'));
@@ -587,7 +587,7 @@ function mainMenuSetup() {
       i.parentNode.classList.add('active');
       const childUl = i.parentNode.querySelector('ul');
       i.setAttribute('aria-expanded', 'true');
-      childUl.setAttribute('aria-hidden', 'false');
+      // childUl.removeAttribute('aria-hidden');
 
       const nextUl = i.parentNode.querySelectorAll('ul');
       const hasChildLi = jsParents(nextUl[nextUl.length - 1], 'li');
@@ -633,7 +633,7 @@ function mainMenuSetup() {
       mobileAreaAllTarget[0].focus();
       sidebar.style.transform = `translateX(0px)`;
       mobileArea.classList.add('open');
-      mobileArea.setAttribute('aria-hidden', 'false');
+      // mobileArea.removeAttribute('aria-hidden');
       sidebarClose.setAttribute('aria-expanded', 'true');
       sidebarClose.focus();
     }, 0);
@@ -655,7 +655,7 @@ function mainMenuSetup() {
     setTimeout(() => {
       sidebar.removeAttribute('style');
       mobileArea.classList.remove('open');
-      mobileArea.setAttribute('aria-hidden', 'true');
+      // mobileArea.setAttribute('aria-hidden', 'true');
       sidebarClose.setAttribute('aria-expanded', 'false');
     }, 300);
 
@@ -671,10 +671,10 @@ function mainMenuSetup() {
     setTimeout(() => {
       if (window.getComputedStyle(content).display === 'none') {
         item.setAttribute('aria-expanded', 'false');
-        content.setAttribute('aria-hidden', 'true');
+        // content.setAttribute('aria-hidden', 'true');
       } else {
         item.setAttribute('aria-expanded', 'true');
-        content.setAttribute('aria-hidden', 'false');
+        // content.removeAttribute('aria-hidden');
       }
     }, 300);
 
@@ -765,7 +765,7 @@ function webSearch() {
 
   webSearch.setAttribute('id', `${id}_con`);
   webSearch.setAttribute('aria-labelledby', `${id}_m ${id}`);
-  webSearch.setAttribute('aria-hidden', 'false');
+  // webSearch.removeAttribute('aria-hidden');
 
   //typeB按鈕無障礙
   if (webSearchB !== null) {
@@ -774,19 +774,19 @@ function webSearch() {
     webSearchBtn.setAttribute('aria-controls', `${id}_con`);
     webSearchBtn.setAttribute('aria-haspopup', 'true');
     webSearchBtn.addEventListener('click', (e) => toggleContent(webSearchBtn));
-    webSearch.setAttribute('aria-hidden', 'true');
+    // webSearch.setAttribute('aria-hidden', 'true');
   }
   mobileSearchBtn.addEventListener('click', (e) => toggleContent(mobileSearchBtn));
 
   function toggleContent(elem) {
     if (elem.getAttribute('aria-expanded') === 'true') {
       elem.setAttribute('aria-expanded', 'false');
-      webSearch.setAttribute('aria-hidden', 'true');
+      // webSearch.setAttribute('aria-hidden', 'true');
       jsSlideUp(webSearch);
       elem.focus();
     } else {
       elem.setAttribute('aria-expanded', 'true');
-      webSearch.setAttribute('aria-hidden', 'false');
+      // webSearch.removeAttribute('aria-hidden');
       jsSlideDown(webSearch);
       webSearchAllTarget[0].focus();
     }
@@ -837,9 +837,15 @@ function webSearch() {
       if (checkDisplay !== 'none') return;
       mobileSearchBtn?.setAttribute('aria-expanded', 'false');
       webSearchBtn?.setAttribute('aria-expanded', 'false');
-      webSearch.setAttribute('aria-hidden', 'true');
+      // webSearch.setAttribute('aria-hidden', 'true');
       jsSlideUp(webSearch);
-      windowWidth >= windowWidthSmall ? webSearchBtn?.focus() : mobileSearchBtn?.focus();
+      if (windowWidth >= windowWidthSmall) {
+        webSearchBtn?.getAttribute('aria-expanded') === 'false' ? webSearchBtn.focus() : null;
+      } else {
+        console.log(mobileSearchBtn?.getAttribute('aria-expanded') === 'false');
+
+        mobileSearchBtn?.getAttribute('aria-expanded') === 'false' ? mobileSearchBtn.focus() : null;
+      }
     }
   });
 
@@ -848,10 +854,10 @@ function webSearch() {
     if (window.innerWidth < windowWidthSmall) {
       webSearchBtn?.setAttribute('aria-expanded', 'false');
       mobileSearchBtn?.setAttribute('aria-expanded', 'false');
-      webSearch.setAttribute('aria-hidden', 'true');
+      // webSearch.setAttribute('aria-hidden', 'true');
       jsSlideUp(webSearch);
     } else {
-      webSearch.setAttribute('aria-hidden', 'false');
+      // webSearch.removeAttribute('aria-hidden');
       webSearch.removeAttribute('style');
     }
   });
@@ -944,7 +950,7 @@ function fatFooter(openCheck = true) {
     _navUl.forEach((item, i) => {
       idArray.push(`fatFooter${i}`);
       item.setAttribute('id', `fatFooter${i}`);
-      item.setAttribute('aria-hidden', !checkHidden);
+      // item.setAttribute('aria-hidden', !checkHidden);
     });
 
     el.setAttribute('aria-controls', idArray.join(' '));
@@ -971,12 +977,12 @@ function fatFooter(openCheck = true) {
     _navUl.forEach((i) => {
       if (i.offsetHeight !== 0) {
         el.setAttribute('aria-expanded', 'false');
-        i.setAttribute('aria-hidden', !checkHidden);
+        // i.setAttribute('aria-hidden', !checkHidden);
         i.style.height = '0px';
         // el.innerHTML = '展開';
       } else {
         el.setAttribute('aria-expanded', 'true');
-        i.setAttribute('aria-hidden', !checkHidden);
+        // i.setAttribute('aria-hidden', !checkHidden);
         i.style.height = `${i.dataset.itemHeight}px`;
         // el.innerHTML = '收合';
       }
@@ -1073,13 +1079,13 @@ function tabFunction(obj) {
 
     //內容增加active
     tabContent[targetIndex].classList.remove('hidden');
-    tabContent[targetIndex].setAttribute('aria-hidden', 'false');
+    // tabContent[targetIndex].removeAttribute('aria-hidden');
 
     //移除其他內容的active
     const siblingsPanel = [...tabContent].filter((value) => value !== tabContent[targetIndex]);
     siblingsPanel.forEach((value) => {
       value.classList.add('hidden');
-      value.setAttribute('aria-hidden', 'true');
+      // value.setAttribute('aria-hidden', 'true');
     });
   }
 
@@ -1124,7 +1130,7 @@ function tabFunction(obj) {
     tabSet.dataset.nowIndex = i;
     let check = btn.getAttribute('aria-expanded') === 'true' ? false : true;
     btn.setAttribute('aria-expanded', check);
-    tabContentIn[i].setAttribute('aria-hidden', !check);
+    // tabContentIn[i].setAttribute('aria-hidden', !check);
     btn.classList.toggle('active');
 
     if (!autoClose) return;
@@ -1136,18 +1142,18 @@ function tabFunction(obj) {
     const siblingsPanel = [...tabContentIn].filter((value) => value !== tabContentIn[i]);
     siblingsPanel.forEach((value) => {
       jsSlideUp(value);
-      value.setAttribute('aria-hidden', 'true');
+      // value.setAttribute('aria-hidden', 'true');
     });
   }
 
   function removeAttribute(item) {
-    item.removeAttribute('aria-hidden');
+    // item.removeAttribute('aria-hidden');
     item.removeAttribute('role');
     item.removeAttribute('aria-labelledby');
     item.removeAttribute('id');
   }
   function setAttribute(item, role, id, labelledby) {
-    item.setAttribute('aria-hidden', 'false');
+    // item.removeAttribute('aria-hidden');
     item.setAttribute('role', role);
     item.setAttribute('id', id);
     item.setAttribute('aria-labelledby', labelledby);
@@ -1182,7 +1188,7 @@ function tabFunction(obj) {
     if (window.innerWidth < windowWidth && modeSwitch) {
       //隱藏上方選單
       tabItem.classList.add('hidden');
-      tabItem.setAttribute('aria-hidden', 'true');
+      // tabItem.setAttribute('aria-hidden', 'true');
 
       tabBtns.forEach((tab, i) => {
         const id = tabpanelBtn[i].getAttribute('id');
@@ -1195,7 +1201,7 @@ function tabFunction(obj) {
 
         //顯示手風琴標籤按鈕
         tabpanelBtn[i].classList.remove('hidden');
-        tabpanelBtn[i].setAttribute('aria-hidden', 'false');
+        // tabpanelBtn[i].removeAttribute('aria-hidden');
         //新增手風琴內容標籤
         setAttribute(tabContentIn[i], 'region', controls, id);
         jsSlideDown(tabContentIn[i]);
@@ -1204,7 +1210,7 @@ function tabFunction(obj) {
       if (openContent) {
         tabContentIn.forEach((value, i) => {
           value.style.display = 'block';
-          value.setAttribute('aria-hidden', 'false');
+          // value.removeAttribute('aria-hidden');
           tabpanelBtn[i].classList.add('active');
         });
       } else {
@@ -1212,7 +1218,7 @@ function tabFunction(obj) {
         const siblingsPanel = [...tabContentIn].filter((value) => value !== tabContentIn[nowOpen]);
         siblingsPanel.forEach((value) => {
           value.style.display = 'none';
-          value.setAttribute('aria-hidden', 'true');
+          // value.setAttribute('aria-hidden', 'true');
         });
       }
       //展開目前手風琴內容
@@ -1221,7 +1227,7 @@ function tabFunction(obj) {
     } else if (window.innerWidth >= windowWidth && modeSwitch) {
       //增加上方選單
       tabItem.classList.remove('hidden');
-      tabItem.removeAttribute('aria-hidden');
+      // tabItem.removeAttribute('aria-hidden');
       tabItem.setAttribute('role', 'tablist');
 
       tabBtns.forEach((tab, i) => {
@@ -1236,7 +1242,7 @@ function tabFunction(obj) {
 
         //隱藏Tab標籤按鈕
         tabpanelBtn[i].classList.add('hidden');
-        tabpanelBtn[i].setAttribute('aria-hidden', 'true');
+        // tabpanelBtn[i].setAttribute('aria-hidden', 'true');
         //新增Tab內容標籤
         setAttribute(tabContent[i], 'tabpanel', controls, id);
       });
@@ -1249,7 +1255,7 @@ function tabFunction(obj) {
       const siblingsPanel = [...tabContent].filter((value) => value !== tabContent[nowOpen]);
       siblingsPanel.forEach((value) => {
         value.classList.add('hidden');
-        value.setAttribute('aria-hidden', 'true');
+        // value.setAttribute('aria-hidden', 'true');
       });
     }
   }
@@ -1814,7 +1820,7 @@ function accordionFunction(obj) {
       //content
       accordionCons[i].setAttribute('id', controls);
       accordionCons[i].setAttribute('aria-labelledby', id);
-      accordionCons[i].setAttribute('aria-hidden', 'true');
+      // accordionCons[i].setAttribute('aria-hidden', 'true');
       accordionCons[i].setAttribute('role', 'region');
 
       if (openContent) {
@@ -1824,7 +1830,7 @@ function accordionFunction(obj) {
         accordionState.textContent = infoClose;
       } else if (!openContent) {
         accordion.setAttribute('aria-expanded', 'false');
-        accordionCons[i].setAttribute('aria-hidden', 'true');
+        // accordionCons[i].setAttribute('aria-hidden', 'true');
         accordionCons[i].style.display = 'none';
       }
     });
@@ -1833,7 +1839,7 @@ function accordionFunction(obj) {
       accordionBtns[openIndex].querySelector('.accordionState').textContent = infoOpen;
       accordionBtns[openIndex].parentElement.classList.add('active');
       accordionBtns[openIndex].setAttribute('aria-expanded', 'true');
-      accordionCons[openIndex].setAttribute('aria-hidden', 'false');
+      // accordionCons[openIndex].removeAttribute('aria-hidden');
       jsSlideDown(accordionCons[openIndex]);
     }
   }

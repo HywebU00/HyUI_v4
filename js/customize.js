@@ -109,7 +109,7 @@ window.addEventListener('load', () => {
       init: function (swiper) {
         const controlBox = document.querySelector('.mpSlider .swiperControlBox');
 
-        controlBox.addEventListener('click', (e) => {
+        controlBox?.addEventListener('click', (e) => {
           if (e.target.classList.contains('stop')) {
             swiper.autoplay.stop();
             e.target.classList.add('active');
