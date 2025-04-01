@@ -306,6 +306,7 @@ function toggleSlider(elem, con) {
           item.setAttribute('aria-expanded', 'false');
           // targetCon.setAttribute('aria-hidden', 'true');
           jsSlideUp(targetCon);
+          item.focus();
         }
       }
     });
@@ -835,17 +836,16 @@ function webSearch() {
     //Escape
     else if (e.code === 'Escape') {
       if (checkDisplay !== 'none') return;
+      if (windowWidth >= windowWidthSmall) {
+        webSearchBtn?.getAttribute('aria-expanded') === 'true' ? webSearchBtn.focus() : null;
+      } else {
+        mobileSearchBtn?.getAttribute('aria-expanded') === 'true' ? mobileSearchBtn.focus() : null;
+      }
+
       mobileSearchBtn?.setAttribute('aria-expanded', 'false');
       webSearchBtn?.setAttribute('aria-expanded', 'false');
-      // webSearch.setAttribute('aria-hidden', 'true');
       jsSlideUp(webSearch);
-      if (windowWidth >= windowWidthSmall) {
-        webSearchBtn?.getAttribute('aria-expanded') === 'false' ? webSearchBtn.focus() : null;
-      } else {
-        console.log(mobileSearchBtn?.getAttribute('aria-expanded') === 'false');
-
-        mobileSearchBtn?.getAttribute('aria-expanded') === 'false' ? mobileSearchBtn.focus() : null;
-      }
+      // webSearch.setAttribute('aria-hidden', 'true');
     }
   });
 
