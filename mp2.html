@@ -67,8 +67,8 @@
           <div class="webSearch typeB" role="search">
             <div class="content">
               <div class="formGrp">
-                <label for="mustSameAsId">搜尋</label>
-                <input name="username" type="text" placeholder="請輸入文字" accesskey="S" aria-label="搜尋網站內容" />
+                <label for="topSearch">搜尋</label>
+                <input name="topSearch" type="text" id="topSearch" placeholder="請輸入文字" accesskey="S" aria-label="搜尋網站內容" />
                 <button type="button" class="btn btnSearch">查詢</button>
               </div>
               <div class="btnGrp">
@@ -198,14 +198,13 @@
         <section class="flex_12 full mpSlider">
           <div class="container">
             <div class="swiper">
-              <div class="controlBox">
-                <button class="stop" type="button">暫停</button>
-                <button class="play active" type="button">播放</button>
+              <div class="swiperControlBox">
+                <button type="button"><span>播放中，點我暫停</span><span>暫停中，點我播放</span></button>
               </div>
               <!--前一筆-->
-              <button class="prevSlider swiperArrow"></button>
+              <button type="button" class="prevSlider swiperArrow"></button>
               <!--下一筆-->
-              <button class="nextSlider swiperArrow"></button>
+              <button type="button" class="nextSlider swiperArrow"></button>
               <div class="swiper-wrapper">
                 <div class="item imgContainer swiper-slide" data-title="圖說1">
                   <img src="images/demo/banner.jpg" alt="" />

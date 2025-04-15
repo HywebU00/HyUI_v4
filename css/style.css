@@ -226,8 +226,8 @@ img {
     text-align: center;
   }
   .demoSection2 [class^=col] {
-    border: 1px solid #0066cc;
-    background: #66b3ff;
+    border: 1px solid #0073E6;
+    background: #80c0ff;
     min-height: 200px;
     color: #151515;
     text-align: center;
@@ -240,7 +240,7 @@ img {
     padding-top: 2em;
   }
   .demoSection2 + .bg {
-    background: #f9fdff;
+    background: #e6f3ff;
   }
   .demoSection2.full .container {
     padding-left: 0;
@@ -1908,7 +1908,7 @@ img {
     font-style: normal;
     display: block;
     font-size: 1em;
-    border-left: 5px solid #00a4f9;
+    border-left: 5px solid #0073E6;
     padding: 2em;
     box-sizing: border-box;
     margin: 0 0em 2em;
@@ -1959,7 +1959,7 @@ img {
     padding: 0 0.5em;
     height: 2em;
     line-height: 2em;
-    background: #00a4f9;
+    background: #0073E6;
     color: #fff;
     text-decoration: none;
     z-index: 999999999999;
@@ -1969,7 +1969,7 @@ img {
     color: #fff;
   }
   a.goCenter:hover, a.goCenter:focus {
-    background: #2db7ff;
+    background: #1a8dff;
     top: 0;
     opacity: 1;
     box-shadow: none;
@@ -1978,7 +1978,7 @@ img {
   .no-js noscript {
     display: block;
     padding: 0.5em;
-    border: 2px solid #00a4f9;
+    border: 2px solid #0073E6;
     background: #fff;
     color: #666;
     overflow: hidden;
@@ -1989,10 +1989,10 @@ img {
     box-sizing: border-box;
   }
   .no-js noscript a {
-    color: #00a4f9;
+    color: #0073E6;
   }
   .no-js noscript a:hover {
-    color: #0094e0;
+    color: #0068cf;
   }
   .no-js .mpSlider .imgContainer {
     display: none;
@@ -2112,10 +2112,10 @@ img {
   }
   a {
     text-decoration: none;
-    color: #00a4f9;
+    color: #0073E6;
   }
   a:hover {
-    color: #0094e0;
+    color: #0068cf;
     cursor: pointer;
   }
   kbd {
@@ -2195,13 +2195,13 @@ img {
     font-size: 1.125em;
   }
   .fontSize ul li button:hover, .fontSize ul li button:focus {
-    background: #0094e0;
+    background: #0068cf;
     color: #fff;
     box-shadow: none;
   }
   .fontSize ul li.active button,
   .fontSize ul li.active a {
-    background: #0094e0;
+    background: #0068cf;
     color: #fff;
     box-shadow: none;
   }
@@ -2258,11 +2258,11 @@ img {
     transition: 0.3s ease-out;
   }
   .fontSize.typeB ul li button:hover, .fontSize.typeB ul li button:focus-visible {
-    background: #00a4f9;
-    border-inline: #0094e0 2px solid;
+    background: #0073E6;
+    border-inline: #0068cf 2px solid;
   }
   .fontSize.typeB ul li.active button {
-    background: #0094e0;
+    background: #0068cf;
     color: #fff;
     box-shadow: none;
   }
@@ -2332,8 +2332,8 @@ img {
     transition: 0.3s ease-out;
   }
   .language ul li a:hover {
-    background: #00a4f9;
-    border-inline: #0094e0 2px solid;
+    background: #0073E6;
+    border-inline: #0068cf 2px solid;
   }
   @media screen and (min-width: 767px) {
     .language.typeB {
@@ -2420,6 +2420,11 @@ img {
     -webkit-mask-size: 40%;
             mask-size: 40%;
     background: #fff;
+  }
+  [for=topSearch] {
+    position: absolute;
+    width: 0;
+    overflow: hidden;
   }
   .webSearch {
     vertical-align: top;
@@ -2536,7 +2541,7 @@ img {
     color: #222;
   }
   .webSearch .keywordHot ul a:hover {
-    color: #0094e0;
+    color: #0068cf;
     cursor: pointer;
   }
   @media screen and (max-width: 767px) {
@@ -2651,7 +2656,7 @@ img {
     border: none;
   }
   .mobileSearch .btnGrp .btn:hover {
-    color: #14afff;
+    color: #0382ff;
   }
   .mobileSearch .keywordHot {
     flex: 1 1 100%;
@@ -2674,7 +2679,7 @@ img {
     color: #fff;
   }
   .mobileSearch .keywordHot ul a:hover {
-    color: #14afff;
+    color: #0382ff;
   }
   .webSearch.typeB {
     position: absolute;
@@ -2747,7 +2752,7 @@ img {
             mask: url("../images/icon/icon_search2.svg") center no-repeat;
     -webkit-mask-size: 40%;
             mask-size: 40%;
-    background: #00a4f9;
+    background: #0073E6;
   }
   .btnGrp {
     text-align: center;
@@ -2810,19 +2815,19 @@ img {
     cursor: pointer;
   }
   .btnBlue {
-    background: #0066cc;
-    border: 1px solid #0066cc;
+    background: #0073E6;
+    border: 1px solid #0073E6;
     color: #fff;
   }
   .btnBlue:hover {
-    background: #004d99;
-    border: 1px solid #003366;
+    background: #005ab3;
+    border: 1px solid #004080;
     cursor: pointer;
     color: #fff;
     outline: none;
   }
   .btnBlue.active {
-    background: #0073e6;
+    background: #0180ff;
     cursor: pointer;
   }
   .btnYellow {
@@ -2890,57 +2895,57 @@ img {
     cursor: pointer;
   }
   .btnSubmit {
-    background: #14afff;
-    border: 1px solid #14afff;
+    background: #0180ff;
+    border: 1px solid #0180ff;
     color: #fff;
   }
   .btnSubmit:hover {
-    background: #0093e0;
-    border: 1px solid #0072ad;
+    background: #0066cd;
+    border: 1px solid #004d9a;
     cursor: pointer;
     color: #fff;
     outline: none;
   }
   .btnSubmit.active {
-    background: #2db7ff;
+    background: #1a8dff;
     cursor: pointer;
   }
   .btnReset {
     color: #484848;
   }
   .btnSearch {
-    background: #14afff;
-    border: 1px solid #14afff;
+    background: #0180ff;
+    border: 1px solid #0180ff;
     color: #fff;
   }
   .btnSearch:hover {
-    background: #0093e0;
-    border: 1px solid #0072ad;
+    background: #0066cd;
+    border: 1px solid #004d9a;
     cursor: pointer;
     color: #fff;
     outline: none;
   }
   .btnSearch.active {
-    background: #2db7ff;
+    background: #1a8dff;
     cursor: pointer;
   }
   .btnPrimary {
-    background: #00a4f9;
+    background: #0073E6;
     color: #fff;
-    border: solid 1px #00a4f9;
+    border: solid 1px #0073E6;
   }
   .btnPrimary:hover {
-    background: #0082c6;
-    border: solid 1px #00a4f9;
+    background: #005ab3;
+    border: solid 1px #0073E6;
   }
   .btnSecondary {
     background: #fff;
-    color: #0072ad;
-    border: solid 1px #00a4f9;
+    color: #004d9a;
+    border: solid 1px #0073E6;
     text-shadow: none;
   }
   .btnSecondary:hover {
-    color: #003f60;
+    color: #00274d;
     background: #b5deff;
     border: solid 1px #b5deff;
   }
@@ -2961,7 +2966,7 @@ img {
     border: 1px solid #ddd;
   }
   .btnBack:hover {
-    background: #0082c6;
+    background: #005ab3;
     border: 1px solid #ddd;
   }
   .disabled,
@@ -3009,7 +3014,7 @@ img {
     color: #222;
   }
   .breadcrumb a:hover {
-    color: #0094e0;
+    color: #0068cf;
     cursor: pointer;
   }
   .divider,
@@ -3690,8 +3695,8 @@ img {
   }
   .category a:hover, .category a:focus, .category a.active {
     color: #fff;
-    background: #14afff;
-    border: 1px solid #14afff;
+    background: #0180ff;
+    border: 1px solid #0180ff;
     box-shadow: none;
   }
   .category a span {
@@ -3740,7 +3745,7 @@ img {
     padding: 0.2em 0.75em;
   }
   .tag ul li a:hover {
-    color: #0094e0;
+    color: #0068cf;
     cursor: pointer;
   }
   .scrollToTop {
@@ -3769,10 +3774,10 @@ img {
   }
   em[tooltip] {
     text-decoration: none;
-    color: #00a4f9;
+    color: #0073E6;
   }
   em[tooltip]:hover {
-    color: #0094e0;
+    color: #0068cf;
     cursor: pointer;
   }
   [tooltip]:before,
@@ -3945,8 +3950,8 @@ img {
     transform: translate(-50%, -50%);
     width: 20px;
     height: 2px;
-    background: #00a4f9;
-    box-shadow: #00a4f9 0 6px 0 0, #00a4f9 0 -6px 0 0;
+    background: #0073E6;
+    box-shadow: #0073E6 0 6px 0 0, #0073E6 0 -6px 0 0;
     transition: 0.2s linear;
   }
   .sidebarCtrlBtn::after {
@@ -3954,7 +3959,7 @@ img {
     content: "";
     width: 20px;
     height: 2px;
-    background: #00a4f9;
+    background: #0073E6;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -4112,7 +4117,7 @@ img {
     color: #222;
   }
   .header .navigation .navList li a:hover {
-    color: #0094e0;
+    color: #0068cf;
     cursor: pointer;
   }
   .header .navigation .submenuBox {
@@ -4223,10 +4228,10 @@ img {
     margin-bottom: 0.2em;
   }
   .mainMenu > ul > li.active > a, .mainMenu > ul > li:hover > a {
-    color: #0094e0;
+    color: #0068cf;
   }
   .mainMenu > ul > li.active > a:after, .mainMenu > ul > li:hover > a:after {
-    border: 2px solid #0094e0;
+    border: 2px solid #0068cf;
     border-bottom: none;
     border-left: none;
   }
@@ -4259,11 +4264,11 @@ img {
   }
   .mainMenu ul li ul li a:hover {
     color: #fff;
-    background: #0094e0;
+    background: #0068cf;
   }
   .mainMenu ul li ul li.active > a {
     color: #fff;
-    background: #0094e0;
+    background: #0068cf;
   }
   .mainMenu ul li ul li.hasChild > ul {
     z-index: 999;
@@ -4272,7 +4277,7 @@ img {
     padding-right: 2em;
   }
   .mainMenu ul li ul li.hasChild > a:hover {
-    background: #00a4f9;
+    background: #0073E6;
   }
   .mainMenu ul li ul li.hasChild > a:after {
     content: "";
@@ -4471,10 +4476,10 @@ img {
   }
   footer a {
     text-decoration: none;
-    color: #00a4f9;
+    color: #0073E6;
   }
   footer a:hover {
-    color: #0082c6;
+    color: #005ab3;
   }
   footer .footerLogo {
     flex: 0 1 240px;
@@ -4516,14 +4521,14 @@ img {
   footer .footerLink li a {
     display: block;
     padding: 0.25em 1em;
-    background: #00a4f9;
+    background: #0073E6;
     color: #fff;
     text-align: center;
     transition: 0.3s ease-out;
     white-space: nowrap;
   }
   footer .footerLink li a:hover {
-    background: #0082c6;
+    background: #005ab3;
   }
   footer p {
     line-height: 1.65em;
@@ -4536,7 +4541,7 @@ img {
   footer .update em,
   footer .counter em {
     font-style: normal;
-    color: #00a4f9;
+    color: #0073E6;
     padding: 0 0.5em;
   }
   footer .footerIcon a {
@@ -4589,7 +4594,7 @@ img {
     width: 6em;
     color: #fff;
     border: none;
-    background: #00a4f9;
+    background: #0073E6;
     position: absolute;
     left: 50%;
     top: 0;
@@ -4612,7 +4617,7 @@ img {
     margin-left: -6px;
   }
   .fatFooter .btnFatFooter:hover {
-    background: #0082c6;
+    background: #005ab3;
     color: #fff;
     text-decoration: none;
     cursor: pointer;
@@ -4703,7 +4708,7 @@ img {
     background: none;
   }
   .fatFooter nav ul li ul li a:hover {
-    color: #0094e0;
+    color: #0068cf;
     cursor: pointer;
   }
   @media screen and (max-width: 575px) {
@@ -5852,7 +5857,7 @@ img {
   input[type=password]:focus,
   textarea:focus,
   select:focus {
-    outline: #00a4f9 2px solid;
+    outline: #0073E6 2px solid;
     outline-offset: -2px;
   }
   select {
@@ -5883,21 +5888,21 @@ img {
   }
   input[type=checkbox]:checked,
   input[type=radio]:checked {
-    border-color: #00a4f9;
-    background-color: #00a4f9;
+    border-color: #0073E6;
+    background-color: #0073E6;
   }
   input[type=checkbox]:checked {
     background-image: url(../images/basic/icon_checked.svg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 98%;
-    box-shadow: #00a4f9 0 0 0 2px;
+    box-shadow: #0073E6 0 0 0 2px;
     border-radius: 2px;
   }
   input[type=radio]:checked {
-    border-color: #00a4f9;
-    background-color: #00a4f9;
-    box-shadow: #fff 0 0 0 3px inset, #00a4f9 0 0 0 2px;
+    border-color: #0073E6;
+    background-color: #0073E6;
+    box-shadow: #fff 0 0 0 3px inset, #0073E6 0 0 0 2px;
   }
   .uploadGrp {
     position: relative;
@@ -5912,21 +5917,21 @@ img {
     overflow: hidden;
     top: 10px;
     right: 0.5em;
-    background: #00a4f9;
-    border: 1px solid #00a4f9;
+    background: #0073E6;
+    border: 1px solid #0073E6;
     color: #fff;
     padding: 0.2em 1em;
     border-radius: 4px;
   }
   .uploadGrp .uploadBtn:hover {
-    background: #0082c6;
-    border: 1px solid #006193;
+    background: #005ab3;
+    border: 1px solid #004080;
     cursor: pointer;
     color: #fff;
     outline: none;
   }
   .uploadGrp .uploadBtn.active {
-    background: #14afff;
+    background: #0180ff;
     cursor: pointer;
   }
   .uploadGrp .uploadBtn:hover {
@@ -6236,7 +6241,7 @@ img {
     color: #222;
   }
   .lp table td a:hover {
-    color: #0094e0;
+    color: #0068cf;
     cursor: pointer;
   }
   .lp table td.date {
@@ -6261,7 +6266,7 @@ img {
   .lp .list ol {
     list-style-type: none;
     padding: 0;
-    border-top: 2px solid #00a4f9;
+    border-top: 2px solid #0073E6;
   }
   .lp .list > ul > li,
   .lp .list ol > li {
@@ -6284,7 +6289,7 @@ img {
   }
   .lp .list > ul > li > a:hover,
   .lp .list ol > li > a:hover {
-    color: #0094e0;
+    color: #0068cf;
   }
   .lp .list > ul > li > a .num,
   .lp .list ol > li > a .num {
@@ -6356,7 +6361,7 @@ img {
     color: #222;
   }
   .submenu li a:hover {
-    color: #0094e0;
+    color: #0068cf;
     cursor: pointer;
   }
   .submenu li a .num {
@@ -6370,8 +6375,8 @@ img {
     content: ".";
   }
   .submenu li a:hover {
-    border: 1px solid #0094e0;
-    color: #0094e0;
+    border: 1px solid #0068cf;
+    color: #0068cf;
   }
   .tabSet {
     margin: 30px auto;
@@ -6459,7 +6464,7 @@ img {
     position: relative;
   }
   .thumbnail a:hover {
-    color: #0094e0;
+    color: #0068cf;
     cursor: pointer;
   }
   .thumbnail .imgContainer {
@@ -6584,8 +6589,8 @@ img {
   }
   div.function ul li button:hover,
   div.function ul li a:hover {
-    background: #0094e0;
-    border-color: #0094e0;
+    background: #0068cf;
+    border-color: #0068cf;
   }
   div.function ul li.icon_back a:before {
     background: url(../images/basic/icon_back.svg) no-repeat center center;
@@ -6636,7 +6641,7 @@ img {
     position: relative;
   }
   .functionPanel .function ul li a:hover {
-    background: #0094e0;
+    background: #0068cf;
     color: #fff;
   }
   .functionPanel .function ul li a:hover:before {
@@ -6726,7 +6731,7 @@ img {
     background-size: 24px;
   }
   .functionPanel .share .shareButton:hover {
-    background: #0094e0;
+    background: #0068cf;
   }
   .functionPanel .share .shareButton:hover:before {
     filter: invert(100%);
@@ -6847,7 +6852,7 @@ img {
     justify-content: center;
   }
   .pagination span {
-    color: #00a4f9;
+    color: #0073E6;
     margin: 0px 0.5em;
   }
   .pagination .page {
@@ -6877,14 +6882,14 @@ img {
     margin: 0 0.1em 0.25em;
   }
   .pagination .page li a:hover {
-    background: #00a4f9;
+    background: #0073E6;
     color: #fff;
-    border: #00a4f9 solid 1px;
+    border: #0073E6 solid 1px;
   }
   .pagination .page li.active a {
     color: #fff;
-    background: #00a4f9;
-    border: #0093e0 solid 1px;
+    background: #0073E6;
+    border: #0066cd solid 1px;
   }
   .pagination .page li.last a:after, .pagination .page li.last a:before, .pagination .page li.next a:before, .pagination .page li.prev a:before, .pagination .page li.first a:after, .pagination .page li.first a:before {
     content: "";
@@ -6958,7 +6963,7 @@ img {
   }
   .pagination .items a {
     padding: 0 5px;
-    color: #00a4f9;
+    color: #0073E6;
     text-decoration: none;
   }
   @media screen and (max-width: 767px) {
@@ -7157,10 +7162,10 @@ img {
     display: block;
     font-size: 1.25em;
     font-weight: bold;
-    border-bottom: 2px solid #00a4f9;
+    border-bottom: 2px solid #0073E6;
   }
   .cascading li a:hover {
-    color: #00a4f9;
+    color: #0073E6;
     text-decoration: none;
   }
   .cascading li ul {
@@ -7261,7 +7266,7 @@ img {
     margin: 0.5em 0;
   }
   .leftBlock .listBlock ul li a:hover {
-    color: #0094e0;
+    color: #0068cf;
   }
   .leftBlock .nodeMenu {
     padding: 0 0 0.5em 0;
@@ -7299,13 +7304,12 @@ img {
     color: #333;
   }
   .leftBlock .nodeMenu ul li a:hover {
-    color: #0094e0;
+    color: #0068cf;
   }
   * {
     box-sizing: border-box;
   }
   html {
-    font-size: 16px;
     scroll-behavior: smooth;
   }
   html.smallSize {
@@ -7415,7 +7419,7 @@ img {
     top: 0;
     left: 0;
     height: 100%;
-    background: #00689d;
+    background: #00458a;
     z-index: 9999;
     overflow-x: hidden;
     overflow-y: auto;
@@ -7841,7 +7845,7 @@ img {
   }
   .gs-result .gs-title,
   .gs-result .gs-title * {
-    color: #00a4f9 !important;
+    color: #0073E6 !important;
   }
   .gsst_a .gscb_a {
     color: #ccc !important;
@@ -7856,7 +7860,7 @@ img {
   .gsc-search-button-v2,
   .gsc-search-button-v2:hover,
   .gsc-search-button-v2:focus-visible {
-    background-color: #00a4f9 !important;
+    background-color: #0073E6 !important;
   }
   .gsc-tabHeader {
     font-size: 1rem !important;
@@ -7947,7 +7951,7 @@ img {
   .swiperDots .swiper-pagination-bullet.swiper-pagination-bullet-active {
     opacity: 1;
     /* 點 active 的顏色 */
-    background: #0094e0;
+    background: #0068cf;
   }
   .swiperDots .swiper-pagination-bullet.swiper-pagination-bullet-active:hover {
     /* 點 active  hover的顏色 */
@@ -8000,7 +8004,7 @@ img {
     font-size: 1.5em;
     padding: 12px 0px 15px 0px;
     margin: 0.5em 0px 1.2em;
-    border-bottom: 1px solid #00a4f9;
+    border-bottom: 1px solid #0073E6;
   }
   .cpSlider .swiper .cpSlider {
     position: relative;
@@ -8097,25 +8101,31 @@ img {
   }
   .mpSlider .swiperControlBox button {
     background: #000;
-    border-radius: 50%;
+    border-radius: 50px;
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 10px 15px;
     aspect-ratio: 1;
     font-size: 14px;
     margin: 0;
     border: none;
-    width: 48px;
-    height: 48px;
+    height: 40px;
     white-space: nowrap;
-    border: 2px solid #fff;
   }
-  .mpSlider .swiperControlBox button.active {
-    border: 2px solid #000;
+  .mpSlider .swiperControlBox button span:last-child {
+    display: none;
+  }
+  .mpSlider .swiperControlBox button.stop {
     background: #fff;
     color: #000;
+  }
+  .mpSlider .swiperControlBox button.stop span:first-child {
+    display: none;
+  }
+  .mpSlider .swiperControlBox button.stop span:last-child {
+    display: block;
   }
   .mpSlider .item img {
     min-height: 350px;
@@ -8621,10 +8631,10 @@ img {
   }
   .cp a {
     text-decoration: none;
-    color: #00a4f9;
+    color: #0073E6;
   }
   .cp a:hover {
-    color: #0094e0;
+    color: #0068cf;
     cursor: pointer;
   }
   .cp .publishInfo {
@@ -8632,7 +8642,7 @@ img {
     line-height: 1.5em;
     list-style: none;
     margin: 0 0 0.7em 0;
-    border-left: solid 5px #00a4f9;
+    border-left: solid 5px #0073E6;
     padding: 0.8em 1.5em 0.8em;
     background: #f2f2f2;
     display: flex;
@@ -8670,7 +8680,7 @@ img {
     font-size: 1.5em;
     padding: 12px 0px 15px 0px;
     margin: 0.5em 0px 0.2em;
-    border-bottom: 1px solid #00a4f9;
+    border-bottom: 1px solid #0073E6;
   }
   .fileDownload ul {
     list-style-type: none;
@@ -8955,7 +8965,7 @@ img {
     font-size: 1.5em;
     padding: 12px 0px 15px 0px;
     margin: 0.5em 0px 0.2em;
-    border-bottom: 1px solid #00a4f9;
+    border-bottom: 1px solid #0073E6;
   }
   .webLink ol,
   .webLink ul {
@@ -8987,7 +8997,7 @@ img {
     color: #222;
   }
   .webLink li a:hover {
-    color: #0094e0;
+    color: #0068cf;
     cursor: pointer;
   }
 }

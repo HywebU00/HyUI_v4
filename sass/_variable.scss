@@ -3,13 +3,13 @@
 
 //---------------------------------------------------顏色---------//
 // 定義顏色 此顏色可自由變換
-$colorPrimary: #00a4f9; //主色
+$colorPrimary: #0073E6; //主色
 $colorSecondary: #781f79; //輔色
 $colorLight: #fec003; //點綴
-$colorLink: #00a4f9; //連結
+$colorLink: #0073E6; //連結
 $colorImportant: #eb0202; //重要
 // 但注意真實顏色與語意的關聯必須易於辨識
-$colorBlue: #0066cc;
+$colorBlue: #0073E6;
 $colorGreen: #298729;
 $colorOrange: #d04500;
 $colorRed: #d30000;
@@ -21,12 +21,12 @@ $colorHr: #666; //hr顏色
 $colorWord: #222; //一般字的顏色
 $btnWordColor: #222; //按鈕字的顏色
 // 連結顏色
-$aColor: #00a4f9;
+$aColor: #0073E6;
 $aHover: mix($aColor, #000, 90%);
 $aFocus: mix($aColor, #fff, 90%);
 // 表單focus顏色
-$formFocus: #00a4f9; //表單
-$form-btn: #00a4f9; //表單
+$formFocus: #0073E6; //表單
+$form-btn: #0073E6; //表單
 // 按鈕設定
 $btn-border: mix($btnWordColor, #000, 10%);
 $btnPadding: 0.5em 1.25em;

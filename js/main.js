@@ -818,6 +818,7 @@ function webSearch() {
     else if (e.altKey && e.code === 'KeyS') {
       toggleContent(searchBtn);
       if (searchBtn?.getAttribute('aria-expanded') === 'true') {
+        setTimeout(() => (webSearchAllTarget[0].value = ''));
         webSearchAllTarget[0].focus();
       }
 

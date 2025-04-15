@@ -107,17 +107,18 @@ window.addEventListener('load', () => {
     },
     on: {
       init: function (swiper) {
-        const controlBox = document.querySelector('.mpSlider .swiperControlBox');
+        const controlBoxBtn = document.querySelector('.mpSlider .swiperControlBox button');
+        let nowState = swiper.autoplay.running ? true : false;
 
-        controlBox?.addEventListener('click', (e) => {
-          if (e.target.classList.contains('stop')) {
+        controlBoxBtn?.addEventListener('click', (e) => {
+          if (nowState) {
+            nowState = false;
             swiper.autoplay.stop();
-            e.target.classList.add('active');
-            e.target.nextElementSibling.classList.remove('active');
-          } else if (e.target.classList.contains('play')) {
+            controlBoxBtn.classList.add('stop');
+          } else {
+            nowState = true;
             swiper.autoplay.start();
-            e.target.classList.add('active');
-            e.target.previousElementSibling.classList.remove('active');
+            controlBoxBtn.classList.remove('stop');
           }
         });
 

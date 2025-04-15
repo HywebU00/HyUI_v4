@@ -46,6 +46,12 @@
   }
 }
 
+[for="topSearch"] {
+  position: absolute;
+  width: 0;
+  overflow: hidden;
+}
+
 .webSearch {
   vertical-align: top;
   font-size: 0.938em;
