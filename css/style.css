@@ -5753,10 +5753,10 @@ img {
   }
   label.labelHidden,
   legend.labelHidden {
-    font-size: 0;
-    line-height: 1;
-    width: 0;
-    flex-basis: 0;
+    font-size: 0px !important;
+    width: 0px !important;
+    position: absolute !important;
+    overflow: hidden !important;
   }
   fieldset {
     border: none;
