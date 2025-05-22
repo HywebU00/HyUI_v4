@@ -26,7 +26,6 @@ window.addEventListener('load', () => {
   });
 
   // 手風琴功能
-
   accordionFunction({
     target: '.accordion',
     openContent: false, // 預設先展開所有內容，僅開啟模式切換時才可使用
@@ -107,22 +106,29 @@ window.addEventListener('load', () => {
     },
     on: {
       init: function (swiper) {
-        const controlBoxBtn = document.querySelector('.mpSlider .swiperControlBox button');
-        let nowState = swiper.autoplay.running ? true : false;
+        const controlBox = document.querySelector('.mpSlider .swiperControlBox');
+        if (controlBox !== null) {
+          const controlBoxBtn = document.querySelector('.mpSlider .swiperControlBox button');
+          let nowState = swiper.autoplay.running ? true : false;
+          let infoPlay = controlBoxBtn.dataset.infoPlay;
+          let infoStop = controlBoxBtn.dataset.infoStop;
+          nowState ? (controlBoxBtn.textContent = infoStop) : (controlBoxBtn.textContent = infoPlay);
 
-        controlBoxBtn?.addEventListener('click', (e) => {
-          if (nowState) {
-            nowState = false;
-            swiper.autoplay.stop();
-            controlBoxBtn.classList.add('stop');
-          } else {
-            nowState = true;
-            swiper.autoplay.start();
-            controlBoxBtn.classList.remove('stop');
-          }
-        });
-
-        swiper.slides.length === 1 ? controlBox.remove() : null;
+          controlBoxBtn.addEventListener('click', (e) => {
+            if (nowState) {
+              nowState = false;
+              swiper.autoplay.stop();
+              controlBoxBtn.classList.add('stop');
+              controlBoxBtn.textContent = infoPlay;
+            } else {
+              nowState = true;
+              swiper.autoplay.start();
+              controlBoxBtn.classList.remove('stop');
+              controlBoxBtn.textContent = infoStop;
+            }
+          });
+          swiper.slides.length === 1 ? controlBox.remove() : null;
+        }
       },
     },
   });

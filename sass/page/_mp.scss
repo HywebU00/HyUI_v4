@@ -22,28 +22,12 @@
       font-size: 14px;
       margin: 0;
       border: none;
-      // width: 48px;
       height: 40px;
       white-space: nowrap;
-
-      // border: 2px solid #fff;
-      span:last-child {
-        display: none;
-      }
 
       &.stop {
         background: #fff;
         color: #000;
-
-        span {
-          &:first-child {
-            display: none;
-          }
-
-          &:last-child {
-            display: block;
-          }
-        }
       }
     }
   }

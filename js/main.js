@@ -442,7 +442,6 @@ function changeTag(oldTag, newTag) {
 // -----------------------------------------------------------------------
 
 function mainMenuSetup() {
-  ('use strict');
   // menu初始化 新增側欄選單
   const body = document.querySelector('body');
   const sidebar = document.createElement('nav');
@@ -458,6 +457,8 @@ function mainMenuSetup() {
 
   const menuOverlay = document.querySelector('.menuOverlay');
   const mainMenu = document.querySelector('.mainMenu');
+  const megaMenu = document.querySelector('.megaMenu');
+
   const hasChildUl = mainMenu.querySelectorAll('li ul');
   hasChildUl.forEach((i) => {
     i.parentNode.classList.add('hasChild');
@@ -470,6 +471,7 @@ function mainMenuSetup() {
     childA.setAttribute('id', `${id}`);
     childA.setAttribute('aria-controls', `${id}_ul`);
     childA.getAttribute('href') === '#' ? childA.setAttribute('role', 'button') : null;
+
     i.setAttribute('id', `${id}_ul`);
     i.setAttribute('aria-labelledby', `${id}`);
     // i.setAttribute('aria-hidden', 'true');
@@ -495,6 +497,14 @@ function mainMenuSetup() {
 
   // 轉換標籤
   changeTag(cloneMenu, 'div');
+
+  if (megaMenu !== null) {
+    const megaMenuChild = megaMenu.querySelectorAll(' ul ul .hasChild > a');
+
+    megaMenuChild.forEach((i) => {
+      i.removeAttribute('aria-haspopup');
+    });
+  }
 
   // ----- 複製手機版nav選單 -------------------------------------------------
   //複製navigation
@@ -555,8 +565,7 @@ function mainMenuSetup() {
     const childLi = e.target.querySelectorAll('li');
     const childA = e.target.querySelectorAll('a');
     const childUl = e.target.querySelectorAll('ul');
-    // childA.forEach((i) => i.setAttribute('aria-expanded', 'false'));
-    // childUl.forEach((i) => i.setAttribute('aria-hidden', 'true'));
+    childA.forEach((i) => i.setAttribute('aria-expanded', 'false'));
 
     e.target.classList.remove('active');
     childLi.forEach((i) => i.classList.remove('active'));
@@ -1006,7 +1015,6 @@ function fatFooter(openCheck = true) {
 // -----------------------------------------------------------------------
 
 function tabFunction(obj) {
-  ('use strict');
   const { target, autoClose = true, openContent = false, modeSwitch = false, windowWidth = windowWidthSmall, openIndex = 0, openSwitch = true } = obj;
   const tabSet = target === undefined ? document.querySelector(obj) : document.querySelector(target);
 
@@ -1784,7 +1792,6 @@ let lazyLoadInstance = new LazyLoad({
 // -----------------------------------------------------------------------
 
 function accordionFunction(obj) {
-  ('use strict');
   const { target, openContent = false, openDefault = false, openIndex = 0, autoClose = true, openSwitch = true, info } = obj;
   const infoOpen = info.open;
   const infoClose = info.close;

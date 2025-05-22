@@ -1464,6 +1464,7 @@ abbr[title] {
     border-right: 1px solid $colorGray;
     width: 2.4em;
     pointer-events: none;
+    z-index: 5;
 
     &:before {
       width: 2.2em;

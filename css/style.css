@@ -5983,6 +5983,7 @@ img {
     border-right: 1px solid #ccc;
     width: 2.4em;
     pointer-events: none;
+    z-index: 5;
   }
   .input_i i:before {
     width: 2.2em;
@@ -8114,18 +8115,9 @@ img {
     height: 40px;
     white-space: nowrap;
   }
-  .mpSlider .swiperControlBox button span:last-child {
-    display: none;
-  }
   .mpSlider .swiperControlBox button.stop {
     background: #fff;
     color: #000;
-  }
-  .mpSlider .swiperControlBox button.stop span:first-child {
-    display: none;
-  }
-  .mpSlider .swiperControlBox button.stop span:last-child {
-    display: block;
   }
   .mpSlider .item img {
     min-height: 350px;
