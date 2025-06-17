@@ -43,7 +43,7 @@ window.addEventListener('load', () => {
 
 // 自行加入的JS請寫在這裡
 (function () {
-  //cp輪播
+  //ta輪播
   const cpSwiper = new Swiper('.cpSlider .swiper', {
     slidesPerView: 4,
     spaceBetween: 20,
@@ -112,19 +112,25 @@ window.addEventListener('load', () => {
           let nowState = swiper.autoplay.running ? true : false;
           let infoPlay = controlBoxBtn.dataset.infoPlay;
           let infoStop = controlBoxBtn.dataset.infoStop;
-          nowState ? (controlBoxBtn.textContent = infoStop) : (controlBoxBtn.textContent = infoPlay);
+          nowState ? controlBoxBtn.classList.add('stop') : controlBoxBtn.classList.add('play');
+          controlBoxBtn.setAttribute('aria-label', infoStop);
+          controlBoxBtn.setAttribute('data-altlabel', infoPlay);
 
           controlBoxBtn.addEventListener('click', (e) => {
             if (nowState) {
               nowState = false;
               swiper.autoplay.stop();
-              controlBoxBtn.classList.add('stop');
-              controlBoxBtn.textContent = infoPlay;
+              controlBoxBtn.classList.add('play');
+              controlBoxBtn.classList.remove('stop');
+              controlBoxBtn.setAttribute('aria-label', infoPlay);
+              controlBoxBtn.setAttribute('data-altlabel', infoStop);
             } else {
               nowState = true;
               swiper.autoplay.start();
-              controlBoxBtn.classList.remove('stop');
-              controlBoxBtn.textContent = infoStop;
+              controlBoxBtn.classList.add('stop');
+              controlBoxBtn.classList.remove('play');
+              controlBoxBtn.setAttribute('aria-label', infoStop);
+              controlBoxBtn.setAttribute('data-altlabel', infoPlay);
             }
           });
           swiper.slides.length === 1 ? controlBox.remove() : null;
